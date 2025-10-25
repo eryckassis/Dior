@@ -1,0 +1,1420 @@
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=IBM+Plex+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
+
+/* Import component styles */
+@import "./styles/footer.css";
+@import "./styles/horizontal-scroll.css";
+
+/* Custom Font - TTF */
+@font-face {
+  font-family: "MinhaFonte"; /* Nome que você vai usar no CSS */
+  src: url("./fonts/Velvo-2v6Xw.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Melhora performance */
+}
+
+/* Variables for consistency */
+:root {
+  --color-background: #f6f3f7;
+  --color-body-bg: #1a1a1a;
+  --color-foreground: #2a2826;
+  --color-accent: #c5b8a5;
+  --color-menu-bg: #ffffff;
+  --color-menu-text: #2a2826;
+  --font-primary: "Manrope", sans-serif;
+  --font-secondary: "IBM Plex Mono", monospace;
+  --margin: 32px;
+  --gutter: 16px;
+  --font-size-large: 64px;
+  --font-size-medium: 18px;
+  --font-size-small: 16px;
+  --nav-height: 60px;
+  --border-radius: 4px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+article,
+aside,
+figure,
+figcaption,
+header,
+main,
+nav,
+section {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+figure {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+strong {
+  font-weight: inherit;
+}
+
+/* === SPLASH SCREEN === */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10000;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.splash-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.splash-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10003;
+  width: 500px;
+  height: auto;
+  pointer-events: none;
+}
+
+.splash-logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.splash-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.splash-option {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.splash-option-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Garante que vídeo funcione como imagem de fundo */
+.splash-option-bg video,
+video.splash-option-bg {
+  pointer-events: none;
+}
+
+.splash-option-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.6) 40%,
+    rgba(0, 0, 0, 0.3) 70%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+/* Camada de escurecimento extra para efeito hover */
+.splash-option-darkening {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  opacity: 1;
+}
+
+.splash-option-content {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.splash-option-title {
+  font-family: "MinhaFonte", sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: #ededed;
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.splash-option-button {
+  display: inline-block;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 14px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: transparent;
+  backdrop-filter: blur(4px);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.splash-option-button:hover {
+  color: #000000;
+  border-color: #fff;
+}
+
+/* Button Label */
+.button__label {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  transition: color 50ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.splash-option-button:hover .button__label {
+  transition: color 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* Button Flair (Efeito de seguir o mouse) */
+.button__flair {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  transform: scale(0);
+  transform-origin: 0 0;
+  will-change: transform;
+  z-index: 1;
+}
+
+.button__flair::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 170%;
+  aspect-ratio: 1/1;
+  background-color: #ededed;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .splash-container {
+    flex-direction: column;
+  }
+
+  .splash-option-title {
+    font-size: 32px;
+  }
+
+  .splash-option-content {
+    bottom: 60px;
+  }
+
+  .splash-logo {
+    width: 150px;
+  }
+
+  .splash-option-left::after {
+    width: 100%;
+    height: 1px;
+    top: auto;
+    bottom: 0;
+    right: auto;
+    left: 0;
+  }
+}
+
+/* ============================================================================
+   PRELOADER STYLES
+   ============================================================================ */
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  overflow: hidden;
+  z-index: 9999;
+  transform-origin: top center; /* Origem da transformação no topo */
+}
+
+.preloader .text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  overflow: visible; /* Permite animações fora do container */
+  color: white;
+  visibility: hidden; /* GSAP controla */
+  width: 100%;
+  height: 100%;
+}
+
+.preloader .imagem-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible; /* Permite a imagem se mover */
+}
+
+.preloader .imagem-logo img {
+  max-width: none; /* ← ALTERE ESTE VALOR para aumentar/diminuir */
+  width: auto;
+  height: 500px;
+  object-fit: contain;
+  display: block;
+  opacity: 0; /* GSAP controla */
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-body-bg); /* Dark background color */
+  color: var(--color-foreground);
+  letter-spacing: -0.03em;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Esconde scroll durante preloader */
+  overflow-x: hidden;
+  width: 100%;
+  transition: padding 0.3s ease; /* Add transition for padding */
+  will-change: padding; /* Optimize for padding changes */
+}
+
+/* Background noise effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: transparent
+    url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
+  background-size: 300px 300px;
+  -webkit-animation: noise-animation 0.3s steps(5) infinite;
+  animation: noise-animation 0.3s steps(5) infinite;
+  opacity: 0.3;
+  will-change: transform;
+  z-index: 100;
+  pointer-events: none;
+}
+
+@-webkit-keyframes noise-animation {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-2%, -3%);
+  }
+  20% {
+    transform: translate(-4%, 2%);
+  }
+  30% {
+    transform: translate(2%, -4%);
+  }
+  40% {
+    transform: translate(-2%, 5%);
+  }
+  50% {
+    transform: translate(-4%, 2%);
+  }
+  60% {
+    transform: translate(3%, 0);
+  }
+  70% {
+    transform: translate(0, 3%);
+  }
+  80% {
+    transform: translate(-3%, 0);
+  }
+  90% {
+    transform: translate(2%, 2%);
+  }
+  100% {
+    transform: translate(1%, 0);
+  }
+}
+
+@keyframes noise-animation {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-2%, -3%);
+  }
+  20% {
+    transform: translate(-4%, 2%);
+  }
+  30% {
+    transform: translate(2%, -4%);
+  }
+  40% {
+    transform: translate(-2%, 5%);
+  }
+  50% {
+    transform: translate(-4%, 2%);
+  }
+  60% {
+    transform: translate(3%, 0);
+  }
+  70% {
+    transform: translate(0, 3%);
+  }
+  80% {
+    transform: translate(-3%, 0);
+  }
+  90% {
+    transform: translate(2%, 2%);
+  }
+  100% {
+    transform: translate(1%, 0);
+  }
+}
+
+a {
+  color: var(--color-foreground);
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
+h1 {
+  font-size: var(--font-size-large);
+  margin: var(--gutter) 0;
+  font-weight: 300;
+  line-height: 0.9;
+}
+
+p {
+  font-size: var(--font-size-medium);
+  line-height: 1.4;
+  margin-top: 1rem;
+}
+
+/* All content wrapper */
+.all-content {
+  background-color: var(--color-background);
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  transition: transform 0.3s ease, border-radius 0.3s ease;
+  will-change: border-radius; /* REMOVIDO transform do will-change para não interferir com ScrollTrigger pin */
+  border-radius: 0;
+  overflow-x: hidden; /* Apenas horizontal - permite scroll vertical */
+}
+
+/* Add a class for when the menu is open to apply border radius */
+.all-content.menu-open {
+  border-radius: var(--border-radius);
+}
+
+/* Navigation */
+.navigation {
+  color: var(--color-foreground);
+  position: relative; /* Not fixed */
+  width: 100%;
+  z-index: 20; /* Higher than dropdown */
+  background-color: var(--color-background);
+  padding: var(--gutter) var(--margin);
+  height: var(--nav-height);
+  transition: margin 0.3s ease;
+}
+
+.navigation__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative; /* Ensure proper positioning context */
+}
+
+.navigation__logo {
+  font-size: 24px;
+  flex: 1;
+  transition: transform 0.3s ease; /* Add transition for smooth movement */
+  will-change: transform;
+  transform: translateZ(0);
+  display: flex;
+  align-items: center;
+}
+
+/* Logo link wrapper */
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.logo-link:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+.logo-link:active {
+  transform: translateY(0);
+}
+
+/* Logo SVG/Image styles */
+.logo-svg {
+  display: flex;
+  position: relative;
+  width: auto;
+  height: 180px; /* ← ALTERE AQUI: Aumente ou diminua este valor */
+  max-width: 200px; /* Largura máxima (opcional) */
+  object-fit: contain;
+  transition: filter 0.3s ease;
+  top: -1rem;
+}
+
+/* Efeito hover no logo */
+.logo-link:hover .logo-svg {
+  filter: brightness(1.1);
+}
+
+/* Responsivo - ajustar tamanho em telas menores */
+@media (max-width: 768px) {
+  .logo-svg {
+    height: 40px; /* ← Ajustado proporcionalmente */
+    max-width: 160px;
+  }
+}
+
+.navigation__center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation__right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  transition: transform 0.3s ease; /* Add transition for smooth movement */
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.navigation__menu {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-menu-bg); /* Solid white */
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  position: relative;
+  will-change: transform; /* Optimize for animations */
+  transform: translateZ(0); /* Force GPU acceleration */
+}
+
+.nav-link {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-right: 16px;
+  letter-spacing: 0.05em;
+  text-rendering: optimizeLegibility; /* Improve text rendering */
+  -webkit-font-smoothing: antialiased; /* Better font smoothing */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dior Holiday - Texto Dourado */
+.nav-link-gold {
+  color: #d4af37; /* Dourado elegante */
+  font-weight: 500;
+}
+
+.nav-link-gold:hover {
+  color: #f4c430; /* Dourado mais claro no hover */
+}
+
+.contact-link {
+  font-family: var(--font-secondary); /* Same font as nav links */
+  font-size: 12px; /* Same size as nav links */
+  text-transform: uppercase; /* Same text transform as nav links */
+  letter-spacing: 0.05em; /* Same letter spacing as nav links */
+  text-rendering: optimizeLegibility; /* Improve text rendering */
+  -webkit-font-smoothing: antialiased; /* Better font smoothing */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-secondary);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-foreground);
+  cursor: pointer;
+  padding: 0;
+  margin-left: 8px;
+  line-height: 1;
+}
+
+/* Dropdown Menu - MODIFIED to fix text skewing */
+.dropdown {
+  background-color: var(--color-menu-bg);
+  color: var(--color-menu-text);
+  width: 40vw; /* 40% viewport width as requested */
+  position: absolute; /* Not fixed */
+  top: calc(
+    var(--nav-height) + 20px
+  ); /* Position below the navigation + account for padding */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally without scaling */
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  border-radius: var(--border-radius);
+  box-shadow: none; /* No shadow */
+  height: auto; /* Auto height based on content */
+  max-height: 0;
+  will-change: opacity, max-height;
+  overflow: hidden;
+}
+
+.dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  max-height: 50vh; /* Limit maximum height */
+  overflow: visible;
+}
+
+.dropdown__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--margin);
+  border-radius: var(
+    --border-radius
+  ); /* Ensure content has rounded corners too */
+  background-color: var(--color-menu-bg); /* Match dropdown background */
+  transform: translateY(-100%); /* Start offscreen */
+  transition: transform 0.3s ease;
+  will-change: transform;
+  max-height: 50vh;
+}
+
+.dropdown.open .dropdown__content {
+  transform: translateY(0); /* Slide in when open */
+}
+
+.dropdown__menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dropdown__image {
+  margin-top: var(--margin);
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-radius: var(
+    --border-radius
+  ); /* Ensure image container has rounded corners */
+  will-change: opacity, transform; /* Optimize for animations */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Add transition for smoother animation */
+}
+
+.dropdown__image img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+}
+
+.dropdown__button {
+  font-family: var(--font-secondary);
+  font-size: 24px;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(10px); /* Initial blur state */
+  will-change: opacity, transform, filter;
+  position: relative;
+  display: inline-block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content; /* Make the element only as wide as its content */
+  font-weight: 500; /* Fatter weight */
+  color: var(--color-menu-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-rendering: optimizeLegibility; /* Improve text rendering */
+  -webkit-font-smoothing: antialiased; /* Better font smoothing */
+  -moz-osx-font-smoothing: grayscale;
+}
+.dropdown__gold {
+  color: #d4af37;
+}
+
+.dropdown__button:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-menu-text);
+  transition: width 0.3s ease;
+}
+
+.dropdown__button:hover:after {
+  width: 100%;
+}
+
+/* Main Content */
+.content {
+  background-color: var(--color-background);
+  position: relative;
+  z-index: 5; /* Lower than dropdown */
+  width: 100%;
+  max-width: 100%;
+  margin-top: 0; /* No top margin since nav is not fixed */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--gutter);
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  padding: var(--margin);
+  box-sizing: border-box;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.grid-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.grid-copy {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-family: var(--font-secondary);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.grid-content {
+  padding: var(--margin);
+  width: 100%;
+  top: 10rem;
+  left: 1rem;
+}
+
+.grid-item__wrapper {
+  position: relative;
+  width: 100%;
+  left: 0rem;
+  overflow: hidden;
+  will-change: clip-path;
+  transition: clip-path 0.1s linear;
+  margin-top: 100px;
+}
+
+/* Fix para alinhar altura do vídeo da esquerda com o da direita */
+.video-height-fix video {
+  max-height: 750px; /* Ajuste este valor conforme necessário */
+  object-fit: cover;
+  object-position: center;
+}
+
+.grid-item img,
+.grid-item video {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  transition: transform 0.3s ease, filter 0.3s ease; /* Mantém apenas transições de hover */
+  cursor: pointer;
+  display: block;
+}
+
+/* Efeito hover nos vídeos da galeria */
+.grid-item video:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+}
+
+/* Video Overlay Content - Texto sobre o vídeo */
+.video-overlay-content {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 3;
+  width: 90%;
+  max-width: 500px;
+  pointer-events: none;
+}
+
+.video-overlay-label {
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.video-overlay-title {
+  font-family: var(--font-primary);
+  font-size: 40px;
+  font-weight: 300;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.video-overlay-button {
+  display: inline-block;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  padding: 14px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: transparent;
+  backdrop-filter: blur(4px);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+  pointer-events: auto;
+}
+
+.video-overlay-button:hover {
+  color: #000000;
+  border-color: #ffffff;
+}
+
+/* Responsive para overlay de vídeo */
+@media (max-width: 768px) {
+  .video-overlay-title {
+    font-size: 32px;
+  }
+
+  .video-overlay-label {
+    font-size: 12px;
+  }
+
+  .video-overlay-button {
+    padding: 12px 30px;
+    font-size: 12px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .dropdown {
+    width: 100%; /* Full width on mobile */
+    left: 0;
+    transform: translateX(0);
+  }
+
+  .dropdown.open {
+    transform: translateX(0);
+  }
+
+  .dropdown__content {
+    transform: translateY(-100%);
+  }
+
+  .dropdown.open .dropdown__content {
+    transform: translateY(0);
+  }
+
+  .navigation__menu {
+    display: none;
+  }
+
+  .navigation__center {
+    display: none;
+  }
+
+  .navigation__container {
+    justify-content: space-between;
+  }
+
+  .navigation__logo {
+    font-size: 20px;
+  }
+
+  .menu-btn {
+    display: block;
+    font-size: 24px;
+  }
+}
+
+/* ============================================================================
+   KEYHOLE REVEAL EFFECT
+   ============================================================================ */
+
+.keyhole-section {
+  position: relative;
+  width: 100%;
+  min-height: 200vh; /* Altura grande para permitir scroll */
+  background-color: var(--color-background);
+  overflow: hidden;
+}
+
+.keyhole-container {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.keyhole-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.keyhole-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* Inicia com retângulo pequeno no centro - efeito keyhole */
+  clip-path: inset(40% 45% 40% 45% round 8px);
+  will-change: clip-path;
+  transition: clip-path 0.1s linear;
+}
+
+/* Vinheta sobre a imagem - de baixo para cima */
+.keyhole-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.6) 70%,
+      transparent 100%
+    ),
+    linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, transparent 15%),
+    linear-gradient(to left, rgba(0, 0, 0, 0.6) 0%, transparent 15%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.keyhole-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-background);
+  pointer-events: none;
+  z-index: 1;
+  will-change: opacity;
+  transition: opacity 0.3s ease;
+}
+
+.keyhole-content {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 3; /* Acima da vinheta */
+  color: white;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.keyhole-subtitle {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  opacity: 0; /* GSAP controla */
+  transform: translateY(20px); /* Estado inicial */
+}
+
+.keyhole-title {
+  font-family: var(--font-primary);
+  font-size: clamp(24px, 4vw, 48px);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  opacity: 0; /* GSAP controla */
+  transform: translateY(20px); /* Estado inicial */
+}
+
+.keyhole-button {
+  display: inline-block;
+  padding: 12px 32px;
+  border: 1px solid white;
+  color: white;
+  text-decoration: none;
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0; /* GSAP controla */
+  transform: translateY(20px); /* Estado inicial */
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.keyhole-button:hover {
+  color: var(--color-foreground);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================================
+   ANIMATED SECTIONS - Fullscreen Scroll
+   ============================================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
+
+.animated-sections-wrapper {
+  position: relative;
+  min-height: 100vh;
+  background: black;
+  z-index: 1;
+}
+
+.animated-sections-wrapper section {
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  visibility: hidden;
+}
+
+.animated-sections-wrapper .outer,
+.animated-sections-wrapper .inner {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.animated-sections-wrapper .bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+/* Video como background */
+.animated-sections-wrapper .bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -1;
+}
+
+.animated-sections-wrapper .bg h2 {
+  z-index: 2;
+  font-size: clamp(1rem, 5vw, 5rem);
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.5em;
+  margin-right: -0.5em;
+  color: hsl(0, 0, 80%);
+  width: 90vw;
+  max-width: 1200px;
+  font-family: "Cormorant Garamond", serif;
+  text-transform: uppercase;
+}
+
+.animated-sections-wrapper .bg .clip-text {
+  overflow: hidden;
+}
+
+.animated-sections-wrapper .first .bg {
+  /* Vídeo adicionado via HTML - o gradiente é aplicado via ::before */
+}
+
+.animated-sections-wrapper .first .bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.animated-sections-wrapper .second .bg {
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    ),
+    url("./images/ImageSectionView.png");
+}
+
+/* Keyhole content dentro da segunda seção - INDEPENDENTE */
+.animated-sections-wrapper .second .keyhole-content {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 3;
+  color: white;
+  max-width: 900px;
+  padding: 0 3rem;
+}
+
+.animated-sections-wrapper .second .keyhole-subtitle {
+  font-family: var(--font-secondary);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+  opacity: 1;
+  transform: translateY(0);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.animated-sections-wrapper .second .keyhole-title {
+  font-family: var(--font-primary);
+  font-size: clamp(3px, 5vw, 40px);
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 2rem;
+  opacity: 1;
+  transform: translateY(0);
+  color: #ffffff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  left: -190px;
+  text-transform: none;
+  letter-spacing: 0rem;
+}
+
+.animated-sections-wrapper .second .keyhole-button {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  color: white;
+  text-decoration: none;
+  font-family: var(--font-secondary);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.animated-sections-wrapper .second .keyhole-button:hover {
+  color: #000000;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Content styling para segunda seção */
+.animated-sections-wrapper .section-content {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 3;
+  color: white;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.animated-sections-wrapper .section-subtitle {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.animated-sections-wrapper .section-title {
+  font-family: var(--font-primary);
+  font-size: clamp(24px, 4vw, 18px) !important;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.animated-sections-wrapper .section-button {
+  display: inline-block;
+  padding: 12px 32px;
+  border: 1px solid white;
+  color: white;
+  text-decoration: none;
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transform: translateY(20px);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.animated-sections-wrapper .section-button:hover {
+  color: #000000;
+}
+
+.animated-sections-wrapper .third .bg {
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    ),
+    url(https://images.unsplash.com/photo-1617438817509-70e91ad264a5?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzU2MDk4Mg&ixlib=rb-1.2.1&q=75&w=1920);
+}
+
+.animated-sections-wrapper .fourth .bg {
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    ),
+    url(https://images.unsplash.com/photo-1617412327653-c29093585207?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzU2MDgzMQ&ixlib=rb-1.2.1&q=75&w=1920);
+}
+
+.animated-sections-wrapper .fifth .bg {
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    ),
+    url("https://images.unsplash.com/photo-1617141636403-f511e2d5dc17?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxODAzMjc4Mw&ixlib=rb-1.2.1&q=75w=1920");
+  background-position: 50% 45%;
+}
+
+/* ============================================================================
+   VIDEO CONTROLS - LIQUID GLASS
+   ============================================================================ */
+
+.video-controls {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.glass-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button Flair nos botões glass */
+.glass-button .button__flair {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  transform: scale(0);
+  transform-origin: 0 0;
+  will-change: transform;
+  z-index: 0;
+}
+
+.glass-button .button__flair::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 170%;
+  aspect-ratio: 1/1;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  display: block;
+}
+
+.glass-button:hover {
+  color: rgba(0, 0, 0, 0.9);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.glass-button:active {
+  transform: scale(0.95);
+}
+
+.glass-button svg {
+  position: absolute;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .video-controls {
+    bottom: 20px;
+    right: 20px;
+    gap: 8px;
+  }
+
+  .glass-button {
+    width: 45px;
+    height: 45px;
+  }
+
+  .glass-button svg {
+    width: 18px;
+    height: 18px;
+  }
+}

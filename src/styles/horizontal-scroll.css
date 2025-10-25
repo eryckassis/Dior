@@ -1,0 +1,325 @@
+/* ============================================================================
+   HORIZONTAL SCROLL PANELS - Seção de scroll horizontal
+   ============================================================================ */
+
+.horizontal-panels-section {
+  position: relative;
+  width: 100%;
+  /* Remove qualquer transform que possa interferir com pin */
+  transform: none !important;
+  will-change: auto;
+}
+
+.horizontal-panels-container {
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 0;
+  overflow: hidden;
+  will-change: transform;
+  position: relative;
+}
+
+/* Individual Panel Styles */
+.panel.full-screen-panel {
+  position: relative;
+  width: 100%;
+  min-width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+/* Panel Color Variations */
+.panel-red {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2826 100%);
+}
+
+.panel-orange {
+  background: linear-gradient(135deg, #2a2826 0%, #3d3a36 100%);
+}
+
+.panel-purple {
+  background: linear-gradient(135deg, #1a1520 0%, #2d2635 100%);
+}
+
+.panel-green {
+  background: linear-gradient(135deg, #1a2520 0%, #2d3635 100%);
+}
+
+.panel-gray {
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+}
+
+/* Panel Content Layout */
+.panel-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1400px;
+  width: 100%;
+  height: 100%;
+  padding: 60px 0;
+}
+
+/* Image Column */
+.panel-image-col {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.panel-image-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.panel-title {
+  font-family: "MinhaFonte", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.panel-description {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  max-width: 500px;
+}
+
+/* Navigation Controls */
+.panels-navigation {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.panels-navigation.text-right {
+  justify-content: flex-end;
+}
+
+.nav-panel {
+  position: relative;
+}
+
+.anchor-panel {
+  display: inline-block;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 14px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.anchor-panel:hover {
+  color: #000000;
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Cards Wrapper - Para o último painel */
+.cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Custom Scrollbar para cards */
+.cards-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cards-wrapper::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.cards-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.cards-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.product-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 120px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .panel-wrapper {
+    padding: 0 60px;
+  }
+
+  .panel-content-grid {
+    gap: 60px;
+  }
+
+  .panel-title {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 968px) {
+  .panel-wrapper {
+    padding: 0 40px;
+  }
+
+  .panel-content-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px 0;
+  }
+
+  .panel-image-col {
+    height: 40vh;
+  }
+
+  .panel-image-col img {
+    max-height: 40vh;
+  }
+
+  .panel-title {
+    font-size: 40px;
+  }
+
+  .panel-description {
+    font-size: 16px;
+  }
+
+  .cards-wrapper {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    max-height: 250px;
+  }
+
+  .product-card {
+    padding: 16px;
+    min-height: 100px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .panel-wrapper {
+    padding: 0 24px;
+  }
+
+  .panel-content-grid {
+    gap: 24px;
+    padding: 24px 0;
+  }
+
+  .panel-image-col {
+    height: 30vh;
+  }
+
+  .panel-image-col img {
+    max-height: 30vh;
+  }
+
+  .panel-title {
+    font-size: 32px;
+  }
+
+  .panel-description {
+    font-size: 14px;
+  }
+
+  .panels-navigation {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .anchor-panel {
+    padding: 12px 24px;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .cards-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .product-card {
+    padding: 12px;
+    min-height: 80px;
+    font-size: 11px;
+  }
+}
+
+/* Animation States - Para GSAP controlar */
+.panel-title,
+.panel-description,
+.panels-navigation {
+  will-change: opacity, transform;
+}
+
+.panel-image-col img {
+  will-change: opacity, transform;
+}

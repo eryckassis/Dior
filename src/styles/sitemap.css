@@ -1,0 +1,59 @@
+/* Sitemap Panel Styles */
+.r-footer-sitemap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  background-color: #f9f9f9;
+  padding: 0 40px;
+}
+
+.r-footer-sitemap[aria-hidden="false"] {
+  padding: 40px;
+  max-height: 1000px;
+}
+
+.r-footer-sitemap__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px 30px;
+}
+
+.sitemap-list-item {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.sitemap-list-item:first-child {
+  font-weight: 600;
+  grid-column: 1 / -1;
+  margin-bottom: 10px;
+}
+
+.sitemap-list-item a {
+  color: #000;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  font-size: 14px;
+}
+
+.sitemap-list-item a:hover {
+  opacity: 0.6;
+}
+
+.sitemap-see-all-link {
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: underline !important;
+}
+
+/* High Contrast Mode for Sitemap */
+body.high-contrast .r-footer-sitemap {
+  background-color: #1a1a1a;
+}
+
+body.high-contrast .sitemap-list-item a {
+  color: #fff;
+}

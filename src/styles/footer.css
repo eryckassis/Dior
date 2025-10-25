@@ -1,0 +1,617 @@
+/* ============================================================================
+   DIOR FOOTER STYLES
+   ============================================================================ */
+
+/* Import Google Fonts - Inter */
+@import url("https://fonts.googleapis.com/css2?family=Hubot+Sans:ital,wght@0,200..900;1,200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+/* Import Sitemap Styles */
+@import "./sitemap.css";
+
+/* Footer Container */
+.dior-footer {
+  background-color: #ffffff;
+  color: #000;
+  font-family: "Inter";
+  padding: 0;
+  margin-top: 80px;
+}
+
+/* ============================================================================
+   REASSURANCE SECTION (Top Benefits)
+   ============================================================================ */
+.r-reassurance {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.r-reassurance__item {
+  border-right: 1px solid #fff;
+  position: relative;
+}
+
+.r-reassurance__item:not(:last-child) {
+  position: relative;
+}
+
+.r-reassurance__item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px; /* distância do topo */
+  right: 0;
+  width: 1px; /* espessura da linha */
+  height: 60px; /* altura da linha */
+  background: #ccc; /* cor da linha */
+}
+
+.r-reassurance__item:last-child {
+  border-right: none;
+}
+
+.r-reassurance__cta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 24px 32px;
+  text-decoration: none;
+  color: #000;
+  transition: background-color 0.2s ease;
+  min-height: 100px;
+}
+
+.r-reassurance__cta:hover {
+  background-color: #f9f9f9;
+}
+
+.r-reassurance__content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.r-reassurance__title {
+  font-size: 14px;
+  font-family: "Hubot Sans";
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  color: #000;
+}
+
+.r-reassurance__text {
+  font-size: 14px;
+  color: #000;
+  line-height: 1.4;
+}
+
+.r-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-left: 12px;
+}
+
+.r-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================================================
+   MAIN FOOTER CONTENT
+   ============================================================================ */
+.r-footer__content-main {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 80px;
+  padding: 60px 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* ============================================================================
+   LEFT COLUMN - Newsletter
+   ============================================================================ */
+.r-footer__left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.r-newsletter__title {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 24px 0;
+  letter-spacing: 0;
+  color: #000;
+  font-family: "Inter", serif;
+}
+
+.r-form-field {
+  width: 100%;
+  position: relative;
+  right: 7rem;
+}
+
+.r-newsletter__input-wrapper {
+  margin-bottom: 0;
+}
+
+.r-form-field__input-field {
+  position: relative;
+  margin-bottom: 0;
+  display: flex;
+  border: none !important;
+  align-items: center;
+  background-color: #fff;
+}
+
+.r-form-field__input-field input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border-width: 1px;
+  background-color: transparent;
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+  color: #000;
+}
+
+.r-form-field__input-field input::placeholder {
+  color: #666;
+}
+
+.r-form-field__input-field input:focus {
+  outline: none;
+}
+
+.r-form-field__input-field label {
+  display: none;
+}
+
+.r-newsletter__submit {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  height: 2.7rem;
+  padding: 12px 24px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  position: relative;
+  left: 24rem;
+  bottom: 2.7rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  text-transform: capitalize;
+  font-family: inherit;
+}
+
+.r-newsletter__submit:hover {
+  background-color: #333;
+}
+
+/* Accessibility Toggle */
+.r-footer__accessibility-toggle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  color: #000;
+}
+
+.r-footer__accessibility-toggle--mobile {
+  display: none;
+}
+
+.r-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+}
+
+.r-switch__input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.r-switch__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  transition: 0.3s;
+  border-radius: 22px;
+}
+
+.r-switch__slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.r-switch__input:checked + .r-switch__slider {
+  background-color: #000;
+}
+
+.r-switch__input:checked + .r-switch__slider:before {
+  transform: translateX(22px);
+}
+
+/* ============================================================================
+   RIGHT COLUMNS - Footer Links
+   ============================================================================ */
+.r-footer__lists {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
+}
+
+.r-footer__list-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.r-footer__list-title {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+  letter-spacing: 0;
+  color: #000;
+  font-family: "Inter", serif;
+}
+
+.r-footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.r-footer__item a {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  transition: opacity 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.4;
+}
+
+.r-footer__item a:hover {
+  opacity: 0.6;
+}
+
+/* Accordion Buttons */
+.r-footer__accordion-button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  font-family: inherit;
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  transition: opacity 0.2s ease;
+  gap: 8px;
+}
+
+.r-footer__accordion-button:hover {
+  opacity: 0.6;
+}
+
+.r-footer__accordion-button .r-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.r-footer__accordion-button[aria-expanded="true"] .r-icon {
+  transform: rotate(180deg);
+}
+
+/* Accordion Panel */
+.r-footer__accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.r-footer__accordion-panel[aria-hidden="false"] {
+  margin-top: 14px;
+}
+
+.r-footer__list--accordion {
+  padding-left: 0;
+  gap: 10px;
+}
+
+.r-footer__list--accordion .r-footer__item a {
+  font-size: 13px;
+}
+
+/* ============================================================================
+   BOTTOM CONTENT - Social Media & Logo
+   ============================================================================ */
+.r-footer__content-bottom {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+  border-top: 1px solid #d0d0d0;
+}
+
+/* Social Media */
+.r-footer__follow-us {
+  justify-self: start;
+}
+
+.r-follow-us__title {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0 0 16px 0;
+  color: #000;
+}
+
+.r-follow-us__list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.r-follow-us__link {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  transition: opacity 0.2s ease;
+}
+
+.r-follow-us__link:hover {
+  opacity: 0.6;
+}
+
+/* Dior Logo */
+.r-footer__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  justify-self: center;
+  text-decoration: none;
+}
+
+.r-icon--LogoDior {
+  width: 100%;
+  height: 100%;
+}
+
+.r-icon--LogoDior svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Locale Switcher */
+.r-footer__locale-switcher {
+  justify-self: end;
+}
+
+.r-open-country-modal {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: opacity 0.2s ease;
+  font-family: inherit;
+}
+
+.r-open-country-modal:hover {
+  opacity: 0.6;
+}
+
+.r-open-country-modal__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.r-open-country-modal__title {
+  font-size: 12px;
+  color: #000;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.r-open-country-modal__content {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+}
+
+.r-open-country-modal .r-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+@media (max-width: 1200px) {
+  .r-footer__content-main {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding: 50px 30px;
+  }
+
+  .r-footer__lists {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .r-reassurance {
+    grid-template-columns: 1fr;
+  }
+
+  .r-reassurance__item {
+    border-right: none;
+    border-bottom: 1px solid #d0d0d0;
+  }
+
+  .r-reassurance__item:last-child {
+    border-bottom: none;
+  }
+
+  .r-reassurance__cta {
+    padding: 20px;
+    min-height: 80px;
+  }
+
+  .r-footer__content-main {
+    padding: 40px 20px;
+  }
+
+  .r-footer__lists {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .r-footer__accessibility-toggle--desktop {
+    display: none;
+  }
+
+  .r-footer__accessibility-toggle--mobile {
+    display: flex;
+    justify-content: center;
+    padding: 30px 20px;
+    border-top: 1px solid #d0d0d0;
+  }
+
+  .r-footer__content-bottom {
+    grid-template-columns: 1fr;
+    padding: 30px 20px;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .r-footer__follow-us {
+    justify-self: center;
+  }
+
+  .r-follow-us__list {
+    justify-content: center;
+  }
+
+  .r-footer__locale-switcher {
+    justify-self: center;
+  }
+}
+
+/* ============================================================================
+   HIGH CONTRAST MODE
+   ============================================================================ */
+body.high-contrast .dior-footer {
+  background-color: #000;
+  color: #fff;
+  border-top-color: #333;
+}
+
+body.high-contrast .r-reassurance {
+  border-bottom-color: #333;
+}
+
+body.high-contrast .r-reassurance__item {
+  border-right-color: #333;
+}
+
+body.high-contrast .r-reassurance__cta,
+body.high-contrast .r-footer__item a,
+body.high-contrast .r-footer__accordion-button,
+body.high-contrast .r-follow-us__link,
+body.high-contrast .r-footer__list-title,
+body.high-contrast .r-newsletter__title,
+body.high-contrast .r-footer__accessibility-toggle,
+body.high-contrast .r-follow-us__title,
+body.high-contrast .r-open-country-modal__title,
+body.high-contrast .r-open-country-modal__content {
+  color: #fff;
+}
+
+body.high-contrast .r-reassurance__cta:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.high-contrast .r-reassurance__title,
+body.high-contrast .r-reassurance__text {
+  color: #fff;
+}
+
+body.high-contrast .r-newsletter__submit {
+  background-color: #fff;
+  color: #000;
+}
+
+body.high-contrast .r-newsletter__submit:hover {
+  background-color: #e0e0e0;
+}
+
+body.high-contrast .r-form-field__input-field {
+  border: none !important;
+}
+
+body.high-contrast .r-form-field__input-field input {
+  border: 2px solid #fff !important;
+  border-radius: 20px !important;
+  background-color: #222 !important;
+}
+
+body.high-contrast .r-form-field__input-field input::placeholder {
+  color: #aaa;
+}
+
+body.high-contrast .r-footer__content-bottom {
+  border-top-color: #333;
+}
+
+body.high-contrast .r-open-country-modal:hover {
+  opacity: 0.6;
+}
+
+body.high-contrast .r-icon--LogoDior svg path {
+  fill: #fff;
+}
