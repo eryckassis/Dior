@@ -3,20 +3,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
 
-/* Import component styles */
 @import "./styles/footer.css";
 @import "./styles/horizontal-scroll.css";
 
-/* Custom Font - TTF */
 @font-face {
-  font-family: "MinhaFonte"; /* Nome que você vai usar no CSS */
-  src: url("./fonts/Velvo-2v6Xw.otf") format("truetype");
+  font-family: "MinhaFonte";
+  /src: url("./fonts/Velvo-2v6Xw.otf") format("truetype");
   font-weight: normal;
   font-style: normal;
-  font-display: swap; /* Melhora performance */
+  font-display: swap;
 }
 
-/* Variables for consistency */
 :root {
   --color-background: #f6f3f7;
   --color-body-bg: #1a1a1a;
@@ -65,7 +62,6 @@ strong {
   font-weight: inherit;
 }
 
-/* === SPLASH SCREEN === */
 .splash-screen {
   position: fixed;
   top: 0;
