@@ -74,7 +74,6 @@ export class FooterSection extends HTMLElement {
                         <input
                           type="email"
                           name="hpEmailSignUp"
-                          placeholder="Digite seu e-mail"
                           aria-labelledby="footer-form-email-label"
                           aria-describedby="footer-form-email-error"
                           maxlength="50"
@@ -356,6 +355,9 @@ export class FooterSection extends HTMLElement {
   }
 
   attachEventListeners() {
+    // Placeholder animation (Dior style)
+    this.initPlaceholderAnimation();
+
     // Accordion functionality
     const accordionButtons = this.querySelectorAll(
       ".r-footer__accordion-button"
@@ -409,6 +411,28 @@ export class FooterSection extends HTMLElement {
         }
       });
     });
+  }
+
+  initPlaceholderAnimation() {
+    const emailInput = this.querySelector('input[type="email"]');
+    const label = this.querySelector("#footer-form-email-label");
+
+    if (!emailInput || !label) return;
+
+    emailInput.addEventListener("focus", () => {
+      label.classList.add("label-focused");
+    });
+
+    emailInput.addEventListener("blur", () => {
+      if (emailInput.value === "") {
+        label.classList.remove("label-focused");
+      }
+    });
+
+    // Mantém o label em cima se tiver valor
+    if (emailInput.value !== "") {
+      label.classList.add("label-focused");
+    }
   }
 }
 

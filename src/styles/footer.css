@@ -156,6 +156,7 @@
   padding: 12px 16px;
   border-radius: 8px;
   border-width: 1px;
+  border: 1px solid #d0d0d0;
   background-color: transparent;
   font-size: 14px;
   outline: none;
@@ -169,10 +170,25 @@
 
 .r-form-field__input-field input:focus {
   outline: none;
+  border-color: #000;
 }
 
 .r-form-field__input-field label {
-  display: none;
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 14px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  background: white;
+  padding: 0 4px;
+}
+
+.r-form-field__input-field label.label-focused {
+  transform: translateY(-29px);
+  font-size: 12px;
 }
 
 .r-newsletter__submit {
