@@ -178,6 +178,9 @@
 
 .category-product-name {
   font-family: "Manrope", sans-serif;
+  position: relative;
+  bottom: 5px;
+  left: 15px;
   font-size: 14px;
   font-weight: 400;
   color: #333;
@@ -187,7 +190,10 @@
 }
 
 .category-product-price {
-  font-family: "MinhaFonte", sans-serif;
+  font-family: "Manrope", sans-serif;
+  position: relative;
+  bottom: 30px;
+  left: 15px;
   font-size: 16px;
   font-weight: 500;
   color: #000;

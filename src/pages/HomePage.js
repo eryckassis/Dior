@@ -385,7 +385,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/cofre.jpg" alt="J'adore" class="category-image" />
+                    <img src="./images/paraela1.webp" alt="J'adore" class="category-image" />
                   </div>
                   <p class="category-product-name">J'adore</p>
                   <p class="category-product-price">R$ 615,00</p>
@@ -394,7 +394,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/diorhomme.jpg" alt="Rose Star" class="category-image" />
+                    <img src="./images/paraela2.webp" alt="Rose Star" class="category-image" />
                   </div>
                   <p class="category-product-name">Rose Star</p>
                   <p class="category-product-price">R$ 1.625,00</p>
@@ -403,7 +403,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/diormaster.jpg" alt="Miss Dior Essence" class="category-image" />
+                    <img src="./images/paraela3.webp" alt="Miss Dior Essence" class="category-image" />
                   </div>
                   <p class="category-product-name">Miss Dior Essence</p>
                   <p class="category-product-price">R$ 799,00</p>
@@ -412,7 +412,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/cofre.jpg" alt="Rouge Dior Sequin Liquid Duo" class="category-image" />
+                    <img src="./images/paraela4.webp" alt="Rouge Dior Sequin Liquid Duo" class="category-image" />
                   </div>
                   <p class="category-product-name">Rouge Dior Sequin Liquid Duo - edição limitada</p>
                   <p class="category-product-price">R$ 355,00</p>
@@ -426,7 +426,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/diorhomme.jpg" alt="Sauvage Eau de Toilette" class="category-image" />
+                    <img src="./images/paraele1.webp" alt="Sauvage Eau de Toilette" class="category-image" />
                   </div>
                   <p class="category-product-name">Sauvage Eau de Toilette</p>
                   <p class="category-product-price">R$ 589,00</p>
@@ -435,7 +435,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/diormaster.jpg" alt="Dior Homme Intense" class="category-image" />
+                    <img src="./images/paraele2.webp" alt="Dior Homme Intense" class="category-image" />
                   </div>
                   <p class="category-product-name">Dior Homme Intense</p>
                   <p class="category-product-price">R$ 725,00</p>
@@ -444,7 +444,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/cofre.jpg" alt="Fahrenheit" class="category-image" />
+                    <img src="./images/paraele3.webp" alt="Fahrenheit" class="category-image" />
                   </div>
                   <p class="category-product-name">Fahrenheit</p>
                   <p class="category-product-price">R$ 655,00</p>
@@ -453,7 +453,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/diorhomme.jpg" alt="Dior Homme Sport" class="category-image" />
+                    <img src="./images/paraele4.webp" alt="Dior Homme Sport" class="category-image" />
                   </div>
                   <p class="category-product-name">Dior Homme Sport</p>
                   <p class="category-product-price">R$ 599,00</p>
@@ -467,7 +467,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/diormaster.jpg" alt="Vela Perfumada Miss Dior" class="category-image" />
+                    <img src="./images/paracasa.webp" alt="Vela Perfumada Miss Dior" class="category-image" />
                   </div>
                   <p class="category-product-name">Vela Perfumada Miss Dior</p>
                   <p class="category-product-price">R$ 425,00</p>
@@ -476,7 +476,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/cofre.jpg" alt="Difusor de Ambiente" class="category-image" />
+                    <img src="./images/paracasa2.webp" alt="Difusor de Ambiente" class="category-image" />
                   </div>
                   <p class="category-product-name">Difusor de Ambiente</p>
                   <p class="category-product-price">R$ 520,00</p>
