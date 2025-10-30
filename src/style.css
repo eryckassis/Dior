@@ -5,6 +5,8 @@
 
 @import "./styles/footer.css";
 @import "./styles/horizontal-scroll.css";
+@import "./styles/sitemap.css";
+@import "./styles/arte-de-presentear.css";
 
 @font-face {
   font-family: "MinhaFonte";

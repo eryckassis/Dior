@@ -2,6 +2,7 @@ import "./style.css";
 import { router } from "./router/router.js";
 import "./pages/HomePage.js";
 import "./pages/DiorHolidayPage.js";
+import "./pages/ArteDePresentearPage.js";
 
 // ============================================================================
 // ROUTER CONFIGURATION
@@ -10,6 +11,7 @@ import "./pages/DiorHolidayPage.js";
 // Registra as rotas
 router.register("/", "home-page");
 router.register("/dior-holiday", "dior-holiday-page");
+router.register("/arte-de-presentear", "arte-de-presentear-page");
 
 // ============================================================================
 // BUTTON ANIMATION - Efeito Hover com Flair

@@ -192,7 +192,7 @@ export class HorizontalScrollSection extends HTMLElement {
           <p class="tema-pietro-description"></p>
           
           <!-- Botão com animação GSAP -->
-          <a href="#" class="tema-pietro-button" data-block="button">
+          <a href="#" class="tema-pietro-button" data-block="button" data-route="/arte-de-presentear">
             <span class="button__label">Explorar</span>
             <span class="button__flair"></span>
           </a>
