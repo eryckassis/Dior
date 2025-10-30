@@ -110,54 +110,8 @@ export class AnimatedSections extends HTMLElement {
             </div>
           </div>
         </section>
-
-        <section class="second">
-          <div class="outer">
-            <div class="inner">
-              <div class="bg">
-                <div class="keyhole-content">
-                  <p class="keyhole-subtitle">O Calendário do Advento Dior</p>
-                  <h2 class="keyhole-title">Uma nova surpresa a cada dia</h2>
-                  <a href="#" class="keyhole-button" data-block="button">
-                    <span class="button__label">Descubra</span>
-                    <span class="button__flair"></span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="third">
-          <div class="outer">
-            <div class="inner">
-              <div class="bg">
-                <h2 class="section-heading"></h2>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="fourth">
-          <div class="outer">
-            <div class="inner">
-              <div class="bg">
-                <h2 class="section-heading"></h2>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="fifth">
-          <div class="outer">
-            <div class="inner">
-              <div class="bg">
-                <h2 class="section-heading"></h2>
-              </div>
-            </div>
-          </div>
-        </section>
-      </section>
+<footer-section></footer-section>
+      
     `;
   }
 }

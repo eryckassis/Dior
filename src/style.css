@@ -458,7 +458,6 @@ p {
   will-change: border-radius; /* REMOVIDO transform do will-change para não interferir com ScrollTrigger pin */
   border-radius: 0;
   overflow-x: hidden; /* Apenas horizontal - permite scroll vertical */
-  padding-top: var(--nav-height); /* Compensação para o menu fixo */
 }
 
 /* Add a class for when the menu is open to apply border radius */
@@ -469,16 +468,13 @@ p {
 /* Navigation */
 .navigation {
   color: var(--color-foreground);
-  position: fixed; /* Fixo no topo */
-  top: 0;
-  left: 0;
+  position: relative; /* Not fixed */
   width: 100%;
-  z-index: 100; /* Z-index alto para ficar sobre o conteúdo */
+  z-index: 20; /* Higher than dropdown */
   background-color: var(--color-background);
   padding: var(--gutter) var(--margin);
   height: var(--nav-height);
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px); /* Efeito glass opcional */
+  transition: margin 0.3s ease;
 }
 
 .navigation__container {
@@ -619,13 +615,13 @@ p {
   background-color: var(--color-menu-bg);
   color: var(--color-menu-text);
   width: 40vw; /* 40% viewport width as requested */
-  position: fixed; /* Fixed para acompanhar a navegação fixa */
+  position: absolute; /* Not fixed */
   top: calc(
     var(--nav-height) + 20px
   ); /* Position below the navigation + account for padding */
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Center horizontally without scaling */
-  z-index: 99; /* Abaixo da navegação (z-index: 100) mas acima do conteúdo */
+  z-index: 10;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
