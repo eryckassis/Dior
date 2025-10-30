@@ -1,0 +1,313 @@
+/* ============================================================================
+   CATEGORY INTERACTIVE SECTION - Seção interativa com categorias
+   ============================================================================ */
+
+.category-interactive-section {
+  background-color: #fff;
+  padding: 100px 0;
+  width: 100%;
+  position: relative;
+}
+
+.category-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ============================================================================
+   CATEGORY TABS - Navegação de categorias
+   ============================================================================ */
+
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 80px;
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+}
+
+.category-tab {
+  background: transparent;
+  border: none;
+  padding: 20px 50px;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #666;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+  text-transform: none;
+  letter-spacing: 0.5px;
+}
+
+.category-tab::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.category-tab.active {
+  color: #000;
+  font-weight: 500;
+}
+
+.category-tab.active::after {
+  transform: scaleX(1);
+}
+
+.category-tab:hover {
+  color: #000;
+}
+
+/* Underline das tabs */
+.category-tab span {
+  position: relative;
+  display: inline-block;
+}
+
+/* ============================================================================
+   CATEGORY CONTENT - Conteúdo das categorias
+   ============================================================================ */
+
+.category-content-wrapper {
+  position: relative;
+  min-height: 600px;
+}
+
+.category-content {
+  display: none;
+  opacity: 0;
+  width: 100%;
+}
+
+.category-content.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ============================================================================
+   CATEGORY GRID - Grid de produtos
+   ============================================================================ */
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  width: 100%;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Itens que não estão na categoria ativa ficam invisíveis */
+.category-content:not(.active) .category-item {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Itens da categoria ativa começam visíveis */
+.category-content.active .category-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================================
+   IMAGE REVEAL - Animação de reveal nas imagens
+   ============================================================================ */
+
+.category-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.category-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Imagens que não estão na categoria ativa ficam preparadas para animação */
+.category-content:not(.active) .category-image {
+  transform: scale(1.2);
+  opacity: 0;
+}
+
+/* Imagens da categoria ativa começam visíveis */
+.category-content.active .category-image {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.image-reveal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f6f3f7;
+  z-index: 2;
+  transform-origin: left center;
+  will-change: transform;
+}
+
+/* Overlay invisível na categoria ativa inicialmente */
+.category-content.active .image-reveal-overlay {
+  transform: scaleX(0);
+}
+
+/* ============================================================================
+   PRODUCT INFO - Informações do produto
+   ============================================================================ */
+
+.category-product-name {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  margin: 0;
+  line-height: 1.4;
+  min-height: 40px;
+}
+
+.category-product-price {
+  font-family: "MinhaFonte", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================================
+   HOVER EFFECTS - Efeitos de hover
+   ============================================================================ */
+
+.category-item:hover .category-image {
+  transform: scale(1.05);
+  transition: transform 0.6s ease;
+}
+
+.category-item:hover .category-product-name {
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+/* ============================================================================
+   RESPONSIVO - Breakpoints
+   ============================================================================ */
+
+/* Tablets grandes */
+@media (max-width: 1200px) {
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .category-tab {
+    padding: 18px 40px;
+    font-size: 15px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .category-interactive-section {
+    padding: 80px 0;
+  }
+
+  .category-container {
+    padding: 0 30px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .category-tabs {
+    margin-bottom: 60px;
+  }
+
+  .category-tab {
+    padding: 16px 30px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .category-interactive-section {
+    padding: 60px 0;
+  }
+
+  .category-container {
+    padding: 0 20px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .category-tabs {
+    gap: 0;
+    margin-bottom: 40px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .category-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-tab {
+    padding: 14px 20px;
+    font-size: 13px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .category-product-name {
+    font-size: 13px;
+    min-height: auto;
+  }
+
+  .category-product-price {
+    font-size: 15px;
+  }
+
+  .category-content-wrapper {
+    min-height: 500px;
+  }
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .category-item {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+}

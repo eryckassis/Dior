@@ -331,7 +331,9 @@ body {
   position: relative;
   margin: 0;
   padding: 0;
-  padding-top: calc(var(--nav-height) + var(--gutter) * 2); /* Espaço para menu fixo */
+  padding-top: calc(
+    var(--nav-height) + var(--gutter) * 2
+  ); /* Espaço para menu fixo */
   overflow: hidden; /* Esconde scroll durante preloader */
   overflow-x: hidden;
   width: 100%;

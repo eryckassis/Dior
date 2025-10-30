@@ -10,6 +10,7 @@ import "../components/KeyholeSection.js";
 import "../components/AnimatedSections.js";
 import "../components/FooterSection.js";
 import "../styles/arte-de-presentear.css";
+import "../styles/category-interactive.css";
 
 export class HomePage extends HTMLElement {
   constructor() {
@@ -19,6 +20,143 @@ export class HomePage extends HTMLElement {
   connectedCallback() {
     this.render();
     this.initVideoControls();
+    this.initCategoryTabs();
+  }
+
+  initCategoryTabs() {
+    requestAnimationFrame(() => {
+      const tabs = this.querySelectorAll(".category-tab");
+      const contents = this.querySelectorAll(".category-content");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const category = tab.dataset.category;
+
+          // Remove active class from all tabs
+          tabs.forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+
+          // Animate out current content
+          const activeContent = this.querySelector(".category-content.active");
+          if (activeContent) {
+            this.animateOut(activeContent, () => {
+              activeContent.classList.remove("active");
+
+              // Show new content
+              const newContent = this.querySelector(
+                `[data-content="${category}"]`
+              );
+              if (newContent) {
+                newContent.classList.add("active");
+                this.animateIn(newContent);
+              }
+            });
+          }
+        });
+      });
+
+      // Animate initial content
+      const initialContent = this.querySelector(".category-content.active");
+      if (initialContent && window.gsap) {
+        this.revealImages(initialContent);
+      }
+    });
+  }
+
+  animateOut(element, callback) {
+    if (!window.gsap) {
+      element.style.opacity = "0";
+      setTimeout(callback, 300);
+      return;
+    }
+
+    const items = element.querySelectorAll(".category-item");
+
+    window.gsap.to(items, {
+      opacity: 0,
+      y: 20,
+      stagger: 0.05,
+      duration: 0.3,
+      ease: "power2.in",
+      onComplete: callback,
+    });
+  }
+
+  animateIn(element) {
+    if (!window.gsap) {
+      element.style.opacity = "1";
+      return;
+    }
+
+    const items = element.querySelectorAll(".category-item");
+
+    // Reset initial state
+    window.gsap.set(items, {
+      opacity: 0,
+      y: 30,
+    });
+
+    // Animate in
+    window.gsap.to(items, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.08,
+      duration: 0.6,
+      ease: "power3.out",
+    });
+
+    // Reveal images
+    this.revealImages(element);
+  }
+
+  revealImages(container) {
+    if (!window.gsap) return;
+
+    const imageWraps = container.querySelectorAll(".category-image-wrap");
+
+    imageWraps.forEach((wrap, index) => {
+      const overlay = wrap.querySelector(".image-reveal-overlay");
+      const image = wrap.querySelector(".category-image");
+
+      // Set initial states
+      window.gsap.set(overlay, {
+        scaleX: 1,
+        transformOrigin: "left center",
+      });
+
+      window.gsap.set(image, {
+        scale: 1.2,
+        opacity: 0,
+      });
+
+      // Create reveal animation
+      const tl = window.gsap.timeline({
+        delay: index * 0.1,
+      });
+
+      tl.to(image, {
+        opacity: 1,
+        duration: 0.01,
+      })
+        .to(
+          overlay,
+          {
+            scaleX: 0,
+            duration: 0.8,
+            ease: "power3.inOut",
+          },
+          0.1
+        )
+        .to(
+          image,
+          {
+            scale: 1,
+            duration: 0.8,
+            ease: "power3.out",
+          },
+          0.1
+        );
+    });
   }
 
   initVideoControls() {
@@ -222,6 +360,150 @@ export class HomePage extends HTMLElement {
           </div>
         </section>
       </div>
+
+      <!-- Interactive Category Section -->
+      <section class="category-interactive-section">
+        <div class="category-container">
+          <!-- Category Tabs -->
+          <div class="category-tabs">
+            <button class="category-tab active" data-category="para-ela">
+              <span>Para Ela</span>
+            </button>
+            <button class="category-tab" data-category="para-ele">
+              <span>Para Ele</span>
+            </button>
+            <button class="category-tab" data-category="para-casa">
+              <span>Para Casa</span>
+            </button>
+          </div>
+
+          <!-- Category Content -->
+          <div class="category-content-wrapper">
+            <!-- Para Ela -->
+            <div class="category-content active" data-content="para-ela">
+              <div class="category-grid">
+                <div class="category-item">
+                  <div class="category-image-wrap">
+                    <div class="image-reveal-overlay"></div>
+                    <img src="./images/cofre.jpg" alt="J'adore" class="category-image" />
+                  </div>
+                  <p class="category-product-name">J'adore</p>
+                  <p class="category-product-price">R$ 615,00</p>
+                </div>
+
+                <div class="category-item">
+                  <div class="category-image-wrap">
+                    <div class="image-reveal-overlay"></div>
+                    <img src="./images/diorhomme.jpg" alt="Rose Star" class="category-image" />
+                  </div>
+                  <p class="category-product-name">Rose Star</p>
+                  <p class="category-product-price">R$ 1.625,00</p>
+                </div>
+
+                <div class="category-item">
+                  <div class="category-image-wrap">
+                    <div class="image-reveal-overlay"></div>
+                    <img src="./images/diormaster.jpg" alt="Miss Dior Essence" class="category-image" />
+                  </div>
+                  <p class="category-product-name">Miss Dior Essence</p>
+                  <p class="category-product-price">R$ 799,00</p>
+                </div>
+
+                <div class="category-item">
+                  <div class="category-image-wrap">
+                    <div class="image-reveal-overlay"></div>
+                    <img src="./images/cofre.jpg" alt="Rouge Dior Sequin Liquid Duo" class="category-image" />
+                  </div>
+                  <p class="category-product-name">Rouge Dior Sequin Liquid Duo - edição limitada</p>
+                  <p class="category-product-price">R$ 355,00</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Para Ele -->
+            <div class="category-content" data-content="para-ele">
+              <div class="category-grid">
+                <div class="category-item">
+                  <div class="category-image-wrap">
+                    <div class="image-reveal-overlay"></div>
+                    <img src="./images/diorhomme.jpg" alt="Sauvage Eau de Toilette" class="category-image" />
+                  </div>
+                  <p class="category-product-name">Sauvage Eau de Toilette</p>
+                  <p class="category-product-price">R$ 589,00</p>
+                </div>
+
+                <div class="category-item">
+                  <div class="category-image-wrap">
+                    <div class="image-reveal-overlay"></div>
+                    <img src="./images/diormaster.jpg" alt="Dior Homme Intense" class="category-image" />
+                  </div>
+                  <p class="category-product-name">Dior Homme Intense</p>
+                  <p class="category-product-price">R$ 725,00</p>
+                </div>
+
+                <div class="category-item">
+                  <div class="category-image-wrap">
+                    <div class="image-reveal-overlay"></div>
+                    <img src="./images/cofre.jpg" alt="Fahrenheit" class="category-image" />
+                  </div>
+                  <p class="category-product-name">Fahrenheit</p>
+                  <p class="category-product-price">R$ 655,00</p>
+                </div>
+
+                <div class="category-item">
+                  <div class="category-image-wrap">
+                    <div class="image-reveal-overlay"></div>
+                    <img src="./images/diorhomme.jpg" alt="Dior Homme Sport" class="category-image" />
+                  </div>
+                  <p class="category-product-name">Dior Homme Sport</p>
+                  <p class="category-product-price">R$ 599,00</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Para Casa -->
+            <div class="category-content" data-content="para-casa">
+              <div class="category-grid">
+                <div class="category-item">
+                  <div class="category-image-wrap">
+                    <div class="image-reveal-overlay"></div>
+                    <img src="./images/diormaster.jpg" alt="Vela Perfumada Miss Dior" class="category-image" />
+                  </div>
+                  <p class="category-product-name">Vela Perfumada Miss Dior</p>
+                  <p class="category-product-price">R$ 425,00</p>
+                </div>
+
+                <div class="category-item">
+                  <div class="category-image-wrap">
+                    <div class="image-reveal-overlay"></div>
+                    <img src="./images/cofre.jpg" alt="Difusor de Ambiente" class="category-image" />
+                  </div>
+                  <p class="category-product-name">Difusor de Ambiente</p>
+                  <p class="category-product-price">R$ 520,00</p>
+                </div>
+
+                <div class="category-item">
+                  <div class="category-image-wrap">
+                    <div class="image-reveal-overlay"></div>
+                    <img src="./images/diorhomme.jpg" alt="Home Spray Gris Dior" class="category-image" />
+                  </div>
+                  <p class="category-product-name">Home Spray Gris Dior</p>
+                  <p class="category-product-price">R$ 380,00</p>
+                </div>
+
+                <div class="category-item">
+                  <div class="category-image-wrap">
+                    <div class="image-reveal-overlay"></div>
+                    <img src="./images/diormaster.jpg" alt="Porta-velas Dior" class="category-image" />
+                  </div>
+                  <p class="category-product-name">Porta-velas Dior</p>
+                  <p class="category-product-price">R$ 295,00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Keyhole Reveal Section -->
       <keyhole-section
