@@ -20,6 +20,11 @@
   z-index: 1;
 }
 
+/* Video Controls - Garantir visibilidade sobre o conteúdo */
+.arte-presentear-video-section .video-controls {
+  z-index: 20;
+}
+
 /* Conteúdo de texto sobre o vídeo */
 .arte-video-content {
   position: absolute;
@@ -108,5 +113,216 @@
   .arte-video-description {
     font-size: clamp(13px, 1.6vw, 18px);
     margin-top: 10px;
+  }
+}
+
+.presentes-section-second {
+  background: #ffffff;
+  padding: 80px 0 100px;
+  width: 100%;
+  /* Adiciona espaço inferior para separar da próxima seção */
+  margin-bottom: 0; /* Ajuste este valor: 40px, 80px, 120px */
+}
+
+.presentes-container-second {
+  max-width: 2200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.presentes-header-second {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.presentes-label-second {
+  font-family: "Manrope", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #999999;
+  margin: 0 0 15px 0;
+  letter-spacing: 0px;
+  line-height: 1;
+}
+
+.presentes-title-second {
+  font-family: "Manrope", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #292929;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+
+.presentes-subtitle-second {
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #292929;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.7;
+  letter-spacing: 0.2px;
+}
+
+/* Grid de Presentes */
+.presentes-grid-second {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.presente-item-second {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Wrapper do vídeo com posição relativa para os controles */
+.presente-video-wrapper-second {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.presente-video-second,
+.presente-image-second {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.presente-video-second {
+  background: #f5f5f5;
+}
+
+/* Controles do vídeo do presente */
+.video-controls-presente {
+  bottom: 15px;
+  right: 15px;
+  gap: 10px;
+}
+
+.video-controls-presente .glass-button {
+  width: 45px;
+  height: 45px;
+}
+
+.video-controls-presente .glass-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.presente-price-second {
+  font-family: "MinhaFonte", sans-serif;
+  font-size: 30px;
+  position: relative;
+  left: 22px;
+  font-weight: 600;
+  color: #292929;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.presente-caption-second {
+  font-family: "Manrope", sans-serif;
+  position: relative;
+  left: 1.5rem;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+  margin: 0;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+}
+
+/* Responsivo - Grid de Presentes */
+@media (max-width: 1024px) {
+  .presentes-grid-second {
+    gap: 30px;
+    max-width: 900px;
+  }
+
+  .presente-price-second {
+    font-size: 17px;
+  }
+
+  .presente-caption-second {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .presentes-section-second {
+    padding: 60px 0 80px;
+  }
+
+  .presentes-header-second {
+    margin-bottom: 60px;
+  }
+
+  .presentes-label-second {
+    font-size: 18px;
+  }
+
+  .presentes-title-second {
+    font-size: 24px;
+  }
+
+  .presentes-subtitle-second {
+    font-size: 12px;
+  }
+
+  .presentes-grid-second {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .presente-price-second {
+    font-size: 16px;
+  }
+
+  .presente-caption-second {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 640px) {
+  .presentes-section-second {
+    padding: 40px 0 60px;
+  }
+
+  .presentes-container-second {
+    padding: 0 16px;
+  }
+
+  .presentes-header-second {
+    margin-bottom: 40px;
+  }
+
+  .presentes-label-second {
+    font-size: 16px;
+  }
+
+  .presentes-title-second {
+    font-size: 20px;
+  }
+
+  .presentes-subtitle-second {
+    font-size: 11px;
+  }
+
+  .presentes-grid-second {
+    gap: 30px;
+  }
+
+  .presente-video-second,
+  .presente-image-second {
+    border-radius: 6px;
   }
 }
