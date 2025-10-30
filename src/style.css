@@ -325,12 +325,13 @@ video.splash-option-bg {
 
 body {
   font-family: var(--font-primary);
-  background-color: var(--color-body-bg); /* Dark background color */
+  background-color: var(--color-background); /* Mesmo fundo da navegação */
   color: var(--color-foreground);
   letter-spacing: -0.03em;
   position: relative;
   margin: 0;
   padding: 0;
+  padding-top: calc(var(--nav-height) + var(--gutter) * 2); /* Espaço para menu fixo */
   overflow: hidden; /* Esconde scroll durante preloader */
   overflow-x: hidden;
   width: 100%;
@@ -468,13 +469,18 @@ p {
 /* Navigation */
 .navigation {
   color: var(--color-foreground);
-  position: relative; /* Not fixed */
+  position: fixed; /* Fixed no topo */
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
-  z-index: 20; /* Higher than dropdown */
+  z-index: 1000; /* Muito alto para ficar sempre visível */
   background-color: var(--color-background);
   padding: var(--gutter) var(--margin);
   height: var(--nav-height);
   transition: margin 0.3s ease;
+  backdrop-filter: blur(10px); /* Efeito blur no fundo */
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .navigation__container {
@@ -615,13 +621,13 @@ p {
   background-color: var(--color-menu-bg);
   color: var(--color-menu-text);
   width: 40vw; /* 40% viewport width as requested */
-  position: absolute; /* Not fixed */
+  position: fixed; /* Fixed para ficar no topo junto com a nav */
   top: calc(
     var(--nav-height) + 20px
   ); /* Position below the navigation + account for padding */
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Center horizontally without scaling */
-  z-index: 10;
+  z-index: 999; /* Um pouco menor que a navigation */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -892,7 +898,9 @@ p {
   .dropdown {
     width: 100%; /* Full width on mobile */
     left: 0;
+    right: 0;
     transform: translateX(0);
+    position: fixed; /* Mantém fixed no mobile */
   }
 
   .dropdown.open {

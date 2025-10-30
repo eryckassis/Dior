@@ -186,39 +186,42 @@ export class HomePage extends HTMLElement {
         </div>
       </section>
 
-       <section class="parallax-gallery">
-        <div class="parallax-panel parallax-panel--1">
-          <div class="parallax-column">
-            <div class="parallax-image-wrap">
-              <img class="parallax-img" src="./images/cofre.jpg" alt="Dior Collection 1" />
+      <!-- Section Spacer -->
+      <div class="section-spacer-wrapper">
+        <section class="parallax-gallery">
+          <div class="parallax-panel parallax-panel--1">
+            <div class="parallax-column">
+              <div class="parallax-image-wrap">
+                <img class="parallax-img" src="./images/cofre.jpg" alt="Dior Collection 1" />
+              </div>
+              <p class="parallax-price-second">R$ 1.235,00</p>
+              <p class="parallax-caption-second">Coffret Capture Duo</p>
             </div>
-            <p class="parallax-price-second">R$ 1.235,00</p>
-            <p class="parallax-caption-second">Coffret Capture Duo</p>
           </div>
-        </div>
-        
-        <div class="parallax-panel parallax-panel--2">
-          <div class="parallax-column">
-            <div class="parallax-image-wrap">
-              <img class="parallax-img" src="./images/diorhomme.jpg" alt="Dior Collection 2" />
+          
+          <div class="parallax-panel parallax-panel--2">
+            <div class="parallax-column">
+              <div class="parallax-image-wrap">
+                <img class="parallax-img" src="./images/diorhomme.jpg" alt="Dior Collection 2" />
+              </div>
+              <p class="parallax-price-second">R$ 965,00</p>
+              <p class="parallax-caption-second">Coffret Dior Homme - Edição Limitada</p>
+              <p class="parallax-caption-subtext">A eau de toilette Dior Homme e o seu travel spray em um unico coffret presente de edição limitada</p>
+              
             </div>
-            <p class="parallax-price-second">R$ 965,00</p>
-            <p class="parallax-caption-second">Coffret Dior Homme - Edição Limitada</p>
-            <p class="parallax-caption-subtext">A eau de toilette Dior Homme e o seu travel spray em um unico coffret presente de edição limitada</p>
-            
           </div>
-        </div>
-        
-        <div class="parallax-panel parallax-panel--3">
-          <div class="parallax-column">
-            <div class="parallax-image-wrap">
-              <img class="parallax-img" src="./images/diormaster.jpg" alt="Dior Collection 3" />
+          
+          <div class="parallax-panel parallax-panel--3">
+            <div class="parallax-column">
+              <div class="parallax-image-wrap">
+                <img class="parallax-img" src="./images/diormaster.jpg" alt="Dior Collection 3" />
+              </div>
+              <p class="parallax-price-second">R$ 530,00</p>
+              <p class="parallax-caption-second">O Ritual de Brilho Natural - Edição Limitada</p>
             </div>
-            <p class="parallax-price-second">R$ 530,00</p>
-            <p class="parallax-caption-second">O Ritual de Brilho Natural - Edição Limitada</p>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <!-- Keyhole Reveal Section -->
       <keyhole-section
