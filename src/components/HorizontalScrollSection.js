@@ -252,24 +252,68 @@ export class HorizontalScrollSection extends HTMLElement {
         <div class="parallax-panel parallax-panel--1">
           <div class="parallax-column">
             <div class="parallax-image-wrap">
-              <img class="parallax-img" src="./images/jadore.png" alt="Dior Collection 1" />
+              <img class="parallax-img" src="./images/produto3d.jpg" alt="Dior Collection 1" />
             </div>
+            <p class="parallax-price">R$ 1.235,00</p>
+            <p class="parallax-caption">Coffret Miss Dior Eau de Parfum - edição limitada</p>
           </div>
         </div>
         
         <div class="parallax-panel parallax-panel--2">
           <div class="parallax-column">
             <div class="parallax-image-wrap">
-              <img class="parallax-img" src="./images/jadore.png" alt="Dior Collection 2" />
+              <img class="parallax-img" src="./images/produto3d2.jpg" alt="Dior Collection 2" />
             </div>
+            <p class="parallax-price">R$ 965,00</p>
+            <p class="parallax-caption">J'adore Eau de Parfum Coffret - Edição Limitada</p>
           </div>
         </div>
         
         <div class="parallax-panel parallax-panel--3">
           <div class="parallax-column">
             <div class="parallax-image-wrap">
-              <img class="parallax-img" src="./images/jadore.png" alt="Dior Collection 3" />
+              <img class="parallax-img" src="./images/produto3d3.jpg" alt="Dior Collection 3" />
             </div>
+            <p class="parallax-price">R$ 530,00</p>
+            <p class="parallax-caption">Diorshow Volume & Definition - edição limitada</p>
+          </div>
+        </div>
+      </section>
+
+       <section class="parallax-intro">
+  <div class="parallax-intro-container">
+  </div>
+</section>
+      <section class="parallax-gallery">
+        <div class="parallax-panel parallax-panel--1">
+          <div class="parallax-column">
+            <div class="parallax-image-wrap">
+              <img class="parallax-img" src="./images/cofre.jpg" alt="Dior Collection 1" />
+            </div>
+            <p class="parallax-price-second">R$ 1.235,00</p>
+            <p class="parallax-caption-second">Coffret Capture Duo</p>
+          </div>
+        </div>
+        
+        <div class="parallax-panel parallax-panel--2">
+          <div class="parallax-column">
+            <div class="parallax-image-wrap">
+              <img class="parallax-img" src="./images/diorhomme.jpg" alt="Dior Collection 2" />
+            </div>
+            <p class="parallax-price-second">R$ 965,00</p>
+            <p class="parallax-caption-second">Coffret Dior Homme - Edição Limitada</p>
+            <p class="parallax-caption-subtext">A eau de toilette Dior Homme e o seu travel spray em um unico coffret presente de edição limitada</p>
+            
+          </div>
+        </div>
+        
+        <div class="parallax-panel parallax-panel--3">
+          <div class="parallax-column">
+            <div class="parallax-image-wrap">
+              <img class="parallax-img" src="./images/diormaster.jpg" alt="Dior Collection 3" />
+            </div>
+            <p class="parallax-price-second">R$ 530,00</p>
+            <p class="parallax-caption-second">O Ritual de Brilho Natural - Edição Limitada</p>
           </div>
         </div>
       </section>
@@ -483,34 +527,51 @@ export class HorizontalScrollSection extends HTMLElement {
       return;
     }
 
-    // Seleciona todos os painéis parallax
-    const panels = this.querySelectorAll(".parallax-panel");
+    // Aguarda um pouco para garantir que o DOM esteja pronto
+    setTimeout(() => {
+      // Seleciona todos os painéis parallax
+      const panels = this.querySelectorAll(".parallax-panel");
 
-    panels.forEach((panel) => {
-      // Seleciona o wrapper da imagem dentro de cada painel
-      const imageWrapper = panel.querySelector(".parallax-image-wrap");
-
-      if (imageWrapper) {
-        // Cria animação parallax: a imagem move de -30vh para +30vh
-        gsap.fromTo(
-          imageWrapper,
-          {
-            y: "-30vh", // Posição inicial (imagem mais alta)
-          },
-          {
-            y: "30vh", // Posição final (imagem mais baixa)
-            scrollTrigger: {
-              trigger: panel,
-              scrub: true, // Sincroniza com o scroll
-              start: "top bottom", // Inicia quando o topo do painel toca o fundo da tela
-              end: "bottom top", // Termina quando o fundo do painel sai do topo da tela
-              // markers: true, // Descomente para debug
-            },
-            ease: "none", // Movimento linear para efeito parallax suave
-          }
-        );
+      if (panels.length === 0) {
+        console.error("No parallax panels found");
+        return;
       }
-    });
+
+      console.log(`Found ${panels.length} parallax panels`);
+
+      panels.forEach((panel, index) => {
+        // Seleciona a IMAGEM dentro de cada painel (não o wrapper)
+        const image = panel.querySelector(".parallax-img");
+
+        if (image) {
+          console.log(`Setting up parallax for panel ${index + 1}`);
+
+          // Cria animação parallax: a imagem move de -15% para +15%
+          gsap.fromTo(
+            image,
+            {
+              yPercent: -20, // Posição inicial (imagem mais alta)
+            },
+            {
+              yPercent: 15, // Posição final (imagem mais baixa)
+              scrollTrigger: {
+                trigger: panel,
+                scrub: true, // Sincroniza com o scroll
+                start: "top bottom", // Inicia quando o topo do painel toca o fundo da tela
+                end: "bottom top", // Termina quando o fundo do painel sai do topo da tela
+                // markers: true, // Descomente para debug
+              },
+              ease: "none", // Movimento linear para efeito parallax suave
+            }
+          );
+        } else {
+          console.error(`No image found in panel ${index + 1}`);
+        }
+      });
+
+      // Refresh ScrollTrigger após configurar
+      ScrollTrigger.refresh();
+    }, 200);
   }
 
   disconnectedCallback() {

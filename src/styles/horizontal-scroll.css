@@ -904,7 +904,7 @@
 /* Espaçamento entre as seções usando BEM modifier */
 .tema-pietro-section--second {
   /* Adiciona espaço superior para separar da primeira seção */
-  margin-top: 50px; /* Ajuste este valor conforme necessário */
+  margin-top: 30px; /* Reduzido de 50px para 30px */
 }
 
 /* Container da imagem de fundo */
@@ -1036,7 +1036,7 @@
 
 .parallax-intro {
   background: #f6f3f7; /* Fundo cinza claro - Troque a cor aqui */
-  padding: 80px 0 30px; /* Espaço vertical - Reduzido para diminuir gap */
+  padding: 40px 0 50px; /* Reduzido para diminuir gap */
   width: 100%;
 }
 
@@ -1049,9 +1049,9 @@
 
 .parallax-intro-title {
   font-family: "Manrope", sans-serif;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 400;
-  color: #000000;
+  color: #292929;
   margin: 0 0 25px 0;
   letter-spacing: 0.5px;
   line-height: 1.3;
@@ -1059,19 +1059,19 @@
 
 .parallax-intro-description {
   font-family: "Manrope", sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  color: #666666;
-  max-width: 1200px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #292929;
+  max-width: 500px;
   margin: 0 auto;
-  line-height: 1.8;
-  letter-spacing: 0.3px;
+  line-height: 1.7;
+  letter-spacing: 0.2px;
 }
 
 /* Responsive - Tablets */
 @media (max-width: 1024px) {
   .parallax-intro {
-    padding: 60px 0 50px;
+    padding: 50px 0 20px; /* Reduzido para diminuir gap */
   }
 
   .parallax-intro-container {
@@ -1090,7 +1090,7 @@
 /* Responsive - Mobile */
 @media (max-width: 768px) {
   .parallax-intro {
-    padding: 50px 0 40px;
+    padding: 40px 0 20px; /* Reduzido para diminuir gap */
   }
 
   .parallax-intro-container {
@@ -1111,49 +1111,116 @@
 .parallax-gallery {
   display: flex;
   justify-content: center;
-  align-items: stretch;
-  height: 50vh;
-  overflow: hidden;
-  margin-top: 10vh; /* Reduzido de 25vh para 10vh - Diminui gap */
-  margin-bottom: 25vh;
-  gap: 20px; /* Espaço entre as 3 imagens */
-
-  /* Espaço nas laterais (não encosta na tela) */
-  padding-left: 40px; /* Espaço à esquerda */
-  padding-right: 40px; /* Espaço à direita */
+  align-items: flex-start;
+  min-height: 80vh;
+  overflow: visible;
+  margin-top: 0;
+  margin-bottom: -160px;
+  gap: 20px;
+  background: #f6f3f7;
+  padding: 0 40px 40px 40px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Cada painel ocupa 1/3 da largura */
 .parallax-panel {
-  flex: 1; /* Divide igualmente o espaço */
+  flex: 0 0 calc(33.333% - 14px);
+  display: flex;
+  flex-direction: column;
   position: relative;
-  overflow: hidden;
 }
 
 /* Container da coluna */
 .parallax-column {
-  position: relative;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Wrapper da imagem com altura extra para efeito parallax */
 .parallax-image-wrap {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   width: 100%;
-  height: 160vh; /* Altura extra para o movimento parallax */
+  aspect-ratio: 1 / 1;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-bottom: 20px;
 }
 
 /* Imagem cobre todo o espaço */
 .parallax-img {
-  object-fit: cover;
   width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
+}
+
+.parallax-price {
+  font-family: "Manrope", sans-serif;
+  font-size: 11px;
+  position: relative;
+  bottom: 1rem;
+  font-weight: 800;
+  color: #666666;
+  margin: 0 0 8px 0;
+  padding: 0;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.parallax-price-second {
+  font-family: "Manrope", sans-serif;
+  font-size: 11px;
+  position: relative;
+  bottom: 1rem;
+  font-weight: 800;
+  color: #666666;
+  margin: 0 0 8px 0;
+  padding: 0;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.parallax-caption {
+  font-family: "Manrope", sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+  padding: 0 10px;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+  text-align: center;
+}
+
+.parallax-caption-second {
+  font-family: "Manrope", sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+  padding: 0 10px;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+  text-align: center;
+}
+
+.parallax-caption-subtext {
+  font-family: "Manrope", sans-serif;
+  font-size: 13.5px;
+  position: relative;
+  top: 1rem;
+  font-weight: 600;
+  color: #666666;
+  margin: 0 0 8px 0;
+  padding: 0;
+  line-height: 1;
+  letter-spacing: 0.2px;
+  text-align: center;
 }
 
 /* Responsive - Tablets */
@@ -1197,5 +1264,30 @@
 
   .parallax-image-wrap {
     height: 120vh;
+  }
+}
+
+@media (max-width: 1024px) {
+  .parallax-price {
+    font-size: 15px;
+    margin: 12px 0 6px 0;
+  }
+
+  .parallax-caption {
+    font-size: 12px;
+    max-width: 240px;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .parallax-price {
+    font-size: 14px;
+    margin: 10px 0 5px 0;
+  }
+
+  .parallax-caption {
+    font-size: 11px;
+    max-width: 200px;
   }
 }
