@@ -95,6 +95,9 @@ class Button {
   }
 }
 
+// Torna a classe Button globalmente disponível
+window.Button = Button;
+
 // ============================================================================
 // VIDEO HOVER CONTROLLER - Play/Pause ao passar o mouse
 // ============================================================================
