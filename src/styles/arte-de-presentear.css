@@ -241,6 +241,102 @@
   letter-spacing: 0.2px;
 }
 
+/* Botão Descubra com animação GSAP */
+.presente-button-second {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #fff;
+  color: #222222;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 0;
+  border: 1px solid #000;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  margin-left: 1.5rem;
+}
+
+.presente-button-second:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Button Flair para o botão descubra */
+.presente-button-second .button__flair {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  transform: scale(0);
+  transform-origin: 0 0;
+  will-change: transform;
+  z-index: 0;
+}
+
+.presente-button-second .button__flair::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 170%;
+  aspect-ratio: 1/1;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  display: block;
+}
+
+.presente-button-second .button__label {
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsivo - Botões */
+@media (max-width: 768px) {
+  .presente-button-second {
+    padding: 10px 25px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 640px) {
+  .presente-button-second {
+    width: calc(100% - 1.5rem);
+    padding: 12px 20px;
+  }
+}
+
+.presentes-title-terceiro {
+  font-family: "MinhaFonte", sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: #292929;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.7;
+  letter-spacing: 0.2px;
+}
+
+.presentes-subtitle-terceiro {
+  font-family: "Manrope", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #292929;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.7;
+  letter-spacing: 0.2px;
+}
+
 /* Responsivo - Grid de Presentes */
 @media (max-width: 1024px) {
   .presentes-grid-second {
