@@ -103,9 +103,7 @@
   -webkit-backface-visibility: hidden;
 }
 
-.fragrance-icon-item:hover .fragrance-icon-image {
-  transform: scale(1.1);
-}
+/* Hover effect agora controlado por GSAP */
 
 .fragrance-icon-name {
   font-family: "Manrope", sans-serif;
