@@ -145,17 +145,29 @@
   font-size: 14px;
   font-weight: 500;
   color: #1a1a1a;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: none; /* Removido underline padrão */
   padding: 0;
   cursor: pointer;
-  transition: opacity 0.3s ease;
   letter-spacing: 0.3px;
-  display: inline-block; /* Para funcionar como link <a> */
+  display: inline-block;
+  position: relative;
+  --underline-width: 100%; /* Variável CSS para controlar largura */
+}
+
+/* Linha customizada com ::after */
+.services-button::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: var(--underline-width, 100%);
+  height: 1px;
+  background-color: #1a1a1a;
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .services-button:hover {
-  opacity: 0.7;
+  /* Removido opacity, agora controlado por GSAP */
 }
 
 /* ============================================================================

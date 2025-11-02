@@ -23,6 +23,37 @@ export class HomePage extends HTMLElement {
     this.initVideoControls();
     this.initCategoryTabs();
     this.initServicesDiorAnimations();
+    this.initServicesButtonsAnimation();
+  }
+
+  initServicesButtonsAnimation() {
+    if (!window.gsap) return;
+
+    requestAnimationFrame(() => {
+      const buttons = this.querySelectorAll('.services-button');
+      
+      buttons.forEach(button => {
+        const underline = window.getComputedStyle(button, '::after');
+        
+        // Mouseenter - linha diminui para 0
+        button.addEventListener('mouseenter', () => {
+          window.gsap.to(button, {
+            '--underline-width': '0%',
+            duration: 0.35,
+            ease: 'power2.inOut'
+          });
+        });
+
+        // Mouseleave - linha volta a 100%
+        button.addEventListener('mouseleave', () => {
+          window.gsap.to(button, {
+            '--underline-width': '100%',
+            duration: 0.35,
+            ease: 'power2.inOut'
+          });
+        });
+      });
+    });
   }
 
   initServicesDiorAnimations() {
