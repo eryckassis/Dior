@@ -1,0 +1,289 @@
+/* ============================================================================
+   FRAGRANCES SUBMENU - Submenu de Fragâncias
+   ============================================================================ */
+
+.fragrances-submenu {
+  position: fixed;
+  top: calc(var(--nav-height) + var(--gutter) * 2);
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 998;
+  opacity: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  max-height: calc(100vh - var(--nav-height) - var(--gutter) * 2);
+  overflow-y: auto;
+}
+
+.fragrances-submenu-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding: 50px 60px;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* ============================================================================
+   LEFT PANEL - Painel esquerdo com menu
+   ============================================================================ */
+
+.fragrances-left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.submenu-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.submenu-back:hover {
+  color: #000;
+}
+
+.submenu-back svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ============================================================================
+   ICONICS SECTION - Ícones de fragrâncias
+   ============================================================================ */
+
+.submenu-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.submenu-section-title {
+  font-family: "Manrope", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #999;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.fragrance-icons {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.fragrance-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fragrance-icon-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fragrance-icon-item:hover .fragrance-icon-image {
+  transform: scale(1.1);
+}
+
+.fragrance-icon-name {
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+/* ============================================================================
+   SUBMENU LINKS - Links do menu
+   ============================================================================ */
+
+.submenu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.submenu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #f0f0f0;
+  transition: color 0.3s ease;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.submenu-item:hover {
+  color: #000;
+}
+
+.submenu-item svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.5;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.submenu-item:hover svg {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+.submenu-item-bold {
+  font-weight: 500;
+  color: #000;
+}
+
+/* ============================================================================
+   RIGHT PANEL - Painel direito com imagens destacadas
+   ============================================================================ */
+
+.fragrances-right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.submenu-featured {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.submenu-featured-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.submenu-featured:hover .submenu-featured-image {
+  transform: scale(1.05);
+}
+
+.submenu-featured-small .submenu-featured-image {
+  height: 250px;
+}
+
+.submenu-featured-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.submenu-featured-title {
+  font-family: "Manrope", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.submenu-featured-small .submenu-featured-title {
+  font-size: 16px;
+}
+
+.submenu-featured-link {
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  display: inline-block;
+  align-self: flex-start;
+  transition: opacity 0.3s ease;
+}
+
+.submenu-featured-link:hover {
+  opacity: 0.8;
+}
+
+/* ============================================================================
+   RESPONSIVO - Breakpoints
+   ============================================================================ */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .fragrances-submenu-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px 40px;
+  }
+
+  .fragrances-right-panel {
+    grid-row: 1;
+  }
+
+  .fragrances-left-panel {
+    grid-row: 2;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .fragrances-submenu {
+    top: var(--nav-height);
+  }
+
+  .fragrances-submenu-content {
+    padding: 30px 20px;
+    gap: 30px;
+  }
+
+  .fragrance-icons {
+    gap: 20px;
+  }
+
+  .fragrance-icon-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .submenu-featured-image {
+    height: 300px;
+  }
+
+  .submenu-featured-small .submenu-featured-image {
+    height: 200px;
+  }
+
+  .submenu-item {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+}

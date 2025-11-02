@@ -1,4 +1,5 @@
 import "./style.css";
+import "./styles/fragrances-submenu.css";
 import { router } from "./router/router.js";
 import "./pages/HomePage.js";
 import "./pages/DiorHolidayPage.js";

@@ -9,6 +9,166 @@ export class AppNavigation extends HTMLElement {
 
   connectedCallback() {
     this.render();
+    this.initFragrancesSubmenu();
+    this.initFragranceIconsParallax();
+  }
+
+  initFragranceIconsParallax() {
+    requestAnimationFrame(() => {
+      const iconItems = this.querySelectorAll('.fragrance-icon-item');
+      
+      if (!window.gsap || iconItems.length === 0) return;
+
+      iconItems.forEach(item => {
+        const image = item.querySelector('.fragrance-icon-image');
+        if (!image) return;
+
+        // Mousemove - Parallax effect
+        item.addEventListener('mousemove', (e) => {
+          const rect = item.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const deltaX = (x - centerX) / centerX;
+          const deltaY = (y - centerY) / centerY;
+          
+          const rotateX = deltaY * -15; // Rotação no eixo X (vertical)
+          const rotateY = deltaX * 15;  // Rotação no eixo Y (horizontal)
+          const translateZ = 20;        // Profundidade 3D
+
+          window.gsap.to(image, {
+            rotationX: rotateX,
+            rotationY: rotateY,
+            z: translateZ,
+            duration: 0.5,
+            ease: 'power2.out',
+            transformPerspective: 1000,
+            transformOrigin: 'center center'
+          });
+        });
+
+        // Mouseleave - Reset
+        item.addEventListener('mouseleave', () => {
+          window.gsap.to(image, {
+            rotationX: 0,
+            rotationY: 0,
+            z: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: 'power3.out'
+          });
+        });
+
+        // Mouseenter - Subtle scale
+        item.addEventListener('mouseenter', () => {
+          window.gsap.to(image, {
+            scale: 1.1,
+            duration: 0.4,
+            ease: 'power2.out'
+          });
+        });
+      });
+    });
+  }
+
+  initFragrancesSubmenu() {
+    requestAnimationFrame(() => {
+      const fragrancesLink = this.querySelector('.nav-link-fragrances');
+      const submenu = this.querySelector('.fragrances-submenu');
+      
+      if (!fragrancesLink || !submenu) return;
+
+      let isSubmenuOpen = false;
+      let timeoutId = null;
+
+      // Mouseenter no link
+      fragrancesLink.addEventListener('mouseenter', () => {
+        clearTimeout(timeoutId);
+        if (!isSubmenuOpen) {
+          this.openSubmenu(submenu);
+          isSubmenuOpen = true;
+        }
+      });
+
+      // Mouseleave do link
+      fragrancesLink.addEventListener('mouseleave', () => {
+        timeoutId = setTimeout(() => {
+          if (!submenu.matches(':hover')) {
+            this.closeSubmenu(submenu);
+            isSubmenuOpen = false;
+          }
+        }, 100);
+      });
+
+      // Mouseenter no submenu
+      submenu.addEventListener('mouseenter', () => {
+        clearTimeout(timeoutId);
+      });
+
+      // Mouseleave do submenu
+      submenu.addEventListener('mouseleave', () => {
+        this.closeSubmenu(submenu);
+        isSubmenuOpen = false;
+      });
+    });
+  }
+
+  openSubmenu(submenu) {
+    if (!window.gsap) {
+      submenu.style.display = 'block';
+      submenu.style.opacity = '1';
+      return;
+    }
+
+    const content = submenu.querySelector('.fragrances-submenu-content');
+    const leftPanel = submenu.querySelector('.fragrances-left-panel');
+    const rightPanel = submenu.querySelector('.fragrances-right-panel');
+    const icons = submenu.querySelectorAll('.fragrance-icon-item');
+    const menuItems = submenu.querySelectorAll('.submenu-item');
+
+    submenu.style.display = 'block';
+
+    const tl = window.gsap.timeline();
+
+    tl.fromTo(submenu, 
+      { opacity: 0 },
+      { opacity: 1, duration: 0.3, ease: 'power2.out' }
+    )
+    .fromTo(content,
+      { y: -20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' },
+      0.1
+    )
+    .fromTo(icons,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.4, stagger: 0.08, ease: 'power3.out' },
+      0.2
+    )
+    .fromTo(menuItems,
+      { opacity: 0, x: -20 },
+      { opacity: 1, x: 0, duration: 0.4, stagger: 0.05, ease: 'power3.out' },
+      0.3
+    );
+  }
+
+  closeSubmenu(submenu) {
+    if (!window.gsap) {
+      submenu.style.display = 'none';
+      submenu.style.opacity = '0';
+      return;
+    }
+
+    window.gsap.to(submenu, {
+      opacity: 0,
+      duration: 0.25,
+      ease: 'power2.in',
+      onComplete: () => {
+        submenu.style.display = 'none';
+      }
+    });
   }
 
   render() {
@@ -50,7 +210,7 @@ export class AppNavigation extends HTMLElement {
               >
                 <span>Dior Holiday</span>
               </a>
-              <a href="#depth-meaning" class="nav-link" role="menuitem">
+              <a href="#fragrances" class="nav-link nav-link-fragrances" role="menuitem">
                 <span>Fragâncias</span>
               </a>
               <a href="#wisdom" class="nav-link" role="menuitem">
@@ -85,6 +245,91 @@ export class AppNavigation extends HTMLElement {
           </div>
         </div>
       </nav>
+
+      <!-- Fragrances Submenu -->
+      <div class="fragrances-submenu" style="display: none;">
+        <div class="fragrances-submenu-content">
+          <!-- Left Panel -->
+          <div class="fragrances-left-panel">
+            <div class="submenu-back">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+              <span>Fragância Feminina</span>
+            </div>
+
+            <div class="submenu-section">
+              <h3 class="submenu-section-title">ICONICS</h3>
+              <div class="fragrance-icons">
+                <div class="fragrance-icon-item">
+                  <img src="./images/paraela1.webp" alt="Miss Dior" class="fragrance-icon-image" />
+                  <p class="fragrance-icon-name">Miss Dior</p>
+                </div>
+                <div class="fragrance-icon-item">
+                  <img src="./images/paraela2.webp" alt="J'adore" class="fragrance-icon-image" />
+                  <p class="fragrance-icon-name">J'adore</p>
+                </div>
+                <div class="fragrance-icon-item">
+                  <img src="./images/paraela3.webp" alt="Poison" class="fragrance-icon-image" />
+                  <p class="fragrance-icon-name">Poison</p>
+                </div>
+              </div>
+            </div>
+
+            <nav class="submenu-links">
+              <a href="#novidades" class="submenu-item">
+                <span>Novidades</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </a>
+              <a href="#descubra" class="submenu-item">
+                <span>Descubra</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </a>
+              <a href="#linhas" class="submenu-item">
+                <span>Linhas</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </a>
+              <a href="#todas" class="submenu-item submenu-item-bold">
+                <span>Todas as Fragâncias Femininas</span>
+              </a>
+              <a href="#expertise" class="submenu-item">
+                <span>Expertise de Fragâncias</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </a>
+              <a href="#exclusivas" class="submenu-item">
+                <span>Criações Exclusivas</span>
+              </a>
+            </nav>
+          </div>
+
+          <!-- Right Panel -->
+          <div class="fragrances-right-panel">
+            <div class="submenu-featured">
+              <img src="./images/cofre.jpg" alt="Dior Holiday" class="submenu-featured-image" />
+              <div class="submenu-featured-content">
+                <p class="submenu-featured-title">Dior Holiday: o Circo dos Sonhos</p>
+                <a href="/dior-holiday" class="submenu-featured-link" data-route="/dior-holiday">Chegue mais perto</a>
+              </div>
+            </div>
+
+            <div class="submenu-featured submenu-featured-small">
+              <img src="./images/diorhomme.jpg" alt="Presentes" class="submenu-featured-image" />
+              <div class="submenu-featured-content">
+                <p class="submenu-featured-title">O desfile de presentes encantados da Dior</p>
+                <a href="/arte-de-presentear" class="submenu-featured-link" data-route="/arte-de-presentear">Inspire-se</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Dropdown Overlay Menu -->
       <aside
