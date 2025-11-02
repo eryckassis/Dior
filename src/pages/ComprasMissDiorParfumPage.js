@@ -88,6 +88,45 @@ export class ComprasMissDiorParfumPage extends HTMLElement {
           }
         });
       });
+
+      // Image Reveal Animation with GSAP
+      if (window.gsap && window.ScrollTrigger) {
+        const imageRevealWrapper = this.querySelector(
+          ".image-reveal-wrapper-full"
+        );
+        if (imageRevealWrapper) {
+          const overlay = imageRevealWrapper.querySelector(
+            ".reveal-overlay-full"
+          );
+          const image = imageRevealWrapper.querySelector(".reveal-image-full");
+
+          const revealTl = window.gsap.timeline({
+            scrollTrigger: {
+              trigger: imageRevealWrapper,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
+          });
+
+          revealTl
+            .set(overlay, { scaleX: 1, transformOrigin: "left" })
+            .set(image, { scale: 1.3 })
+            .to(overlay, {
+              scaleX: 0,
+              duration: 1.2,
+              ease: "power3.inOut",
+            })
+            .to(
+              image,
+              {
+                scale: 1,
+                duration: 1.2,
+                ease: "power3.out",
+              },
+              "-=1.2"
+            );
+        }
+      }
     });
   }
 
@@ -199,7 +238,163 @@ export class ComprasMissDiorParfumPage extends HTMLElement {
                 </div>
               </div>
           </section>
+
+          <!-- Love Quote Section -->
+          <section class="love-quote-section">
+            <div class="love-quote-container">
+              <p class="quote-author">Com Natalie Portman</p>
+              <h2 class="quote-title">And you, what would you do for love?*</h2>
+              <p class="quote-subtitle">*E você, o que faria por amor?</p>
+            </div>
+          </section>
+
+          <!-- Video Full Section -->
+          <section class="video-full-section">
+            <video
+              class="video-full-bg"
+              autoplay
+              muted
+              loop
+              playsinline
+            >
+              <source src="./videos/love.mp4" type="video/mp4" />
+            </video>
+          </section>
+
+          <!-- Image Reveal Section -->
+           <section class="love-quote-section">
+            <div class="love-quote-container">
+            
+              <h2 class="quote-title">Encontre seu perfume Miss Dior*</h2>
+              
+            </div>
+          </section>
+          
+          <section class="image-reveal-full-section">
+            <div class="image-reveal-wrapper-full">
+              <div class="reveal-overlay-full"></div>
+              <img src="./images/compras.webp" alt="Miss Dior" class="reveal-image-full" />
+            </div>
+          </section>
+
+          <!-- Reviews Section -->
+          <section class="reviews-section-product">
+            <div class="reviews-container">
+              <div class="reviews-header-product">
+                <p class="reviews-gama-text">A gama <span class="miss-dior-highlight">Miss Dior</span> por intensidade</p>
+                <a href="#" class="reviews-discover-link">Descubra</a>
+              </div>
+
+              <div class="reviews-title-area">
+                <h3 class="reviews-main-title">Avaliações sobre o produto</h3>
+              </div>
+
+              <div class="reviews-box-product">
+                <div class="reviews-summary">
+                  <p class="reviews-label">Avaliações</p>
+                  <div class="reviews-stars-display">
+                    <span class="review-star-filled">★</span>
+                    <span class="review-star-filled">★</span>
+                    <span class="review-star-filled">★</span>
+                    <span class="review-star-filled">★</span>
+                    <span class="review-star-filled">★</span>
+                    <span class="review-star-empty">☆</span>
+                  </div>
+                  <p class="reviews-count">892 avaliações</p>
+                </div>
+
+                <div class="reviews-list">
+                  <!-- Review 1 -->
+                  <div class="review-item-card">
+                    <div class="review-stars-rating">
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                    </div>
+                    <p class="review-date">Enviado há 8 dias</p>
+                    <p class="review-text">Estou encantado com o Miss Dior, achei um perfume super adorável e feminino, tem um cheirinho floral muito com um toque adocicado que fica de noite mais elegante.</p>
+                    <p class="review-recommendation">Você recomendaria esse produto a um amigo?<br><strong>Sim</strong></p>
+                    <p class="review-author">Por Renata A.</p>
+                  </div>
+
+                  <!-- Review 2 -->
+                  <div class="review-item-card">
+                    <div class="review-stars-rating">
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                    </div>
+                    <p class="review-date">Enviado há 6 dias</p>
+                    <p class="review-text">Miss Dior é sempre top de perfume que eu recebi, absolutamente fixado na minha pele e muito marcante, o aroma maravilhoso.</p>
+                    <p class="review-recommendation">Você recomendaria esse produto a um amigo?<br><strong>Sim</strong></p>
+                    <p class="review-author">Por Micaella P.</p>
+                  </div>
+
+                  <!-- Review 3 -->
+                  <div class="review-item-card">
+                    <div class="review-stars-rating">
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                    </div>
+                    <p class="review-date">Enviado há 6 dias</p>
+                    <p class="review-text">Eu adoro o Miss Dior! Prefiro sem o laço porque fica mais compacto e lindo. Tem fragrância ajuizada delicada como o chá de Perfum, mas com notas mais construídas, balsâmico.</p>
+                    <p class="review-recommendation">Você recomendaria esse produto a um amigo?<br><strong>Sim</strong></p>
+                    <p class="review-author">Por Vanessa A.</p>
+                  </div>
+
+                  <!-- Review 4 -->
+                  <div class="review-item-card">
+                    <div class="review-stars-rating">
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                    </div>
+                    <p class="review-date">Enviado há 6 dias</p>
+                    <p class="review-text">Unde uma fragrância bem criança à fleurs, com um toque de flor de laranjeira que deixa o cheiro, claramente um cheiro bom docinhos, mais elegantemente do que muito moderno.</p>
+                    <p class="review-recommendation">Você recomendaria esse produto a um amigo?<br><strong>Sim</strong></p>
+                    <p class="review-author">Por Brenda S.</p>
+                  </div>
+
+                  <!-- Review 5 -->
+                  <div class="review-item-card">
+                    <div class="review-stars-rating">
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                      <span class="review-star-filled">★</span>
+                    </div>
+                    <p class="review-date">Enviado há 6 dias</p>
+                    <p class="review-text">Gza reputação incrível e usque o outro e Miss Dior iniciaria a edificação de consumo via preditibilidade, elegante e romântica.</p>
+                    <p class="review-recommendation">Você recomendaria esse produto a um amigo?<br><strong>Sim</strong></p>
+                    <p class="review-author">Por Camille A.</p>
+                  </div>
+                </div>
+
+                <div class="reviews-pagination">
+                  <span class="pagination-info">1-5 de 892</span>
+                  <div class="pagination-arrows">
+                    <button class="pagination-btn" aria-label="Anterior">‹</button>
+                    <button class="pagination-btn" aria-label="Próximo">›</button>
+                  </div>
+                </div>
+
+                <button class="reviews-load-more">Escrever avaliação...</button>
+              </div>
+            </div>
+          </section>
         </div>
+
+       
 
         <!-- Footer -->
         <footer-section></footer-section>
