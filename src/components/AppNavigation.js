@@ -15,59 +15,59 @@ export class AppNavigation extends HTMLElement {
 
   initFragranceIconsParallax() {
     requestAnimationFrame(() => {
-      const iconItems = this.querySelectorAll('.fragrance-icon-item');
-      
+      const iconItems = this.querySelectorAll(".fragrance-icon-item");
+
       if (!window.gsap || iconItems.length === 0) return;
 
-      iconItems.forEach(item => {
-        const image = item.querySelector('.fragrance-icon-image');
+      iconItems.forEach((item) => {
+        const image = item.querySelector(".fragrance-icon-image");
         if (!image) return;
 
         // Mousemove - Parallax effect
-        item.addEventListener('mousemove', (e) => {
+        item.addEventListener("mousemove", (e) => {
           const rect = item.getBoundingClientRect();
           const x = e.clientX - rect.left;
           const y = e.clientY - rect.top;
-          
+
           const centerX = rect.width / 2;
           const centerY = rect.height / 2;
-          
+
           const deltaX = (x - centerX) / centerX;
           const deltaY = (y - centerY) / centerY;
-          
+
           const rotateX = deltaY * -15; // Rotação no eixo X (vertical)
-          const rotateY = deltaX * 15;  // Rotação no eixo Y (horizontal)
-          const translateZ = 20;        // Profundidade 3D
+          const rotateY = deltaX * 15; // Rotação no eixo Y (horizontal)
+          const translateZ = 20; // Profundidade 3D
 
           window.gsap.to(image, {
             rotationX: rotateX,
             rotationY: rotateY,
             z: translateZ,
             duration: 0.5,
-            ease: 'power2.out',
+            ease: "power2.out",
             transformPerspective: 1000,
-            transformOrigin: 'center center'
+            transformOrigin: "center center",
           });
         });
 
         // Mouseleave - Reset
-        item.addEventListener('mouseleave', () => {
+        item.addEventListener("mouseleave", () => {
           window.gsap.to(image, {
             rotationX: 0,
             rotationY: 0,
             z: 0,
             scale: 1,
             duration: 0.6,
-            ease: 'power3.out'
+            ease: "power3.out",
           });
         });
 
         // Mouseenter - Subtle scale
-        item.addEventListener('mouseenter', () => {
+        item.addEventListener("mouseenter", () => {
           window.gsap.to(image, {
             scale: 1.1,
             duration: 0.4,
-            ease: 'power2.out'
+            ease: "power2.out",
           });
         });
       });
@@ -76,16 +76,16 @@ export class AppNavigation extends HTMLElement {
 
   initFragrancesSubmenu() {
     requestAnimationFrame(() => {
-      const fragrancesLink = this.querySelector('.nav-link-fragrances');
-      const submenu = this.querySelector('.fragrances-submenu');
-      
+      const fragrancesLink = this.querySelector(".nav-link-fragrances");
+      const submenu = this.querySelector(".fragrances-submenu");
+
       if (!fragrancesLink || !submenu) return;
 
       let isSubmenuOpen = false;
       let timeoutId = null;
 
       // Mouseenter no link
-      fragrancesLink.addEventListener('mouseenter', () => {
+      fragrancesLink.addEventListener("mouseenter", () => {
         clearTimeout(timeoutId);
         if (!isSubmenuOpen) {
           this.openSubmenu(submenu);
@@ -94,9 +94,9 @@ export class AppNavigation extends HTMLElement {
       });
 
       // Mouseleave do link
-      fragrancesLink.addEventListener('mouseleave', () => {
+      fragrancesLink.addEventListener("mouseleave", () => {
         timeoutId = setTimeout(() => {
-          if (!submenu.matches(':hover')) {
+          if (!submenu.matches(":hover")) {
             this.closeSubmenu(submenu);
             isSubmenuOpen = false;
           }
@@ -104,12 +104,12 @@ export class AppNavigation extends HTMLElement {
       });
 
       // Mouseenter no submenu
-      submenu.addEventListener('mouseenter', () => {
+      submenu.addEventListener("mouseenter", () => {
         clearTimeout(timeoutId);
       });
 
       // Mouseleave do submenu
-      submenu.addEventListener('mouseleave', () => {
+      submenu.addEventListener("mouseleave", () => {
         this.closeSubmenu(submenu);
         isSubmenuOpen = false;
       });
@@ -118,56 +118,60 @@ export class AppNavigation extends HTMLElement {
 
   openSubmenu(submenu) {
     if (!window.gsap) {
-      submenu.style.display = 'block';
-      submenu.style.opacity = '1';
+      submenu.style.display = "block";
+      submenu.style.opacity = "1";
       return;
     }
 
-    const content = submenu.querySelector('.fragrances-submenu-content');
-    const leftPanel = submenu.querySelector('.fragrances-left-panel');
-    const rightPanel = submenu.querySelector('.fragrances-right-panel');
-    const icons = submenu.querySelectorAll('.fragrance-icon-item');
-    const menuItems = submenu.querySelectorAll('.submenu-item');
+    const content = submenu.querySelector(".fragrances-submenu-content");
+    const leftPanel = submenu.querySelector(".fragrances-left-panel");
+    const rightPanel = submenu.querySelector(".fragrances-right-panel");
+    const icons = submenu.querySelectorAll(".fragrance-icon-item");
+    const menuItems = submenu.querySelectorAll(".submenu-item");
 
-    submenu.style.display = 'block';
+    submenu.style.display = "block";
 
     const tl = window.gsap.timeline();
 
-    tl.fromTo(submenu, 
+    tl.fromTo(
+      submenu,
       { opacity: 0 },
-      { opacity: 1, duration: 0.3, ease: 'power2.out' }
+      { opacity: 1, duration: 0.3, ease: "power2.out" }
     )
-    .fromTo(content,
-      { y: -20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' },
-      0.1
-    )
-    .fromTo(icons,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.4, stagger: 0.08, ease: 'power3.out' },
-      0.2
-    )
-    .fromTo(menuItems,
-      { opacity: 0, x: -20 },
-      { opacity: 1, x: 0, duration: 0.4, stagger: 0.05, ease: 'power3.out' },
-      0.3
-    );
+      .fromTo(
+        content,
+        { y: -20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" },
+        0.1
+      )
+      .fromTo(
+        icons,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.4, stagger: 0.08, ease: "power3.out" },
+        0.2
+      )
+      .fromTo(
+        menuItems,
+        { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.4, stagger: 0.05, ease: "power3.out" },
+        0.3
+      );
   }
 
   closeSubmenu(submenu) {
     if (!window.gsap) {
-      submenu.style.display = 'none';
-      submenu.style.opacity = '0';
+      submenu.style.display = "none";
+      submenu.style.opacity = "0";
       return;
     }
 
     window.gsap.to(submenu, {
       opacity: 0,
       duration: 0.25,
-      ease: 'power2.in',
+      ease: "power2.in",
       onComplete: () => {
-        submenu.style.display = 'none';
-      }
+        submenu.style.display = "none";
+      },
     });
   }
 
