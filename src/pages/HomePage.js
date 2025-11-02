@@ -11,6 +11,7 @@ import "../components/AnimatedSections.js";
 import "../components/FooterSection.js";
 import "../styles/arte-de-presentear.css";
 import "../styles/category-interactive.css";
+import "../styles/services-dior.css";
 
 export class HomePage extends HTMLElement {
   constructor() {
@@ -21,6 +22,109 @@ export class HomePage extends HTMLElement {
     this.render();
     this.initVideoControls();
     this.initCategoryTabs();
+    this.initServicesDiorAnimations();
+  }
+
+  initServicesDiorAnimations() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+
+    requestAnimationFrame(() => {
+      const section = this.querySelector('.services-dior-section');
+      if (!section) return;
+
+      // Animação do texto
+      const title = section.querySelector('.services-title');
+      const description = section.querySelector('.services-description');
+
+      if (title) {
+        window.gsap.from(title, {
+          scrollTrigger: {
+            trigger: title,
+            start: 'top 80%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none none'
+          },
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: 'power3.out'
+        });
+      }
+
+      if (description) {
+        window.gsap.from(description, {
+          scrollTrigger: {
+            trigger: description,
+            start: 'top 80%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none none'
+          },
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+          delay: 0.2,
+          ease: 'power3.out'
+        });
+      }
+
+      // Animação das imagens com reveal
+      const imageItems = section.querySelectorAll('.services-image-item');
+      
+      imageItems.forEach((item, index) => {
+        const wrap = item.querySelector('.services-image-wrap');
+        const overlay = wrap.querySelector('.services-reveal-overlay');
+        const image = wrap.querySelector('.services-image');
+        const info = item.querySelector('.services-image-info');
+
+        // Set initial states
+        window.gsap.set(overlay, {
+          scaleX: 1,
+          transformOrigin: 'left center'
+        });
+
+        window.gsap.set(image, {
+          scale: 1.3,
+          opacity: 0
+        });
+
+        window.gsap.set(info, {
+          opacity: 0,
+          y: 20
+        });
+
+        // Create timeline with ScrollTrigger
+        const tl = window.gsap.timeline({
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 75%',
+            end: 'bottom 25%',
+            toggleActions: 'play none none none'
+          },
+          delay: index * 0.2
+        });
+
+        tl.to(image, {
+          opacity: 1,
+          duration: 0.01
+        })
+        .to(overlay, {
+          scaleX: 0,
+          duration: 1,
+          ease: 'power3.inOut'
+        }, 0.1)
+        .to(image, {
+          scale: 1,
+          duration: 1,
+          ease: 'power3.out'
+        }, 0.1)
+        .to(info, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power3.out'
+        }, 0.5);
+      });
+    });
   }
 
   initCategoryTabs() {
@@ -512,6 +616,44 @@ export class HomePage extends HTMLElement {
         title="Uma nova visão da icônica paleta de iluminadores"
         button-text="Descubra"
       ></keyhole-section>
+
+      <!-- Services Dior Section -->
+      <section class="services-dior-section" id="services-dior">
+        <div class="services-container">
+          <!-- Left Content - Text -->
+          <div class="services-text-content">
+            <h2 class="services-title">Os serviços Dior sob os holofotes</h2>
+            <p class="services-description">
+              A Dior revela seus serviços extraordinários que darão um toque final aos seus presentes para uma temporada de festas memorável e mágica.
+            </p>
+          </div>
+
+          <!-- Right Content - Images -->
+          <div class="services-images-grid">
+            <div class="services-image-item services-image-large">
+              <div class="services-image-wrap">
+                <div class="services-reveal-overlay"></div>
+                <img src="./images/cofre.jpg" alt="A Arte de Presentear" class="services-image" />
+              </div>
+              <div class="services-image-info">
+                <p class="services-image-title">A Arte de Presentear</p>
+                <a href="/arte-de-presentear" class="services-button" data-route="/arte-de-presentear">Descubra</a>
+              </div>
+            </div>
+
+            <div class="services-image-item services-image-small">
+              <div class="services-image-wrap">
+                <div class="services-reveal-overlay"></div>
+                <img src="./images/diorhomme.jpg" alt="O Atelier de Personalização" class="services-image" />
+              </div>
+              <div class="services-image-info">
+                <p class="services-image-title">O Atelier de Personalização</p>
+                <a href="/arte-de-presentear" class="services-button" data-route="/arte-de-presentear">Descubra</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <footer-section></footer-section>
       
