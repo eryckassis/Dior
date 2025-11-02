@@ -736,7 +736,7 @@ p {
 
 /* Main Content */
 .content {
-  background-color: var(--color-background);
+  background-color: #f6f3f7;
   position: relative;
   z-index: 5; /* Lower than dropdown */
   width: 100%;

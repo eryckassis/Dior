@@ -80,7 +80,7 @@ export class AppNavigation extends HTMLElement {
           <!-- Contact Link -->
           <div class="navigation__right">
             <a href="#contact" class="contact-link" role="menuitem">
-              <span>Contato</span>
+              <span></span>
             </a>
           </div>
         </div>
