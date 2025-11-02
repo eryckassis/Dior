@@ -29,25 +29,25 @@ export class HomePage extends HTMLElement {
     if (!window.gsap || !window.ScrollTrigger) return;
 
     requestAnimationFrame(() => {
-      const section = this.querySelector('.services-dior-section');
+      const section = this.querySelector(".services-dior-section");
       if (!section) return;
 
       // Animação do texto
-      const title = section.querySelector('.services-title');
-      const description = section.querySelector('.services-description');
+      const title = section.querySelector(".services-title");
+      const description = section.querySelector(".services-description");
 
       if (title) {
         window.gsap.from(title, {
           scrollTrigger: {
             trigger: title,
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleActions: 'play none none none'
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
           },
           opacity: 0,
           y: 50,
           duration: 0.8,
-          ease: 'power3.out'
+          ease: "power3.out",
         });
       }
 
@@ -55,74 +55,86 @@ export class HomePage extends HTMLElement {
         window.gsap.from(description, {
           scrollTrigger: {
             trigger: description,
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleActions: 'play none none none'
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
           },
           opacity: 0,
           y: 30,
           duration: 0.8,
           delay: 0.2,
-          ease: 'power3.out'
+          ease: "power3.out",
         });
       }
 
       // Animação das imagens com reveal
-      const imageItems = section.querySelectorAll('.services-image-item');
-      
+      const imageItems = section.querySelectorAll(".services-image-item");
+
       imageItems.forEach((item, index) => {
-        const wrap = item.querySelector('.services-image-wrap');
-        const overlay = wrap.querySelector('.services-reveal-overlay');
-        const image = wrap.querySelector('.services-image');
-        const info = item.querySelector('.services-image-info');
+        const wrap = item.querySelector(".services-image-wrap");
+        const overlay = wrap.querySelector(".services-reveal-overlay");
+        const image = wrap.querySelector(".services-image");
+        const info = item.querySelector(".services-image-info");
 
         // Set initial states
         window.gsap.set(overlay, {
           scaleX: 1,
-          transformOrigin: 'left center'
+          transformOrigin: "left center",
         });
 
         window.gsap.set(image, {
           scale: 1.3,
-          opacity: 0
+          opacity: 0,
         });
 
         window.gsap.set(info, {
           opacity: 0,
-          y: 20
+          y: 20,
         });
 
         // Create timeline with ScrollTrigger
         const tl = window.gsap.timeline({
           scrollTrigger: {
             trigger: item,
-            start: 'top 75%',
-            end: 'bottom 25%',
-            toggleActions: 'play none none none'
+            start: "top 75%",
+            end: "bottom 25%",
+            toggleActions: "play none none none",
           },
-          delay: index * 0.2
+          delay: index * 0.2,
         });
 
         tl.to(image, {
           opacity: 1,
-          duration: 0.01
+          duration: 0.01,
         })
-        .to(overlay, {
-          scaleX: 0,
-          duration: 1,
-          ease: 'power3.inOut'
-        }, 0.1)
-        .to(image, {
-          scale: 1,
-          duration: 1,
-          ease: 'power3.out'
-        }, 0.1)
-        .to(info, {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: 'power3.out'
-        }, 0.5);
+          .to(
+            overlay,
+            {
+              scaleX: 0,
+              duration: 1,
+              ease: "power3.inOut",
+            },
+            0.1
+          )
+          .to(
+            image,
+            {
+              scale: 1,
+              duration: 1,
+              ease: "power3.out",
+            },
+            0.1
+          )
+          .to(
+            info,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              ease: "power3.out",
+            },
+            0.5
+          );
       });
     });
   }
