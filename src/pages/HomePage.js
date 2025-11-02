@@ -30,26 +30,26 @@ export class HomePage extends HTMLElement {
     if (!window.gsap) return;
 
     requestAnimationFrame(() => {
-      const buttons = this.querySelectorAll('.services-button');
-      
-      buttons.forEach(button => {
-        const underline = window.getComputedStyle(button, '::after');
-        
+      const buttons = this.querySelectorAll(".services-button");
+
+      buttons.forEach((button) => {
+        const underline = window.getComputedStyle(button, "::after");
+
         // Mouseenter - linha diminui para 0
-        button.addEventListener('mouseenter', () => {
+        button.addEventListener("mouseenter", () => {
           window.gsap.to(button, {
-            '--underline-width': '0%',
+            "--underline-width": "0%",
             duration: 0.35,
-            ease: 'power2.inOut'
+            ease: "power2.inOut",
           });
         });
 
         // Mouseleave - linha volta a 100%
-        button.addEventListener('mouseleave', () => {
+        button.addEventListener("mouseleave", () => {
           window.gsap.to(button, {
-            '--underline-width': '100%',
+            "--underline-width": "100%",
             duration: 0.35,
-            ease: 'power2.inOut'
+            ease: "power2.inOut",
           });
         });
       });
