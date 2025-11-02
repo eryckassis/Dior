@@ -628,6 +628,221 @@
 }
 
 /* ============================================================================
+   REVIEW MODAL
+   ============================================================================ */
+
+.review-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10000;
+  overflow-y: auto;
+  padding: 40px 20px;
+}
+
+.review-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-modal-content {
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close-review-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #999;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.close-review-modal:hover {
+  color: #000;
+}
+
+.review-modal-title {
+  font-family: "Manrope", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+  letter-spacing: 0.5px;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-label {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.star-rating-select {
+  display: flex;
+  gap: 8px;
+}
+
+.star-rating-input {
+  font-size: 32px;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+.star-rating-input:hover,
+.star-rating-input.selected {
+  color: #000;
+}
+
+.star-rating-input:hover {
+  transform: scale(1.1);
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 15px;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  min-height: 120px;
+  transition: border-color 0.3s ease;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.form-textarea::placeholder {
+  color: #999;
+}
+
+.radio-group {
+  display: flex;
+  gap: 20px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+.radio-label input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.form-section-title {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+  margin-top: 10px;
+  padding-top: 25px;
+  border-top: 1px solid #e5e5e5;
+  letter-spacing: 0.5px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.form-input::placeholder {
+  color: #999;
+}
+
+.submit-review-btn {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 18px 30px;
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+  letter-spacing: 0.5px;
+}
+
+.submit-review-btn:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.submit-review-btn:active {
+  transform: translateY(0);
+}
+
+/* ============================================================================
    RESPONSIVE
    ============================================================================ */
 
@@ -876,5 +1091,31 @@
 
   .review-text {
     font-size: 13px;
+  }
+
+  /* Review Modal */
+  .review-modal {
+    padding: 20px;
+  }
+
+  .review-modal-content {
+    padding: 30px 20px;
+  }
+
+  .review-modal-title {
+    font-size: 16px;
+  }
+
+  .star-rating-input {
+    font-size: 28px;
+  }
+
+  .form-textarea {
+    min-height: 100px;
+  }
+
+  .radio-group {
+    flex-direction: column;
+    gap: 12px;
   }
 }

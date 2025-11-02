@@ -127,6 +127,86 @@ export class ComprasMissDiorParfumPage extends HTMLElement {
             );
         }
       }
+
+      // Review Form Modal
+      const writeReviewBtn = this.querySelector(".reviews-load-more");
+      const reviewModal = this.querySelector(".review-modal");
+      const closeModalBtn = this.querySelector(".close-review-modal");
+      const reviewForm = this.querySelector(".review-form");
+      const starRatingInputs = this.querySelectorAll(".star-rating-input");
+
+      // Open modal
+      if (writeReviewBtn && reviewModal) {
+        writeReviewBtn.addEventListener("click", () => {
+          reviewModal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        });
+      }
+
+      // Close modal
+      if (closeModalBtn && reviewModal) {
+        closeModalBtn.addEventListener("click", () => {
+          reviewModal.classList.remove("active");
+          document.body.style.overflow = "auto";
+          document.body.style.overflowX = "hidden";
+        });
+
+        // Close on backdrop click
+        reviewModal.addEventListener("click", (e) => {
+          if (e.target === reviewModal) {
+            reviewModal.classList.remove("active");
+            document.body.style.overflow = "auto";
+            document.body.style.overflowX = "hidden";
+          }
+        });
+      }
+
+      // Star rating selection
+      starRatingInputs.forEach((star, index) => {
+        star.addEventListener("click", () => {
+          starRatingInputs.forEach((s, i) => {
+            if (i <= index) {
+              s.classList.add("selected");
+            } else {
+              s.classList.remove("selected");
+            }
+          });
+        });
+      });
+
+      // Form submission
+      if (reviewForm) {
+        reviewForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const formData = new FormData(reviewForm);
+          const rating = this.querySelectorAll(
+            ".star-rating-input.selected"
+          ).length;
+          const reviewText = formData.get("review-text");
+          const recommend = formData.get("recommend");
+          const name = formData.get("reviewer-name");
+
+          // Aqui você pode enviar para uma API
+          console.log({
+            rating,
+            reviewText,
+            recommend,
+            name,
+            date: new Date().toISOString(),
+          });
+
+          // Fechar modal e resetar form
+          reviewModal.classList.remove("active");
+          document.body.style.overflow = "auto";
+          document.body.style.overflowX = "hidden";
+          reviewForm.reset();
+          starRatingInputs.forEach((s) => s.classList.remove("selected"));
+
+          // Mostrar mensagem de sucesso
+          alert("Avaliação enviada com sucesso!");
+        });
+      }
     });
   }
 
@@ -389,6 +469,71 @@ export class ComprasMissDiorParfumPage extends HTMLElement {
                 </div>
 
                 <button class="reviews-load-more">Escrever avaliação...</button>
+              </div>
+
+              <!-- Review Modal -->
+              <div class="review-modal">
+                <div class="review-modal-content">
+                  <button class="close-review-modal" aria-label="Fechar">&times;</button>
+                  
+                  <h2 class="review-modal-title">AVALIAÇÃO DO PRODUTO</h2>
+                  
+                  <form class="review-form">
+                    <div class="form-group">
+                      <label class="form-label">Dê uma nota geral para o produto *</label>
+                      <div class="star-rating-select">
+                        <span class="star-rating-input">☆</span>
+                        <span class="star-rating-input">☆</span>
+                        <span class="star-rating-input">☆</span>
+                        <span class="star-rating-input">☆</span>
+                        <span class="star-rating-input">☆</span>
+                        <span class="star-rating-input">☆</span>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="review-text">Sua avaliação do produto *</label>
+                      <textarea 
+                        id="review-text" 
+                        name="review-text" 
+                        class="form-textarea" 
+                        placeholder="Dê detalhes sobre o produto e por que deu a nota acima. Se possível, fale como você usa o produto e dê dicas para outros consumidores."
+                        required
+                        rows="5"
+                      ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label">Você recomendaria esse produto a um amigo? *</label>
+                      <div class="radio-group">
+                        <label class="radio-label">
+                          <input type="radio" name="recommend" value="sim" required>
+                          <span>Sim</span>
+                        </label>
+                        <label class="radio-label">
+                          <input type="radio" name="recommend" value="nao">
+                          <span>Não</span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="form-section-title">SEUS DADOS</div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="reviewer-name">Entre com seu nome ou apelido *</label>
+                      <input 
+                        type="text" 
+                        id="reviewer-name" 
+                        name="reviewer-name" 
+                        class="form-input" 
+                        placeholder="Seu nome ou apelido"
+                        required
+                      >
+                    </div>
+
+                    <button type="submit" class="submit-review-btn">ENVIAR AVALIAÇÃO</button>
+                  </form>
+                </div>
               </div>
             </div>
           </section>
