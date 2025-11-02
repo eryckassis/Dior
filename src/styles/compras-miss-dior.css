@@ -1,0 +1,470 @@
+/* ============================================================================
+   COMPRAS MISS DIOR PARFUM PAGE STYLES
+   ============================================================================ */
+
+.compras-miss-dior-page {
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* ============================================================================
+   PRODUCT DETAIL SECTION
+   ============================================================================ */
+
+.product-detail-section {
+  padding: 0;
+  background: #fff;
+  min-height: 100vh;
+}
+
+.product-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 100%;
+  margin: 0;
+  align-items: stretch;
+  min-height: 100vh;
+}
+
+/* Product Image */
+.product-image-wrapper {
+  position: relative;
+  width: 100%;
+  background: #f6f3f7;
+  padding: 60px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.product-main-image {
+  width: 130%;
+  height: 85vh;
+  max-height: 120rem;
+  object-fit: contain;
+  transition: opacity 0.3s ease;
+}
+
+/* Product Info */
+.product-info-wrapper {
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-detail-title {
+  font-family: "MinhaFonte", serif;
+  font-size: 42px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 15px;
+  letter-spacing: 0.01em;
+}
+
+.product-detail-subtitle {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+/* Rating */
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.star {
+  font-size: 18px;
+  color: #ddd;
+}
+
+.star.filled {
+  color: #666666;
+}
+
+.rating-score {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}
+
+.rating-reviews {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  color: #666;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.rating-reviews:hover {
+  color: #000;
+}
+
+/* Learn More Link */
+.learn-more-link {
+  font-family: "Manrope", sans-serif;
+  position: relative;
+  left: 44%;
+  top: 15px;
+  font-size: 14px;
+  color: #222;
+  text-decoration: underline;
+  display: inline-block;
+  margin-bottom: 30px;
+  transition: opacity 0.3s ease;
+}
+
+.learn-more-link:hover {
+  opacity: 0.7;
+}
+
+/* Size Options */
+.product-sizes {
+  margin-bottom: 30px;
+}
+
+.sizes-label {
+  font-family: "Manrope", sans-serif;
+  position: relative;
+  top: -6px;
+  left: 35%;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.size-options {
+  display: flex;
+  gap: 12px;
+}
+
+.size-option {
+  font-family: "Manrope", sans-serif;
+  position: relative;
+  left: 30%;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.size-option:hover {
+  border-color: #000;
+}
+
+.size-option.active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+/* Purchase Button */
+.purchase-button {
+  width: 100%;
+  background: #2c2c2c;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 18px 30px;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  transition: background 0.3s ease;
+}
+
+.purchase-button:hover {
+  background: #000;
+}
+
+.button-text {
+  flex: 1;
+  text-align: center;
+}
+
+.button-price {
+  font-weight: 700;
+}
+
+/* Tabs */
+.product-tabs {
+  margin-top: 40px;
+  border-top: 1px solid #e5e5e5;
+  padding-top: 30px;
+}
+
+.tabs-header {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e5e5e5;
+  overflow-x: visible;
+  flex-wrap: wrap;
+}
+
+.tab-button {
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #999;
+  background: none;
+  border: none;
+  padding: 0 0 15px 0;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.tab-button:hover {
+  color: #333;
+}
+
+.tab-button.active {
+  color: #000;
+}
+
+.tab-button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #000;
+}
+
+.tabs-content {
+  position: relative;
+}
+
+.tab-content {
+  display: none;
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+  .product-detail-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .product-image-wrapper {
+    padding: 50px 30px;
+    min-height: 60vh;
+  }
+
+  .product-main-image {
+    height: 60vh;
+    max-height: 600px;
+  }
+
+  .product-info-wrapper {
+    padding: 50px 30px;
+  }
+
+  .product-detail-title {
+    font-size: 36px;
+  }
+
+  .tabs-header {
+    gap: 20px;
+  }
+
+  .tab-button {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-detail-section {
+    padding: 0;
+  }
+
+  .product-image-wrapper {
+    padding: 40px 20px;
+    min-height: 50vh;
+  }
+
+  .product-main-image {
+    height: 50vh;
+    max-height: 500px;
+  }
+
+  .product-info-wrapper {
+    padding: 40px 20px;
+  }
+
+  .product-detail-title {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .product-detail-subtitle {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .product-rating {
+    gap: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+  }
+
+  .stars {
+    gap: 2px;
+  }
+
+  .star {
+    font-size: 16px;
+  }
+
+  .rating-score {
+    font-size: 14px;
+  }
+
+  .rating-reviews {
+    font-size: 12px;
+  }
+
+  .learn-more-link {
+    font-size: 13px;
+    margin-bottom: 25px;
+  }
+
+  .sizes-label {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .size-options {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .size-option {
+    font-size: 13px;
+    padding: 10px 22px;
+  }
+
+  .purchase-button {
+    padding: 16px 25px;
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+
+  .product-tabs {
+    margin-top: 30px;
+    padding-top: 20px;
+  }
+
+  .tabs-header {
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .tab-button {
+    font-size: 11px;
+    padding: 0 0 12px 0;
+  }
+
+  .tab-content {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-image-wrapper {
+    padding: 30px 15px;
+    min-height: 45vh;
+  }
+
+  .product-main-image {
+    height: 45vh;
+    max-height: 400px;
+  }
+
+  .product-info-wrapper {
+    padding: 30px 15px;
+  }
+
+  .product-detail-title {
+    font-size: 24px;
+  }
+
+  .product-detail-subtitle {
+    font-size: 13px;
+  }
+
+  .size-option {
+    font-size: 12px;
+    padding: 8px 18px;
+  }
+
+  .purchase-button {
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+
+  .tabs-header {
+    gap: 12px;
+  }
+
+  .tab-button {
+    font-size: 10px;
+    padding: 0 0 10px 0;
+  }
+
+  .tab-content {
+    font-size: 13px;
+  }
+}

@@ -265,16 +265,16 @@ export class AppNavigation extends HTMLElement {
             <div class="submenu-section">
               <h3 class="submenu-section-title">ICONICS</h3>
               <div class="fragrance-icons">
-                <div class="fragrance-icon-item">
-                  <img src="./images/paraela1.webp" alt="Miss Dior" class="fragrance-icon-image" />
+                <a href="/miss-dior" class="fragrance-icon-item" data-route="/miss-dior">
+                  <img src="./images/missdiorpng.png" alt="Miss Dior" class="fragrance-icon-image" />
                   <p class="fragrance-icon-name">Miss Dior</p>
-                </div>
+                </a>
                 <div class="fragrance-icon-item">
-                  <img src="./images/paraela2.webp" alt="J'adore" class="fragrance-icon-image" />
+                  <img src="./images/jadorepng.png" alt="J'adore" class="fragrance-icon-image" />
                   <p class="fragrance-icon-name">J'adore</p>
                 </div>
                 <div class="fragrance-icon-item">
-                  <img src="./images/paraela3.webp" alt="Poison" class="fragrance-icon-image" />
+                  <img src="./images/poison.webp" alt="Poison" class="fragrance-icon-image" />
                   <p class="fragrance-icon-name">Poison</p>
                 </div>
               </div>
@@ -314,10 +314,19 @@ export class AppNavigation extends HTMLElement {
             </nav>
           </div>
 
+          <!-- Center Video Panel -->
+          <div class="fragrances-video-panel">
+            <div class="submenu-video-container">
+              <video class="submenu-video" autoplay loop muted playsinline>
+                <source src="./videos/diorVideo.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
           <!-- Right Panel -->
           <div class="fragrances-right-panel">
             <div class="submenu-featured">
-              <img src="./images/cofre.jpg" alt="Dior Holiday" class="submenu-featured-image" />
+              <img src="./images/perfumeee.webp" alt="Dior Holiday" class="submenu-featured-image" />
               <div class="submenu-featured-content">
                 <p class="submenu-featured-title">Dior Holiday: o Circo dos Sonhos</p>
                 <a href="/dior-holiday" class="submenu-featured-link" data-route="/dior-holiday">Chegue mais perto</a>
@@ -325,7 +334,7 @@ export class AppNavigation extends HTMLElement {
             </div>
 
             <div class="submenu-featured submenu-featured-small">
-              <img src="./images/diorhomme.jpg" alt="Presentes" class="submenu-featured-image" />
+              <img src="./images/perfume22.webp" alt="Presentes" class="submenu-featured-image" />
               <div class="submenu-featured-content">
                 <p class="submenu-featured-title">O desfile de presentes encantados da Dior</p>
                 <a href="/arte-de-presentear" class="submenu-featured-link" data-route="/arte-de-presentear">Inspire-se</a>

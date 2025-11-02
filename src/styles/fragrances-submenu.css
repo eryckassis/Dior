@@ -7,7 +7,14 @@
   top: calc(var(--nav-height) + var(--gutter) * 2);
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: rgba(
+    246,
+    243,
+    247,
+    0.85
+  ); /* Semi-transparente para o blur funcionar */
+  backdrop-filter: blur(20px); /* Efeito de desfoque */
+  -webkit-backdrop-filter: blur(20px); /* Suporte Safari */
   z-index: 998;
   opacity: 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -16,12 +23,12 @@
 }
 
 .fragrances-submenu-content {
-  max-width: 1200px;
+  max-width: 1400px; /* Aumentado para acomodar 3 colunas */
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  padding: 50px 60px;
+  grid-template-columns: 1fr 0.8fr 1fr; /* 3 colunas: left, video, right */
+  gap: 40px;
+  padding: 30px 60px; /* Padding aumentado */
   opacity: 0;
   transform: translateY(-20px);
 }
@@ -69,33 +76,42 @@
 
 .submenu-section-title {
   font-family: "Manrope", sans-serif;
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 600;
-  color: #999;
+  color: #000;
   letter-spacing: 1px;
   margin: 0;
 }
 
 .fragrance-icons {
   display: flex;
-  gap: 30px;
+  gap: 50px; /* Aumentado de 30px para 50px */
   align-items: flex-start;
+  margin-top: 10px;
 }
 
 .fragrance-icon-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 18px; /* Aumentado de 12px para 18px */
   cursor: pointer;
   opacity: 0;
   transform: translateY(20px);
   perspective: 1000px; /* Adiciona perspectiva 3D */
+  flex: 0 0 auto;
+  text-decoration: none; /* Remove underline do link */
+  color: inherit; /* Herda cor do texto */
+  transition: opacity 0.3s ease;
+}
+
+.fragrance-icon-item:hover {
+  opacity: 0.8;
 }
 
 .fragrance-icon-image {
-  width: 80px;
-  height: 80px;
+  width: 120px; /* Aumentado de 80px para 120px */
+  height: 120px; /* Aumentado de 80px para 120px */
   object-fit: contain;
   transform-style: preserve-3d; /* Preserva transformações 3D */
   will-change: transform;
@@ -107,7 +123,7 @@
 
 .fragrance-icon-name {
   font-family: "Manrope", sans-serif;
-  font-size: 12px;
+  font-size: 14px; /* Aumentado de 12px para 14px */
   font-weight: 400;
   color: #333;
   margin: 0;
@@ -288,4 +304,30 @@
     font-size: 14px;
     padding: 12px 0;
   }
+}
+
+/* ============================================================================
+   VIDEO PANEL - Painel central com vídeo
+   ============================================================================ */
+
+.fragrances-video-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submenu-video-container {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.submenu-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }

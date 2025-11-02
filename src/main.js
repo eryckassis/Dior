@@ -1,9 +1,13 @@
 import "./style.css";
 import "./styles/fragrances-submenu.css";
+import "./styles/miss-dior.css";
+import "./styles/compras-miss-dior.css";
 import { router } from "./router/router.js";
 import "./pages/HomePage.js";
 import "./pages/DiorHolidayPage.js";
 import "./pages/ArteDePresentearPage.js";
+import "./pages/MissDiorPage.js";
+import "./pages/ComprasMissDiorParfumPage.js";
 
 // ============================================================================
 // ROUTER CONFIGURATION
@@ -13,6 +17,8 @@ import "./pages/ArteDePresentearPage.js";
 router.register("/", "home-page");
 router.register("/dior-holiday", "dior-holiday-page");
 router.register("/arte-de-presentear", "arte-de-presentear-page");
+router.register("/miss-dior", "miss-dior-page");
+router.register("/compras-miss-dior-parfum", "compras-miss-dior-parfum-page");
 
 // ============================================================================
 // BUTTON ANIMATION - Efeito Hover com Flair

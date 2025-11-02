@@ -1,0 +1,933 @@
+/* ============================================================================
+   MISS DIOR PAGE - Página dedicada à fragrância Miss Dior
+   ============================================================================ */
+
+.miss-dior-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-background);
+}
+
+/* ============================================================================
+   VIDEO HERO SECTION
+   ============================================================================ */
+
+.miss-dior-video-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.miss-dior-video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 1;
+}
+
+.miss-dior-video-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  max-width: 900px;
+  padding: 0 var(--gutter);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.miss-dior-video-title {
+  font-family: "MinhaFonte", sans-serif;
+  font-size: clamp(60px, 8vw, 120px);
+  font-weight: 400;
+  margin: 0 0 30px 0;
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.miss-dior-video-description {
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Video Controls - Mantém os estilos existentes do glass-button */
+.miss-dior-video-section .video-controls {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  z-index: 3;
+  display: flex;
+  gap: 15px;
+}
+
+/* ============================================================================
+   TEXT SECTION
+   ============================================================================ */
+
+.miss-dior-text-section {
+  padding: 100px 0;
+  background-color: white;
+}
+
+.miss-dior-text-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  text-align: center;
+}
+
+.miss-dior-main-title {
+  font-family: "MinhaFonte", serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600;
+  margin: 0 0 30px 0;
+  color: #000;
+  line-height: 1.2;
+}
+
+.miss-dior-main-description {
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 400;
+  color: #000;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ============================================================================
+   FULL IMAGE SECTION WITH REVEAL
+   ============================================================================ */
+
+.miss-dior-full-image {
+  width: 100%;
+  padding: 0;
+  background-color: white;
+}
+
+.miss-dior-image-reveal {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.reveal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 192, 203, 0); /* Rosa semi-transparente */
+  backdrop-filter: blur(20px); /* Efeito de desfoque */
+  -webkit-backdrop-filter: blur(20px); /* Suporte Safari */
+  z-index: 2;
+  transform-origin: left;
+}
+
+.reveal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================================================================
+   PRODUCT DETAIL SECTION
+   ============================================================================ */
+
+.miss-dior-product-detail {
+  padding: 80px 0;
+  background-color: white;
+}
+
+.miss-dior-product-info {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 var(--gutter);
+}
+
+.product-detail-image {
+  width: 110%;
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+}
+
+.product-detail-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.product-price {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+  margin: 0 0 10px 0;
+}
+
+.product-name {
+  font-family: "MinhaFonte", serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 10px 0;
+}
+
+.product-description {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+  margin: 0 0 20px 0;
+  line-height: 1.6;
+}
+
+.product-intensity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.intensity-label {
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #999;
+  text-transform: capitalize;
+}
+
+.intensity-bars {
+  display: flex;
+  gap: 6px;
+}
+
+.bar {
+  width: 20px;
+  height: 4px;
+  background-color: #e0e0e0;
+  border-radius: 2px;
+}
+
+.bar.filled {
+  background-color: #000;
+}
+
+/* ============================================================================
+   DOUBLE IMAGE SECTION - Duas imagens lado a lado
+   ============================================================================ */
+
+.miss-dior-double-image-section {
+  padding: 80px 0;
+  background-color: #faf9f8;
+}
+
+.miss-dior-double-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.double-section-description {
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 600;
+  color: #333;
+  line-height: 1.8;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+}
+
+.double-images-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.double-image-item {
+  width: 100%;
+}
+
+.miss-dior-image-reveal-double {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+
+.miss-dior-image-reveal-double .reveal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 192, 203, 0.8); /* Rosa semi-transparente */
+  backdrop-filter: blur(20px); /* Efeito de desfoque */
+  -webkit-backdrop-filter: blur(20px); /* Suporte Safari */
+  z-index: 2;
+  transform-origin: left;
+}
+
+.miss-dior-image-reveal-double .reveal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================================================================
+   OLD PRODUCTS SECTION (Mantido para compatibilidade)
+   ============================================================================ */
+
+.miss-dior-products {
+  padding: 120px 0;
+  background-color: #faf9f8;
+}
+
+.section-title {
+  font-family: "MinhaFonte", serif;
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 400;
+  text-align: center;
+  margin: 0 0 80px 0;
+  color: #000;
+}
+
+.miss-dior-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.miss-dior-product-card {
+  background-color: white;
+  padding: 40px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.miss-dior-product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.6s ease;
+}
+
+.miss-dior-product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.miss-dior-product-card h3 {
+  font-family: "MinhaFonte", serif;
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0 0 15px 0;
+  color: #000;
+}
+
+.miss-dior-product-card p {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #666;
+  margin: 0 0 30px 0;
+  line-height: 1.6;
+}
+
+.product-cta {
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 14px 40px;
+  background-color: #000;
+  color: white;
+  border: 2px solid #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.product-cta:hover {
+  background-color: white;
+  color: #000;
+}
+
+/* ============================================================================
+   STORY SECTION
+   ============================================================================ */
+
+.miss-dior-story {
+  padding: 120px 0;
+  background-color: white;
+}
+
+.miss-dior-story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.miss-dior-story-image {
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+
+.miss-dior-story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.miss-dior-story-content h2 {
+  font-family: "MinhaFonte", serif;
+  font-size: clamp(36px, 4vw, 50px);
+  font-weight: 400;
+  margin: 0 0 30px 0;
+  color: #000;
+}
+
+.miss-dior-story-content p {
+  font-family: "Manrope", sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: #333;
+  line-height: 1.8;
+  margin: 0 0 20px 0;
+}
+
+/* ============================================================================
+   VIDEO SECTION
+   ============================================================================ */
+
+.miss-dior-video {
+  padding: 120px 0;
+  background-color: #faf9f8;
+}
+
+.video-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .miss-dior-video-title {
+    font-size: 60px;
+  }
+
+  .miss-dior-video-description {
+    font-size: 18px;
+  }
+
+  .miss-dior-video-section .video-controls {
+    bottom: 20px;
+    right: 20px;
+    gap: 10px;
+  }
+
+  .miss-dior-text-section {
+    padding: 60px 0;
+  }
+
+  .miss-dior-main-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .miss-dior-main-description {
+    font-size: 14px;
+  }
+
+  .miss-dior-full-image {
+    height: 60vh;
+  }
+
+  .miss-dior-image-reveal {
+    height: 60vh;
+  }
+
+  .miss-dior-product-detail {
+    padding: 60px 0;
+  }
+
+  .product-detail-image {
+    max-width: 300px;
+  }
+
+  .product-name {
+    font-size: 20px;
+  }
+
+  .miss-dior-double-image-section {
+    padding: 60px 0;
+  }
+
+  .double-section-description {
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+
+  .double-images-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .miss-dior-image-reveal-double {
+    height: 400px;
+  }
+
+  .miss-dior-products {
+    padding: 80px 0;
+  }
+
+  .section-title {
+    margin-bottom: 50px;
+  }
+
+  .miss-dior-products-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .miss-dior-story {
+    padding: 80px 0;
+  }
+
+  .miss-dior-story-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .miss-dior-story-image {
+    height: 400px;
+  }
+
+  .miss-dior-video {
+    padding: 80px 0;
+  }
+}
+
+/* ============================================================================
+   MISS DIOR REINVENTADO SECTION
+   ============================================================================ */
+
+.miss-dior-reinventado {
+  padding: 120px 0;
+  background: #fff;
+}
+
+.reinventado-title {
+  font-family: "MinhaFonte", serif;
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #000;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.reinventado-subtitle {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto 80px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.reinventado-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.reinventado-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.reinventado-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.reinventado-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reinventado-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "MinhaFonte", serif;
+  font-size: 80px;
+  font-weight: 600;
+  color: #ff1493;
+  text-align: center;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.reinventado-card-title {
+  font-family: "MinhaFonte", serif;
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #000;
+  font-weight: 600;
+  text-align: center;
+}
+
+.reinventado-card-text {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #333;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .reinventado-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .reinventado-title {
+    font-size: 36px;
+  }
+
+  .reinventado-logo {
+    font-size: 60px;
+  }
+}
+
+/* ============================================================================
+   FRASCO COUTURE SECTION
+   ============================================================================ */
+
+.miss-dior-frasco-couture {
+  padding: 120px 0;
+  background: #f9f9f9;
+}
+
+.frasco-couture-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.frasco-couture-image-wrapper {
+  position: relative;
+}
+
+.miss-dior-image-reveal-frasco {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+}
+
+.miss-dior-image-reveal-frasco .reveal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 192, 203, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 2;
+  transform-origin: left;
+}
+
+.miss-dior-image-reveal-frasco .reveal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.frasco-couture-content {
+  padding-left: 40px;
+}
+
+.frasco-couture-title {
+  font-family: "MinhaFonte", serif;
+  font-size: 52px;
+  margin-bottom: 30px;
+  color: #000;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+.frasco-couture-text {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.frasco-couture-content .services-button {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  padding: 0;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  position: relative;
+  --underline-width: 100%;
+}
+
+.frasco-couture-content .services-button::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: var(--underline-width, 100%);
+  height: 1.5px;
+  background-color: #000;
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .frasco-couture-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .frasco-couture-content {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .frasco-couture-title {
+    font-size: 38px;
+  }
+
+  .miss-dior-image-reveal-frasco {
+    height: 500px;
+  }
+
+  .frasco-couture-content .services-button {
+    display: inline-block;
+  }
+}
+
+/* ============================================================================
+   BOUQUETS FULL IMAGE SECTION
+   ============================================================================ */
+
+.miss-dior-bouquets-full {
+  padding: 0;
+  background: #fff;
+  overflow: hidden;
+}
+
+.bouquets-full-image-wrapper {
+  width: 100%;
+  height: 90vh;
+  min-height: 600px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bouquets-full-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.miss-dior-bouquets-full .container {
+  padding: 60px 40px 100px;
+  text-align: center;
+}
+
+.bouquets-full-text {
+  font-family: "MinhaFonte", serif;
+  font-size: 40px;
+  color: #000;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .bouquets-full-image-wrapper {
+    height: 70vh;
+    min-height: 500px;
+  }
+
+  .bouquets-full-text {
+    font-size: 26px;
+  }
+
+  .miss-dior-bouquets-full .container {
+    padding: 40px 20px 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bouquets-full-image-wrapper {
+    height: 60vh;
+    min-height: 400px;
+  }
+
+  .bouquets-full-text {
+    font-size: 22px;
+  }
+}
+
+/* ============================================================================
+   PRODUCTS GRID SECTION
+   ============================================================================ */
+
+.miss-dior-products-grid {
+  padding: 100px 0 120px;
+  background: #fff;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.product-grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.product-grid-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+.product-grid-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Reutilizando estilos existentes de product-price, product-name, product-description, product-intensity */
+.product-grid-item .product-price {
+  margin-bottom: 10px;
+}
+
+.product-grid-item .product-name {
+  margin-bottom: 12px;
+}
+
+.product-grid-item .product-description {
+  margin-bottom: 20px;
+}
+
+.product-grid-item .product-intensity {
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 80px;
+    max-width: 500px;
+  }
+
+  .miss-dior-products-grid {
+    padding: 80px 0 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .products-grid {
+    gap: 60px;
+  }
+
+  .product-grid-image {
+    margin-bottom: 20px;
+  }
+}
