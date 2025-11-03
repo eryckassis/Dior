@@ -11,6 +11,7 @@ export class AppNavigation extends HTMLElement {
     this.render();
     this.initFragrancesSubmenu();
     this.initFragranceIconsParallax();
+    this.initSearchIconAnimation();
   }
 
   initFragranceIconsParallax() {
@@ -69,6 +70,64 @@ export class AppNavigation extends HTMLElement {
             duration: 0.4,
             ease: "power2.out",
           });
+        });
+      });
+    });
+  }
+
+  initSearchIconAnimation() {
+    requestAnimationFrame(() => {
+      const searchContainer = this.querySelector(".search-container");
+      const searchInput = this.querySelector(".search-input");
+      const searchBtn = this.querySelector(".search-icon-btn");
+
+      if (!searchContainer || !searchInput || !searchBtn || !window.gsap)
+        return;
+
+      // Estado inicial - input escondido
+      window.gsap.set(searchInput, {
+        width: 0,
+        opacity: 0,
+        paddingLeft: 0,
+        paddingRight: 0,
+      });
+
+      // Hover enter no container
+      searchContainer.addEventListener("mouseenter", () => {
+        window.gsap.to(searchInput, {
+          width: 200,
+          opacity: 1,
+          paddingLeft: 16,
+          paddingRight: 16,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+      });
+
+      // Hover leave no container
+      searchContainer.addEventListener("mouseleave", () => {
+        // Só fecha se o input não estiver focado
+        if (document.activeElement !== searchInput) {
+          window.gsap.to(searchInput, {
+            width: 0,
+            opacity: 0,
+            paddingLeft: 0,
+            paddingRight: 0,
+            duration: 0.3,
+            ease: "power2.in",
+          });
+        }
+      });
+
+      // Mantém aberto quando input está focado
+      searchInput.addEventListener("blur", () => {
+        window.gsap.to(searchInput, {
+          width: 0,
+          opacity: 0,
+          paddingLeft: 0,
+          paddingRight: 0,
+          duration: 0.3,
+          ease: "power2.in",
         });
       });
     });
@@ -241,11 +300,35 @@ export class AppNavigation extends HTMLElement {
             </div>
           </div>
 
-          <!-- Contact Link -->
+          <!-- Right Icons -->
           <div class="navigation__right">
-            <a href="#contact" class="contact-link" role="menuitem">
-              <span></span>
-            </a>
+            <div class="search-container">
+              <input 
+                type="text" 
+                class="search-input" 
+                placeholder="Encontre em dior.com"
+                aria-label="Campo de pesquisa"
+              />
+              <button class="nav-icon-btn search-icon-btn" aria-label="Pesquisar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <path d="m21 21-4.35-4.35"></path>
+                </svg>
+              </button>
+            </div>
+            <button class="nav-icon-btn" aria-label="Perfil">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </button>
+            <button class="nav-icon-btn" aria-label="Sacola de compras">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+            </button>
           </div>
         </div>
       </nav>
@@ -269,10 +352,10 @@ export class AppNavigation extends HTMLElement {
                   <img src="./images/missdiorpng.png" alt="Miss Dior" class="fragrance-icon-image" />
                   <p class="fragrance-icon-name">Miss Dior</p>
                 </a>
-                <div class="fragrance-icon-item">
+                <a href="/miss-dior-essence" class="fragrance-icon-item" data-route="/miss-dior-essence">
                   <img src="./images/jadorepng.png" alt="J'adore" class="fragrance-icon-image" />
                   <p class="fragrance-icon-name">J'adore</p>
-                </div>
+                </a>
                 <div class="fragrance-icon-item">
                   <img src="./images/poison.webp" alt="Poison" class="fragrance-icon-image" />
                   <p class="fragrance-icon-name">Poison</p>

@@ -532,7 +532,7 @@ p {
   max-width: 200px; /* Largura máxima (opcional) */
   object-fit: contain;
   transition: filter 0.3s ease;
-  top: -1rem;
+  top: -1.5rem;
 }
 
 /* Efeito hover no logo */
@@ -558,9 +558,82 @@ p {
   flex: 1;
   display: flex;
   justify-content: flex-end;
-  transition: transform 0.3s ease; /* Add transition for smooth movement */
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.3s ease;
   will-change: transform;
   transform: translateZ(0);
+}
+
+/* Navigation Icon Buttons */
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 36px;
+}
+
+.search-input {
+  border: none;
+  position: relative;
+  bottom: 1.5rem;
+  border-bottom: 1px solid #000000;
+  background: transparent;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  color: #000000;
+  outline: none;
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.search-input::placeholder {
+  color: #c89c6c;
+  font-size: 13px;
+}
+
+.search-input:focus {
+  border-bottom-color: #c89c6c;
+}
+
+.search-icon-btn {
+  flex-shrink: 0;
+}
+
+.nav-icon-btn {
+  background: none;
+  position: relative;
+  bottom: 1.5rem;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  transition: opacity 0.3s ease;
+  border-radius: 50%;
+}
+
+.nav-icon-btn:hover {
+  opacity: 1;
+}
+
+/* Search button - GSAP animation only, no CSS transforms */
+.nav-icon-btn[aria-label="Pesquisar"]:hover {
+  opacity: 1;
+}
+
+/* Other icon buttons keep the scale effect */
+.nav-icon-btn[aria-label="Perfil"]:hover,
+.nav-icon-btn[aria-label="Sacola de compras"]:hover {
+  transform: scale(1.1);
+}
+
+.nav-icon-btn svg {
+  display: block;
+  stroke: currentColor;
 }
 
 .navigation__menu {
@@ -933,10 +1006,32 @@ p {
     font-size: 20px;
   }
 
-  .menu-btn {
-    display: block;
-    font-size: 24px;
+  /* Icon buttons on mobile */
+  .nav-icon-btn {
+    padding: 6px;
   }
+
+  .nav-icon-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .navigation__right {
+    gap: 8px;
+  }
+
+  /* Search input on mobile - smaller width */
+  .search-input {
+    font-size: 12px;
+  }
+
+  .search-input::placeholder {
+    font-size: 11px;
+  }
+}
+.menu-btn {
+  display: block;
+  font-size: 24px;
 }
 
 /* ============================================================================

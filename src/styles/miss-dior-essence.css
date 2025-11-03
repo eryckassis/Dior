@@ -1,0 +1,288 @@
+/* ============================================================================
+   MISS DIOR ESSENCE PAGE - J'adore
+   ============================================================================ */
+
+.miss-dior-essence-page {
+  width: 100%;
+  background-color: #ffffff;
+}
+
+/* Hero Section */
+.essence-hero-section {
+  width: 100%;
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f6f3f7;
+  padding: 120px 20px 80px;
+}
+
+.essence-hero-content {
+  text-align: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.essence-hero-category {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #8b7355;
+  text-align: center;
+  margin: 0 0 20px 0;
+  letter-spacing: 2px;
+  text-transform: none;
+}
+
+.essence-hero-title {
+  font-family: "MinhaFonte", serif;
+  font-size: 96px;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 0;
+  line-height: 1.1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .essence-hero-category {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .essence-hero-title {
+    font-size: 56px;
+  }
+}
+
+@media (max-width: 480px) {
+  .essence-hero-category {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+
+  .essence-hero-title {
+    font-size: 40px;
+  }
+}
+
+/* ============================================================================
+   PRODUCTS SECTION
+   ============================================================================ */
+
+.essence-products-section {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 80px 20px;
+}
+
+.essence-products-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+/* Product Card */
+.essence-product-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  height: 100%;
+}
+
+.essence-product-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  margin-bottom: 24px;
+  flex-shrink: 0;
+}
+
+.essence-product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.essence-image-reveal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f6f3f7;
+  z-index: 2;
+  transform-origin: top;
+}
+
+/* Product Info */
+.essence-product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.essence-product-name {
+  font-family: "MinhaFonte", serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+  line-height: 1.2;
+  min-height: 58px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.essence-product-description {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+  margin: 0;
+  line-height: 1.4;
+  min-height: 40px;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Intensity - Reutilizando do miss-dior.css */
+.product-intensity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  min-height: 50px;
+  flex-shrink: 0;
+}
+
+.intensity-label {
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #999;
+  text-transform: capitalize;
+}
+
+.intensity-bars {
+  display: flex;
+  gap: 6px;
+}
+
+.bar {
+  width: 20px;
+  height: 4px;
+  background-color: #e0e0e0;
+  border-radius: 2px;
+}
+
+.bar.filled {
+  background-color: #000;
+}
+
+/* Product Footer */
+.essence-product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #e8e8e8;
+  flex-shrink: 0;
+}
+
+.essence-product-price {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+  margin: 0;
+}
+
+/* Bag Button */
+.essence-bag-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #000000;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.essence-bag-button:hover {
+  background-color: #000000;
+  transform: scale(1.05);
+}
+
+.essence-bag-button:hover svg {
+  stroke: #ffffff;
+}
+
+.essence-bag-button svg {
+  stroke: #000000;
+  transition: stroke 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .essence-products-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .essence-products-section {
+    padding: 60px 20px;
+  }
+
+  .essence-products-container {
+    gap: 24px;
+  }
+
+  .essence-product-name {
+    font-size: 20px;
+  }
+
+  .essence-product-description {
+    font-size: 13px;
+  }
+
+  .essence-product-price {
+    font-size: 15px;
+  }
+
+  .essence-bag-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .essence-bag-button svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .essence-products-container {
+    grid-template-columns: 1fr;
+  }
+
+  .essence-product-image-wrapper {
+    margin-bottom: 20px;
+  }
+}
