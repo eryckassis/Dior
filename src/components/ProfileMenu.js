@@ -56,15 +56,7 @@ export class ProfileMenu extends HTMLElement {
   }
 
   initButtons() {
-    // Inicializa botões com flair animation
-    requestAnimationFrame(() => {
-      const buttons = this.querySelectorAll('[data-block="button"]');
-      buttons.forEach((buttonElement) => {
-        if (window.Button) {
-          new window.Button(buttonElement);
-        }
-      });
-    });
+    // Botões simples sem animações
   }
 
   switchTab(tabType) {
@@ -407,8 +399,7 @@ export class ProfileMenu extends HTMLElement {
           <span>+</span>
         </button>
 
-        <button class="bag-checkout-btn" data-block="button">
-          <span class="button__flair"></span>
+        <button class="bag-checkout-btn">
           Comprar - R$ ${subtotal.toFixed(2).replace(".", ",")}
         </button>
       </div>
@@ -444,8 +435,7 @@ export class ProfileMenu extends HTMLElement {
           <div class="profile-login-section">
             <h2 class="profile-login-title">Login</h2>
             <p class="profile-login-subtitle">Para acessar a sua conta</p>
-            <button class="profile-login-btn" data-block="button">
-              <span class="button__flair"></span>
+            <button class="profile-login-btn">
               Acessar
             </button>
           </div>
@@ -453,8 +443,7 @@ export class ProfileMenu extends HTMLElement {
           <div class="profile-signup-section">
             <h3 class="profile-signup-title">Sem conta ?</h3>
             <p class="profile-signup-subtitle">Para fazer login em sua conta</p>
-            <button class="profile-signup-btn" data-block="button">
-              <span class="button__flair"></span>
+            <button class="profile-signup-btn">
               Crie a sua conta aqui
             </button>
           </div>
