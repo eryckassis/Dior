@@ -3,6 +3,7 @@ import "./styles/fragrances-submenu.css";
 import "./styles/miss-dior.css";
 import "./styles/compras-miss-dior.css";
 import "./styles/miss-dior-essence.css";
+import "./styles/profile-menu.css";
 import { router } from "./router/router.js";
 import "./pages/HomePage.js";
 import "./pages/DiorHolidayPage.js";
@@ -10,6 +11,7 @@ import "./pages/ArteDePresentearPage.js";
 import "./pages/MissDiorPage.js";
 import "./pages/ComprasMissDiorParfumPage.js";
 import "./pages/MissDiorEssencePage.js";
+import "./components/ProfileMenu.js";
 
 // ============================================================================
 // ROUTER CONFIGURATION

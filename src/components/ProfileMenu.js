@@ -1,0 +1,477 @@
+// ============================================================================
+// PROFILE MENU COMPONENT - Menu lateral de perfil
+// ============================================================================
+
+export class ProfileMenu extends HTMLElement {
+  constructor() {
+    super();
+    this.isOpen = false;
+    this.activeTab = "account"; // 'account' or 'bag'
+    this.cartItems = [
+      {
+        id: 1,
+        name: "Miss Dior Essence",
+        volume: "35 ml",
+        price: 799.0,
+        quantity: 1,
+        image: "./images/dioressence1.webp",
+      },
+      {
+        id: 2,
+        name: "Miss Dior Parfum",
+        volume: "35 ml",
+        price: 665.0,
+        quantity: 1,
+        image: "./images/parfum1.webp",
+      },
+    ];
+  }
+
+  connectedCallback() {
+    this.render();
+    this.initEventListeners();
+    this.initButtons();
+  }
+
+  initEventListeners() {
+    const closeBtn = this.querySelector(".profile-menu-close");
+    const backdrop = this.querySelector(".profile-menu-backdrop");
+    const tabs = this.querySelectorAll(".profile-tab");
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => this.close());
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener("click", () => this.close());
+    }
+
+    // Tab switching
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const tabType = tab.dataset.tab;
+        this.switchTab(tabType);
+      });
+    });
+  }
+
+  initButtons() {
+    // Inicializa botões com flair animation
+    requestAnimationFrame(() => {
+      const buttons = this.querySelectorAll('[data-block="button"]');
+      buttons.forEach((buttonElement) => {
+        if (window.Button) {
+          new window.Button(buttonElement);
+        }
+      });
+    });
+  }
+
+  switchTab(tabType) {
+    this.activeTab = tabType;
+    const tabs = this.querySelectorAll(".profile-tab");
+    const accountContent = this.querySelector(".profile-account-content");
+    const bagContent = this.querySelector(".profile-bag-content");
+
+    // Update active tab
+    tabs.forEach((tab) => {
+      if (tab.dataset.tab === tabType) {
+        tab.classList.add("active");
+      } else {
+        tab.classList.remove("active");
+      }
+    });
+
+    // Animate content switch
+    if (!window.gsap) {
+      accountContent.style.display = tabType === "account" ? "flex" : "none";
+      bagContent.style.display = tabType === "bag" ? "flex" : "none";
+      return;
+    }
+
+    const tl = window.gsap.timeline();
+
+    if (tabType === "account") {
+      tl.to(bagContent, {
+        opacity: 0,
+        y: 20,
+        duration: 0.3,
+        ease: "power2.in",
+        onComplete: () => {
+          bagContent.style.display = "none";
+          accountContent.style.display = "flex";
+        },
+      }).fromTo(
+        accountContent,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+      );
+    } else {
+      tl.to(accountContent, {
+        opacity: 0,
+        y: 20,
+        duration: 0.3,
+        ease: "power2.in",
+        onComplete: () => {
+          accountContent.style.display = "none";
+          bagContent.style.display = "flex";
+        },
+      }).fromTo(
+        bagContent,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+      );
+    }
+  }
+
+  updateQuantity(itemId, newQuantity) {
+    const item = this.cartItems.find((i) => i.id === itemId);
+    if (item && newQuantity > 0) {
+      item.quantity = newQuantity;
+      this.updateCart();
+    }
+  }
+
+  removeItem(itemId) {
+    this.cartItems = this.cartItems.filter((i) => i.id !== itemId);
+    this.updateCart();
+  }
+
+  updateCart() {
+    const bagContent = this.querySelector(".profile-bag-content");
+    if (bagContent) {
+      bagContent.innerHTML = this.renderBagContent();
+      this.initCartEventListeners();
+      this.initButtons();
+    }
+  }
+
+  initCartEventListeners() {
+    // Remove buttons
+    const removeButtons = this.querySelectorAll(".cart-item-remove");
+    removeButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const itemId = parseInt(e.currentTarget.dataset.itemId);
+        this.removeItem(itemId);
+      });
+    });
+
+    // Quantity selectors
+    const quantitySelects = this.querySelectorAll(".cart-item-quantity");
+    quantitySelects.forEach((select) => {
+      select.addEventListener("change", (e) => {
+        const itemId = parseInt(e.target.dataset.itemId);
+        const newQuantity = parseInt(e.target.value);
+        this.updateQuantity(itemId, newQuantity);
+      });
+    });
+  }
+
+  open() {
+    if (this.isOpen) return;
+
+    this.isOpen = true;
+    const menu = this.querySelector(".profile-menu-container");
+    const backdrop = this.querySelector(".profile-menu-backdrop");
+    const closeBtn = this.querySelector(".profile-menu-close");
+    const tabs = this.querySelectorAll(".profile-tab");
+    const loginSection = this.querySelector(".profile-login-section");
+    const signupSection = this.querySelector(".profile-signup-section");
+
+    if (!window.gsap) {
+      menu.style.transform = "translateX(0)";
+      backdrop.style.display = "block";
+      backdrop.style.opacity = "1";
+      backdrop.classList.add("active");
+      return;
+    }
+
+    // Previne scroll do body
+    document.body.style.overflow = "hidden";
+
+    backdrop.style.display = "block";
+    backdrop.classList.add("active");
+
+    const tl = window.gsap.timeline({
+      defaults: { ease: "power3.out" },
+    });
+
+    tl
+      // Backdrop fade in
+      .to(backdrop, {
+        opacity: 1,
+        duration: 0.4,
+      })
+      // Menu slide in
+      .to(
+        menu,
+        {
+          x: 0,
+          duration: 0.6,
+          ease: "power3.out",
+        },
+        "-=0.3"
+      )
+      // Close button appear
+      .fromTo(
+        closeBtn,
+        { opacity: 0, scale: 0, rotation: -90 },
+        {
+          opacity: 1,
+          scale: 1,
+          rotation: 0,
+          duration: 0.4,
+          ease: "back.out(1.7)",
+        },
+        "-=0.3"
+      )
+      // Tabs stagger
+      .fromTo(
+        tabs,
+        { opacity: 0, y: -20 },
+        { opacity: 1, y: 0, duration: 0.4, stagger: 0.1, ease: "power2.out" },
+        "-=0.4"
+      )
+      // Login section
+      .fromTo(
+        loginSection,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+        "-=0.3"
+      )
+      // Signup section
+      .fromTo(
+        signupSection,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+        "-=0.4"
+      );
+  }
+
+  close() {
+    if (!this.isOpen) return;
+
+    this.isOpen = false;
+    const menu = this.querySelector(".profile-menu-container");
+    const backdrop = this.querySelector(".profile-menu-backdrop");
+    const closeBtn = this.querySelector(".profile-menu-close");
+    const tabs = this.querySelectorAll(".profile-tab");
+    const activeContent =
+      this.activeTab === "account"
+        ? this.querySelector(".profile-account-content")
+        : this.querySelector(".profile-bag-content");
+
+    // Restaura scroll do body
+    document.body.style.overflow = "auto";
+    document.body.style.overflowX = "hidden";
+    backdrop.classList.remove("active");
+
+    if (!window.gsap) {
+      menu.style.transform = "translateX(100%)";
+      backdrop.style.display = "none";
+      backdrop.style.opacity = "0";
+      return;
+    }
+
+    const tl = window.gsap.timeline({
+      defaults: { ease: "power2.in" },
+      onComplete: () => {
+        backdrop.style.display = "none";
+      },
+    });
+
+    tl
+      // Content fade out
+      .to(activeContent, {
+        opacity: 0,
+        y: 20,
+        duration: 0.3,
+      })
+      .to(
+        tabs,
+        {
+          opacity: 0,
+          y: -10,
+          duration: 0.25,
+          stagger: 0.05,
+        },
+        "-=0.25"
+      )
+      // Close button disappear
+      .to(
+        closeBtn,
+        {
+          opacity: 0,
+          scale: 0,
+          rotation: 90,
+          duration: 0.3,
+          ease: "back.in(1.7)",
+        },
+        "-=0.3"
+      )
+      // Menu slide out
+      .to(
+        menu,
+        {
+          x: "100%",
+          duration: 0.5,
+          ease: "power3.in",
+        },
+        "-=0.3"
+      )
+      // Backdrop fade out
+      .to(
+        backdrop,
+        {
+          opacity: 0,
+          duration: 0.3,
+        },
+        "-=0.4"
+      );
+  }
+
+  renderBagContent() {
+    const subtotal = this.cartItems.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+
+    return `
+      <div class="profile-bag-header">
+        <div class="bag-gift-message">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+          <p>Refine seu pedido com a Arte de Presentear Dior e escreva uma mensagem personalizada.</p>
+        </div>
+      </div>
+
+      <div class="profile-bag-items">
+        ${this.cartItems
+          .map(
+            (item) => `
+          <div class="cart-item">
+            <div class="cart-item-image">
+              <img src="${item.image}" alt="${item.name}" />
+            </div>
+            <div class="cart-item-info">
+              <h3 class="cart-item-name">${item.name}</h3>
+              <p class="cart-item-volume">Volume: ${item.volume}</p>
+              <button class="cart-item-remove" data-item-id="${
+                item.id
+              }">Remover</button>
+            </div>
+            <div class="cart-item-right">
+              <p class="cart-item-price">R$ ${item.price
+                .toFixed(2)
+                .replace(".", ",")}</p>
+              <div class="cart-item-quantity-wrapper">
+                <label class="quantity-label">Quantidade</label>
+                <select class="cart-item-quantity" data-item-id="${item.id}">
+                  ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                    .map(
+                      (num) => `
+                    <option value="${num}" ${
+                        item.quantity === num ? "selected" : ""
+                      }>${num}</option>
+                  `
+                    )
+                    .join("")}
+                </select>
+              </div>
+            </div>
+          </div>
+        `
+          )
+          .join("")}
+      </div>
+
+      <div class="profile-bag-footer">
+        <div class="bag-subtotal">
+          <span class="subtotal-label">Subtotal:</span>
+          <span class="subtotal-value">R$ ${subtotal
+            .toFixed(2)
+            .replace(".", ",")}</span>
+        </div>
+
+        <div class="bag-installment">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>10x sem juros com parcelas mínimas de R$ 100.</span>
+        </div>
+
+        <button class="bag-coupon-btn">
+          Adicionar Cupom
+          <span>+</span>
+        </button>
+
+        <button class="bag-checkout-btn" data-block="button">
+          <span class="button__flair"></span>
+          Comprar - R$ ${subtotal.toFixed(2).replace(".", ",")}
+        </button>
+      </div>
+    `;
+  }
+
+  render() {
+    this.innerHTML = `
+      <!-- Backdrop -->
+      <div class="profile-menu-backdrop"></div>
+
+      <!-- Menu Container -->
+      <div class="profile-menu-container">
+        <!-- Close Button -->
+        <button class="profile-menu-close" aria-label="Fechar menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Tabs -->
+        <div class="profile-menu-tabs">
+          <button class="profile-tab active" data-tab="account">Minha Conta</button>
+          <button class="profile-tab" data-tab="bag">
+            Sacola
+            <span class="profile-tab-badge">(${this.cartItems.length})</span>
+          </button>
+        </div>
+
+        <!-- Account Content -->
+        <div class="profile-menu-content profile-account-content">
+          <div class="profile-login-section">
+            <h2 class="profile-login-title">Login</h2>
+            <p class="profile-login-subtitle">Para acessar a sua conta</p>
+            <button class="profile-login-btn" data-block="button">
+              <span class="button__flair"></span>
+              Acessar
+            </button>
+          </div>
+
+          <div class="profile-signup-section">
+            <h3 class="profile-signup-title">Sem conta ?</h3>
+            <p class="profile-signup-subtitle">Para fazer login em sua conta</p>
+            <button class="profile-signup-btn" data-block="button">
+              <span class="button__flair"></span>
+              Crie a sua conta aqui
+            </button>
+          </div>
+        </div>
+
+        <!-- Bag Content -->
+        <div class="profile-menu-content profile-bag-content" style="display: none;">
+          ${this.renderBagContent()}
+        </div>
+      </div>
+    `;
+
+    // Inicializa event listeners do carrinho após render
+    setTimeout(() => {
+      this.initCartEventListeners();
+    }, 0);
+  }
+}
+
+customElements.define("profile-menu", ProfileMenu);

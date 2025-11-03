@@ -12,6 +12,7 @@ export class AppNavigation extends HTMLElement {
     this.initFragrancesSubmenu();
     this.initFragranceIconsParallax();
     this.initSearchIconAnimation();
+    this.initProfileMenu();
   }
 
   initFragranceIconsParallax() {
@@ -129,6 +130,21 @@ export class AppNavigation extends HTMLElement {
           duration: 0.3,
           ease: "power2.in",
         });
+      });
+    });
+  }
+
+  initProfileMenu() {
+    requestAnimationFrame(() => {
+      const profileBtn = this.querySelector(
+        '.nav-icon-btn[aria-label="Perfil"]'
+      );
+      const profileMenu = document.querySelector("profile-menu");
+
+      if (!profileBtn || !profileMenu) return;
+
+      profileBtn.addEventListener("click", () => {
+        profileMenu.open();
       });
     });
   }
