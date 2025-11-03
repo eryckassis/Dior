@@ -25,8 +25,7 @@
 .bag-checkout-btn:hover {
   background-color: #1a1a1a;
 }
-  z-index: 1;
-}
+z-index: 1;
 
 .profile-menu-backdrop {
   position: fixed;
@@ -517,5 +516,143 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+  }
+}
+
+/* ============================================================================
+   COUPON MODAL
+   ============================================================================ */
+
+.coupon-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10000;
+  display: none;
+  opacity: 0;
+}
+
+.coupon-modal {
+  position: fixed;
+  top: 50%;
+  left: 72.9%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 500px;
+  padding: 40px 32px;
+  border-radius: 8px;
+  z-index: 10001;
+  display: none;
+  opacity: 0;
+}
+
+.coupon-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #000000;
+  transition: opacity 0.3s ease;
+}
+
+.coupon-modal-close:hover {
+  opacity: 0.6;
+}
+
+.coupon-modal-title {
+  font-family: "Manrope", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000000;
+  margin: 0 0 32px 0;
+  text-align: center;
+  letter-spacing: 0;
+}
+
+.coupon-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-bottom: 1px solid #d8d8d8;
+  background-color: transparent;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  color: #000000;
+  outline: none;
+  margin-bottom: 16px;
+}
+
+.coupon-input::placeholder {
+  color: #aaaaaa;
+  font-size: 14px;
+}
+
+.coupon-input:focus {
+  border-bottom-color: #000000;
+}
+
+.coupon-info-text {
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #666666;
+  margin: 0 0 24px 0;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.coupon-validate-btn {
+  width: 100%;
+  padding: 14px 32px;
+  background-color: #222222;
+  color: #ededed;
+  border: 1px solid #d8d8d8;
+  border-radius: 24px;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: none;
+}
+
+.coupon-validate-btn:hover {
+  background-color: #333333;
+  border-color: #000000;
+}
+
+.coupon-error-msg {
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e74c3c;
+  margin: 16px 0 0 0;
+  text-align: center;
+}
+
+/* Responsive Coupon Modal */
+@media (max-width: 480px) {
+  .coupon-modal {
+    padding: 32px 24px;
+  }
+
+  .coupon-modal-title {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+
+  .coupon-input {
+    font-size: 13px;
+  }
+
+  .coupon-info-text {
+    font-size: 12px;
   }
 }

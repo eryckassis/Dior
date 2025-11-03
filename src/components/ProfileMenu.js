@@ -56,7 +56,11 @@ export class ProfileMenu extends HTMLElement {
   }
 
   initButtons() {
-    // Botões simples sem animações
+    // Botão de cupom
+    const couponBtn = this.querySelector(".bag-coupon-btn");
+    if (couponBtn) {
+      couponBtn.addEventListener("click", () => this.openCouponModal());
+    }
   }
 
   switchTab(tabType) {
@@ -136,6 +140,111 @@ export class ProfileMenu extends HTMLElement {
       this.initCartEventListeners();
       this.initButtons();
     }
+  }
+
+  openCouponModal() {
+    const modal = this.querySelector(".coupon-modal");
+    const modalBackdrop = this.querySelector(".coupon-modal-backdrop");
+
+    if (!modal || !modalBackdrop) return;
+
+    modalBackdrop.style.display = "block";
+    modal.style.display = "block";
+
+    if (window.gsap) {
+      window.gsap
+        .timeline()
+        .to(modalBackdrop, {
+          opacity: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        })
+        .fromTo(
+          modal,
+          {
+            opacity: 0,
+            scale: 0.9,
+            y: -20,
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            duration: 0.4,
+            ease: "back.out(1.7)",
+          },
+          "-=0.2"
+        );
+    } else {
+      modalBackdrop.style.opacity = "1";
+      modal.style.opacity = "1";
+    }
+  }
+
+  closeCouponModal() {
+    const modal = this.querySelector(".coupon-modal");
+    const modalBackdrop = this.querySelector(".coupon-modal-backdrop");
+
+    if (!modal || !modalBackdrop) return;
+
+    if (window.gsap) {
+      window.gsap
+        .timeline({
+          onComplete: () => {
+            modal.style.display = "none";
+            modalBackdrop.style.display = "none";
+          },
+        })
+        .to(modal, {
+          opacity: 0,
+          scale: 0.9,
+          y: -20,
+          duration: 0.3,
+          ease: "power2.in",
+        })
+        .to(
+          modalBackdrop,
+          {
+            opacity: 0,
+            duration: 0.2,
+            ease: "power2.in",
+          },
+          "-=0.2"
+        );
+    } else {
+      modal.style.display = "none";
+      modalBackdrop.style.display = "none";
+      modalBackdrop.style.opacity = "0";
+      modal.style.opacity = "0";
+    }
+  }
+
+  validateCoupon() {
+    const input = this.querySelector(".coupon-input");
+    const errorMsg = this.querySelector(".coupon-error-msg");
+
+    if (!input) return;
+
+    const couponCode = input.value.trim();
+
+    if (!couponCode) {
+      errorMsg.textContent = "Por favor, insira um código de cupom";
+      errorMsg.style.display = "block";
+      return;
+    }
+
+    // Simulação de validação
+    // Aqui você adicionaria a lógica real de validação
+    errorMsg.textContent = "Cupom aplicado com sucesso!";
+    errorMsg.style.color = "#27ae60";
+    errorMsg.style.display = "block";
+
+    setTimeout(() => {
+      this.closeCouponModal();
+      input.value = "";
+      errorMsg.style.display = "none";
+      errorMsg.style.color = "#e74c3c";
+    }, 1500);
   }
 
   initCartEventListeners() {
@@ -454,12 +563,67 @@ export class ProfileMenu extends HTMLElement {
           ${this.renderBagContent()}
         </div>
       </div>
+
+      <!-- Coupon Modal -->
+      <div class="coupon-modal-backdrop"></div>
+      <div class="coupon-modal">
+        <button class="coupon-modal-close" onclick="this.getRootNode().host.closeCouponModal()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <h2 class="coupon-modal-title">Adicionar Cupom</h2>
+        
+        <input 
+          type="text" 
+          class="coupon-input" 
+          placeholder="Insira o código do cupom"
+        />
+
+        <p class="coupon-info-text">Regras e restrições podem ser aplicadas.</p>
+
+        <button class="coupon-validate-btn" onclick="this.getRootNode().host.validateCoupon()">
+          Validar
+        </button>
+
+        <p class="coupon-error-msg" style="display: none;"></p>
+      </div>
     `;
 
     // Inicializa event listeners do carrinho após render
     setTimeout(() => {
       this.initCartEventListeners();
+      this.initCouponModalListeners();
     }, 0);
+  }
+
+  initCouponModalListeners() {
+    const modalBackdrop = this.querySelector(".coupon-modal-backdrop");
+    const closeBtn = this.querySelector(".coupon-modal-close");
+    const validateBtn = this.querySelector(".coupon-validate-btn");
+    const input = this.querySelector(".coupon-input");
+
+    if (modalBackdrop) {
+      modalBackdrop.addEventListener("click", () => this.closeCouponModal());
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => this.closeCouponModal());
+    }
+
+    if (validateBtn) {
+      validateBtn.addEventListener("click", () => this.validateCoupon());
+    }
+
+    if (input) {
+      input.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          this.validateCoupon();
+        }
+      });
+    }
   }
 }
 
