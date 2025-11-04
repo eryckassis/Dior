@@ -1,6 +1,7 @@
 // ============================================================================
 // HORIZONTAL SCROLL SECTION WEB COMPONENT - Scroll horizontal com painéis
 // ============================================================================
+import { cartService } from "../services/CartService.js";
 
 export class HorizontalScrollSection extends HTMLElement {
   constructor() {
@@ -16,6 +17,7 @@ export class HorizontalScrollSection extends HTMLElement {
       this.initButtonAnimations();
       this.initPietroButton();
       this.initParallaxGallery();
+      this.initBagButtons();
     }, 100);
   }
 
@@ -159,21 +161,90 @@ export class HorizontalScrollSection extends HTMLElement {
           
           <div class="presentes-grid">
             <div class="presente-item">
-              <img src="./images/firtsProduct.webp" alt="Le Cirque des Rêves Dior - edição limitada">
-              <p class="presente-price">R$ 6.450,00</p>
-              <p class="presente-caption">Le Cirque des Rêves Dior - edição limitada</p>
+              <div class="presente-image-wrapper">
+                <img src="./images/firtsProduct.webp" alt="Le Cirque des Rêves Dior - edição limitada">
+              </div>
+              <div class="presente-info">
+                <h3 class="presente-name">Le Cirque des Rêves Dior</h3>
+                <p class="presente-description">Coffret de fragrâncias - edição limitada</p>
+                <div class="presente-intensity">
+                  <span class="presente-intensity-label">Intensity</span>
+                  <div class="presente-intensity-bars">
+                    <span class="presente-intensity-bar filled"></span>
+                    <span class="presente-intensity-bar filled"></span>
+                    <span class="presente-intensity-bar filled"></span>
+                    <span class="presente-intensity-bar filled"></span>
+                  </div>
+                </div>
+                <div class="presente-footer">
+                  <p class="presente-price">A partir de R$ 6.450</p>
+                  <button class="presente-bag-button" aria-label="Adicionar ao carrinho">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                      <line x1="3" y1="6" x2="21" y2="6"></line>
+                      <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
             
             <div class="presente-item">
-              <img src="./images/secondProduct.webp" alt="Coffret de Enfeites Perfumados">
-              <p class="presente-price">R$ 3.780,00</p>
-              <p class="presente-caption">Coffret de Enfeites Perfumados</p>
+              <div class="presente-image-wrapper">
+                <img src="./images/secondProduct.webp" alt="Coffret de Enfeites Perfumados">
+              </div>
+              <div class="presente-info">
+                <h3 class="presente-name">Coffret de Enfeites Perfumados</h3>
+                <p class="presente-description">Decoração perfumada - edição limitada</p>
+                <div class="presente-intensity">
+                  <span class="presente-intensity-label">Intensity</span>
+                  <div class="presente-intensity-bars">
+                    <span class="presente-intensity-bar filled"></span>
+                    <span class="presente-intensity-bar filled"></span>
+                    <span class="presente-intensity-bar filled"></span>
+                    <span class="presente-intensity-bar"></span>
+                  </div>
+                </div>
+                <div class="presente-footer">
+                  <p class="presente-price">A partir de R$ 3.780</p>
+                  <button class="presente-bag-button" aria-label="Adicionar ao carrinho">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                      <line x1="3" y1="6" x2="21" y2="6"></line>
+                      <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
             
             <div class="presente-item">
-              <img src="./images/thirtyproduct.webp" alt="Dior Palette Couture - edição limitada">
-              <p class="presente-price">R$ 990,00</p>
-              <p class="presente-caption">Dior Palette Couture - edição limitada</p>
+              <div class="presente-image-wrapper">
+                <img src="./images/thirtyproduct.webp" alt="Dior Palette Couture - edição limitada">
+              </div>
+              <div class="presente-info">
+                <h3 class="presente-name">Dior Palette Couture</h3>
+                <p class="presente-description">Palette de maquiagem - edição limitada</p>
+                <div class="presente-intensity">
+                  <span class="presente-intensity-label">Intensity</span>
+                  <div class="presente-intensity-bars">
+                    <span class="presente-intensity-bar filled"></span>
+                    <span class="presente-intensity-bar filled"></span>
+                    <span class="presente-intensity-bar"></span>
+                    <span class="presente-intensity-bar"></span>
+                  </div>
+                </div>
+                <div class="presente-footer">
+                  <p class="presente-price">A partir de R$ 990</p>
+                  <button class="presente-bag-button" aria-label="Adicionar ao carrinho">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                      <line x1="3" y1="6" x2="21" y2="6"></line>
+                      <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -254,8 +325,27 @@ export class HorizontalScrollSection extends HTMLElement {
             <div class="parallax-image-wrap">
               <img class="parallax-img" src="./images/produto3d.jpg" alt="Dior Collection 1" />
             </div>
-            <p class="parallax-price">R$ 1.235,00</p>
-            <p class="parallax-caption">Coffret Miss Dior Eau de Parfum - edição limitada</p>
+            <p class="parallax-product-name">Coffret Miss Dior Eau de Parfum</p>
+            <p class="parallax-product-description">Eau de Parfum - edição limitada</p>
+            <div class="parallax-intensity">
+              <span class="parallax-intensity-label">Intensity</span>
+              <div class="parallax-intensity-bars">
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar"></span>
+              </div>
+            </div>
+            <div class="parallax-footer">
+              <p class="parallax-price">A partir de R$ 1.235</p>
+              <button class="parallax-bag-button" aria-label="Adicionar ao carrinho">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
         
@@ -264,8 +354,27 @@ export class HorizontalScrollSection extends HTMLElement {
             <div class="parallax-image-wrap">
               <img class="parallax-img" src="./images/produto3d2.jpg" alt="Dior Collection 2" />
             </div>
-            <p class="parallax-price">R$ 965,00</p>
-            <p class="parallax-caption">J'adore Eau de Parfum Coffret - Edição Limitada</p>
+            <p class="parallax-product-name">J'adore Eau de Parfum Coffret</p>
+            <p class="parallax-product-description">Coffret com fragrância floral - edição limitada</p>
+            <div class="parallax-intensity">
+              <span class="parallax-intensity-label">Intensity</span>
+              <div class="parallax-intensity-bars">
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar filled"></span>
+              </div>
+            </div>
+            <div class="parallax-footer">
+              <p class="parallax-price">A partir de R$ 965</p>
+              <button class="parallax-bag-button" aria-label="Adicionar ao carrinho">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
         
@@ -274,8 +383,27 @@ export class HorizontalScrollSection extends HTMLElement {
             <div class="parallax-image-wrap">
               <img class="parallax-img" src="./images/produto3d3.jpg" alt="Dior Collection 3" />
             </div>
-            <p class="parallax-price">R$ 530,00</p>
-            <p class="parallax-caption">Diorshow Volume & Definition - edição limitada</p>
+            <p class="parallax-product-name">Diorshow Volume & Definition</p>
+            <p class="parallax-product-description">Máscara de cílios - edição limitada</p>
+            <div class="parallax-intensity">
+              <span class="parallax-intensity-label">Intensity</span>
+              <div class="parallax-intensity-bars">
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar"></span>
+                <span class="parallax-intensity-bar"></span>
+              </div>
+            </div>
+            <div class="parallax-footer">
+              <p class="parallax-price">A partir de R$ 530</p>
+              <button class="parallax-bag-button" aria-label="Adicionar ao carrinho">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -290,8 +418,27 @@ export class HorizontalScrollSection extends HTMLElement {
             <div class="parallax-image-wrap">
               <img class="parallax-img" src="./images/cofre.jpg" alt="Dior Collection 1" />
             </div>
-            <p class="parallax-price-second">R$ 1.235,00</p>
-            <p class="parallax-caption-second">Coffret Capture Duo</p>
+            <p class="parallax-product-name">Coffret Capture Duo</p>
+            <p class="parallax-product-description">Cuidado anti-idade - edição limitada</p>
+            <div class="parallax-intensity">
+              <span class="parallax-intensity-label">Intensity</span>
+              <div class="parallax-intensity-bars">
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar filled"></span>
+              </div>
+            </div>
+            <div class="parallax-footer">
+              <p class="parallax-price-second">A partir de R$ 1.235</p>
+              <button class="parallax-bag-button" aria-label="Adicionar ao carrinho">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
         
@@ -300,10 +447,27 @@ export class HorizontalScrollSection extends HTMLElement {
             <div class="parallax-image-wrap">
               <img class="parallax-img" src="./images/diorhomme.jpg" alt="Dior Collection 2" />
             </div>
-            <p class="parallax-price-second">R$ 965,00</p>
-            <p class="parallax-caption-second">Coffret Dior Homme - Edição Limitada</p>
-            <p class="parallax-caption-subtext">A eau de toilette Dior Homme e o seu travel spray em um unico coffret presente de edição limitada</p>
-            
+            <p class="parallax-product-name">Coffret Dior Homme</p>
+            <p class="parallax-product-description">A eau de toilette Dior Homme e o seu travel spray em um único coffret presente de edição limitada</p>
+            <div class="parallax-intensity">
+              <span class="parallax-intensity-label">Intensity</span>
+              <div class="parallax-intensity-bars">
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar"></span>
+              </div>
+            </div>
+            <div class="parallax-footer">
+              <p class="parallax-price-second">A partir de R$ 965</p>
+              <button class="parallax-bag-button" aria-label="Adicionar ao carrinho">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
         
@@ -312,8 +476,27 @@ export class HorizontalScrollSection extends HTMLElement {
             <div class="parallax-image-wrap">
               <img class="parallax-img" src="./images/diormaster.jpg" alt="Dior Collection 3" />
             </div>
-            <p class="parallax-price-second">R$ 530,00</p>
-            <p class="parallax-caption-second">O Ritual de Brilho Natural - Edição Limitada</p>
+            <p class="parallax-product-name">O Ritual de Brilho Natural</p>
+            <p class="parallax-product-description">Kit de maquiagem - edição limitada</p>
+            <div class="parallax-intensity">
+              <span class="parallax-intensity-label">Intensity</span>
+              <div class="parallax-intensity-bars">
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar filled"></span>
+                <span class="parallax-intensity-bar"></span>
+                <span class="parallax-intensity-bar"></span>
+              </div>
+            </div>
+            <div class="parallax-footer">
+              <p class="parallax-price-second">A partir de R$ 530</p>
+              <button class="parallax-bag-button" aria-label="Adicionar ao carrinho">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -572,6 +755,177 @@ export class HorizontalScrollSection extends HTMLElement {
       // Refresh ScrollTrigger após configurar
       ScrollTrigger.refresh();
     }, 200);
+  }
+
+  initBagButtons() {
+    requestAnimationFrame(() => {
+      // Botões da galeria parallax
+      const parallaxBagButtons = this.querySelectorAll(".parallax-bag-button");
+
+      // Dados dos 6 produtos da galeria
+      const parallaxProductsData = [
+        {
+          id: "holiday-1",
+          name: "Coffret Miss Dior Eau de Parfum - edição limitada",
+          volume: "Kit",
+          price: 1235,
+          image: "./images/produto3d.jpg",
+        },
+        {
+          id: "holiday-2",
+          name: "J'adore Eau de Parfum Coffret - Edição Limitada",
+          volume: "Kit",
+          price: 965,
+          image: "./images/produto3d2.jpg",
+        },
+        {
+          id: "holiday-3",
+          name: "Diorshow Volume & Definition - edição limitada",
+          volume: "Kit",
+          price: 530,
+          image: "./images/produto3d3.jpg",
+        },
+        {
+          id: "holiday-4",
+          name: "Coffret Capture Duo",
+          volume: "Kit",
+          price: 1235,
+          image: "./images/cofre.jpg",
+        },
+        {
+          id: "holiday-5",
+          name: "Coffret Dior Homme - Edição Limitada",
+          volume: "Kit",
+          price: 965,
+          image: "./images/diorhomme.jpg",
+        },
+        {
+          id: "holiday-6",
+          name: "O Ritual de Brilho Natural - Edição Limitada",
+          volume: "Kit",
+          price: 530,
+          image: "./images/diormaster.jpg",
+        },
+      ];
+
+      parallaxBagButtons.forEach((button, index) => {
+        const productData = parallaxProductsData[index];
+        if (!productData) return;
+
+        // Adiciona data attributes
+        button.dataset.productId = productData.id;
+        button.dataset.productName = productData.name;
+        button.dataset.productVolume = productData.volume;
+        button.dataset.productPrice = productData.price;
+        button.dataset.productImage = productData.image;
+
+        // Adiciona event listener
+        button.addEventListener("click", (e) => {
+          e.preventDefault();
+          cartService.addItem({
+            id: productData.id,
+            name: productData.name,
+            volume: productData.volume,
+            price: productData.price,
+            image: productData.image,
+          });
+          this.animateButtonFeedback(button);
+        });
+      });
+
+      // Botões da seção presentes
+      const presenteBagButtons = this.querySelectorAll(".presente-bag-button");
+
+      // Dados dos 3 produtos da seção presentes
+      const presenteProductsData = [
+        {
+          id: "presente-1",
+          name: "Le Cirque des Rêves Dior",
+          volume: "Kit",
+          price: 6450,
+          image: "./images/firtsProduct.webp",
+        },
+        {
+          id: "presente-2",
+          name: "Coffret de Enfeites Perfumados",
+          volume: "Kit",
+          price: 3780,
+          image: "./images/secondProduct.webp",
+        },
+        {
+          id: "presente-3",
+          name: "Dior Palette Couture",
+          volume: "Kit",
+          price: 990,
+          image: "./images/thirtyproduct.webp",
+        },
+      ];
+
+      presenteBagButtons.forEach((button, index) => {
+        const productData = presenteProductsData[index];
+        if (!productData) return;
+
+        // Adiciona data attributes
+        button.dataset.productId = productData.id;
+        button.dataset.productName = productData.name;
+        button.dataset.productVolume = productData.volume;
+        button.dataset.productPrice = productData.price;
+        button.dataset.productImage = productData.image;
+
+        // Adiciona event listener
+        button.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          // Adiciona o produto ao carrinho
+          cartService.addItem({
+            id: productData.id,
+            name: productData.name,
+            volume: productData.volume,
+            price: productData.price,
+            image: productData.image,
+          });
+
+          // Feedback visual
+          this.animateButtonFeedback(button);
+        });
+      });
+    });
+  }
+
+  animateButtonFeedback(button) {
+    if (!window.gsap) return;
+
+    // Animação de sucesso
+    window.gsap
+      .timeline()
+      .to(button, {
+        scale: 0.9,
+        duration: 0.1,
+        ease: "power2.in",
+      })
+      .to(button, {
+        scale: 1.1,
+        duration: 0.2,
+        ease: "back.out(2)",
+      })
+      .to(button, {
+        scale: 1,
+        duration: 0.2,
+        ease: "power2.out",
+      });
+
+    // Muda temporariamente o ícone para checkmark
+    const originalSVG = button.innerHTML;
+    button.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    `;
+
+    // Volta ao ícone original após 1 segundo
+    setTimeout(() => {
+      button.innerHTML = originalSVG;
+    }, 1000);
   }
 
   disconnectedCallback() {

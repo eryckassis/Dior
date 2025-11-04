@@ -340,6 +340,13 @@ export class MissDiorPage extends HTMLElement {
 
       const productsData = [
         {
+          id: "miss-dior-detail",
+          name: "Miss Dior Parfum",
+          volume: "35 ml",
+          price: 665,
+          image: "./images/missDiorle.webp",
+        },
+        {
           id: "miss-dior-1",
           name: "Miss Dior Parfum",
           volume: "35 ml",
@@ -556,7 +563,6 @@ Christian Dior, 1947
                 <img src="./images/missDiorle.webp" alt="Miss Dior Parfum" />
               </div>
               <div class="product-detail-content">
-                <p class="product-price">R$ 665,00</p>
                 <h3 class="product-name">Miss Dior Parfum</h3>
                 <p class="product-description">Perfume - notas florais, frutadas e amadeiradas intensas</p>
                 <div class="product-intensity">
@@ -567,6 +573,16 @@ Christian Dior, 1947
                     <span class="bar filled"></span>
                     <span class="bar filled"></span>
                   </div>
+                </div>
+                <div class="product-detail-footer">
+                  <p class="product-price">A partir de R$ 665</p>
+                  <button class="product-bag-button product-detail-bag-button" aria-label="Adicionar ao carrinho">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                      <line x1="3" y1="6" x2="21" y2="6"></line>
+                      <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>

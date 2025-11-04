@@ -781,7 +781,7 @@
 .presentes-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: -20px;
+  gap: 40px;
   margin-top: 0;
 }
 
@@ -789,32 +789,151 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  background-color: #ffffff;
+  height: 100%;
+}
+
+.presente-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  margin-bottom: 20px;
+  flex-shrink: 0;
 }
 
 .presente-item img {
   width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 1;
-  display: block;
-  margin-bottom: 20px;
+  height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+/* Presente Info */
+.presente-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  padding: 0 10px;
+}
+
+.presente-name {
+  font-family: "MinhaFonte", serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+  line-height: 1.2;
+  min-height: 58px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+}
+
+.presente-description {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+  margin: 0;
+  line-height: 1.4;
+  min-height: 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Intensity */
+.presente-intensity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  min-height: 50px;
+  flex-shrink: 0;
+}
+
+.presente-intensity-label {
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #999999;
+  text-transform: capitalize;
+}
+
+.presente-intensity-bars {
+  display: flex;
+  gap: 6px;
+}
+
+.presente-intensity-bar {
+  width: 20px;
+  height: 4px;
+  background-color: #e0e0e0;
+  border-radius: 2px;
+}
+
+.presente-intensity-bar.filled {
+  background-color: #000000;
+}
+
+/* Presente Footer */
+.presente-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #e8e8e8;
+  flex-shrink: 0;
 }
 
 .presente-price {
   font-family: "Manrope", sans-serif;
-  font-size: 11px;
-  font-weight: 800;
-  color: #666666;
-  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+  margin: 0;
+  text-align: left;
+}
+
+/* Bag Button */
+.presente-bag-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #000000;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
   padding: 0;
-  line-height: 1;
-  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.presente-bag-button:hover {
+  background-color: #000000;
+  transform: scale(1.05);
+}
+
+.presente-bag-button:hover svg {
+  stroke: #ffffff;
+}
+
+.presente-bag-button svg {
+  stroke: #000000;
+  transition: stroke 0.3s ease;
 }
 
 .presente-caption {
   font-family: "Manrope", sans-serif;
   font-size: 11.5px;
-
   font-weight: 600;
   color: #000;
   margin: 0;
@@ -838,11 +957,36 @@
   }
 
   .presentes-grid {
-    gap: 40px;
+    gap: 32px;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .presentes-title {
     font-size: 32px;
+  }
+
+  .presente-name {
+    font-size: 20px;
+    min-height: 48px;
+  }
+
+  .presente-description {
+    font-size: 13px;
+    min-height: 36px;
+  }
+
+  .presente-price {
+    font-size: 15px;
+  }
+
+  .presente-bag-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .presente-bag-button svg {
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -871,12 +1015,36 @@
 
   .presentes-grid {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 40px;
     margin-top: 0;
   }
 
-  .presente-item img {
+  .presente-image-wrapper {
     margin-bottom: 20px;
+  }
+
+  .presente-name {
+    font-size: 18px;
+    min-height: auto;
+  }
+
+  .presente-description {
+    font-size: 12px;
+    min-height: auto;
+  }
+
+  .presente-price {
+    font-size: 14px;
+  }
+
+  .presente-bag-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .presente-bag-button svg {
+    width: 16px;
+    height: 16px;
   }
 
   .presente-caption {
@@ -1036,7 +1204,7 @@
 
 .parallax-intro {
   background: #f6f3f7; /* Fundo cinza claro - Troque a cor aqui */
-  padding: 40px 0 50px; /* Reduzido para diminuir gap */
+  padding: 50px 0 100px; /* Reduzido para diminuir gap */
   width: 100%;
 }
 
@@ -1137,6 +1305,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100%;
+  padding: 0 45px;
 }
 
 /* Wrapper da imagem com altura extra para efeito parallax */
@@ -1157,32 +1327,87 @@
   display: block;
 }
 
-.parallax-price {
+/* Product Info */
+.parallax-product-name {
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 8px 0;
+  padding: 0 10px;
+  line-height: 1.3;
+  letter-spacing: 0.2px;
+  text-align: center;
+}
+
+.parallax-product-description {
   font-family: "Manrope", sans-serif;
   font-size: 11px;
-  position: relative;
-  bottom: 1rem;
-  font-weight: 800;
+  font-weight: 400;
   color: #666666;
-  margin: 0 0 8px 0;
-  padding: 0;
-  line-height: 1;
-  letter-spacing: 0.5px;
+  margin: 0 0 12px 0;
+  padding: 0 10px;
+  line-height: 1.4;
   text-align: center;
+}
+
+/* Intensity */
+.parallax-intensity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 16px 0;
+  width: 100%;
+}
+
+.parallax-intensity-label {
+  font-family: "Manrope", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  color: #999999;
+  text-transform: capitalize;
+}
+
+.parallax-intensity-bars {
+  display: flex;
+  gap: 5px;
+}
+
+.parallax-intensity-bar {
+  width: 18px;
+  height: 3px;
+  background-color: #e0e0e0;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.parallax-intensity-bar.filled {
+  background-color: #000000;
+}
+
+.parallax-price {
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+  text-align: left;
 }
 
 .parallax-price-second {
   font-family: "Manrope", sans-serif;
-  font-size: 11px;
-  position: relative;
-  bottom: 1rem;
-  font-weight: 800;
-  color: #666666;
-  margin: 0 0 8px 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
   padding: 0;
-  line-height: 1;
-  letter-spacing: 0.5px;
-  text-align: center;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+  text-align: left;
 }
 
 .parallax-caption {
@@ -1267,27 +1492,162 @@
   }
 }
 
+/* ============================================================================
+   PARALLAX FOOTER - Rodapé dos produtos com preço e botão
+   ============================================================================ */
+
+.parallax-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  width: 100%;
+}
+
+.parallax-bag-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+.parallax-bag-button svg {
+  color: #000000;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+  stroke: #000000;
+}
+
+.parallax-bag-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: #000000;
+  transition: all 0.4s ease;
+}
+
+.parallax-bag-button:hover {
+  background: #000000;
+  border-color: #000000;
+  transform: scale(1.05);
+}
+
+.parallax-bag-button:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.parallax-bag-button:hover svg {
+  color: #ffffff;
+  stroke: #ffffff;
+  transform: scale(1.1);
+}
+
+.parallax-bag-button:active {
+  transform: scale(0.95);
+}
+
+/* Responsive para botões */
 @media (max-width: 1024px) {
-  .parallax-price {
-    font-size: 15px;
-    margin: 12px 0 6px 0;
+  .parallax-footer {
+    gap: 10px;
+    padding-top: 14px;
   }
 
-  .parallax-caption {
+  .parallax-bag-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .parallax-bag-button svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .parallax-product-name {
     font-size: 12px;
-    max-width: 240px;
+  }
+
+  .parallax-product-description {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+
+  .parallax-intensity {
+    margin: 12px 0;
+  }
+
+  .parallax-price,
+  .parallax-price-second {
+    font-size: 11px;
   }
 }
 
-/* Responsive - Mobile */
 @media (max-width: 768px) {
-  .parallax-price {
-    font-size: 14px;
-    margin: 10px 0 5px 0;
+  .parallax-footer {
+    gap: 8px;
+    padding-top: 12px;
   }
 
-  .parallax-caption {
+  .parallax-bag-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .parallax-bag-button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .parallax-column {
+    padding: 0 8px;
+  }
+
+  .parallax-product-name {
     font-size: 11px;
-    max-width: 200px;
+    margin-bottom: 6px;
+  }
+
+  .parallax-product-description {
+    font-size: 9px;
+    margin-bottom: 8px;
+  }
+
+  .parallax-intensity {
+    margin: 10px 0;
+    gap: 5px;
+  }
+
+  .parallax-intensity-label {
+    font-size: 9px;
+  }
+
+  .parallax-intensity-bar {
+    width: 15px;
+    height: 2.5px;
+  }
+
+  .parallax-price,
+  .parallax-price-second {
+    font-size: 10px;
   }
 }
