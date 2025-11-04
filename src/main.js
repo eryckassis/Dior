@@ -1,10 +1,12 @@
 import "./style.css";
 import "./styles/fragrances-submenu.css";
+import "./styles/fragrances-modal.css";
 import "./styles/miss-dior.css";
 import "./styles/compras-miss-dior.css";
 import "./styles/miss-dior-essence.css";
 import "./styles/profile-menu.css";
 import "./styles/finalizar-compra.css";
+import "./styles/dior-verao.css";
 import { router } from "./router/router.js";
 import "./pages/HomePage.js";
 import "./pages/DiorHolidayPage.js";
@@ -14,7 +16,11 @@ import "./pages/ComprasMissDiorParfumPage.js";
 import "./pages/MissDiorEssencePage.js";
 import "./pages/LoginPage.js";
 import "./pages/FinalizarCompraPage.js";
+import "./pages/DiorVeraoPage.js";
 import "./components/ProfileMenu.js";
+import "./components/FragrancesModal.js";
+import "./components/AppNavigation.js";
+import "./components/FooterSection.js";
 
 // ============================================================================
 // ROUTER CONFIGURATION
@@ -29,6 +35,7 @@ router.register("/compras-miss-dior-parfum", "compras-miss-dior-parfum-page");
 router.register("/miss-dior-essence", "miss-dior-essence-page");
 router.register("/login", "login-page");
 router.register("/finalizar-compra", "finalizar-compra-page");
+router.register("/dior-verao", "dior-verao-page");
 
 // ============================================================================
 // BUTTON ANIMATION - Efeito Hover com Flair
@@ -378,6 +385,7 @@ const timing = {
 
 class DOMElements {
   constructor() {
+    console.log("DOMElements: Looking for menu elements...");
     this.menuBtn = this.getElement("#menu-btn");
     this.dropdown = this.getElement("#dropdown");
     this.dropdownContent = this.getElement(".dropdown__content");
@@ -387,6 +395,8 @@ class DOMElements {
     this.navLogo = this.getElement(".navigation__logo");
     this.navRight = this.getElement(".navigation__right");
     this.menuButtons = this.getAllElements(".dropdown__button");
+    console.log("DOMElements: menuBtn found?", !!this.menuBtn);
+    console.log("DOMElements: dropdown found?", !!this.dropdown);
   }
 
   getElement(selector) {
@@ -991,8 +1001,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inicializa features na primeira carga
   initializePageFeatures();
 
-  // Reinicializa features quando mudar de página
-  window.addEventListener("page-loaded", initializePageFeatures);
+  // Reinicializa features quando a página mudar via SPA
+  window.addEventListener("page-loaded", () => {
+    console.log("Page loaded event - reinitializing menu");
+    // Aguarda o DOM ser atualizado
+    setTimeout(() => {
+      Application.initialize();
+    }, 200);
+  });
 });
 
 // ============================================================================

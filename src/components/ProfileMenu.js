@@ -384,8 +384,10 @@ export class ProfileMenu extends HTMLElement {
     const removeButtons = this.querySelectorAll(".cart-item-remove");
     removeButtons.forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        const itemId = parseInt(e.currentTarget.dataset.itemId);
-        this.removeItem(itemId);
+        const itemId = e.currentTarget.dataset.itemId;
+        // Tenta converter para número, se falhar mantém como string
+        const id = isNaN(itemId) ? itemId : parseInt(itemId);
+        this.removeItem(id);
       });
     });
 
@@ -393,9 +395,11 @@ export class ProfileMenu extends HTMLElement {
     const quantitySelects = this.querySelectorAll(".cart-item-quantity");
     quantitySelects.forEach((select) => {
       select.addEventListener("change", (e) => {
-        const itemId = parseInt(e.target.dataset.itemId);
+        const itemId = e.target.dataset.itemId;
+        // Tenta converter para número, se falhar mantém como string
+        const id = isNaN(itemId) ? itemId : parseInt(itemId);
         const newQuantity = parseInt(e.target.value);
-        this.updateQuantity(itemId, newQuantity);
+        this.updateQuantity(id, newQuantity);
       });
     });
   }

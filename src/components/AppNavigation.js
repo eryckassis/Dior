@@ -19,6 +19,7 @@ export class AppNavigation extends HTMLElement {
     this.initFragranceIconsParallax();
     this.initSearchIconAnimation();
     this.initProfileMenu();
+    this.initFragrancesModal();
     this.updateBagBadge();
 
     // Adiciona listener para mudanças no carrinho
@@ -184,6 +185,41 @@ export class AppNavigation extends HTMLElement {
         });
       }
     });
+  }
+
+  initFragrancesModal() {
+    // Aguarda um pouco mais para garantir que o modal está no DOM
+    setTimeout(() => {
+      const fragrancesBtn = this.querySelector(
+        '[data-fragrances-trigger="true"]'
+      );
+      const fragrancesModal = document.querySelector("fragrances-modal");
+
+      console.log("Initializing fragrances modal", {
+        button: fragrancesBtn,
+        modal: fragrancesModal,
+        modalInDom: !!fragrancesModal,
+      });
+
+      if (!fragrancesBtn) {
+        console.error("Fragrances button not found");
+        return;
+      }
+
+      if (!fragrancesModal) {
+        console.error("Fragrances modal element not found in DOM");
+        return;
+      }
+
+      console.log("Setting up fragrances modal click handler");
+
+      fragrancesBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("Fragrances button clicked, opening modal");
+        fragrancesModal.open();
+      });
+    }, 100);
   }
 
   initFragrancesSubmenu() {
@@ -510,6 +546,7 @@ export class AppNavigation extends HTMLElement {
               class="dropdown__button"
               role="button"
               tabindex="0"
+              data-fragrances-trigger="true"
             >
               <span>Fragâncias</span>
             </a>

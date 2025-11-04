@@ -1,0 +1,338 @@
+/* ============================================================================
+   DIOR VERÃO PAGE - Estilos da página Descubra
+   ============================================================================ */
+
+/* Import Miss Dior styles for video section and glass buttons */
+@import "./miss-dior.css";
+@import "./miss-dior-essence.css";
+
+/* Section Spacing */
+.section-spacing {
+  margin-top: 5px;
+  margin-bottom: 80px;
+}
+
+.space-section {
+  height: 1px;
+}
+
+.dior-verao-main {
+  width: 100%;
+  min-height: 100vh;
+  background: #f6f3f7;
+}
+
+/* Hero Section */
+.dior-verao-hero {
+  width: 100%;
+  height: 30vh;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.dior-verao-hero-content {
+  text-align: center;
+  z-index: 1;
+  padding: 0 20px;
+}
+
+.dior-verao-title {
+  font-family: "MinhaFonte", sans-serif;
+  font-size: 90px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0 0 20px 0;
+  letter-spacing: -1px;
+}
+.dior-verao-title-second {
+  font-family: "MinhaFonte", sans-serif;
+  font-size: 4rem;
+  font-weight: 500;
+  color: #000000;
+  margin: 0 0 10px 0;
+  letter-spacing: -1px;
+}
+.dior-verao-title-sec {
+
+
+.dior-verao-subtitle {
+  font-family: "Hellix", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: #666666;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.miss-dior-main-title-second {
+  font-family: "MinhaFonte", sans-serif;
+  font-size: 5rem;
+  font-weight: 500;
+}
+
+.miss-dior-main-description-second {
+  font-family: "Hellix", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+/* Content Section */
+.dior-verao-content {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.dior-verao-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Grid */
+.dior-verao-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+/* Card */
+.dior-verao-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dior-verao-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.dior-verao-card-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.dior-verao-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.dior-verao-card:hover .dior-verao-card-image img {
+  transform: scale(1.05);
+}
+
+.dior-verao-card-content {
+  padding: 30px;
+}
+
+.dior-verao-card-title {
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0 0 15px 0;
+  letter-spacing: -0.5px;
+}
+
+.dior-verao-card-text {
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #666666;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+}
+
+.dior-verao-card-link {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  text-decoration: none;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 2px;
+  display: inline-block;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.dior-verao-card-link:hover {
+  color: #b8860b;
+  border-color: #b8860b;
+}
+
+/* Featured Section */
+.dior-verao-featured {
+  padding: 100px 0;
+  background: #f8f8f8;
+}
+
+.dior-verao-featured-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.dior-verao-featured-text {
+  padding-right: 40px;
+}
+
+.dior-verao-featured-title {
+  font-family: "Manrope", sans-serif;
+  font-size: 42px;
+  font-weight: 300;
+  color: #000000;
+  margin: 0 0 30px 0;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.dior-verao-featured-description {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #666666;
+  line-height: 1.8;
+  margin: 0 0 40px 0;
+}
+
+.dior-verao-featured-cta {
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+  background: #000000;
+  padding: 16px 40px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 30px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.dior-verao-featured-cta:hover {
+  background: #b8860b;
+  transform: translateY(-2px);
+}
+
+.dior-verao-featured-image {
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dior-verao-featured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .dior-verao-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .dior-verao-featured-content {
+    gap: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dior-verao-title {
+    font-size: 36px;
+  }
+
+  .dior-verao-subtitle {
+    font-size: 16px;
+  }
+
+  .dior-verao-container {
+    padding: 0 20px;
+  }
+
+  .dior-verao-content {
+    padding: 60px 0;
+  }
+
+  .dior-verao-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .dior-verao-featured {
+    padding: 60px 0;
+  }
+
+  .dior-verao-featured-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .dior-verao-featured-text {
+    padding-right: 0;
+  }
+
+  .dior-verao-featured-title {
+    font-size: 32px;
+  }
+
+  .dior-verao-featured-image {
+    height: 400px;
+  }
+
+  .dior-verao-card-image {
+    height: 250px;
+  }
+
+  .dior-verao-card-content {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dior-verao-hero {
+    height: 50vh;
+    min-height: 350px;
+  }
+
+  .dior-verao-title {
+    font-size: 28px;
+  }
+
+  .dior-verao-subtitle {
+    font-size: 14px;
+  }
+
+  .dior-verao-card-title {
+    font-size: 20px;
+  }
+
+  .dior-verao-card-text {
+    font-size: 14px;
+  }
+
+  .dior-verao-featured-title {
+    font-size: 28px;
+  }
+
+  .dior-verao-featured-description {
+    font-size: 15px;
+  }
+
+  .dior-verao-featured-image {
+    height: 300px;
+  }
+}
