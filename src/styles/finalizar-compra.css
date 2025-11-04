@@ -65,11 +65,11 @@
 }
 
 .checkout-section-title {
-  font-family: "Dior", serif;
+  font-family: "Hellix", sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: 0.05em;
-  color: #000000;
+  color: #222;
   margin: 0 0 25px;
   text-transform: uppercase;
 }
@@ -93,7 +93,7 @@
 }
 
 .form-group label {
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Hellix", sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
   color: #333333;
@@ -102,7 +102,7 @@
 
 .form-group input,
 .form-group select {
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Hellix", sans-serif;
   font-size: 1rem;
   padding: 14px 16px;
   border: 1px solid #d0d0d0;
@@ -131,6 +131,55 @@
   background-position: right 16px center;
   background-size: 12px;
   padding-right: 40px;
+}
+
+/* Validation States for Contact Form */
+.form-group input.valid,
+.form-group select.valid {
+  border-color: #28a745;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%2328a745' d='M13.5 2L6 9.5 2.5 6 1 7.5l5 5 9-9z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.form-group select.valid {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23000000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%2328a745' d='M13.5 2L6 9.5 2.5 6 1 7.5l5 5 9-9z'/%3E%3C/svg%3E");
+  background-position: right 16px center, right 45px center;
+  background-size: 12px, 16px;
+  padding-right: 70px;
+}
+
+.form-group input.invalid,
+.form-group select.invalid {
+  border-color: #dc3545;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23dc3545' d='M2 2l12 12m0-12L2 14' stroke='%23dc3545' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.form-group select.invalid {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23000000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23dc3545' d='M2 2l12 12m0-12L2 14' stroke='%23dc3545' stroke-width='2'/%3E%3C/svg%3E");
+  background-position: right 16px center, right 45px center;
+  background-size: 12px, 16px;
+  padding-right: 70px;
+}
+
+.form-group input.valid:focus,
+.form-group select.valid:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+.form-group input.invalid:focus,
+.form-group select.invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
 }
 
 /* Payment Methods */
@@ -168,7 +217,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Hellix", sans-serif;
   font-size: 1rem;
   font-weight: 500;
   color: #000000;
@@ -443,13 +492,12 @@
   margin: 0;
   background: #222;
   color: #ffffff;
-  border: none;
-  border-radius: 0;
   font-family: "Hellix", sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -464,9 +512,146 @@
 }
 
 .cart-footer {
-  padding: 25px 20px;
+  padding: 0;
   background: #ffffff;
   border-top: 1px solid #e0e0e0;
+}
+
+/* Shipping Options */
+.shipping-options {
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.shipping-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #ffffff;
+}
+
+.shipping-option:hover {
+  border-color: #000000;
+  background: #fafafa;
+}
+
+.shipping-option input[type="radio"] {
+  margin-right: 12px;
+  accent-color: #000000;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.shipping-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.shipping-type {
+  font-family: "Hellix", "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.shipping-time {
+  font-family: "Hellix", "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.8rem;
+  color: #666666;
+}
+
+.shipping-price {
+  font-family: "Hellix", "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #27ae60;
+  flex-shrink: 0;
+}
+
+/* Order Summary Totals */
+.order-summary-totals {
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-family: "Hellix", "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.9rem;
+  color: #333333;
+}
+
+.summary-row span:first-child {
+  color: #666666;
+}
+
+.summary-row span:last-child {
+  font-weight: 500;
+  color: #000000;
+}
+
+.summary-row.summary-total {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #000000;
+  padding-top: 12px;
+}
+
+.summary-row.summary-total span {
+  color: #000000;
+}
+
+.summary-divider {
+  height: 1px;
+  background: #e0e0e0;
+  margin: 12px 0;
+}
+
+.free-text {
+  color: #27ae60 !important;
+  font-weight: 600 !important;
+}
+
+.checkout-submit-btn {
+  width: 100%;
+  padding: 16px;
+  margin: 20px;
+  margin-bottom: 20px;
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-family: "Hellix", "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: calc(100% - 40px);
+}
+
+.checkout-submit-btn:hover {
+  background: #333333;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.checkout-submit-btn:active {
+  transform: translateY(0);
 }
 
 .checkout-security {
@@ -603,4 +788,721 @@
     width: 100%;
     max-width: 120px;
   }
+}
+
+/* ============================================================================
+   PAYMENT MODAL STYLES
+   ============================================================================ */
+
+.payment-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.payment-modal-backdrop.active {
+  display: block;
+}
+
+.payment-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  background: #ffffff;
+  z-index: 9999;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Variáveis CSS para animação GSAP */
+  --scrollbar-opacity: 0.7;
+  --scrollbar-scale: 1;
+}
+
+.payment-modal.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Custom Scrollbar para o Modal */
+.payment-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.payment-modal::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 0 12px 12px 0;
+}
+
+.payment-modal::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 10px;
+  opacity: var(--scrollbar-opacity);
+  transform: scaleY(var(--scrollbar-scale));
+  transition: background 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.payment-modal::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+  transform: scaleY(1.1);
+}
+
+/* Firefox Scrollbar */
+.payment-modal {
+  scrollbar-width: thin;
+  scrollbar-color: #000000 #f1f1f1;
+}
+
+.payment-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  transition: transform 0.2s ease;
+  z-index: 10;
+}
+
+.payment-modal-close:hover {
+  transform: rotate(90deg);
+}
+
+.payment-modal-close svg {
+  width: 24px;
+  height: 24px;
+}
+
+.payment-modal-content {
+  padding: 60px 40px 40px;
+}
+
+.add-voucher-link {
+  display: inline-block;
+  font-family: "Hellix", sans-serif;
+  font-size: 0.9rem;
+  color: #000;
+  text-decoration: underline;
+  margin-bottom: 30px;
+  transition: opacity 0.2s ease;
+}
+
+.add-voucher-link:hover {
+  opacity: 0.7;
+}
+
+/* Payment Method Selection */
+.payment-method-selection {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.payment-method-radio {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #fff;
+}
+
+.payment-method-radio:hover {
+  border-color: #000;
+}
+
+.payment-method-radio input[type="radio"] {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.payment-method-radio input[type="radio"]:checked + span {
+  font-weight: 600;
+}
+
+.payment-method-radio input[type="radio"]:checked ~ * {
+  opacity: 1;
+}
+
+.payment-method-radio span {
+  font-family: "Hellix", sans-serif;
+  font-size: 0.95rem;
+  color: #000;
+  flex: 1;
+}
+
+.payment-method-radio svg {
+  width: 20px;
+  height: 20px;
+  color: #666;
+}
+
+/* Card Brand Selector */
+.card-brand-selector {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.card-brand-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #fff;
+}
+
+.card-brand-option:hover {
+  border-color: #000;
+}
+
+.card-brand-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card-brand-option input[type="radio"]:checked + img {
+  opacity: 1;
+}
+
+.card-brand-option img {
+  width: 100%;
+  height: 30px;
+  object-fit: contain;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.card-brand-option input[type="radio"]:checked ~ * {
+  border-color: #000;
+}
+
+/* Security Badge */
+.security-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Hellix", sans-serif;
+  font-size: 0.85rem;
+  color: #28a745;
+  margin-bottom: 25px;
+}
+
+.security-badge svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Form Fields */
+.payment-modal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  display: block;
+  font-family: "Hellix", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  padding: 12px 15px;
+  font-family: "Hellix", sans-serif;
+  font-size: 0.95rem;
+  color: #000;
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.form-field input::placeholder {
+  color: #999;
+}
+
+.form-field small {
+  display: block;
+  font-family: "Hellix", sans-serif;
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Validation States */
+.form-field input.valid,
+.form-field select.valid {
+  border-color: #28a745;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%2328a745' d='M13.5 2L6 9.5 2.5 6 1 7.5l5 5 9-9z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.form-field input.invalid,
+.form-field select.invalid {
+  border-color: #dc3545;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23dc3545' d='M2 2l12 12m0-12L2 14' stroke='%23dc3545' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.form-field input.valid:focus,
+.form-field select.valid:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+.form-field input.invalid:focus,
+.form-field select.invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Checkbox */
+.form-checkbox {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  margin: 25px 0;
+}
+
+.form-checkbox input[type="checkbox"] {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.form-checkbox label {
+  font-family: "Hellix", sans-serif;
+  font-size: 0.9rem;
+  color: #000;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+/* Two Cards Option */
+.two-cards-option {
+  padding: 15px 20px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "Hellix", sans-serif;
+  font-size: 0.9rem;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.two-cards-option:hover {
+  background: #f0f0f0;
+  font-family: "Hellix", sans-serif;
+}
+
+/* reCAPTCHA Notice */
+.recaptcha-notice {
+  font-family: "Hellix", sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: #999;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.recaptcha-notice a {
+  color: #000;
+  text-decoration: underline;
+}
+
+.recaptcha-notice a:hover {
+  opacity: 0.7;
+}
+
+/* Pix Section */
+.pix-section {
+  padding: 40px 20px;
+  text-align: center;
+  background: #f8f8f8;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+
+.pix-section p {
+  font-family: "Hellix", sans-serif;
+  font-size: 0.9rem;
+  color: #000;
+  margin: 0;
+}
+
+/* Submit Button */
+.payment-submit-btn {
+  width: 100%;
+  padding: 18px 30px;
+  background: #000;
+  color: #fff;
+  font-family: "Hellix", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.payment-submit-btn:hover:not(.disabled) {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.payment-submit-btn:active:not(.disabled) {
+  transform: translateY(0);
+}
+
+.payment-submit-btn.disabled,
+.payment-submit-btn:disabled {
+  background: #ccc;
+  color: #888;
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
+.payment-submit-btn.disabled:hover,
+.payment-submit-btn:disabled:hover {
+  background: #ccc;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive Payment Modal */
+@media (max-width: 768px) {
+  .payment-modal {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .payment-modal-content {
+    padding: 60px 25px 40px;
+  }
+
+  .card-brand-selector {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-method-selection {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-modal-content {
+    padding: 50px 20px 30px;
+  }
+
+  .card-brand-selector {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .card-brand-option {
+    padding: 12px;
+  }
+
+  .payment-submit-btn {
+    padding: 16px 25px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ============================================================================
+   GIFT OPTIONS SECTION
+   ============================================================================ */
+
+.gift-subtitle {
+  font-family: "Hellix", sans-serif;
+  font-size: 0.95rem;
+  color: #666;
+  margin: 20px 0 10px;
+  font-weight: 500;
+}
+
+.gift-description {
+  font-family: "Hellix", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.gift-form {
+  margin-top: 20px;
+}
+
+.gift-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.gift-option {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.gift-option:hover {
+  border-color: #000;
+}
+
+.gift-option input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #000;
+}
+
+.gift-option-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.gift-option input[type="radio"]:checked ~ .gift-option-content {
+  opacity: 1;
+}
+
+.gift-option-text {
+  font-family: "Hellix", sans-serif;
+  font-size: 0.95rem;
+  color: #000;
+  font-weight: 500;
+}
+
+.gift-option-image {
+  width: 80px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gift-option-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(30%);
+  transition: filter 0.3s ease;
+}
+
+.gift-option
+  input[type="radio"]:checked
+  ~ .gift-option-content
+  .gift-option-image
+  img {
+  filter: grayscale(0%);
+}
+
+.gift-option-image svg {
+  width: 100%;
+  height: 100%;
+  color: #333;
+}
+
+/* Gift Message Section */
+.gift-message-section {
+  margin-top: 30px;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 20px;
+}
+
+.gift-message-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  background: transparent;
+  border: none;
+  font-family: "Hellix", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gift-message-toggle:hover {
+  color: #666;
+}
+
+.gift-message-toggle svg {
+  transition: transform 0.3s ease;
+}
+
+.gift-message-toggle.active svg {
+  transform: rotate(180deg);
+}
+
+.gift-message-content {
+  padding: 20px 0;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gift-message-info {
+  font-family: "Hellix", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.gift-message-content textarea {
+  width: 100%;
+  padding: 15px;
+  font-family: "Hellix", sans-serif;
+  font-size: 0.95rem;
+  color: #000;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 120px;
+  transition: all 0.3s ease;
+}
+
+.gift-message-content textarea:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 0 1px #000;
+}
+
+.gift-message-content textarea::placeholder {
+  color: #999;
+}
+
+.character-counter {
+  text-align: right;
+  font-family: "Hellix", sans-serif;
+  font-size: 0.85rem;
+  color: #999;
+  margin-top: 5px;
+}
+
+.character-count {
+  color: #000;
+  font-weight: 600;
+}
+
+.validate-message-btn {
+  width: 100%;
+  padding: 15px;
+  background: #000;
+  color: #fff;
+  font-family: "Hellix", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.validate-message-btn:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.validate-message-btn:active {
+  transform: translateY(0);
 }

@@ -4,6 +4,7 @@
 
 import "../components/AppNavigation.js";
 import "../components/FooterSection.js";
+import { cartService } from "../services/CartService.js";
 
 export class MissDiorEssencePage extends HTMLElement {
   constructor() {
@@ -14,6 +15,7 @@ export class MissDiorEssencePage extends HTMLElement {
     this.render();
     this.initVideoControls();
     this.initAnimations();
+    this.initBagButtons();
   }
 
   disconnectedCallback() {
@@ -178,6 +180,180 @@ export class MissDiorEssencePage extends HTMLElement {
     });
   }
 
+  initBagButtons() {
+    requestAnimationFrame(() => {
+      const bagButtons = this.querySelectorAll(".essence-bag-button");
+
+      // Dados dos produtos (mapeamento por índice)
+      const productsData = [
+        {
+          id: "essence-1",
+          name: "Miss Dior",
+          volume: "35 ml",
+          price: 665,
+          image: "./images/dioressence1.webp",
+        },
+        {
+          id: "essence-2",
+          name: "Miss Dior Essence",
+          volume: "50 ml",
+          price: 765,
+          image: "./images/dioressence2.webp",
+        },
+        {
+          id: "essence-3",
+          name: "Miss Dior Essence",
+          volume: "75 ml",
+          price: 899,
+          image: "./images/dioressence3.webp",
+        },
+        {
+          id: "essence-4",
+          name: "Miss Dior Parfum",
+          volume: "35 ml",
+          price: 715,
+          image: "./images/parfum1.webp",
+        },
+        {
+          id: "essence-5",
+          name: "Miss Dior Blooming Bouquet",
+          volume: "50 ml",
+          price: 689,
+          image: "./images/dioressence5.webp",
+        },
+        {
+          id: "essence-6",
+          name: "Mini Miss Maximum Dior",
+          volume: "3x 7.5 ml",
+          price: 545,
+          image: "./images/dioressence6.webp",
+        },
+        {
+          id: "essence-7",
+          name: "O ritual de beleza Miss Dior - Edição Limitada",
+          volume: "Kit",
+          price: 1299,
+          image: "./images/dioressence7.webp",
+        },
+        {
+          id: "essence-8",
+          name: "Coffret Miss Dior Eau de Parfum - Edição Limitada",
+          volume: "Kit",
+          price: 899,
+          image: "./images/dioressence8.webp",
+        },
+        {
+          id: "essence-9",
+          name: "Coffret Miss Dior Blooming Bouquet - Edição Limitada",
+          volume: "Kit",
+          price: 849,
+          image: "./images/dioressence9.webp",
+        },
+        {
+          id: "essence-10",
+          name: "Miss Dior Rose N'Roses",
+          volume: "50 ml",
+          price: 719,
+          image: "./images/dioressence10.webp",
+        },
+        {
+          id: "essence-11",
+          name: "Miss Dior Parfum Mini Miss Parfum Solide",
+          volume: "Kit",
+          price: 589,
+          image: "./images/dioressence11.webp",
+        },
+        {
+          id: "essence-12",
+          name: "Miss Dior Rose N'Roses Roller Pearl",
+          volume: "20 ml",
+          price: 429,
+          image: "./images/dioressence12.webp",
+        },
+        {
+          id: "essence-13",
+          name: "Miss Dior Eau de Parfum Mini Miss Parfum Solide",
+          volume: "Kit",
+          price: 625,
+          image: "./images/dioressence13.webp",
+        },
+        {
+          id: "essence-14",
+          name: "Miss Dior Óleo Corporal esfoliante com Extrato de Rosa",
+          volume: "200 ml",
+          price: 389,
+          image: "./images/dioressence14.webp",
+        },
+      ];
+
+      bagButtons.forEach((button, index) => {
+        const productData = productsData[index];
+
+        if (!productData) return;
+
+        // Adiciona data attributes
+        button.dataset.productId = productData.id;
+        button.dataset.productName = productData.name;
+        button.dataset.productVolume = productData.volume;
+        button.dataset.productPrice = productData.price;
+        button.dataset.productImage = productData.image;
+
+        // Adiciona event listener
+        button.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          // Adiciona o produto ao carrinho
+          cartService.addItem({
+            id: productData.id,
+            name: productData.name,
+            volume: productData.volume,
+            price: productData.price,
+            image: productData.image,
+          });
+
+          // Feedback visual
+          this.animateButtonFeedback(button);
+        });
+      });
+    });
+  }
+
+  animateButtonFeedback(button) {
+    if (!window.gsap) return;
+
+    // Animação de sucesso
+    window.gsap
+      .timeline()
+      .to(button, {
+        scale: 0.9,
+        duration: 0.1,
+        ease: "power2.in",
+      })
+      .to(button, {
+        scale: 1.1,
+        duration: 0.2,
+        ease: "back.out(2)",
+      })
+      .to(button, {
+        scale: 1,
+        duration: 0.2,
+        ease: "power2.out",
+      });
+
+    // Muda temporariamente o ícone para checkmark
+    const originalSVG = button.innerHTML;
+    button.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    `;
+
+    // Volta ao ícone original após 1 segundo
+    setTimeout(() => {
+      button.innerHTML = originalSVG;
+    }, 1000);
+  }
+
   render() {
     this.innerHTML = `
       <div class="all-content" id="all-content" role="main">
@@ -312,7 +488,15 @@ export class MissDiorEssencePage extends HTMLElement {
                   </div>
                   <div class="essence-product-footer">
                     <p class="essence-product-price">A partir de R$ 665</p>
-                    <button class="essence-bag-button" aria-label="Adicionar ao carrinho">
+                    <button 
+                      class="essence-bag-button" 
+                      aria-label="Adicionar ao carrinho"
+                      data-product-id="essence-1"
+                      data-product-name="Miss Dior"
+                      data-product-volume="35 ml"
+                      data-product-price="665"
+                      data-product-image="./images/dioressence1.webp"
+                    >
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                         <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -347,7 +531,15 @@ export class MissDiorEssencePage extends HTMLElement {
                   </div>
                   <div class="essence-product-footer">
                     <p class="essence-product-price">A partir de R$ 765</p>
-                    <button class="essence-bag-button" aria-label="Adicionar ao carrinho">
+                    <button 
+                      class="essence-bag-button" 
+                      aria-label="Adicionar ao carrinho"
+                      data-product-id="essence-2"
+                      data-product-name="Miss Dior Essence"
+                      data-product-volume="50 ml"
+                      data-product-price="765"
+                      data-product-image="./images/dioressence2.webp"
+                    >
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                         <line x1="3" y1="6" x2="21" y2="6"></line>

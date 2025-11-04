@@ -1,10 +1,16 @@
 // ============================================================================
 // NAVIGATION WEB COMPONENT - Reutiliza a navegação existente
 // ============================================================================
+import { cartService } from "../services/CartService.js";
 
 export class AppNavigation extends HTMLElement {
   constructor() {
     super();
+
+    // Listener para atualizar o badge quando o carrinho mudar
+    this.cartListener = () => {
+      this.updateBagBadge();
+    };
   }
 
   connectedCallback() {
@@ -13,6 +19,24 @@ export class AppNavigation extends HTMLElement {
     this.initFragranceIconsParallax();
     this.initSearchIconAnimation();
     this.initProfileMenu();
+    this.updateBagBadge();
+
+    // Adiciona listener para mudanças no carrinho
+    cartService.addListener(this.cartListener);
+  }
+
+  disconnectedCallback() {
+    // Remove listener do carrinho
+    cartService.removeListener(this.cartListener);
+  }
+
+  updateBagBadge() {
+    const badge = this.querySelector(".bag-badge");
+    if (badge) {
+      const totalItems = cartService.getTotalItems();
+      badge.textContent = totalItems;
+      badge.style.display = totalItems > 0 ? "flex" : "none";
+    }
   }
 
   initFragranceIconsParallax() {
@@ -139,13 +163,26 @@ export class AppNavigation extends HTMLElement {
       const profileBtn = this.querySelector(
         '.nav-icon-btn[aria-label="Perfil"]'
       );
+      const bagBtn = this.querySelector(
+        '.nav-icon-btn[aria-label="Sacola de compras"]'
+      );
       const profileMenu = document.querySelector("profile-menu");
 
-      if (!profileBtn || !profileMenu) return;
+      if (!profileMenu) return;
 
-      profileBtn.addEventListener("click", () => {
-        profileMenu.open();
-      });
+      // Botão de perfil abre na aba "account"
+      if (profileBtn) {
+        profileBtn.addEventListener("click", () => {
+          profileMenu.open("account");
+        });
+      }
+
+      // Botão de sacola abre na aba "bag"
+      if (bagBtn) {
+        bagBtn.addEventListener("click", () => {
+          profileMenu.open("bag");
+        });
+      }
     });
   }
 
@@ -338,12 +375,12 @@ export class AppNavigation extends HTMLElement {
                 <circle cx="12" cy="7" r="4"></circle>
               </svg>
             </button>
-            <button class="nav-icon-btn" aria-label="Sacola de compras">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <path d="M16 10a4 4 0 0 1-8 0"></path>
+            <button class="nav-icon-btn bag-btn-container" aria-label="Sacola de compras">
+              <svg width="21" height="21" viewBox="0 0 21 21" fill="none" stroke="currentColor"   xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.5 6.5H4.5L3.5 17.5H16.5L15.5 6.5Z"/>
+                <path d="M7 6.5V5.5C7 4.83696 7.26339 4.20107 7.73223 3.73223C8.20107 3.26339 8.83696 3 9.5 3H10.5C11.163 3 11.7989 3.26339 12.2678 3.73223C12.7366 4.20107 13 4.83696 13 5.5V6.5"/>
               </svg>
+              <span class="bag-badge">0</span>
             </button>
           </div>
         </div>

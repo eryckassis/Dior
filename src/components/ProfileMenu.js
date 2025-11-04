@@ -400,7 +400,7 @@ export class ProfileMenu extends HTMLElement {
     });
   }
 
-  open() {
+  open(initialTab = "account") {
     if (this.isOpen) return;
 
     this.isOpen = true;
@@ -410,6 +410,13 @@ export class ProfileMenu extends HTMLElement {
     const tabs = this.querySelectorAll(".profile-tab");
     const loginSection = this.querySelector(".profile-login-section");
     const signupSection = this.querySelector(".profile-signup-section");
+
+    // Muda para a aba especificada
+    if (initialTab === "bag") {
+      this.switchTab("bag");
+    } else {
+      this.switchTab("account");
+    }
 
     if (!window.gsap) {
       menu.style.transform = "translateX(0)";

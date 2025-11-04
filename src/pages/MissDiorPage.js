@@ -4,6 +4,7 @@
 
 import "../components/AppNavigation.js";
 import "../components/FooterSection.js";
+import { cartService } from "../services/CartService.js";
 
 export class MissDiorPage extends HTMLElement {
   constructor() {
@@ -14,6 +15,7 @@ export class MissDiorPage extends HTMLElement {
     this.render();
     this.initAnimations();
     this.initVideoControls();
+    this.initBagButton();
   }
 
   disconnectedCallback() {
@@ -332,6 +334,100 @@ export class MissDiorPage extends HTMLElement {
     });
   }
 
+  initBagButton() {
+    requestAnimationFrame(() => {
+      const bagButtons = this.querySelectorAll(".product-bag-button");
+
+      const productsData = [
+        {
+          id: "miss-dior-1",
+          name: "Miss Dior Parfum",
+          volume: "35 ml",
+          price: 665,
+          image: "./images/parfum1.webp",
+        },
+        {
+          id: "miss-dior-2",
+          name: "Miss Dior",
+          volume: "50 ml",
+          price: 615,
+          image: "./images/parfum2.webp",
+        },
+        {
+          id: "miss-dior-3",
+          name: "Miss Dior Blooming Bouquet",
+          volume: "50 ml",
+          price: 555,
+          image: "./images/parfum3.webp",
+        },
+      ];
+
+      bagButtons.forEach((button, index) => {
+        const productData = productsData[index];
+        if (!productData) return;
+
+        // Adiciona data attributes
+        button.dataset.productId = productData.id;
+        button.dataset.productName = productData.name;
+        button.dataset.productVolume = productData.volume;
+        button.dataset.productPrice = productData.price;
+        button.dataset.productImage = productData.image;
+
+        // Adiciona event listener
+        button.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          // Adiciona o produto ao carrinho
+          cartService.addItem({
+            id: productData.id,
+            name: productData.name,
+            volume: productData.volume,
+            price: productData.price,
+            image: productData.image,
+          });
+
+          // Feedback visual
+          this.animateButtonFeedback(button);
+        });
+      });
+    });
+  }
+  animateButtonFeedback(button) {
+    if (!window.gsap) return;
+
+    // Animação de sucesso
+    window.gsap
+      .timeline()
+      .to(button, {
+        scale: 0.9,
+        duration: 0.1,
+        ease: "power2.in",
+      })
+      .to(button, {
+        scale: 1.1,
+        duration: 0.2,
+        ease: "back.out(2)",
+      })
+      .to(button, {
+        scale: 1,
+        duration: 0.2,
+        ease: "power2.out",
+      });
+
+    // Muda temporariamente o ícone para checkmark
+    const originalSVG = button.innerHTML;
+    button.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    `;
+
+    // Volta ao ícone original após 1 segundo
+    setTimeout(() => {
+      button.innerHTML = originalSVG;
+    }, 1000);
+  }
+
   render() {
     this.innerHTML = `
       <div class="all-content" id="all-content" role="main">
@@ -613,16 +709,27 @@ Christian Dior, 1947
                 <div class="product-grid-image">
                   <img src="./images/parfum1.webp" alt="Miss Dior Parfum" />
                 </div>
-                <p class="product-price">R$ 665,00</p>
-                <h3 class="product-name">Miss Dior Parfum</h3>
-                <p class="product-description">Perfume - notas florais, frutadas e amadeiradas intensas</p>
-                <div class="product-intensity">
-                  <span class="intensity-label">Intensity</span>
-                  <div class="intensity-bars">
-                    <span class="bar filled"></span>
-                    <span class="bar filled"></span>
-                    <span class="bar filled"></span>
-                    <span class="bar filled"></span>
+                <div class="product-info">
+                  <h3 class="product-name">Miss Dior Parfum</h3>
+                  <p class="product-description">Perfume - notas florais, frutadas e amadeiradas intensas</p>
+                  <div class="product-intensity">
+                    <span class="intensity-label">Intensity</span>
+                    <div class="intensity-bars">
+                      <span class="bar filled"></span>
+                      <span class="bar filled"></span>
+                      <span class="bar filled"></span>
+                      <span class="bar filled"></span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">A partir de R$ 665</p>
+                    <button class="product-bag-button" aria-label="Adicionar ao carrinho">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -632,16 +739,27 @@ Christian Dior, 1947
                 <div class="product-grid-image">
                   <img src="./images/parfum2.webp" alt="Miss Dior" />
                 </div>
-                <p class="product-price">R$ 615,00</p>
-                <h3 class="product-name">Miss Dior</h3>
-                <p class="product-description">Eau De Parfum</p>
-                <div class="product-intensity">
-                  <span class="intensity-label">Intensity</span>
-                  <div class="intensity-bars">
-                    <span class="bar filled"></span>
-                    <span class="bar filled"></span>
-                    <span class="bar filled"></span>
-                    <span class="bar"></span>
+                <div class="product-info">
+                  <h3 class="product-name">Miss Dior</h3>
+                  <p class="product-description">Eau De Parfum</p>
+                  <div class="product-intensity">
+                    <span class="intensity-label">Intensity</span>
+                    <div class="intensity-bars">
+                      <span class="bar filled"></span>
+                      <span class="bar filled"></span>
+                      <span class="bar filled"></span>
+                      <span class="bar"></span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">A partir de R$ 615</p>
+                    <button class="product-bag-button" aria-label="Adicionar ao carrinho">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -651,16 +769,27 @@ Christian Dior, 1947
                 <div class="product-grid-image">
                   <img src="./images/parfum3.webp" alt="Miss Dior Blooming Bouquet" />
                 </div>
-                <p class="product-price">R$ 555,00</p>
-                <h3 class="product-name">Miss Dior Blooming Bouquet</h3>
-                <p class="product-description">Eau de toilette - notas frescas e suaves</p>
-                <div class="product-intensity">
-                  <span class="intensity-label">Intensity</span>
-                  <div class="intensity-bars">
-                    <span class="bar filled"></span>
-                    <span class="bar filled"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
+                <div class="product-info">
+                  <h3 class="product-name">Miss Dior Blooming Bouquet</h3>
+                  <p class="product-description">Eau de toilette - notas frescas e suaves</p>
+                  <div class="product-intensity">
+                    <span class="intensity-label">Intensity</span>
+                    <div class="intensity-bars">
+                      <span class="bar filled"></span>
+                      <span class="bar filled"></span>
+                      <span class="bar"></span>
+                      <span class="bar"></span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                    <p class="product-price">A partir de R$ 555</p>
+                    <button class="product-bag-button" aria-label="Adicionar ao carrinho">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </div>

@@ -931,3 +931,70 @@
     margin-bottom: 20px;
   }
 }
+
+/* ============================================================================
+   PRODUCT BAG BUTTON
+   ============================================================================ */
+
+.product-grid-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #e8e8e8;
+  flex-shrink: 0;
+}
+
+.product-bag-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #000000;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.product-bag-button:hover {
+  background-color: #000000;
+  transform: scale(1.05);
+}
+
+.product-bag-button:hover svg {
+  stroke: #ffffff;
+}
+
+.product-bag-button svg {
+  stroke: #000000;
+  transition: stroke 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .product-bag-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .product-bag-button svg {
+    width: 18px;
+    height: 18px;
+  }
+}

@@ -1,0 +1,30 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Box base -->
+  <rect x="20" y="50" width="80" height="55" stroke="#000" stroke-width="2" fill="none"/>
+  
+  <!-- Handle -->
+  <path d="M60 35 Q60 28 68 28 Q76 28 76 35" stroke="#000" stroke-width="2" fill="none"/>
+  <path d="M60 35 Q60 28 52 28 Q44 28 44 35" stroke="#000" stroke-width="2" fill="none"/>
+  
+  <!-- Handle center -->
+  <circle cx="60" cy="35" r="4" fill="#000"/>
+  
+  <!-- Eco symbol - leaf shape -->
+  <path d="M45 70 Q55 65 65 70 Q75 75 75 85" stroke="#4CAF50" stroke-width="2" fill="none"/>
+  <circle cx="40" cy="75" r="3" fill="#4CAF50"/>
+  <circle cx="80" cy="80" r="3" fill="#4CAF50"/>
+  
+  <!-- CD text (Christian Dior) -->
+  <text x="60" y="95" font-family="serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#000">CD</text>
+  
+  <!-- Cardboard texture lines -->
+  <line x1="25" y1="55" x2="95" y2="55" stroke="#CCC" stroke-width="1"/>
+  <line x1="25" y1="70" x2="95" y2="70" stroke="#CCC" stroke-width="1"/>
+  <line x1="25" y1="85" x2="95" y2="85" stroke="#CCC" stroke-width="1"/>
+  
+  <!-- Eco dots/pattern -->
+  <circle cx="35" cy="60" r="1.5" fill="#4CAF50" opacity="0.5"/>
+  <circle cx="85" cy="60" r="1.5" fill="#4CAF50" opacity="0.5"/>
+  <circle cx="35" cy="90" r="1.5" fill="#4CAF50" opacity="0.5"/>
+  <circle cx="85" cy="90" r="1.5" fill="#4CAF50" opacity="0.5"/>
+</svg>
