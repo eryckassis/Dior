@@ -8,6 +8,7 @@ export class ProfileMenu extends HTMLElement {
     super();
     this.isOpen = false;
     this.activeTab = "account"; // 'account' or 'bag'
+    this.isSignupModalOpen = false;
     this.cartItems = [
       {
         id: 1,
@@ -59,16 +60,7 @@ export class ProfileMenu extends HTMLElement {
     const signupBtn = this.querySelector(".profile-signup-btn");
     if (signupBtn) {
       signupBtn.addEventListener("click", () => {
-        // close the drawer with animation then navigate
-        this.close();
-        setTimeout(() => {
-          try {
-            router.navigate("/login");
-          } catch (e) {
-            // fallback: set location
-            window.location.href = "/login";
-          }
-        }, 650);
+        this.openSignupModal();
       });
     }
   }
@@ -235,6 +227,104 @@ export class ProfileMenu extends HTMLElement {
       modalBackdrop.style.opacity = "0";
       modal.style.opacity = "0";
     }
+  }
+
+  openSignupModal() {
+    const modal = this.querySelector(".signup-modal");
+    const modalBackdrop = this.querySelector(".signup-modal-backdrop");
+
+    if (!modal || !modalBackdrop) return;
+
+    this.isSignupModalOpen = true;
+    modalBackdrop.style.display = "block";
+    modal.style.display = "block";
+
+    if (window.gsap) {
+      window.gsap
+        .timeline()
+        .to(modalBackdrop, {
+          opacity: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        })
+        .fromTo(
+          modal,
+          {
+            opacity: 0,
+            scale: 0.95,
+            y: 30,
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power3.out",
+          },
+          "-=0.2"
+        );
+    } else {
+      modalBackdrop.style.opacity = "1";
+      modal.style.opacity = "1";
+    }
+  }
+
+  closeSignupModal() {
+    const modal = this.querySelector(".signup-modal");
+    const modalBackdrop = this.querySelector(".signup-modal-backdrop");
+
+    if (!modal || !modalBackdrop) return;
+
+    this.isSignupModalOpen = false;
+
+    if (window.gsap) {
+      window.gsap
+        .timeline({
+          onComplete: () => {
+            modal.style.display = "none";
+            modalBackdrop.style.display = "none";
+          },
+        })
+        .to(modal, {
+          opacity: 0,
+          scale: 0.95,
+          y: 30,
+          duration: 0.3,
+          ease: "power2.in",
+        })
+        .to(
+          modalBackdrop,
+          {
+            opacity: 0,
+            duration: 0.2,
+            ease: "power2.in",
+          },
+          "-=0.2"
+        );
+    } else {
+      modal.style.display = "none";
+      modalBackdrop.style.display = "none";
+      modalBackdrop.style.opacity = "0";
+      modal.style.opacity = "0";
+    }
+  }
+
+  handleSignup(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const name = form.querySelector('input[name="name"]').value;
+    const email = form.querySelector('input[name="email"]').value;
+    const password = form.querySelector('input[name="password"]').value;
+
+    // Aqui você pode adicionar a lógica de cadastro
+    console.log("Cadastro:", { name, email, password });
+
+    // Fecha o modal após cadastro
+    this.closeSignupModal();
+
+    // Mostra mensagem de sucesso (opcional)
+    alert("Conta criada com sucesso!");
   }
 
   validateCoupon() {
@@ -608,13 +698,125 @@ export class ProfileMenu extends HTMLElement {
 
         <p class="coupon-error-msg" style="display: none;"></p>
       </div>
+
+      <!-- Signup Modal -->
+      <div class="signup-modal-backdrop"></div>
+      <div class="signup-modal">
+        <button class="signup-modal-close" onclick="this.getRootNode().host.closeSignupModal()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="signup-modal-content">
+          <h2 class="signup-modal-title">Criar Conta</h2>
+          <p class="signup-modal-subtitle">Preencha os dados abaixo para criar sua conta</p>
+
+          <form class="signup-form" onsubmit="this.getRootNode().host.handleSignup(event); return false;">
+            <div class="signup-form-group">
+              <label for="signup-name">Nome completo</label>
+              <input 
+                type="text" 
+                id="signup-name" 
+                name="name" 
+                placeholder="Digite seu nome completo"
+                required
+              />
+            </div>
+
+            <div class="signup-form-group">
+              <label for="signup-email">E-mail</label>
+              <input 
+                type="email" 
+                id="signup-email" 
+                name="email" 
+                placeholder="Digite seu e-mail"
+                required
+              />
+            </div>
+
+            <div class="signup-form-group">
+              <label for="signup-password">Senha</label>
+              <input 
+                type="password" 
+                id="signup-password" 
+                name="password" 
+                placeholder="Digite sua senha"
+                required
+                minlength="6"
+              />
+            </div>
+
+            <div class="signup-form-group">
+              <label for="signup-password-confirm">Confirmar senha</label>
+              <input 
+                type="password" 
+                id="signup-password-confirm" 
+                name="password-confirm" 
+                placeholder="Confirme sua senha"
+                required
+                minlength="6"
+              />
+            </div>
+
+            <button type="submit" class="signup-submit-btn">Criar conta</button>
+          </form>
+
+          <p class="signup-login-link">
+            Já tem uma conta? 
+            <button class="signup-login-btn">
+              Fazer login
+            </button>
+          </p>
+        </div>
+      </div>
     `;
 
     // Inicializa event listeners do carrinho após render
     setTimeout(() => {
       this.initCartEventListeners();
       this.initCouponModalListeners();
+      this.initSignupModalListeners();
     }, 0);
+  }
+
+  initSignupModalListeners() {
+    const modalBackdrop = this.querySelector(".signup-modal-backdrop");
+    const closeBtn = this.querySelector(".signup-modal-close");
+    const loginBtn = this.querySelector(".signup-login-btn");
+
+    if (modalBackdrop) {
+      modalBackdrop.addEventListener("click", () => this.closeSignupModal());
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => this.closeSignupModal());
+    }
+
+    if (loginBtn) {
+      loginBtn.addEventListener("click", () => {
+        // Fecha o modal de cadastro
+        this.closeSignupModal();
+
+        // Aguarda a animação de fechamento do modal
+        setTimeout(() => {
+          // Fecha o menu de perfil
+          this.close();
+
+          // Aguarda a animação de fechamento do menu
+          setTimeout(() => {
+            // Navega para a página de login
+            try {
+              router.navigate("/login");
+            } catch (e) {
+              // Fallback: usa location
+              window.location.href = "/login";
+            }
+          }, 650); // Tempo da animação de fechamento do menu
+        }, 400); // Tempo da animação de fechamento do modal
+      });
+    }
   }
 
   initCouponModalListeners() {

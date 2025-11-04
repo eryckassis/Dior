@@ -234,7 +234,7 @@ export class LoginPage extends HTMLElement {
             <div class="switch" id="switch-cnt">
               <div class="switch__video">
                 <video autoplay muted loop playsinline>
-                  <source src="./videos/diorVideo.mp4" type="video/mp4">
+                  <source src="./videos/get.mp4" type="video/mp4">
                 </video>
               </div>
 
