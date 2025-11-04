@@ -16,6 +16,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Hellix";
+  src: url("/fonts/Hellix-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --color-background: #f6f3f7;
   --color-body-bg: #1a1a1a;

@@ -4,6 +4,7 @@ import "./styles/miss-dior.css";
 import "./styles/compras-miss-dior.css";
 import "./styles/miss-dior-essence.css";
 import "./styles/profile-menu.css";
+import "./styles/finalizar-compra.css";
 import { router } from "./router/router.js";
 import "./pages/HomePage.js";
 import "./pages/DiorHolidayPage.js";
@@ -12,6 +13,7 @@ import "./pages/MissDiorPage.js";
 import "./pages/ComprasMissDiorParfumPage.js";
 import "./pages/MissDiorEssencePage.js";
 import "./pages/LoginPage.js";
+import "./pages/FinalizarCompraPage.js";
 import "./components/ProfileMenu.js";
 
 // ============================================================================
@@ -26,6 +28,7 @@ router.register("/miss-dior", "miss-dior-page");
 router.register("/compras-miss-dior-parfum", "compras-miss-dior-parfum-page");
 router.register("/miss-dior-essence", "miss-dior-essence-page");
 router.register("/login", "login-page");
+router.register("/finalizar-compra", "finalizar-compra-page");
 
 // ============================================================================
 // BUTTON ANIMATION - Efeito Hover com Flair

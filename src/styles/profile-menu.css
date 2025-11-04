@@ -7,7 +7,7 @@
 .profile-signup-btn,
 .bag-checkout-btn {
   position: relative;
-  background: #2d2d2d;
+  background: #222;
   border: none;
   color: #ffffff;
   font-family: "Manrope", sans-serif;
@@ -23,7 +23,7 @@
 .profile-login-btn:hover,
 .profile-signup-btn:hover,
 .bag-checkout-btn:hover {
-  background-color: #1a1a1a;
+  background-color: #666;
 }
 z-index: 1;
 
@@ -569,8 +569,8 @@ z-index: 1;
 .coupon-modal-title {
   font-family: "Manrope", sans-serif;
   font-size: 20px;
-  font-weight: 400;
-  color: #000000;
+  font-weight: 600;
+  color: #222;
   margin: 0 0 32px 0;
   text-align: center;
   letter-spacing: 0;
@@ -601,7 +601,7 @@ z-index: 1;
 .coupon-info-text {
   font-family: "Manrope", sans-serif;
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 600;
   color: #666666;
   margin: 0 0 24px 0;
   text-align: center;
@@ -614,7 +614,7 @@ z-index: 1;
   background-color: #222222;
   color: #ededed;
   border: 1px solid #d8d8d8;
-  border-radius: 24px;
+  border-radius: 5px;
   font-family: "Manrope", sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -715,7 +715,7 @@ z-index: 1;
 .signup-modal-title {
   font-family: "MinhaFonte", serif;
   font-size: 32px;
-  font-weight: 400;
+  font-weight: 600;
   color: #000000;
   margin: 0 0 12px 0;
   text-align: center;
@@ -724,7 +724,7 @@ z-index: 1;
 .signup-modal-subtitle {
   font-family: "Manrope", sans-serif;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   color: #666666;
   margin: 0 0 32px 0;
   text-align: center;

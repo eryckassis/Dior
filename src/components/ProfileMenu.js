@@ -2,6 +2,7 @@
 // PROFILE MENU COMPONENT - Menu lateral de perfil
 // ============================================================================
 import { router } from "../router/router.js";
+import { cartService } from "../services/CartService.js";
 
 export class ProfileMenu extends HTMLElement {
   constructor() {
@@ -9,30 +10,30 @@ export class ProfileMenu extends HTMLElement {
     this.isOpen = false;
     this.activeTab = "account"; // 'account' or 'bag'
     this.isSignupModalOpen = false;
-    this.cartItems = [
-      {
-        id: 1,
-        name: "Miss Dior Essence",
-        volume: "35 ml",
-        price: 799.0,
-        quantity: 1,
-        image: "./images/dioressence1.webp",
-      },
-      {
-        id: 2,
-        name: "Miss Dior Parfum",
-        volume: "35 ml",
-        price: 665.0,
-        quantity: 1,
-        image: "./images/parfum1.webp",
-      },
-    ];
+
+    // Inicializa com itens padrão se o carrinho estiver vazio
+    cartService.initializeDefaultItems();
+    this.cartItems = cartService.getItems();
+
+    // Listener para atualizar quando o carrinho mudar
+    this.cartListener = (items) => {
+      this.cartItems = items;
+      this.updateCart();
+    };
   }
 
   connectedCallback() {
     this.render();
     this.initEventListeners();
     this.initButtons();
+
+    // Adiciona listener para mudanças no carrinho
+    cartService.addListener(this.cartListener);
+  }
+
+  disconnectedCallback() {
+    // Remove listener do carrinho
+    cartService.removeListener(this.cartListener);
   }
 
   initEventListeners() {
@@ -70,6 +71,21 @@ export class ProfileMenu extends HTMLElement {
     const couponBtn = this.querySelector(".bag-coupon-btn");
     if (couponBtn) {
       couponBtn.addEventListener("click", () => this.openCouponModal());
+    }
+
+    // Botão de checkout (Comprar)
+    const checkoutBtn = this.querySelector(".bag-checkout-btn");
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener("click", () => {
+        // Fecha o menu de perfil
+        this.close();
+
+        // Aguarda a animação de fechamento do menu
+        setTimeout(() => {
+          // Navega para a página de finalizar compra
+          router.navigate("/finalizar-compra");
+        }, 650); // Tempo da animação de fechamento do menu
+      });
     }
   }
 
@@ -131,24 +147,32 @@ export class ProfileMenu extends HTMLElement {
   }
 
   updateQuantity(itemId, newQuantity) {
-    const item = this.cartItems.find((i) => i.id === itemId);
-    if (item && newQuantity > 0) {
-      item.quantity = newQuantity;
-      this.updateCart();
-    }
+    cartService.updateQuantity(itemId, newQuantity);
+    this.cartItems = cartService.getItems();
+    this.updateCart();
   }
 
   removeItem(itemId) {
-    this.cartItems = this.cartItems.filter((i) => i.id !== itemId);
+    cartService.removeItem(itemId);
+    this.cartItems = cartService.getItems();
     this.updateCart();
   }
 
   updateCart() {
     const bagContent = this.querySelector(".profile-bag-content");
     if (bagContent) {
+      // Atualiza os itens do carrinho
+      this.cartItems = cartService.getItems();
       bagContent.innerHTML = this.renderBagContent();
       this.initCartEventListeners();
       this.initButtons();
+
+      // Atualiza o badge com a quantidade total
+      const badge = this.querySelector(".profile-tab-badge");
+      if (badge) {
+        const totalItems = cartService.getTotalItems();
+        badge.textContent = `(${totalItems})`;
+      }
     }
   }
 
