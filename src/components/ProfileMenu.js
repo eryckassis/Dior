@@ -1,6 +1,7 @@
 // ============================================================================
 // PROFILE MENU COMPONENT - Menu lateral de perfil
 // ============================================================================
+import { router } from "../router/router.js";
 
 export class ProfileMenu extends HTMLElement {
   constructor() {
@@ -53,6 +54,23 @@ export class ProfileMenu extends HTMLElement {
         this.switchTab(tabType);
       });
     });
+
+    // Signup button navigates to /login (SPA) and closes the profile menu
+    const signupBtn = this.querySelector(".profile-signup-btn");
+    if (signupBtn) {
+      signupBtn.addEventListener("click", () => {
+        // close the drawer with animation then navigate
+        this.close();
+        setTimeout(() => {
+          try {
+            router.navigate("/login");
+          } catch (e) {
+            // fallback: set location
+            window.location.href = "/login";
+          }
+        }, 650);
+      });
+    }
   }
 
   initButtons() {

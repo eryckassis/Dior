@@ -11,6 +11,7 @@ import "./pages/ArteDePresentearPage.js";
 import "./pages/MissDiorPage.js";
 import "./pages/ComprasMissDiorParfumPage.js";
 import "./pages/MissDiorEssencePage.js";
+import "./pages/LoginPage.js";
 import "./components/ProfileMenu.js";
 
 // ============================================================================
@@ -24,6 +25,7 @@ router.register("/arte-de-presentear", "arte-de-presentear-page");
 router.register("/miss-dior", "miss-dior-page");
 router.register("/compras-miss-dior-parfum", "compras-miss-dior-parfum-page");
 router.register("/miss-dior-essence", "miss-dior-essence-page");
+router.register("/login", "login-page");
 
 // ============================================================================
 // BUTTON ANIMATION - Efeito Hover com Flair
