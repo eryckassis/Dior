@@ -422,6 +422,163 @@ export class DiorVeraoPage extends HTMLElement {
           });
         });
       });
+
+      // Parallax effect for images
+      this.initVeraoParallax();
+
+      // Text reveal effect
+      this.initVeraoTextReveal();
+
+      // Animate section title
+      this.initVeraoTitleAnimation();
+    });
+  }
+
+  initVeraoTitleAnimation() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+
+    const sectionTitle = this.querySelector(".verao-dior-title");
+
+    if (sectionTitle) {
+      const titleAnim = window.gsap.from(sectionTitle, {
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionTitle,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      this.animations.push(titleAnim);
+    }
+  }
+
+  initVeraoParallax() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+
+    const cards = this.querySelectorAll(".verao-dior-card");
+
+    cards.forEach((card, index) => {
+      const imageWrapper = card.querySelector(".verao-dior-image");
+      const image = imageWrapper?.querySelector("img");
+
+      if (image && imageWrapper) {
+        // Set initial position
+        window.gsap.set(image, {
+          yPercent: -15,
+          scale: 1.1,
+        });
+
+        // Create smooth parallax animation with better easing
+        const parallaxTl = window.gsap.timeline({
+          scrollTrigger: {
+            trigger: imageWrapper,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 2,
+            invalidateOnRefresh: true,
+            // Uncomment below to see trigger points during development
+            // markers: true,
+          },
+        });
+
+        parallaxTl.to(image, {
+          yPercent: 15,
+          scale: 1,
+          ease: "none",
+          force3D: true,
+        });
+
+        this.animations.push(parallaxTl);
+
+        // Enhanced card reveal with stagger
+        const cardRevealTl = window.gsap.timeline({
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            end: "top 55%",
+            toggleActions: "play none none reverse",
+          },
+        });
+
+        cardRevealTl
+          .from(imageWrapper, {
+            opacity: 0,
+            y: 80,
+            rotationX: 5,
+            transformPerspective: 1000,
+            duration: 1.4,
+            ease: "power4.out",
+          })
+          .from(
+            card.querySelector(".verao-dior-info"),
+            {
+              opacity: 0,
+              y: 40,
+              duration: 1,
+              ease: "power3.out",
+            },
+            "-=0.8"
+          );
+
+        this.animations.push(cardRevealTl);
+      }
+    });
+  }
+
+  initVeraoTextReveal() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+
+    const cards = this.querySelectorAll(".verao-dior-card");
+
+    cards.forEach((card, index) => {
+      const title = card.querySelector(".verao-dior-card-title");
+      const button = card.querySelector(".services-button");
+
+      if (title) {
+        // Wrap each word in a span
+        const text = title.textContent;
+        const words = text.split(" ");
+        title.innerHTML = words.map((word) => `<span>${word}</span>`).join(" ");
+
+        const spans = title.querySelectorAll("span");
+
+        const textRevealTl = window.gsap.timeline({
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        });
+
+        // Animate title words
+        textRevealTl.to(spans, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power3.out",
+        });
+
+        // Animate button
+        if (button) {
+          textRevealTl.to(
+            button,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              ease: "power3.out",
+            },
+            "-=0.4"
+          );
+        }
+
+        this.animations.push(textRevealTl);
+      }
     });
   }
 
