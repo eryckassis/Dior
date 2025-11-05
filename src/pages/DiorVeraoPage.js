@@ -15,6 +15,8 @@ export class DiorVeraoPage extends HTMLElement {
     this.initVideoControls();
     this.initAnimations();
     this.initBagButtons();
+    this.initVeraoButtons();
+    this.initParallaxImages();
   }
 
   disconnectedCallback() {
@@ -261,9 +263,12 @@ export class DiorVeraoPage extends HTMLElement {
 
   initBagButtons() {
     requestAnimationFrame(() => {
-      const bagButtons = this.querySelectorAll(".essence-bag-button");
+      // Miss Dior Products
+      const missDiorBagButtons = this.querySelectorAll(
+        ".essence-bag-button:not(.jadore-bag-button)"
+      );
 
-      const productsData = [
+      const missDiorProductsData = [
         {
           id: "verao-leite-corporal",
           name: "Miss Dior Leite Corporal com Cera de Rosa",
@@ -287,8 +292,8 @@ export class DiorVeraoPage extends HTMLElement {
         },
       ];
 
-      bagButtons.forEach((button, index) => {
-        const productData = productsData[index];
+      missDiorBagButtons.forEach((button, index) => {
+        const productData = missDiorProductsData[index];
         if (!productData) return;
 
         button.addEventListener("click", (e) => {
@@ -305,6 +310,157 @@ export class DiorVeraoPage extends HTMLElement {
           this.animateButtonFeedback(button);
         });
       });
+
+      // J'adore Products
+      const jadoreBagButtons = this.querySelectorAll(".jadore-bag-button");
+
+      const jadoreProductsData = [
+        {
+          id: "jadore-parfum-eau",
+          name: "J'adore Parfum d'Eau",
+          volume: "50ml",
+          price: 615,
+          image: "./images/jadoreVerao1.webp",
+        },
+        {
+          id: "jadore-eau-parfum",
+          name: "J'adore Eau de Parfum",
+          volume: "50ml",
+          price: 699,
+          image: "./images/jadoreVerao1.webp",
+        },
+        {
+          id: "jadore-absolu",
+          name: "J'adore Absolu",
+          volume: "50ml",
+          price: 749,
+          image: "./images/jadoreVerao1.webp",
+        },
+      ];
+
+      jadoreBagButtons.forEach((button, index) => {
+        const productData = jadoreProductsData[index];
+        if (!productData) return;
+
+        button.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          cartService.addItem({
+            id: productData.id,
+            name: productData.name,
+            volume: productData.volume,
+            price: productData.price,
+            image: productData.image,
+          });
+
+          this.animateButtonFeedback(button);
+        });
+      });
+
+      // Para Ele Products
+      const paraEleBagButtons = this.querySelectorAll(".paraele-bag-button");
+
+      const paraEleProductsData = [
+        {
+          id: "sauvage-edt",
+          name: "Sauvage",
+          volume: "100ml",
+          price: 660,
+          image: "./images/diorsauvage.webp",
+        },
+        {
+          id: "dior-homme-edt",
+          name: "Dior Homme",
+          volume: "100ml",
+          price: 695,
+          image: "./images/diorhommem.webp",
+        },
+      ];
+
+      paraEleBagButtons.forEach((button, index) => {
+        const productData = paraEleProductsData[index];
+        if (!productData) return;
+
+        button.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          cartService.addItem({
+            id: productData.id,
+            name: productData.name,
+            volume: productData.volume,
+            price: productData.price,
+            image: productData.image,
+          });
+
+          this.animateButtonFeedback(button);
+        });
+      });
+    });
+  }
+
+  initVeraoButtons() {
+    if (!window.gsap) return;
+
+    requestAnimationFrame(() => {
+      const buttons = this.querySelectorAll(".verao-descubra-btn");
+
+      buttons.forEach((button) => {
+        // Mouseenter - linha diminui para 0
+        button.addEventListener("mouseenter", () => {
+          window.gsap.to(button, {
+            "--underline-width": "0%",
+            duration: 0.35,
+            ease: "power2.inOut",
+          });
+        });
+
+        // Mouseleave - linha volta a 100%
+        button.addEventListener("mouseleave", () => {
+          window.gsap.to(button, {
+            "--underline-width": "100%",
+            duration: 0.35,
+            ease: "power2.inOut",
+          });
+        });
+      });
+    });
+  }
+
+  initParallaxImages() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+
+    const images = this.querySelectorAll(".verao-dior-image img");
+
+    images.forEach((img, index) => {
+      window.gsap.to(img, {
+        yPercent: -30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: img.closest(".verao-dior-card"),
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+          //markers: true, // Remover após testar
+        },
+      });
+
+      // Adicionar animação de escala sutil
+      window.gsap.fromTo(
+        img,
+        {
+          scale: 1.2,
+        },
+        {
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: img.closest(".verao-dior-card"),
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        }
+      );
     });
   }
 
@@ -606,7 +762,7 @@ export class DiorVeraoPage extends HTMLElement {
         
           <section class="dior-verao-hero section-spacing">
           <div class="dior-verao-hero-content">
-            <h1 class="dior-verao-title-sec">O ritual da beleza Miss Dior</h1>
+            <h1 class="dior-verao-title-sec">J'adore</h1>
             
           </div>
         </section>
@@ -616,6 +772,229 @@ export class DiorVeraoPage extends HTMLElement {
           <div class="miss-dior-image-reveal reveal-third">
             <div class="reveal-overlay"></div>
             <img src="./images/jadoreVerao.webp" alt="Dior Verão Collection" class="reveal-image" />
+          </div>
+        </section>
+
+        <!-- J'adore Products Section -->
+        <section class="essence-products-section">
+          <div class="essence-products-container">
+            
+            <!-- J'adore Product 1 -->
+            <div class="essence-product-card">
+              <div class="essence-product-image-wrapper">
+                <div class="essence-image-reveal-overlay"></div>
+                <img src="./images/jadoreVerao1.webp" alt="J'adore Parfum d'Eau" class="essence-product-image" />
+              </div>
+              <div class="essence-product-info">
+                <h3 class="essence-product-name">J'adore Parfum d'Eau</h3>
+                <p class="essence-product-description">Eau de parfum sem álcool - notas florais</p>
+                <div class="product-intensity">
+                  <span class="intensity-label">Intensity</span>
+                  <div class="intensity-bars">
+                    <span class="bar filled"></span>
+                    <span class="bar filled"></span>
+                    <span class="bar filled"></span>
+                    <span class="bar filled"></span>
+                  </div>
+                </div>
+                <div class="essence-product-footer">
+                  <p class="essence-product-price">R$ 615,00</p>
+                  <button class="essence-bag-button jadore-bag-button" aria-label="Adicionar ao carrinho">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                      <line x1="3" y1="6" x2="21" y2="6"></line>
+                      <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- J'adore Product 2 -->
+            <div class="essence-product-card">
+              <div class="essence-product-image-wrapper">
+                <div class="essence-image-reveal-overlay"></div>
+                <img src="./images/jadoreVerao1.webp" alt="J'adore Eau de Parfum" class="essence-product-image" />
+              </div>
+              <div class="essence-product-info">
+                <h3 class="essence-product-name">J'adore Eau de Parfum</h3>
+                <p class="essence-product-description">Eau de parfum - buquê floral feminino</p>
+                <div class="product-intensity">
+                  <span class="intensity-label">Intensity</span>
+                  <div class="intensity-bars">
+                    <span class="bar filled"></span>
+                    <span class="bar filled"></span>
+                    <span class="bar filled"></span>
+                    <span class="bar"></span>
+                  </div>
+                </div>
+                <div class="essence-product-footer">
+                  <p class="essence-product-price">R$ 699,00</p>
+                  <button class="essence-bag-button jadore-bag-button" aria-label="Adicionar ao carrinho">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                      <line x1="3" y1="6" x2="21" y2="6"></line>
+                      <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- J'adore Product 3 -->
+            <div class="essence-product-card">
+              <div class="essence-product-image-wrapper">
+                <div class="essence-image-reveal-overlay"></div>
+                <img src="./images/jadoreVerao1.webp" alt="J'adore Absolu" class="essence-product-image" />
+              </div>
+              <div class="essence-product-info">
+                <h3 class="essence-product-name">J'adore Absolu</h3>
+                <p class="essence-product-description">Eau de parfum - notas florais intensas</p>
+                <div class="product-intensity">
+                  <span class="intensity-label">Intensity</span>
+                  <div class="intensity-bars">
+                    <span class="bar filled"></span>
+                    <span class="bar filled"></span>
+                    <span class="bar filled"></span>
+                    <span class="bar filled"></span>
+                  </div>
+                </div>
+                <div class="essence-product-footer">
+                  <p class="essence-product-price">R$ 749,00</p>
+                  <button class="essence-bag-button jadore-bag-button" aria-label="Adicionar ao carrinho">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                      <line x1="3" y1="6" x2="21" y2="6"></line>
+                      <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Text Section Para Ele -->
+        <section class="miss-dior-text-section">
+          <div class="container">
+            <div class="miss-dior-text-content">
+              <h2 class="miss-dior-main-title-second">Para ele</h2>
+              <p class="miss-dior-main-description-second">
+                Explore novos horizontes com as fragrâncias masculinas da Maison Dior, de frescor de Sauvage à sensualidade de Dior Homme. Verdadeiras fugas olfativas para vivenciar neste verão.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Para Ele Products Section -->
+        <section class="essence-products-section">
+          <div class="essence-products-container para-ele-container">
+            
+            <!-- Sauvage Product -->
+            <div class="essence-product-card">
+              <div class="essence-product-image-wrapper">
+                <div class="essence-image-reveal-overlay"></div>
+                <img src="./images/diorsauvage.webp" alt="Sauvage" class="essence-product-image" />
+              </div>
+              <div class="essence-product-info">
+                <h3 class="essence-product-name">Sauvage</h3>
+                <p class="essence-product-description">Eau de toilette</p>
+                <div class="product-intensity">
+                  <span class="intensity-label">Intensity</span>
+                  <div class="intensity-bars">
+                    <span class="bar filled"></span>
+                    <span class="bar filled"></span>
+                    <span class="bar filled"></span>
+                    <span class="bar filled"></span>
+                  </div>
+                </div>
+                <div class="essence-product-footer">
+                  <p class="essence-product-price">R$ 660,00</p>
+                  <button class="essence-bag-button paraele-bag-button" aria-label="Adicionar ao carrinho">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                      <line x1="3" y1="6" x2="21" y2="6"></line>
+                      <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dior Homme Product -->
+            <div class="essence-product-card">
+              <div class="essence-product-image-wrapper">
+                <div class="essence-image-reveal-overlay"></div>
+                <img src="./images/diorhommem.webp" alt="Dior Homme" class="essence-product-image" />
+              </div>
+              <div class="essence-product-info">
+                <h3 class="essence-product-name">Dior Homme</h3>
+                <p class="essence-product-description">Eau de toilette</p>
+                <div class="product-intensity">
+                  <span class="intensity-label">Intensity</span>
+                  <div class="intensity-bars">
+                    <span class="bar filled"></span>
+                    <span class="bar filled"></span>
+                    <span class="bar filled"></span>
+                    <span class="bar filled"></span>
+                  </div>
+                </div>
+                <div class="essence-product-footer">
+                  <p class="essence-product-price">R$ 695,00</p>
+                  <button class="essence-bag-button paraele-bag-button" aria-label="Adicionar ao carrinho">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                      <line x1="3" y1="6" x2="21" y2="6"></line>
+                      <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Verão na Dior Section -->
+        <section class="verao-dior-section">
+          <div class="verao-dior-container">
+            <h2 class="verao-dior-title">Verão na Dior</h2>
+            
+            <div class="verao-dior-grid">
+              <!-- Card 1 - La Collection Privée -->
+              <div class="verao-dior-card">
+                <div class="verao-dior-image">
+                  <img src="./images/prive.webp" alt="La Collection Privée" />
+                </div>
+                <div class="verao-dior-info">
+                  <h3 class="verao-dior-card-title">La Collection Privée</h3>
+                  <a href="#" class="services-button verao-descubra-btn">Descubra</a>
+                </div>
+              </div>
+
+              <!-- Card 2 - Uma Evasão Solar -->
+              <div class="verao-dior-card">
+                <div class="verao-dior-image">
+                  <img src="./images/evasao.webp" alt="Uma Evasão Solar" />
+                </div>
+                <div class="verao-dior-info">
+                  <h3 class="verao-dior-card-title">Uma Evasão Solar</h3>
+                  <a href="#" class="services-button verao-descubra-btn">Descubra</a>
+                </div>
+              </div>
+
+              <!-- Card 3 - Maquiagem -->
+              <div class="verao-dior-card">
+                <div class="verao-dior-image">
+                  <img src="./images/maquiagem.webp" alt="Maquiagem" />
+                </div>
+                <div class="verao-dior-info">
+                  <h3 class="verao-dior-card-title">Maquiagem</h3>
+                  <a href="#" class="services-button verao-descubra-btn">Descubra</a>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

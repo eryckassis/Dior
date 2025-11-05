@@ -9,11 +9,24 @@
 /* Section Spacing */
 .section-spacing {
   margin-top: 5px;
-  margin-bottom: 80px;
+  margin-bottom: 5px;
 }
 
 .space-section {
   height: 1px;
+}
+
+/* Para Ele Container - 2 produtos centralizados */
+.para-ele-container {
+  grid-template-columns: repeat(2, 1fr) !important;
+  max-width: 1000px !important;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .para-ele-container {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 .dior-verao-main {
@@ -25,7 +38,7 @@
 /* Hero Section */
 .dior-verao-hero {
   width: 100%;
-  height: 30vh;
+  height: 20vh;
   min-height: 200px;
   display: flex;
   align-items: center;
@@ -57,7 +70,10 @@
   letter-spacing: -1px;
 }
 .dior-verao-title-sec {
-
+  font-family: "MinhaFonte", sans-serif;
+  font-weight: 500;
+  color: #222;
+}
 
 .dior-verao-subtitle {
   font-family: "Hellix", sans-serif;
@@ -334,5 +350,143 @@
 
   .dior-verao-featured-image {
     height: 300px;
+  }
+}
+
+/* ============================================================================
+   VERÃO NA DIOR SECTION
+   ============================================================================ */
+
+.verao-dior-section {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 80px 20px;
+}
+
+.verao-dior-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.verao-dior-title {
+  font-family: "MinhaFonte", serif;
+  font-size: 48px;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+  margin: 0 0 60px 0;
+  letter-spacing: 0;
+}
+
+.verao-dior-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.verao-dior-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.verao-dior-image {
+  position: relative;
+  width: 120%;
+  right: 27px;
+  aspect-ratio: 6/8;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.verao-dior-image img {
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  display: block;
+  will-change: transform;
+}
+
+.verao-dior-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.verao-dior-card-title {
+  font-family: "MinhaFonte", serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Services Button - Reutilizando estilos existentes */
+.services-button {
+  font-family: "Hellix", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.services-button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: var(--underline-width, 100%);
+  height: 1px;
+  background-color: #000000;
+  transition: width 0.35s ease;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .verao-dior-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .verao-dior-title {
+    font-size: 40px;
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .verao-dior-section {
+    padding: 60px 20px;
+  }
+
+  .verao-dior-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .verao-dior-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .verao-dior-card-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .verao-dior-title {
+    font-size: 28px;
+  }
+
+  .verao-dior-card-title {
+    font-size: 18px;
   }
 }
