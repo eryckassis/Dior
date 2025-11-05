@@ -12,6 +12,7 @@ import "../components/FooterSection.js";
 import "../styles/arte-de-presentear.css";
 import "../styles/category-interactive.css";
 import "../styles/services-dior.css";
+import { router } from "../router/router.js";
 
 export class HomePage extends HTMLElement {
   constructor() {
@@ -28,6 +29,7 @@ export class HomePage extends HTMLElement {
     this.initCategoryTabs();
     this.initServicesDiorAnimations();
     this.initServicesButtonsAnimation();
+    this.initServicesImageTitles();
   }
 
   initServicesButtonsAnimation() {
@@ -56,6 +58,40 @@ export class HomePage extends HTMLElement {
             ease: "power2.inOut",
           });
         });
+      });
+    });
+  }
+
+  initServicesImageTitles() {
+    requestAnimationFrame(() => {
+      const imageTitles = this.querySelectorAll(".services-image-title");
+
+      imageTitles.forEach((title) => {
+        // Adicionar event listener para redirecionar
+        title.addEventListener("click", () => {
+          router.navigate("/arte-de-presentear");
+        });
+
+        // Adicionar animação GSAP da risca (igual aos botões)
+        if (window.gsap) {
+          // Mouseenter - linha diminui para 0
+          title.addEventListener("mouseenter", () => {
+            window.gsap.to(title, {
+              "--underline-width": "0%",
+              duration: 0.35,
+              ease: "power2.inOut",
+            });
+          });
+
+          // Mouseleave - linha volta a 100%
+          title.addEventListener("mouseleave", () => {
+            window.gsap.to(title, {
+              "--underline-width": "100%",
+              duration: 0.35,
+              ease: "power2.inOut",
+            });
+          });
+        }
       });
     });
   }
@@ -371,7 +407,7 @@ export class HomePage extends HTMLElement {
         });
 
         window.gsap.set(image, {
-          scale: 1.3,
+          scale: 1.2,
           opacity: 0,
         });
 
