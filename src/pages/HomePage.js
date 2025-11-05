@@ -20,6 +20,10 @@ export class HomePage extends HTMLElement {
 
   connectedCallback() {
     this.render();
+    this.initHeroVideosHover();
+    this.initHeroScrollAnimations();
+    this.initHeroButtons();
+    this.initKeyholeScrollAnimations();
     this.initVideoControls();
     this.initCategoryTabs();
     this.initServicesDiorAnimations();
@@ -54,6 +58,259 @@ export class HomePage extends HTMLElement {
         });
       });
     });
+  }
+
+  initHeroVideosHover() {
+    // Aguardar os web components renderizarem
+    setTimeout(() => {
+      const heroVideos = this.querySelectorAll(".hero-video-hover");
+
+      if (heroVideos.length === 0) {
+        console.warn("Nenhum vídeo hero encontrado");
+        return;
+      }
+
+      console.log(`${heroVideos.length} vídeos hero encontrados`);
+
+      heroVideos.forEach((video, index) => {
+        // Garantir que o vídeo está pausado inicialmente
+        video.pause();
+        video.currentTime = 0;
+
+        // Pegar o wrapper do vídeo para melhor detecção de hover
+        const wrapper =
+          video.closest(".grid-item__wrapper") || video.parentElement;
+
+        const playVideo = () => {
+          console.log(`Hover no vídeo ${index + 1}`);
+          video.currentTime = 0;
+          video
+            .play()
+            .catch((err) => console.error("Erro ao reproduzir:", err));
+        };
+
+        const pauseVideo = () => {
+          console.log(`Hover removido do vídeo ${index + 1}`);
+          video.pause();
+          video.currentTime = 0;
+        };
+
+        // Adicionar eventos no wrapper E no vídeo para garantir detecção
+        if (wrapper && wrapper !== video) {
+          wrapper.addEventListener("mouseenter", playVideo);
+          wrapper.addEventListener("mouseleave", pauseVideo);
+          console.log(
+            `Event listeners adicionados ao wrapper do vídeo ${index + 1}`
+          );
+        }
+
+        video.addEventListener("mouseenter", playVideo);
+        video.addEventListener("mouseleave", pauseVideo);
+
+        console.log(`Event listeners adicionados ao vídeo ${index + 1}`);
+      });
+    }, 100);
+  }
+
+  initHeroScrollAnimations() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+
+    // Aguardar os web components renderizarem
+    setTimeout(() => {
+      // Selecionar os wrappers dos vídeos hero
+      const heroWrappers = this.querySelectorAll(".hero-video-hover").forEach(
+        (video) => {
+          const wrapper = video.closest(".grid-item__wrapper");
+
+          if (wrapper) {
+            // Adiciona clip-path inicial no wrapper
+            window.gsap.set(wrapper, {
+              clipPath: "inset(0% 0% 0% -90%)",
+            });
+
+            // Animação com ScrollTrigger no wrapper
+            window.gsap.to(wrapper, {
+              clipPath: "inset(0% 0% 0% 100%)",
+              ease: "none",
+              scrollTrigger: {
+                trigger: wrapper,
+                start: "top center",
+                end: "bottom center",
+                scrub: 1,
+              },
+            });
+          }
+        }
+      );
+
+      // Animação do texto que aparece entre os vídeos
+      const textContent = this.querySelectorAll(".grid-content");
+
+      textContent.forEach((content) => {
+        // Animação de entrada (aparece)
+        window.gsap.from(content, {
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          scrollTrigger: {
+            trigger: content,
+            start: "top 100%",
+            end: "top 50%",
+            scrub: 1,
+          },
+        });
+
+        // Animação de saída (desaparece suavemente)
+        window.gsap.to(content, {
+          opacity: 0,
+          y: -30,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: content,
+            start: "top 10%",
+            end: "top top",
+            scrub: 2,
+          },
+        });
+      });
+    }, 150);
+  }
+
+  initHeroButtons() {
+    // Aguardar os web components renderizarem
+    setTimeout(() => {
+      // Selecionar TODOS os botões na HomePage
+      // 1. Botões dentro de web components (hero-section, video-section, keyhole-section)
+      // 2. Botões glass-button dos controles de vídeo
+      const allButtons = this.querySelectorAll(
+        'hero-section [data-block="button"], video-section [data-block="button"], keyhole-section [data-block="button"], .glass-button[data-block="button"]'
+      );
+
+      if (!allButtons.length) {
+        console.warn("Nenhum botão encontrado na HomePage");
+        return;
+      }
+
+      console.log(`${allButtons.length} botões encontrados na HomePage`);
+
+      // Inicializar cada botão com a classe Button
+      allButtons.forEach((button, index) => {
+        if (window.Button) {
+          new window.Button(button);
+          console.log(`Botão ${index + 1} inicializado com GSAP`);
+        } else {
+          console.error("Classe Button não está disponível");
+        }
+      });
+    }, 100);
+  }
+
+  initKeyholeScrollAnimations() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+
+    // Aguardar o web component keyhole-section renderizar
+    setTimeout(() => {
+      const keyholeImage = this.querySelector(
+        "keyhole-section .keyhole-image img"
+      );
+      const keyholeOverlay = this.querySelector(
+        "keyhole-section .keyhole-overlay"
+      );
+      const keyholeSubtitle = this.querySelector(
+        "keyhole-section .keyhole-subtitle"
+      );
+      const keyholeTitle = this.querySelector("keyhole-section .keyhole-title");
+      const keyholeButton = this.querySelector(
+        "keyhole-section .keyhole-button"
+      );
+      const keyholeSection = this.querySelector(
+        "keyhole-section .keyhole-section"
+      );
+      const keyholeContainer = this.querySelector(
+        "keyhole-section .keyhole-container"
+      );
+
+      if (!keyholeImage || !keyholeSection) {
+        console.warn("Keyhole section não encontrada");
+        return;
+      }
+
+      console.log("Inicializando ScrollTrigger do Keyhole");
+
+      // Animação da imagem - expande o retângulo do centro até preencher tela
+      window.gsap.to(keyholeImage, {
+        clipPath: "inset(0% 0% 0% 0% round 0px)",
+        ease: "none",
+        scrollTrigger: {
+          trigger: keyholeSection,
+          start: "top top",
+          end: "bottom center",
+          scrub: 1.5,
+          pin: keyholeContainer,
+        },
+      });
+
+      // Animação do overlay - desaparece conforme expande
+      if (keyholeOverlay) {
+        window.gsap.to(keyholeOverlay, {
+          opacity: 0,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: keyholeSection,
+            start: "top top",
+            end: "center center",
+            scrub: 1,
+          },
+        });
+      }
+
+      // Anima o subtitle
+      if (keyholeSubtitle) {
+        window.gsap.to(keyholeSubtitle, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: keyholeSection,
+            start: "top center",
+            end: "center center",
+            scrub: 1,
+          },
+        });
+      }
+
+      // Anima o título
+      if (keyholeTitle) {
+        window.gsap.to(keyholeTitle, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: keyholeSection,
+            start: "top center",
+            end: "center center",
+            scrub: 1,
+          },
+        });
+      }
+
+      // Anima o botão
+      if (keyholeButton) {
+        window.gsap.to(keyholeButton, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: keyholeSection,
+            start: "20% center",
+            end: "center center",
+            scrub: 1,
+          },
+        });
+      }
+
+      console.log("ScrollTrigger do Keyhole inicializado com sucesso");
+    }, 200);
   }
 
   initServicesDiorAnimations() {

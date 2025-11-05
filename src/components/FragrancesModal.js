@@ -2,6 +2,8 @@
 // FRAGRANCES MODAL - Modal de navegação de fragrâncias
 // ============================================================================
 
+import { router } from "../router/router.js";
+
 export class FragrancesModal extends HTMLElement {
   constructor() {
     super();
@@ -66,18 +68,21 @@ export class FragrancesModal extends HTMLElement {
       });
     }
 
-    // Menu links with routes
-    this.menuLinks = this.querySelectorAll(".fragrances-menu-link[data-route]");
+    // Menu links with routes (tanto da view principal quanto da feminina)
+    this.menuLinks = this.querySelectorAll(
+      ".fragrances-menu-link[data-route], .feminine-menu-link[data-route], .feminine-featured-link[data-route]"
+    );
     this.menuLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
         const route = link.getAttribute("data-route");
         if (route) {
           e.preventDefault();
+          console.log(`Navegando para: ${route}`);
           this.close();
-          // Small delay to allow close animation before navigation
+          // Aguarda o modal fechar completamente antes de navegar
           setTimeout(() => {
-            window.location.hash = route;
-          }, 100);
+            router.navigate(route);
+          }, 500); // Aumentado para garantir que o modal fecha completamente
         }
       });
     });
@@ -447,7 +452,9 @@ export class FragrancesModal extends HTMLElement {
 
         .call(() => {
           modal.classList.remove("active");
-          document.body.style.overflow = "";
+          // Restaurar overflow seguindo o padrão do projeto
+          document.body.style.overflow = "auto";
+          document.body.style.overflowX = "hidden";
 
           // Reset to main view WITHOUT destroying elements
           this.currentView = "main";
@@ -479,7 +486,9 @@ export class FragrancesModal extends HTMLElement {
         });
     } else {
       modal.classList.remove("active");
-      document.body.style.overflow = "";
+      // Restaurar overflow seguindo o padrão do projeto
+      document.body.style.overflow = "auto";
+      document.body.style.overflowX = "hidden";
 
       // Reset to main view
       this.currentView = "main";

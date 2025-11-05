@@ -16,7 +16,6 @@ export class DiorVeraoPage extends HTMLElement {
     this.initAnimations();
     this.initBagButtons();
     this.initVeraoButtons();
-    this.initParallaxImages();
   }
 
   disconnectedCallback() {
@@ -423,44 +422,6 @@ export class DiorVeraoPage extends HTMLElement {
           });
         });
       });
-    });
-  }
-
-  initParallaxImages() {
-    if (!window.gsap || !window.ScrollTrigger) return;
-
-    const images = this.querySelectorAll(".verao-dior-image img");
-
-    images.forEach((img, index) => {
-      window.gsap.to(img, {
-        yPercent: -30,
-        ease: "none",
-        scrollTrigger: {
-          trigger: img.closest(".verao-dior-card"),
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1,
-          //markers: true, // Remover após testar
-        },
-      });
-
-      // Adicionar animação de escala sutil
-      window.gsap.fromTo(
-        img,
-        {
-          scale: 1.2,
-        },
-        {
-          scale: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: img.closest(".verao-dior-card"),
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1,
-          },
-        }
-      );
     });
   }
 

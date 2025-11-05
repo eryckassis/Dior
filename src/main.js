@@ -978,8 +978,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Inicializa controle de hover nos vídeos da galeria
+    // Excluindo os vídeos com classe hero-video-hover que são controlados pelo HomePage
     const galleryVideos = document.querySelectorAll(
-      ".grid-item__wrapper video"
+      ".grid-item__wrapper video:not(.hero-video-hover)"
     );
     galleryVideos.forEach((video) => {
       new VideoHoverController(video);

@@ -45,6 +45,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+  margin-top: 80px;
 }
 
 .dior-verao-hero-content {
@@ -94,6 +95,11 @@
   font-family: "Hellix", sans-serif;
   font-size: 1.5rem;
   font-weight: 500;
+}
+
+/* Override miss-dior-text-section padding for this page */
+dior-verao-page .miss-dior-text-section {
+  padding: 60px 0;
 }
 
 /* Content Section */
@@ -392,19 +398,22 @@
 
 .verao-dior-image {
   position: relative;
-  width: 120%;
-  right: 27px;
-  aspect-ratio: 6/8;
+  width: 100%;
+  aspect-ratio: 3/4;
   overflow: hidden;
   margin-bottom: 24px;
 }
 
 .verao-dior-image img {
   width: 100%;
-  height: 120%;
+  height: 100%;
   object-fit: cover;
   display: block;
-  will-change: transform;
+  transition: transform 0.5s ease;
+}
+
+.verao-dior-card:hover .verao-dior-image img {
+  transform: scale(1.05);
 }
 
 .verao-dior-info {
@@ -418,7 +427,7 @@
 .verao-dior-card-title {
   font-family: "MinhaFonte", serif;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 400;
   color: #000000;
   margin: 0;
   line-height: 1.2;
@@ -426,7 +435,7 @@
 
 /* Services Button - Reutilizando estilos existentes */
 .services-button {
-  font-family: "Hellix", sans-serif;
+  font-family: "Manrope", sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: #000000;

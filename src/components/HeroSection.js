@@ -23,8 +23,8 @@ export class HeroSection extends HTMLElement {
         <figure class="grid-item__wrapper">
           <figcaption class="grid-copy"></figcaption>
           <video
+            class="hero-video-hover"
             src="${videoSrc}"
-            autoplay
             muted
             loop
             playsinline
