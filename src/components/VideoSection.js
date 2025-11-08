@@ -1,7 +1,3 @@
-// ============================================================================
-// VIDEO SECTION WEB COMPONENT - Seção com vídeo simples
-// ============================================================================
-
 export class VideoSection extends HTMLElement {
   constructor() {
     super();

@@ -7,6 +7,7 @@ import "./styles/miss-dior-essence.css";
 import "./styles/profile-menu.css";
 import "./styles/finalizar-compra.css";
 import "./styles/dior-verao.css";
+import "./styles/moda-acessorios.css";
 import { router } from "./router/router.js";
 import "./pages/HomePage.js";
 import "./pages/DiorHolidayPage.js";
@@ -17,10 +18,12 @@ import "./pages/MissDiorEssencePage.js";
 import "./pages/LoginPage.js";
 import "./pages/FinalizarCompraPage.js";
 import "./pages/DiorVeraoPage.js";
+import "./pages/ModaEAcessoriosPage.js";
 import "./components/ProfileMenu.js";
 import "./components/FragrancesModal.js";
 import "./components/AppNavigation.js";
 import "./components/FooterSection.js";
+import "./components/ModaAcessoriosContent.js";
 
 // ============================================================================
 // ROUTER CONFIGURATION
@@ -36,6 +39,7 @@ router.register("/miss-dior-essence", "miss-dior-essence-page");
 router.register("/login", "login-page");
 router.register("/finalizar-compra", "finalizar-compra-page");
 router.register("/dior-verao", "dior-verao-page");
+router.register("/moda-acessorios", "moda-acessorios-page");
 
 // ============================================================================
 // BUTTON ANIMATION - Efeito Hover com Flair
@@ -258,11 +262,19 @@ class SplashScreen {
 
   addEventListeners() {
     this.options.forEach((option) => {
-      option.addEventListener("click", () => this.handleOptionClick());
+      const button = option.querySelector(".splash-option-button");
+      const category = option.getAttribute("data-category");
+
+      if (button) {
+        button.addEventListener("click", (e) => {
+          e.preventDefault();
+          this.handleOptionClick(category);
+        });
+      }
     });
   }
 
-  handleOptionClick() {
+  handleOptionClick(category) {
     // Anima saída do splash screen
     gsap.to(this.splashElement, {
       duration: 0.8,
@@ -270,15 +282,15 @@ class SplashScreen {
       ease: "power2.inOut",
       onComplete: () => {
         this.splashElement.classList.add("hidden");
-        this.startPreloader();
+        this.startPreloader(category);
       },
     });
   }
 
-  startPreloader() {
+  startPreloader(category) {
     // Aguarda um frame para garantir que splash foi escondido
     requestAnimationFrame(() => {
-      initPreloader();
+      initPreloader(category);
     });
   }
 }
@@ -287,8 +299,22 @@ class SplashScreen {
 // PRELOADER ANIMATION (Layer sobe sem animar logo)
 // ============================================================================
 
-function initPreloader() {
-  const tl = gsap.timeline();
+function initPreloader(category) {
+  const tl = gsap.timeline({
+    onComplete: () => {
+      // Inicia o router após o preloader
+      router.init();
+
+      // Navega para a rota correta baseado na categoria
+      if (category === "fashion") {
+        router.navigate("/moda-acessorios");
+      } else if (category === "beauty") {
+        router.navigate("/");
+      } else {
+        router.navigate("/");
+      }
+    },
+  });
 
   tl
     // Torna o container e logo visíveis imediatamente
@@ -962,12 +988,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Inicializa splash screen primeiro (usuário escolhe a categoria)
     new SplashScreen();
   } else {
-    // Se não tem splash, inicia preloader direto
+    // Se não tem splash, inicia preloader direto e router
     initPreloader();
+    router.init();
   }
-
-  // Inicializa o router SPA
-  router.init();
 
   // Função para inicializar features após cada mudança de página
   const initializePageFeatures = () => {

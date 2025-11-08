@@ -1,0 +1,531 @@
+/* ============================================================================
+   MODA E ACESSÓRIOS PAGE - Estilos específicos
+   ============================================================================ */
+
+/* ============================================================================
+   MODA NAVIGATION - Menu customizado
+   ============================================================================ */
+
+.moda-navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 0px solid rgba(0, 0, 0, 0.1);
+}
+
+.moda-nav-hamburger,
+.moda-nav-search {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: #1a1a1a;
+  transition: opacity 0.3s ease;
+}
+
+.moda-nav-hamburger:hover,
+.moda-nav-search:hover {
+  opacity: 0.6;
+}
+
+.moda-nav-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.moda-logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.moda-logo-link img {
+  height: 13rem;
+  width: 35rem;
+}
+
+/* Side Menu */
+.moda-side-menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1100;
+}
+
+.moda-side-menu-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.moda-side-menu {
+  position: fixed;
+  top: 0;
+  left: -480px;
+  width: 460px;
+  height: 100vh;
+  background: #f5f5f5;
+  z-index: 1200;
+  transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 0 24px 24px 0;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Esconde a scrollbar mas mantém a funcionalidade de scroll */
+.moda-side-menu::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.moda-side-menu {
+  -ms-overflow-style: none;  /* IE e Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.moda-side-menu.active {
+  left: 0;
+}
+
+.moda-side-menu-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.5rem 2rem;
+  border-bottom: none;
+}
+
+.moda-side-menu-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: #1a1a1a;
+  transition: opacity 0.3s ease;
+}
+
+.moda-side-menu-close:hover {
+  opacity: 0.6;
+}
+
+.moda-side-menu-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+.moda-side-menu-nav {
+  padding: 2rem 0;
+}
+
+/* Menu Content Structure */
+.moda-menu-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 80px);
+  padding: 0 2.5rem 2rem 2.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Esconde scrollbar do conteúdo também */
+.moda-menu-content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.moda-menu-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.moda-menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+}
+
+/* Menu Links - Efeito Underline com GSAP */
+.moda-menu-link {
+  position: relative;
+  display: block;
+  font-family: "Futura", "Helvetica Neue", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #333;
+  text-decoration: none;
+  padding: 0.75rem 0;
+  transition: color 0.3s ease;
+  --underline-width: 0%;
+}
+
+.moda-menu-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: var(--underline-width);
+  height: 1px;
+  background-color: #000;
+  transition: width 0.35s ease;
+}
+
+.moda-menu-link:hover {
+  color: #000;
+}
+
+/* Setas nos links principais */
+.moda-menu-link::before {
+  content: "›";
+  position: absolute;
+  right: 0;
+  opacity: 0.4;
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+/* Contact Section */
+.moda-menu-contact {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  margin-bottom: 1.5rem;
+}
+
+.moda-menu-contact-title {
+  font-family: "Hellix", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.moda-menu-contact-link {
+  display: block;
+  font-family: "Hellix", sans-serif;
+  font-weight: 600
+  font-size: 0.9rem;
+  color: #333;
+  text-decoration: none;
+  padding: 0.4rem 0;
+  transition: opacity 0.3s ease;
+}
+
+.moda-menu-contact-link:hover {
+  opacity: 0.6;
+}
+
+/* Menu Footer */
+.moda-menu-footer {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.moda-menu-accessibility {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-family: "Hellix", sans-serif;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+/* Toggle Switch Personalizado */
+.moda-menu-checkbox {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  appearance: none;
+  background: #ddd;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.moda-menu-checkbox::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease;
+}
+
+.moda-menu-checkbox:checked {
+  background: #000;
+}
+
+.moda-menu-checkbox:checked::before {
+  transform: translateX(20px);
+}
+
+.moda-menu-tabs {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 0;
+  border-top: none;
+}
+
+.moda-menu-tab {
+  flex: 1;
+  text-align: center;
+  font-family: "Hellix", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  padding: 0.85rem 1rem;
+  background: #fff;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+.moda-menu-tab:hover {
+
+  
+}
+
+.moda-menu-tab-active {
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.moda-menu-tab-active:hover {
+ 
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .moda-navigation {
+    padding: 0 1rem;
+  }
+
+  .moda-side-menu {
+    width: 100%;
+    left: -100%;
+    border-radius: 0;
+  }
+
+  .moda-menu-content {
+    padding: 0 1.5rem 2rem 1.5rem;
+  }
+
+  .moda-logo-link img {
+    width: 100px;
+  }
+
+  .moda-menu-link {
+    font-size: 1rem;
+  }
+}
+
+/* ============================================================================
+   HERO SECTION
+   ============================================================================ */
+
+/* Hero Section */
+.moda-hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0px;
+}
+
+.moda-hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 1;
+}
+
+.moda-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  z-index: 2;
+}
+
+.moda-hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: #fff;
+  padding: 0 2rem;
+  max-width: 1200px;
+}
+
+.moda-hero-label {
+  font-family: "Hellix", sans-serif;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 1rem 0;
+  opacity: 0.95;
+}
+
+.moda-hero-title {
+  font-family: "MinhaFonte", sans-serif;
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.1;
+}
+
+.moda-hero-subtitle {
+  font-family: "Hellix", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  margin: 0 0 2.5rem 0;
+  opacity: 0.9;
+  line-height: 1.6;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Botão Descobrir com underline animado */
+.moda-discover-button {
+  align-self: flex-start;
+  background: transparent;
+  border: none;
+  font-family: "Hellix", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  padding: 0;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  display: inline-block;
+  position: relative;
+  --underline-width: 100%;
+  margin-top: 1.5rem;
+}
+
+.moda-discover-button::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: var(--underline-width, 100%);
+  height: 1px;
+  background-color: #fff;
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Content Wrapper */
+.moda-content-wrapper {
+  background: #fff;
+  min-height: 50vh;
+  padding: 4rem 2rem;
+}
+
+/* Placeholder Content Styles */
+.moda-placeholder-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+.moda-placeholder-title {
+  font-family: "Futura", "Helvetica Neue", sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+}
+
+.moda-placeholder-text {
+  font-family: "Futura", "Helvetica Neue", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.8;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .moda-hero-content {
+    padding: 0 1.5rem;
+  }
+
+  .moda-content-wrapper {
+    padding: 3rem 1.5rem;
+  }
+
+  .moda-placeholder-section {
+    padding: 3rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .moda-hero-title {
+    margin-bottom: 1rem;
+  }
+
+  .moda-content-wrapper {
+    padding: 2rem 1rem;
+  }
+
+  .moda-placeholder-section {
+    padding: 2rem 0;
+  }
+}
