@@ -50,7 +50,7 @@ z-index: 1;
 .profile-menu-container {
   position: fixed;
   top: 20px;
-  right: 1px;
+  right: 0px;
   width: 540px;
   height: calc(100vh - 40px);
   background-color: #ffffff;
