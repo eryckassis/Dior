@@ -140,4 +140,26 @@ export class AuthController {
       return ApiResponse.internalError(res, "Erro ao  redefinir senha", error);
     }
   }
+
+  static async getMe(res, res) {
+    try {
+      const userId = req.user.userId;
+      const user = await AuthService.getUserById(userId);
+      return ApiResponse.success(
+        res,
+        { user },
+        "Dados do usuário recuperados com sucesso."
+      );
+    } catch (error) {
+      console.error("Erro ao buscar usuário:", error);
+      if (error.message.includes("não encontrado")) {
+        return ApiResponse.notFound(res, "Usuário não encontrado");
+      }
+      return ApiResponse.internalError(
+        res,
+        "Erro ao buscar dados do usuário.",
+        error
+      );
+    }
+  }
 }
