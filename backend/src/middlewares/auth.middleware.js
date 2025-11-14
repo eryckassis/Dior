@@ -1,4 +1,3 @@
-import { decode } from "jsonwebtoken";
 import { JwtUtil } from "../utils/jwt";
 import { ApiResponse } from "../utils/response";
 
