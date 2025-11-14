@@ -108,4 +108,19 @@ export class AuthController {
       return ApiResponse.internalError(res, "Erro ao verificar e-mail.", error);
     }
   }
+
+  static async forgotPassword(req, res) {
+    try {
+      const { email } = req.body;
+      const result = await AuthService.forgotPassword(email);
+      return ApiResponse.success(res, null, result.message);
+    } catch (error) {
+      console.error("Erro ao solicitar reset de senha:", error);
+      return ApiResponse.internalError(
+        res,
+        "Erro ao processar solicitação",
+        error
+      );
+    }
+  }
 }
