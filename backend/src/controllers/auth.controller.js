@@ -123,4 +123,21 @@ export class AuthController {
       );
     }
   }
+
+  static async resetPassword(req, res) {
+    try {
+      const { token, password } = req.body;
+      const result = await AuthService.resetPassword(token, password);
+      return ApiResponse.success(res, null, result.message);
+    } catch (error) {
+      console.error("Erro ao redefinir senha:", error);
+      if (
+        error.message.includes("inválido") ||
+        error.message.includes("Expirado")
+      ) {
+        return ApiResponse.badRequest(res, error.message);
+      }
+      return ApiResponse.internalError(res, "Erro ao  redefinir senha", error);
+    }
+  }
 }
