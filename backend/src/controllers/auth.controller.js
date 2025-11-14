@@ -60,4 +60,52 @@ export class AuthController {
       );
     }
   }
+
+  static async logout(req, res) {
+    try {
+      const userId = req.user.userId;
+      await AuthService.logout(userId);
+      return ApiResponse.success(
+        res,
+        null,
+        "logout realizado com sucesso. Até logo!"
+      );
+    } catch (error) {
+      console.error("Erro no logout:", error);
+      return ApiResponse.internalError(res, "Erro ao fazer Logout.", error);
+    }
+  }
+
+  static async refreshToken(req, res) {
+    try {
+      const { refreshToken } = req.body;
+      const result = await AuthService.refreshToken(refreshToken);
+      return ApiResponse.success(res, result, "Token atualizado com sucesso.");
+    } catch (error) {
+      console.error("Erro ao atualizar token:", error);
+      if (
+        error.message.includes("inválido") ||
+        error.message.includes("expirado")
+      ) {
+        return ApiResponse.unauthorized(res, error.message);
+      }
+    }
+  }
+
+  static async verifyEmail(req, res) {
+    try {
+      const { token } = req.params;
+      const result = await AuthService.verifyEmail(token);
+      return ApiResponse.success(res, null, result.message);
+    } catch (error) {
+      console.error("Erro ao verificar email:", error);
+      if (
+        error.message.includes("inválido") ||
+        error.message.includes("expirado")
+      ) {
+        return ApiResponse.badRequest(res, error.message);
+      }
+      return ApiResponse.internalError(res, "Erro ao verificar e-mail.", error);
+    }
+  }
 }
