@@ -1,5 +1,5 @@
-import { JwtUtil } from "../utils/jwt";
-import { ApiResponse } from "../utils/response";
+import { JwtUtil } from "../utils/jwt.js";
+import { ApiResponse } from "../utils/response.js";
 
 export class AuthMiddleware {
   static authenticate(req, res, next) {
@@ -11,7 +11,7 @@ export class AuthMiddleware {
           "Token de autenticação não fornecido. Por favor, faça login"
         );
       }
-      const parts = authHeader.split("");
+      const parts = authHeader.split(" ");
       if (parts.length !== 2 || parts[0] !== "Bearer") {
         return ApiResponse.unauthorized(
           res,
@@ -55,7 +55,7 @@ export class AuthMiddleware {
         return next();
       }
 
-      const parts = authHeader.split("");
+      const parts = authHeader.split(" ");
       if (parts.length === 2 && parts[0] === "Bearer") {
         const token = parts[1];
         const decoded = JwtUtil.verifyAccessToken(token);
@@ -71,6 +71,7 @@ export class AuthMiddleware {
       next();
     } catch (error) {
       req.user = null;
+      next();
     }
   }
 }

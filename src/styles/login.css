@@ -194,6 +194,47 @@
   transform: translateY(0);
 }
 
+.login-page .form__button:disabled {
+  background: #999;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Login Messages */
+.login-page .login-message {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  animation: slideDown 0.3s ease-out;
+}
+
+.login-page .login-message-error {
+  background: #fee;
+  color: #c33;
+  border: 1px solid #fcc;
+}
+
+.login-page .login-message-success {
+  background: #efe;
+  color: #3c3;
+  border: 1px solid #cfc;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Footer */
 .login-page .login-footer {
   width: 100%;

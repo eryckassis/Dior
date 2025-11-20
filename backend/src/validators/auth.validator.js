@@ -10,7 +10,7 @@ export class AuthValidator {
       "any.required": "O nome é obrigatório",
     }),
 
-    email: Joi.string().email().lowercase().trim().required().message({
+    email: Joi.string().email().lowercase().trim().required().messages({
       "string.base": "O e-mail deve ser um texto",
       "string.empty": "O e-mail é obrigatório",
       "string.email":
@@ -46,7 +46,7 @@ export class AuthValidator {
   });
 
   static loginSchema = Joi.object({
-    email: Joi.string().email().lowercase().trim().required().message({
+    email: Joi.string().email().lowercase().trim().required().messages({
       "string.base": "O e-mail deve ser um texto",
       "string.empty": "O e-mail é obrigatório",
       "string.email": "Por favor, insira um e-mail válido",

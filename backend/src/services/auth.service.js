@@ -1,12 +1,12 @@
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
-import prisma from "../config/database";
-import { config } from "../config/env";
-import { JwtUtil } from "../utils/jwt";
+import prisma from "../config/database.js";
+import { config } from "../config/env.js";
+import { JwtUtil } from "../utils/jwt.js";
 
 export class AuthService {
   static async register({ name, email, password }) {
-    const existigUser = await prisma.user.findUnique({
+    const existingUser = await prisma.user.findUnique({
       where: { email },
     });
 
@@ -31,7 +31,7 @@ export class AuthService {
         name: true,
         email: true,
         isEmailVerified: true,
-        createAt: true,
+        createdAt: true,
       },
     });
 

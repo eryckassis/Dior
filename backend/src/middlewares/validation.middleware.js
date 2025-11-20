@@ -1,5 +1,5 @@
-import { ApiResponse } from "../utils/response";
-import { AuthValidator } from "../validators/auth.validator";
+import { ApiResponse } from "../utils/response.js";
+import { AuthValidator } from "../validators/auth.validator.js";
 
 export class ValidationMiddleware {
   static validate(schema) {
@@ -17,5 +17,45 @@ export class ValidationMiddleware {
       req.body = value;
       next();
     };
+  }
+
+  static validateRegister(req, res, next) {
+    return ValidationMiddleware.validate(AuthValidator.registerSchema)(
+      req,
+      res,
+      next
+    );
+  }
+
+  static validateLogin(req, res, next) {
+    return ValidationMiddleware.validate(AuthValidator.loginSchema)(
+      req,
+      res,
+      next
+    );
+  }
+
+  static validateRefreshToken(req, res, next) {
+    return ValidationMiddleware.validate(AuthValidator.refreshTokenSchema)(
+      req,
+      res,
+      next
+    );
+  }
+
+  static validateForgotPassword(req, res, next) {
+    return ValidationMiddleware.validate(AuthValidator.forgotPasswordSchema)(
+      req,
+      res,
+      next
+    );
+  }
+
+  static validateResetPassword(req, res, next) {
+    return ValidationMiddleware.validate(AuthValidator.resetPasswordSchema)(
+      req,
+      res,
+      next
+    );
   }
 }

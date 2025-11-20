@@ -1,10 +1,13 @@
 import "../components/AppNavigation.js";
 import "../components/FooterSection.js";
 import "../styles/login.css";
+import { authService } from "../services/AuthService.js";
+import { router } from "../router/router.js";
 
 export class LoginPage extends HTMLElement {
   constructor() {
     super();
+    this.isLoading = false;
   }
 
   connectedCallback() {
@@ -12,6 +15,7 @@ export class LoginPage extends HTMLElement {
     this.initSwitch();
     this.initButtonAnimations();
     this.initForgotPassword();
+    this.initLoginForm();
   }
 
   initForgotPassword() {
@@ -49,6 +53,93 @@ export class LoginPage extends HTMLElement {
         this.togglePasswordVisibility()
       );
     }
+  }
+
+  initLoginForm() {
+    const form = this.querySelector("#b-form");
+    if (!form) return;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      if (this.isLoading) return;
+
+      const emailInput = form.querySelector('input[type="email"]');
+      const passwordInput = form.querySelector('input[type="password"]');
+      const submitButton = form.querySelector('button[type="submit"]');
+
+      const email = emailInput?.value.trim();
+      const password = passwordInput?.value;
+
+      if (!email || !password) {
+        this.showError("Por favor, preencha todos os campos");
+        return;
+      }
+
+      try {
+        this.isLoading = true;
+        submitButton.disabled = true;
+        submitButton.textContent = "Entrando...";
+
+        const response = await authService.login({ email, password });
+
+        this.showSuccess(response.message || "Login realizado com sucesso!");
+
+        // Aguarda 1 segundo e redireciona para home
+        setTimeout(() => {
+          router.navigate("/");
+        }, 1000);
+      } catch (error) {
+        this.showError(
+          error.message || "Erro ao fazer login. Tente novamente."
+        );
+      } finally {
+        this.isLoading = false;
+        submitButton.disabled = false;
+        submitButton.textContent = "Entrar";
+      }
+    });
+  }
+
+  showError(message) {
+    const form = this.querySelector("#b-form");
+    if (!form) return;
+
+    // Remove mensagem anterior se existir
+    const existingMessage = form.querySelector(".login-message");
+    if (existingMessage) {
+      existingMessage.remove();
+    }
+
+    const messageEl = document.createElement("div");
+    messageEl.className = "login-message login-message-error";
+    messageEl.textContent = message;
+
+    const button = form.querySelector('button[type="submit"]');
+    form.insertBefore(messageEl, button);
+
+    // Remove após 5 segundos
+    setTimeout(() => {
+      messageEl.remove();
+    }, 5000);
+  }
+
+  showSuccess(message) {
+    const form = this.querySelector("#b-form");
+    if (!form) return;
+
+    // Remove mensagem anterior se existir
+    const existingMessage = form.querySelector(".login-message");
+    if (existingMessage) {
+      existingMessage.remove();
+    }
+
+    const messageEl = document.createElement("div");
+    messageEl.className = "login-message login-message-success";
+    messageEl.textContent = message;
+
+    const button = form.querySelector('button[type="submit"]');
+    form.insertBefore(messageEl, button);
   }
 
   togglePasswordVisibility() {
@@ -152,6 +243,7 @@ export class LoginPage extends HTMLElement {
   sendPasswordReset() {
     const input = this.querySelector(".forgot-email-input");
     const message = this.querySelector(".forgot-message");
+    const sendBtn = this.querySelector(".forgot-send-btn");
 
     if (!input || !input.value.trim()) {
       message.textContent = "Por favor, insira um email válido";
@@ -160,14 +252,33 @@ export class LoginPage extends HTMLElement {
       return;
     }
 
-    // Simulação de envio
-    message.textContent = "Email de recuperação enviado com sucesso!";
-    message.style.color = "#27ae60";
-    message.style.display = "block";
+    // Desabilita botão durante o envio
+    sendBtn.disabled = true;
+    sendBtn.textContent = "Enviando...";
 
-    setTimeout(() => {
-      this.closeForgotPasswordModal();
-    }, 2000);
+    // Chama API de recuperação de senha
+    authService
+      .forgotPassword(input.value.trim())
+      .then((response) => {
+        message.textContent =
+          response.message || "Email de recuperação enviado com sucesso!";
+        message.style.color = "#27ae60";
+        message.style.display = "block";
+
+        setTimeout(() => {
+          this.closeForgotPasswordModal();
+        }, 2000);
+      })
+      .catch((error) => {
+        message.textContent =
+          error.message || "Erro ao enviar email de recuperação";
+        message.style.color = "#e74c3c";
+        message.style.display = "block";
+      })
+      .finally(() => {
+        sendBtn.disabled = false;
+        sendBtn.textContent = "Enviar";
+      });
   }
 
   initButtonAnimations() {
@@ -176,11 +287,7 @@ export class LoginPage extends HTMLElement {
   }
 
   initSwitch() {
-    // Prevent form submit default for demo
-    const forms = this.querySelectorAll("form");
-    forms.forEach((f) =>
-      f.addEventListener("submit", (e) => e.preventDefault())
-    );
+    // Método vazio - form submission agora é tratado em initLoginForm
   }
 
   render() {
@@ -224,8 +331,10 @@ export class LoginPage extends HTMLElement {
                 <button class="form__button" type="submit">Entrar</button>
 
                 <div class="login-footer">
-                  <p class="login-footer-text">Não tem uma conta? Cadastre-se</p>
-                  <a href="#" class="signup-link-footer">Login</a>
+                  <p class="login-footer-text">
+                    Não tem uma conta? 
+                    <a href="#" class="signup-link-footer" data-route="/register">Cadastre-se</a>
+                  </p>
                   <button type="button" class="email-code-button">Receber código de acesso por email</button>
                 </div>
               </form>

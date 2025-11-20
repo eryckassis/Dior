@@ -1,8 +1,8 @@
 import { AuthService } from "../services/auth.service.js";
-import { ApiResponse } from "../utils/response";
+import { ApiResponse } from "../utils/response.js";
 
 export class AuthController {
-  static async resgister(req, res) {
+  static async register(req, res) {
     try {
       const { name, email, password } = req.body;
       const user = await AuthService.register({ name, email, password });
@@ -141,7 +141,11 @@ export class AuthController {
     }
   }
 
-  static async getMe(res, res) {
+  /**
+   * GET /api/auth/me
+   * Retorna dados do usuário autenticado
+   */
+  static async getMe(req, res) {
     try {
       const userId = req.user.userId;
       const user = await AuthService.getUserById(userId);
