@@ -7,6 +7,7 @@ class Router {
     this.routes = {};
     this.currentPage = null;
     this.initialized = false;
+    this.isInitialNavigation = false; // Flag para primeira navegação do splash
   }
 
   init() {
@@ -34,7 +35,15 @@ class Router {
     this.routes[path] = componentName;
   }
 
-  navigate(path) {
+  navigate(path, skipPreloader = false) {
+    // Se for navegação inicial do splash, pula o preloader
+    if (skipPreloader || this.isInitialNavigation) {
+      this.isInitialNavigation = false; // Reset flag
+      window.history.pushState({}, "", path);
+      this.handleRouteChange();
+      return;
+    }
+
     // Fecha o menu dropdown se estiver aberto antes de navegar
     const menuIsOpen = document.querySelector(".dropdown.open");
 
@@ -149,6 +158,15 @@ class Router {
       // Dispara evento customizado para reinicializar features
       window.dispatchEvent(new CustomEvent("page-loaded"));
     }, 100);
+  }
+
+  /**
+   * Método para navegação inicial do splash screen
+   * Seta flag e navega sem mostrar preloader duplicado
+   */
+  navigateFromSplash(path) {
+    this.isInitialNavigation = true;
+    this.navigate(path, true);
   }
 }
 

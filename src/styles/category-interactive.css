@@ -176,29 +176,111 @@
    PRODUCT INFO - Informações do produto
    ============================================================================ */
 
+.category-product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .category-product-name {
   font-family: "Manrope", sans-serif;
-  position: relative;
-  bottom: 5px;
-  left: 15px;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   color: #333;
   margin: 0;
   line-height: 1.4;
   min-height: 40px;
 }
 
+.category-product-description {
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+  min-height: 36px;
+}
+
+.category-product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
 .category-product-price {
   font-family: "Manrope", sans-serif;
-  position: relative;
-  bottom: 30px;
-  left: 15px;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   color: #000;
   margin: 0;
   letter-spacing: 0.3px;
+}
+
+/* Botão de adicionar ao carrinho */
+.category-bag-button {
+  background-color: transparent;
+  border: 1px solid #000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #000;
+}
+
+.category-bag-button:hover {
+  background-color: #000;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.category-bag-button:active {
+  transform: scale(0.95);
+}
+
+.category-bag-button svg {
+  width: 18px;
+  height: 18px;
+  transition: all 0.3s ease;
+}
+
+/* Product Intensity Bars */
+.category-item .product-intensity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.category-item .intensity-label {
+  font-family: "Manrope", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #999;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+.category-item .intensity-bars {
+  display: flex;
+  gap: 5px;
+}
+
+.category-item .bar {
+  width: 18px;
+  height: 3px;
+  background-color: #e0e0e0;
+  border-radius: 2px;
+}
+
+.category-item .bar.filled {
+  background-color: #000;
 }
 
 /* ============================================================================
@@ -292,12 +374,36 @@
   }
 
   .category-product-name {
-    font-size: 13px;
+    font-size: 12px;
+    min-height: auto;
+  }
+
+  .category-product-description {
+    font-size: 11px;
     min-height: auto;
   }
 
   .category-product-price {
-    font-size: 15px;
+    font-size: 14px;
+  }
+
+  .category-bag-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .category-bag-button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .category-item .intensity-label {
+    font-size: 10px;
+  }
+
+  .category-item .bar {
+    width: 15px;
+    height: 2.5px;
   }
 
   .category-content-wrapper {

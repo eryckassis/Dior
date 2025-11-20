@@ -16,6 +16,8 @@ export class ModaEAcessoriosPage extends HTMLElement {
     this.render();
     this.initAnimations();
     this.initButtonAnimation();
+    this.initCardAnimations();
+    this.initCardButtons();
   }
 
   disconnectedCallback() {
@@ -124,16 +126,125 @@ export class ModaEAcessoriosPage extends HTMLElement {
     });
   }
 
+  initCardAnimations() {
+    requestAnimationFrame(() => {
+      if (!window.gsap || !window.ScrollTrigger) return;
+
+      const cards = this.querySelectorAll(".moda-gift-card");
+
+      cards.forEach((card, index) => {
+        const image = card.querySelector(".moda-card-image");
+        const overlay = card.querySelector(".moda-card-overlay");
+        const title = card.querySelector(".moda-card-title");
+        const button = card.querySelector(".moda-card-button");
+
+        // Set initial states
+        window.gsap.set(image, {
+          scale: 1.3,
+          opacity: 0,
+        });
+
+        window.gsap.set(overlay, {
+          scaleX: 1,
+          transformOrigin: "left center",
+        });
+
+        window.gsap.set([title, button], {
+          y: 30,
+          opacity: 0,
+        });
+
+        // Create scroll trigger animation
+        const tl = window.gsap.timeline({
+          scrollTrigger: {
+            trigger: card,
+            start: "top 75%",
+            end: "bottom 25%",
+            toggleActions: "play reverse play reverse",
+          },
+          delay: index * 0.2,
+        });
+
+        tl.to(image, {
+          opacity: 1,
+          duration: 0.01,
+        })
+          .to(
+            overlay,
+            {
+              scaleX: 0,
+              duration: 1.2,
+              ease: "power3.inOut",
+            },
+            0.1
+          )
+          .to(
+            image,
+            {
+              scale: 1,
+              duration: 1.2,
+              ease: "power3.out",
+            },
+            0.1
+          )
+          .to(
+            title,
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: "power3.out",
+            },
+            0.5
+          )
+          .to(
+            button,
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: "power3.out",
+            },
+            0.6
+          );
+      });
+    });
+  }
+
+  initCardButtons() {
+    requestAnimationFrame(() => {
+      if (!window.gsap) return;
+
+      const buttons = this.querySelectorAll(".moda-card-button");
+
+      buttons.forEach((button) => {
+        // Mouseenter - linha diminui para 0
+        button.addEventListener("mouseenter", () => {
+          window.gsap.to(button, {
+            "--underline-width": "0%",
+            duration: 0.35,
+            ease: "power2.inOut",
+          });
+        });
+
+        // Mouseleave - linha volta a 100%
+        button.addEventListener("mouseleave", () => {
+          window.gsap.to(button, {
+            "--underline-width": "100%",
+            duration: 0.35,
+            ease: "power2.inOut",
+          });
+        });
+      });
+    });
+  }
+
   render() {
     this.innerHTML = `
       <div class="all-content" id="all-content" role="main">
         <!-- Moda Navigation (customizada) -->
         <moda-navigation></moda-navigation>
 
-        <!-- Main Content Area -->
-        <main class="content" id="content">
-          
-          <!-- Hero Section -->
           <section class="moda-hero-section">
             <div class="moda-hero-overlay"></div>
             <video
@@ -158,8 +269,30 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
           <!-- Content Wrapper -->
           <div class="moda-content-wrapper">
-            <!-- Componente de Conteúdo Customizável -->
-            <moda-acessorios-content></moda-acessorios-content>
+            <!-- Gift Cards Grid -->
+            <section class="moda-gift-cards-section">
+              <div class="moda-gift-card">
+                <div class="moda-card-image-wrapper">
+                  <img src="./images/paraEla.jpg" alt="Presentes para ela" class="moda-card-image" />
+                  <div class="moda-card-overlay"></div>
+                </div>
+                <div class="moda-card-content">
+                  <h2 class="moda-card-title">Presentes para ela</h2>
+                  <a href="/para-ela" data-route="/para-ela" class="moda-card-button">Descobrir</a>
+                </div>
+              </div>
+
+              <div class="moda-gift-card">
+                <div class="moda-card-image-wrapper">
+                  <img src="./images/paraEle.jpg" alt="Presentes para homem" class="moda-card-image" />
+                  <div class="moda-card-overlay"></div>
+                </div>
+                <div class="moda-card-content">
+                  <h2 class="moda-card-title">Presentes para homem</h2>
+                  <a href="#para-ele" class="moda-card-button">Descobrir</a>
+                </div>
+              </div>
+            </section>
           </div>
 
         </main>

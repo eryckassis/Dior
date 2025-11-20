@@ -1,0 +1,405 @@
+/* ============================================================================
+   PRESENTE PARA ELA PAGE - Estilos da página de presentes femininos
+   ============================================================================ */
+
+/* Override ModaNavigation - Forçar fundo branco ao invés de transparente */
+presente-para-ela-page moda-navigation {
+  background-color: white !important;
+}
+
+presente-para-ela-page .moda-logo-link svg {
+  filter: none !important;
+}
+
+presente-para-ela-page .moda-nav-link {
+  color: #000000 !important;
+}
+
+presente-para-ela-page .moda-icon path {
+  fill: #000000 !important;
+}
+
+/* Hero Video Section */
+.presente-ela-hero-section {
+  position: relative;
+  border-radius: 10px;
+  left: 10%;
+  width: 80%;
+  height: 70vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.presente-ela-hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.presente-ela-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: 1;
+}
+
+.presente-ela-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.presente-ela-hero-title {
+  font-family: "MinhaFonte", sans-serif;
+  font-size: clamp(2rem, 1vw, 3rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.3rem;
+  line-height: 1.1;
+}
+
+.presente-ela-hero-subtitle {
+  font-family: "Hellix", sans-serif;
+  font-size: clamp(1rem, 1vw, 1.25rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Content Wrapper */
+.presente-ela-content-wrapper {
+  background-color: #f6f3f7;
+  padding: 6rem 2rem;
+}
+
+/* Section Intro */
+.presente-ela-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 5rem;
+}
+
+.presente-ela-section-title {
+  font-family: "MinhaFonte", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+  color: #000000;
+}
+
+.presente-ela-section-description {
+  font-family: "Hellix", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  color: #333333;
+}
+
+/* Drag Cards Section */
+.drag-cards-section {
+  margin: 0 0 6rem 0;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.drag-cards-container {
+  width: 100%;
+  overflow: visible;
+
+  position: relative;
+  margin-bottom: 2rem;
+  touch-action: pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+}
+
+.drag-cards-track {
+  display: inline-flex;
+  gap: 2rem;
+  padding: 0 2rem;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  -webkit-touch-callout: none;
+}
+
+.drag-cards-track:active {
+  cursor: grabbing;
+}
+
+.drag-card {
+  flex-shrink: 0;
+
+  width: 450px;
+  height: 600px;
+  position: relative;
+  user-select: none;
+}
+
+.drag-card-image-wrapper {
+  position: relative;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.drag-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
+
+.drag-card:hover .drag-card-image {
+  transform: scale(1.1);
+  transition: transform 0.6s ease;
+}
+
+.drag-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.drag-card:hover .drag-card-overlay {
+  opacity: 0.8;
+}
+
+.drag-card-title {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 2rem;
+  right: 2rem;
+  z-index: 2;
+  font-family: "MinhaFonte", sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  line-height: 1.2;
+  text-align: left;
+}
+
+/* Progress Bar */
+.drag-progress-bar {
+  width: 100%;
+  max-width: 600px;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.15);
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.drag-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: #000000;
+  transition: width 0.3s ease;
+}
+
+.drag-progress-bar:hover {
+  height: 3px;
+}
+
+.drag-progress-bar:hover .drag-progress-fill {
+  background-color: #333333;
+}
+
+/* Products Grid */
+.presente-ela-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.presente-ela-product {
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f8f8;
+  transition: transform 0.3s ease;
+}
+
+.presente-ela-product:hover {
+  transform: translateY(-10px);
+}
+
+.presente-ela-product-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 125%;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.presente-ela-product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.presente-ela-product:hover .presente-ela-product-image {
+  transform: scale(1.05);
+}
+
+.presente-ela-product-info {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.presente-ela-product-title {
+  font-family: "Baskerville", serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+  color: #000000;
+}
+
+.presente-ela-product-description {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  color: #666666;
+  margin-bottom: 1.5rem;
+}
+
+.presente-ela-product-button {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid #000000;
+  color: #000000;
+  padding: 0.875rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.presente-ela-product-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.presente-ela-product-button:hover {
+  color: #ffffff;
+}
+
+.presente-ela-product-button:hover::before {
+  transform: scaleX(1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .presente-ela-hero-section {
+    height: 60vh;
+    min-height: 500px;
+  }
+
+  .presente-ela-hero-video {
+    object-position: center;
+  }
+
+  .presente-ela-content-wrapper {
+    padding: 4rem 1rem;
+  }
+
+  .presente-ela-intro {
+    margin-bottom: 3rem;
+  }
+
+  .drag-card {
+    width: 350px;
+    height: 500px;
+  }
+
+  .drag-card-title {
+    font-size: 1.5rem;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .drag-cards-track {
+    padding: 0 1rem;
+    gap: 1.5rem;
+  }
+
+  .drag-progress-bar {
+    max-width: 90%;
+  }
+
+  .presente-ela-products-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .presente-ela-product-info {
+    padding: 1.5rem;
+  }
+}

@@ -12,6 +12,36 @@ export class ModaNavigation extends HTMLElement {
     this.render();
     this.initEventListeners();
     this.initMenuLinksAnimation();
+    this.initScrollBehavior();
+  }
+
+  initScrollBehavior() {
+    // Verifica se está dentro da página PresenteParaEla
+    const isInPresenteParaEla = this.closest("presente-para-ela-page");
+
+    if (isInPresenteParaEla) {
+      // Na página PresenteParaEla, força o estado "scrolled" (fundo branco)
+      const nav = this.querySelector(".moda-navigation");
+      nav.classList.add("scrolled");
+      return; // Não adiciona listener de scroll
+    }
+
+    const nav = this.querySelector(".moda-navigation");
+    let lastScroll = 0;
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll <= 50) {
+        // No topo - fundo transparente
+        nav.classList.remove("scrolled");
+      } else {
+        // Scrollado - fundo branco
+        nav.classList.add("scrolled");
+      }
+
+      lastScroll = currentScroll;
+    });
   }
 
   initMenuLinksAnimation() {

@@ -894,6 +894,13 @@ p {
   top: 10rem;
   left: 1rem;
 }
+.grid-content h1 {
+}
+
+.grid-content p {
+  font-family: "Hellix", sans-serif;
+  font-weight: 400;
+}
 
 .grid-item__wrapper {
   position: relative;
@@ -905,9 +912,8 @@ p {
   margin-top: 100px;
 }
 
-/* Fix para alinhar altura do vídeo da esquerda com o da direita */
 .video-height-fix video {
-  max-height: 750px; /* Ajuste este valor conforme necessário */
+  max-height: 750px;
   object-fit: cover;
   object-position: center;
 }

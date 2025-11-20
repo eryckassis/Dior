@@ -8,6 +8,7 @@ import "./styles/profile-menu.css";
 import "./styles/finalizar-compra.css";
 import "./styles/dior-verao.css";
 import "./styles/moda-acessorios.css";
+import "./styles/presente-para-ela.css";
 import "./styles/register.css";
 import { router } from "./router/router.js";
 import "./pages/HomePage.js";
@@ -21,6 +22,7 @@ import "./pages/RegisterPage.js";
 import "./pages/FinalizarCompraPage.js";
 import "./pages/DiorVeraoPage.js";
 import "./pages/ModaEAcessoriosPage.js";
+import "./pages/PresenteParaElaPage.js";
 import "./components/ProfileMenu.js";
 import "./components/FragrancesModal.js";
 import "./components/AppNavigation.js";
@@ -43,6 +45,7 @@ router.register("/register", "register-page");
 router.register("/finalizar-compra", "finalizar-compra-page");
 router.register("/dior-verao", "dior-verao-page");
 router.register("/moda-acessorios", "moda-acessorios-page");
+router.register("/para-ela", "presente-para-ela-page");
 
 // ============================================================================
 // BUTTON ANIMATION - Efeito Hover com Flair
@@ -303,21 +306,10 @@ class SplashScreen {
 // ============================================================================
 
 function initPreloader(category) {
-  const tl = gsap.timeline({
-    onComplete: () => {
-      // Inicia o router após o preloader
-      router.init();
+  // Inicia o router ANTES da animação
+  router.init();
 
-      // Navega para a rota correta baseado na categoria
-      if (category === "fashion") {
-        router.navigate("/moda-acessorios");
-      } else if (category === "beauty") {
-        router.navigate("/");
-      } else {
-        router.navigate("/");
-      }
-    },
-  });
+  const tl = gsap.timeline();
 
   tl
     // Torna o container e logo visíveis imediatamente
@@ -345,6 +337,16 @@ function initPreloader(category) {
       duration: 1.5,
       height: "0vh",
       ease: "Power3.easeOut",
+      onComplete: () => {
+        // Navega para a rota APÓS o preloader subir completamente
+        if (category === "fashion") {
+          router.navigateFromSplash("/moda-acessorios");
+        } else if (category === "beauty") {
+          router.navigateFromSplash("/");
+        } else {
+          router.navigateFromSplash("/");
+        }
+      },
     })
 
     // Libera scroll do body
