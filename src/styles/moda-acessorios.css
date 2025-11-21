@@ -601,8 +601,8 @@ moda-acessorios-page main {
 .moda-card-title {
   font-family: "MinhaFonte", sans-serif;
   font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 300;
-  color: #ffffff;
+  font-weight: 600;
+  color: #f6f3f7;
   margin: 0;
   letter-spacing: 0.02em;
   line-height: 1.2;
