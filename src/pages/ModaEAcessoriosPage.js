@@ -18,9 +18,14 @@ export class ModaEAcessoriosPage extends HTMLElement {
     this.initButtonAnimation();
     this.initCardAnimations();
     this.initCardButtons();
+    this.initDragCards();
   }
 
   disconnectedCallback() {
+    // Cleanup draggable
+    if (this.draggableInstance) {
+      this.draggableInstance.kill();
+    }
     // Cleanup animations
     if (this.animations) {
       this.animations.forEach((anim) => anim.kill());
@@ -239,6 +244,119 @@ export class ModaEAcessoriosPage extends HTMLElement {
     });
   }
 
+  initDragCards() {
+    setTimeout(() => {
+      if (!window.gsap || !window.Draggable) {
+        console.warn("GSAP ou Draggable não disponível");
+        return;
+      }
+
+      const container = this.querySelector(".moda-drag-container");
+      const slider = this.querySelector(".moda-gift-cards-section");
+      const progressFill = this.querySelector(".moda-drag-progress-fill");
+      const cards = this.querySelectorAll(".moda-gift-card");
+
+      if (!container || !slider || cards.length === 0) {
+        console.warn("Container, slider ou cards não encontrados");
+        return;
+      }
+
+      // Função para calcular bounds corretamente
+      const calculateBounds = () => {
+        const containerWidth = container.offsetWidth;
+        const firstCard = cards[0].getBoundingClientRect();
+        const lastCard = cards[cards.length - 1].getBoundingClientRect();
+
+        // Largura real do conteúdo: do início do primeiro ao fim do último card
+        const contentWidth = lastCard.right - firstCard.left;
+
+        // Adiciona padding extra para ver o último card completamente
+        const padding =
+          parseFloat(getComputedStyle(container).paddingLeft) || 0;
+        const totalWidth = contentWidth + padding;
+
+        // MaxDrag negativo para mover para esquerda
+        const maxDrag = Math.min(0, -(totalWidth - containerWidth + padding));
+
+        console.log("📏 Bounds:", {
+          containerWidth,
+          contentWidth,
+          totalWidth,
+          maxDrag,
+        });
+
+        return { minX: maxDrag, maxX: 0 };
+      };
+
+      let bounds = calculateBounds();
+
+      // Atualizar progress bar
+      const updateProgress = (x) => {
+        if (!progressFill || bounds.minX >= 0) return;
+        const progress = Math.abs(x) / Math.abs(bounds.minX);
+        const clampedProgress = Math.min(Math.max(progress, 0), 1);
+        window.gsap.to(progressFill, {
+          scaleX: Math.max(clampedProgress, 0.15),
+          duration: 0.1,
+          ease: "none",
+        });
+      };
+
+      // Criar Draggable
+      this.draggableInstance = window.Draggable.create(slider, {
+        type: "x",
+        bounds: bounds,
+        inertia: true,
+        edgeResistance: 0.65,
+        dragResistance: 0,
+        throwResistance: 2000,
+        cursor: "grab",
+        activeCursor: "grabbing",
+        allowNativeTouchScrolling: false,
+        onPress: function () {
+          window.gsap.killTweensOf(slider);
+        },
+        onDrag: function () {
+          updateProgress(this.x);
+        },
+        onThrowUpdate: function () {
+          updateProgress(this.x);
+        },
+        onClick: function (e) {
+          if (e.target.classList.contains("moda-card-button")) {
+            e.target.click();
+          }
+        },
+      })[0];
+
+      // Recalcular bounds on resize
+      window.addEventListener("resize", () => {
+        bounds = calculateBounds();
+        if (this.draggableInstance) {
+          this.draggableInstance.applyBounds(bounds);
+          // Corrigir posição se estiver fora dos bounds
+          const currentX = this.draggableInstance.x;
+          if (currentX < bounds.minX) {
+            window.gsap.to(slider, { x: bounds.minX, duration: 0.3 });
+          }
+        }
+      });
+
+      // Recalcular após imagens carregarem
+      setTimeout(() => {
+        bounds = calculateBounds();
+        if (this.draggableInstance) {
+          this.draggableInstance.applyBounds(bounds);
+        }
+      }, 500);
+
+      // Initial progress
+      updateProgress(0);
+
+      console.log("✅ Drag cards inicializado!", bounds);
+    }, 300);
+  }
+
   render() {
     this.innerHTML = `
       <div class="all-content" id="all-content" role="main">
@@ -269,33 +387,104 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
           <!-- Content Wrapper -->
           <div class="moda-content-wrapper">
-            <!-- Gift Cards Grid -->
-            <section class="moda-gift-cards-section">
-              <div class="moda-gift-card">
-                <div class="moda-card-image-wrapper">
-                  <img src="./images/paraEla.jpg" alt="Presentes para ela" class="moda-card-image" />
-                  <div class="moda-card-overlay"></div>
+            <!-- Drag Cards Container -->
+            <div class="moda-drag-container">
+              <section class="moda-gift-cards-section">
+                <div class="moda-gift-card">
+                  <div class="moda-card-image-wrapper">
+                    <img src="./images/paraEla.jpg" alt="Presentes para ela" class="moda-card-image" />
+                    <div class="moda-card-overlay"></div>
+                  </div>
+                  <div class="moda-card-content">
+                    <h2 class="moda-card-title">Presentes para ela</h2>
+                    <a href="/para-ela" data-route="/para-ela" class="moda-card-button">Descobrir</a>
+                  </div>
                 </div>
-                <div class="moda-card-content">
-                  <h2 class="moda-card-title">Presentes para ela</h2>
-                  <a href="/para-ela" data-route="/para-ela" class="moda-card-button">Descobrir</a>
-                </div>
-              </div>
 
-              <div class="moda-gift-card">
-                <div class="moda-card-image-wrapper">
-                  <img src="./images/paraEle.jpg" alt="Presentes para homem" class="moda-card-image" />
-                  <div class="moda-card-overlay"></div>
+                <div class="moda-gift-card">
+                  <div class="moda-card-image-wrapper">
+                    <img src="./images/paraEle.jpg" alt="Bolsas femininas" class="moda-card-image" />
+                    <div class="moda-card-overlay"></div>
+                  </div>
+                  <div class="moda-card-content">
+                    <h2 class="moda-card-title">Bolsas femininas</h2>
+                    <a href="#bolsas" class="moda-card-button">Descobrir</a>
+                  </div>
                 </div>
-                <div class="moda-card-content">
-                  <h2 class="moda-card-title">Presentes para homem</h2>
-                  <a href="#para-ele" class="moda-card-button">Descobrir</a>
+
+                <div class="moda-gift-card">
+                  <div class="moda-card-image-wrapper">
+                    <img src="./images/miss-dior-parfum.jpg" alt="Presentes para homem" class="moda-card-image" />
+                    <div class="moda-card-overlay"></div>
+                  </div>
+                  <div class="moda-card-content">
+                    <h2 class="moda-card-title">Presentes para homem</h2>
+                    <a href="#para-ele" class="moda-card-button">Descobrir</a>
+                  </div>
                 </div>
-              </div>
-            </section>
+
+                <div class="moda-gift-card">
+                  <div class="moda-card-image-wrapper">
+                    <img src="./images/miss-dior-essence.jpg" alt="Sapatos masculinos" class="moda-card-image" />
+                    <div class="moda-card-overlay"></div>
+                  </div>
+                  <div class="moda-card-content">
+                    <h2 class="moda-card-title">Sapatos masculinos</h2>
+                    <a href="#sapatos" class="moda-card-button">Descobrir</a>
+                  </div>
+                </div>
+
+                <div class="moda-gift-card">
+                  <div class="moda-card-image-wrapper">
+                    <img src="./images/dior-addict.jpg" alt="Joias" class="moda-card-image" />
+                    <div class="moda-card-overlay"></div>
+                  </div>
+                  <div class="moda-card-content">
+                    <h2 class="moda-card-title">Joias</h2>
+                    <a href="#joias" class="moda-card-button">Descobrir</a>
+                  </div>
+                </div>
+
+                <div class="moda-gift-card">
+                  <div class="moda-card-image-wrapper">
+                    <img src="./images/dior-addict.jpg" alt="Joias" class="moda-card-image" />
+                    <div class="moda-card-overlay"></div>
+                  </div>
+                  <div class="moda-card-content">
+                    <h2 class="moda-card-title">Joias</h2>
+                    <a href="#joias" class="moda-card-button">Descobrir</a>
+                  </div>
+                </div>
+
+                <div class="moda-gift-card">
+                  <div class="moda-card-image-wrapper">
+                    <img src="./images/dior-addict.jpg" alt="Joias" class="moda-card-image" />
+                    <div class="moda-card-overlay"></div>
+                  </div>
+                  <div class="moda-card-content">
+                    <h2 class="moda-card-title">Joias</h2>
+                    <a href="#joias" class="moda-card-button">Descobrir</a>
+                  </div>
+                </div>
+
+                <div class="moda-gift-card">
+                  <div class="moda-card-image-wrapper">
+                    <img src="./images/dior-addict.jpg" alt="Joias" class="moda-card-image" />
+                    <div class="moda-card-overlay"></div>
+                  </div>
+                  <div class="moda-card-content">
+                    <h2 class="moda-card-title">Joias</h2>
+                    <a href="#joias" class="moda-card-button">Descobrir</a>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="moda-drag-progress">
+              <div class="moda-drag-progress-fill"></div>
+            </div>
           </div>
-
-        </main>
 
         <!-- Footer -->
         <footer-section></footer-section>

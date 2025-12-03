@@ -120,14 +120,13 @@ presente-para-ela-page .moda-icon path {
 .drag-cards-section {
   margin: 0 0 6rem 0;
   width: 100%;
-  overflow: hidden;
+  overflow: visible; /* Mudado de hidden para visible - permite calcular scrollWidth correto */
   position: relative;
 }
 
 .drag-cards-container {
   width: 100%;
   overflow: visible;
-
   position: relative;
   margin-bottom: 2rem;
   touch-action: pan-y pinch-zoom;
@@ -137,12 +136,14 @@ presente-para-ela-page .moda-icon path {
 .drag-cards-track {
   display: inline-flex;
   gap: 2rem;
-  padding: 0 2rem;
+  padding: 0 4rem; /* Aumentado para garantir mais espaço */
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   touch-action: pan-y;
   -webkit-touch-callout: none;
+  /* Garante que o track tenha largura mínima maior que o container */
+  min-width: calc(100vw + 500px);
 }
 
 .drag-cards-track:active {
@@ -151,9 +152,8 @@ presente-para-ela-page .moda-icon path {
 
 .drag-card {
   flex-shrink: 0;
-
-  width: 450px;
-  height: 600px;
+  width: 380px; /* Ajustado para caber mais cards na tela e garantir scroll */
+  height: 520px;
   position: relative;
   user-select: none;
 }
@@ -245,6 +245,263 @@ presente-para-ela-page .moda-icon path {
 
 .drag-progress-bar:hover .drag-progress-fill {
   background-color: #333333;
+}
+
+/* ============================================================================
+   PRODUCTS SHOWCASE SECTION - Grid de produtos com cores
+   ============================================================================ */
+
+.products-showcase-section {
+  padding: 4rem 2rem;
+  max-width: 1800px;
+  margin: 0 auto;
+  background-color: #f6f3f7;
+}
+
+.products-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.product-showcase-item {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.product-showcase-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  border-radius: 2px;
+  isolation: isolate;
+}
+
+/* Product Images Track (Draggable) */
+.product-images-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100%;
+  cursor: grab;
+  touch-action: pan-x;
+  will-change: transform;
+  user-select: none;
+  z-index: 1;
+  transform: translateZ(0);
+}
+
+.product-images-track:active {
+  cursor: grabbing;
+}
+
+.product-images-track .product-showcase-image {
+  flex-shrink: 0;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Product Progress Bar */
+.product-progress-bar {
+  width: 100%;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a1a;
+  transform-origin: left center;
+  transform: scaleX(0.15);
+}
+
+/* Product Navigation Arrows */
+.product-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateZ(1px);
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #1a1a1a;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: auto;
+}
+
+.product-showcase-item:hover .product-arrow {
+  opacity: 1;
+}
+
+.product-arrow:hover {
+  opacity: 0.6 !important;
+}
+
+.product-arrow--left {
+  left: 8px;
+}
+
+.product-arrow--right {
+  right: 8px;
+}
+
+.product-arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+.product-showcase-info {
+  padding: 1rem 0.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: transparent;
+  min-height: 100px;
+}
+
+.product-showcase-name {
+  font-family: "Hellix", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 0;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  min-height: 2.8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-showcase-subtitle {
+  display: none;
+}
+
+.product-showcase-price {
+  font-family: "Hellix", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #666666;
+  margin: 0;
+}
+
+/* Color Dots */
+.product-showcase-colors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  min-height: 14px;
+}
+
+.color-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.color-dot:hover {
+  transform: scale(1.15);
+}
+
+.color-dot.active {
+  outline: 1.5px solid #1a1a1a;
+  outline-offset: 2px;
+}
+
+/* Color variations */
+.color-dot--black {
+  background-color: #1a1a1a;
+}
+
+.color-dot--beige {
+  background-color: #e8ddd0;
+}
+
+.color-dot--blue {
+  background-color: #5b8fb9;
+}
+
+.color-dot--lightblue {
+  background-color: #c4d9e8;
+}
+
+.color-dot--cream {
+  background-color: #f0e6d8;
+}
+
+.color-dot--white {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.color-dot--pink {
+  background-color: #f5d0c5;
+}
+
+.color-dot--red {
+  background-color: #8b3a3a;
+}
+
+.color-dot--navy {
+  background-color: #1a2a4a;
+}
+
+.color-dot--brown {
+  background-color: #6b4423;
+}
+
+.color-dot--gray {
+  background-color: #a0a0a0;
+}
+
+.color-dot--gold {
+  background: linear-gradient(135deg, #d4af37 0%, #f5d76e 50%, #d4af37 100%);
+}
+
+.color-dot--silver {
+  background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 50%, #c0c0c0 100%);
+}
+
+.color-dot--green {
+  background-color: #2d5a3d;
+}
+
+.color-dot-more {
+  font-family: "Hellix", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #999;
+  margin-left: 0.15rem;
 }
 
 /* Products Grid */
@@ -355,6 +612,24 @@ presente-para-ela-page .moda-icon path {
 }
 
 /* Responsive */
+@media (max-width: 1200px) {
+  .products-showcase-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .products-showcase-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .products-showcase-section {
+    padding: 3rem 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .presente-ela-hero-section {
     height: 60vh;
@@ -401,5 +676,22 @@ presente-para-ela-page .moda-icon path {
 
   .presente-ela-product-info {
     padding: 1.5rem;
+  }
+
+  .products-showcase-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .products-showcase-section {
+    padding: 2rem 1rem;
+  }
+
+  .product-showcase-name {
+    font-size: 0.8rem;
+  }
+
+  .product-showcase-price {
+    font-size: 0.75rem;
   }
 }
