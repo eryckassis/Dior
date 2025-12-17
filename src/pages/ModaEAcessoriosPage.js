@@ -447,7 +447,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/dior-addict.jpg" alt="Relojoaria" class="moda-card-image" />
+                    <img src="./images/relogio.avif" alt="Relojoaria" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -458,7 +458,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/dior-addict.jpg" alt="Joalheria" class="moda-card-image" />
+                    <img src="./images/brinco.avif" alt="Joalheria" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -469,7 +469,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/dior-addict.jpg" alt="Sapatos Femininos" class="moda-card-image" />
+                    <img src="./images/tapatos.avif" alt="Sapatos Femininos" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
