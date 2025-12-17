@@ -440,14 +440,14 @@ export class ModaEAcessoriosPage extends HTMLElement {
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
-                    <h2 class="moda-card-title">Relojoaria</h2>
+                    <h2 class="moda-card-title">Joias</h2>
                     <a href="#joias" class="moda-card-button">Descobrir</a>
                   </div>
                 </div>
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/dior-addict.jpg" alt="Joias" class="moda-card-image" />
+                    <img src="./images/dior-addict.jpg" alt="Relojoaria" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -458,7 +458,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/dior-addict.jpg" alt="Joias" class="moda-card-image" />
+                    <img src="./images/dior-addict.jpg" alt="Joalheria" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -469,7 +469,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/dior-addict.jpg" alt="Joias" class="moda-card-image" />
+                    <img src="./images/dior-addict.jpg" alt="Sapatos Femininos" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
