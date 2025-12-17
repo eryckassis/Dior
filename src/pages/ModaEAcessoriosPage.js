@@ -451,7 +451,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
-                    <h2 class="moda-card-title">Joias</h2>
+                    <h2 class="moda-card-title">Relojoaria</h2>
                     <a href="#joias" class="moda-card-button">Descobrir</a>
                   </div>
                 </div>
@@ -462,7 +462,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
-                    <h2 class="moda-card-title">Joias</h2>
+                    <h2 class="moda-card-title">Joalheria</h2>
                     <a href="#joias" class="moda-card-button">Descobrir</a>
                   </div>
                 </div>
@@ -473,7 +473,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
-                    <h2 class="moda-card-title">Joias</h2>
+                    <h2 class="moda-card-title">Sapatos Femininos</h2>
                     <a href="#joias" class="moda-card-button">Descobrir</a>
                   </div>
                 </div>
