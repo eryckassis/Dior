@@ -403,7 +403,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/paraEle.jpg" alt="Bolsas femininas" class="moda-card-image" />
+                    <img src="./images/bolsinhas.avif" alt="Bolsas femininas" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -414,7 +414,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/miss-dior-parfum.jpg" alt="Presentes para homem" class="moda-card-image" />
+                    <img src="./images/paraEle.jpg" alt="Presentes para homem" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -425,7 +425,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/miss-dior-essence.jpg" alt="Sapatos masculinos" class="moda-card-image" />
+                    <img src="./images/sapatitos.avif" alt="Sapatos masculinos" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -436,11 +436,11 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/dior-addict.jpg" alt="Joias" class="moda-card-image" />
+                    <img src="./images/joiass.avif" alt="Joias" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
-                    <h2 class="moda-card-title">Joias</h2>
+                    <h2 class="moda-card-title">Relojoaria</h2>
                     <a href="#joias" class="moda-card-button">Descobrir</a>
                   </div>
                 </div>
