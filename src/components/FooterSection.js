@@ -358,6 +358,9 @@ export class FooterSection extends HTMLElement {
     // Placeholder animation (Dior style)
     this.initPlaceholderAnimation();
 
+    // Mobile accordion for footer sections
+    this.initMobileAccordion();
+
     // Accordion functionality
     const accordionButtons = this.querySelectorAll(
       ".r-footer__accordion-button"
@@ -410,6 +413,40 @@ export class FooterSection extends HTMLElement {
           document.body.classList.remove("high-contrast");
         }
       });
+    });
+  }
+
+  initMobileAccordion() {
+    const listWrappers = this.querySelectorAll(".r-footer__list-wrapper");
+    
+    listWrappers.forEach((wrapper) => {
+      const title = wrapper.querySelector(".r-footer__list-title");
+      
+      if (title) {
+        title.addEventListener("click", () => {
+          // Só funciona em mobile (menos de 768px)
+          if (window.innerWidth <= 768) {
+            // Fecha outros acordeões
+            listWrappers.forEach((otherWrapper) => {
+              if (otherWrapper !== wrapper && otherWrapper.classList.contains("active")) {
+                otherWrapper.classList.remove("active");
+              }
+            });
+            
+            // Toggle do atual
+            wrapper.classList.toggle("active");
+          }
+        });
+      }
+    });
+
+    // Reseta acordeões quando a janela é redimensionada para desktop
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 768) {
+        listWrappers.forEach((wrapper) => {
+          wrapper.classList.remove("active");
+        });
+      }
     });
   }
 

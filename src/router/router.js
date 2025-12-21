@@ -5,7 +5,9 @@
 class Router {
   constructor() {
     this.routes = {};
+    this.dynamicRoutes = []; // Rotas dinâmicas com parâmetros
     this.currentPage = null;
+    this.currentParams = {}; // Parâmetros da rota atual
     this.initialized = false;
     this.isInitialNavigation = false; // Flag para primeira navegação do splash
   }
@@ -32,7 +34,48 @@ class Router {
   }
 
   register(path, componentName) {
-    this.routes[path] = componentName;
+    // Verifica se é uma rota dinâmica (contém :param)
+    if (path.includes(":")) {
+      // Converte /produto/:id para regex /produto/([^/]+)
+      const paramNames = [];
+      const regexPattern = path.replace(/:([^/]+)/g, (match, paramName) => {
+        paramNames.push(paramName);
+        return "([^/]+)";
+      });
+
+      this.dynamicRoutes.push({
+        regex: new RegExp(`^${regexPattern}$`),
+        paramNames,
+        componentName,
+      });
+    } else {
+      this.routes[path] = componentName;
+    }
+  }
+
+  /**
+   * Encontra uma rota dinâmica que corresponde ao path
+   * Retorna { componentName, params } ou null
+   */
+  matchDynamicRoute(path) {
+    for (const route of this.dynamicRoutes) {
+      const match = path.match(route.regex);
+      if (match) {
+        const params = {};
+        route.paramNames.forEach((name, index) => {
+          params[name] = match[index + 1];
+        });
+        return { componentName: route.componentName, params };
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Retorna os parâmetros da rota atual
+   */
+  getParams() {
+    return this.currentParams;
   }
 
   navigate(path, skipPreloader = false) {
@@ -122,7 +165,24 @@ class Router {
 
   async handleRouteChange() {
     const path = window.location.pathname;
-    const componentName = this.routes[path] || this.routes["/"];
+
+    // Primeiro tenta encontrar rota estática exata
+    let componentName = this.routes[path];
+    this.currentParams = {};
+
+    // Se não encontrou, tenta rotas dinâmicas
+    if (!componentName) {
+      const dynamicMatch = this.matchDynamicRoute(path);
+      if (dynamicMatch) {
+        componentName = dynamicMatch.componentName;
+        this.currentParams = dynamicMatch.params;
+      }
+    }
+
+    // Fallback para rota padrão
+    if (!componentName) {
+      componentName = this.routes["/"];
+    }
 
     if (!componentName) {
       console.error(`Route not found: ${path}`);
@@ -142,6 +202,17 @@ class Router {
 
     // Cria e adiciona a nova página
     const pageElement = document.createElement(componentName);
+
+    // Passa os parâmetros para o componente via atributo
+    if (Object.keys(this.currentParams).length > 0) {
+      pageElement.setAttribute(
+        "data-params",
+        JSON.stringify(this.currentParams)
+      );
+      // Também define como propriedade para acesso direto
+      pageElement.routeParams = this.currentParams;
+    }
+
     appRoot.appendChild(pageElement);
     this.currentPage = pageElement;
 

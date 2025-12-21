@@ -2,6 +2,9 @@
 // PRESENTE PARA ELA CONTENT - Componente de conteúdo da página
 // ============================================================================
 
+import { products } from "../data/products.js";
+import { router } from "../router/router.js";
+
 export class PresenteParaElaContent extends HTMLElement {
   constructor() {
     super();
@@ -14,6 +17,7 @@ export class PresenteParaElaContent extends HTMLElement {
     this.initAnimations();
     this.initDraggableCards();
     this.initProductCarousels();
+    this.initProductNavigation();
   }
 
   disconnectedCallback() {
@@ -361,6 +365,81 @@ export class PresenteParaElaContent extends HTMLElement {
     }, 500);
   }
 
+  // ============================================================================
+  // Navegação para página de detalhe do produto
+  // ============================================================================
+  initProductNavigation() {
+    setTimeout(() => {
+      const productItems = this.querySelectorAll(".product-showcase-item");
+
+      productItems.forEach((item) => {
+        const productId = item.getAttribute("data-product-id");
+        if (!productId) return;
+
+        // Variáveis para detectar drag vs click
+        let startX = 0;
+        let startY = 0;
+        let isDragging = false;
+
+        // Ao pressionar, guardar posição inicial
+        item.addEventListener("mousedown", (e) => {
+          startX = e.clientX;
+          startY = e.clientY;
+          isDragging = false;
+        });
+
+        item.addEventListener("touchstart", (e) => {
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+          isDragging = false;
+        });
+
+        // Durante movimento, detectar se é drag
+        item.addEventListener("mousemove", (e) => {
+          const deltaX = Math.abs(e.clientX - startX);
+          const deltaY = Math.abs(e.clientY - startY);
+          if (deltaX > 10 || deltaY > 10) {
+            isDragging = true;
+          }
+        });
+
+        item.addEventListener("touchmove", (e) => {
+          const deltaX = Math.abs(e.touches[0].clientX - startX);
+          const deltaY = Math.abs(e.touches[0].clientY - startY);
+          if (deltaX > 10 || deltaY > 10) {
+            isDragging = true;
+          }
+        });
+
+        // No click, navegar apenas se não foi drag
+        item.addEventListener("click", (e) => {
+          // Ignorar cliques nas setas e bolinhas de cor
+          if (
+            e.target.closest(".product-arrow") ||
+            e.target.closest(".color-dot") ||
+            e.target.closest(".color-dot-more")
+          ) {
+            return;
+          }
+
+          // Se foi drag, não navegar
+          if (isDragging) {
+            isDragging = false;
+            return;
+          }
+
+          // Navegar para página de detalhe
+          router.navigate(`/produto/${productId}`);
+        });
+
+        // Cursor pointer para indicar clicável
+        item.style.cursor = "pointer";
+      });
+
+      console.log("✅ Navegação de produtos inicializada!");
+    }, 600);
+  }
+
   initAnimations() {
     requestAnimationFrame(() => {
       if (!window.gsap || !window.ScrollTrigger) return;
@@ -469,304 +548,9 @@ export class PresenteParaElaContent extends HTMLElement {
     `;
   }
 
-  // Gerar produtos a partir dos dados
+  // Gerar produtos a partir dos dados centralizados
   generateProducts() {
-    // ============================================================================
-    // DADOS DOS PRODUTOS - Edite aqui para modificar cada produto individualmente
-    // ============================================================================
-    const products = [
-      // ========== LINHA 1 ==========
-      {
-        id: "blazer-1",
-        name: "Blazer Bar 30 Montaigne",
-        price: "R$ 33.000,00",
-        images: [
-          "./images/blaze1.webp",
-          "./images/blaze2.webp",
-          "./images/blaze4.webp",
-          "./images/blaze3.webp",
-        ],
-        colors: [
-          { name: "black", label: "Preto" },
-          { name: "beige", label: "Bege" },
-        ],
-      },
-      {
-        id: "sapato-1",
-        name: "Scarpin slingback J'Adior",
-        price: "R$ 8.300,00",
-        images: [
-          "./images/sapato1.webp",
-          "./images/sapato2.webp",
-          "./images/sapato3.webp",
-          "./images/sapato4.webp",
-        ],
-        colors: [{ name: "black", label: "Preto" }],
-      },
-      {
-        id: "bolsa-1",
-        name: "Bolsa tote vertical Dior Toujours",
-        price: "R$ 24.000,00",
-        images: [
-          "./images/bolsa1.webp",
-          "./images/bolsa2.webp",
-          "./images/bolsa4.webp",
-        ],
-        colors: [
-          { name: "blue", label: "Azul" },
-          { name: "cream", label: "Creme" },
-          { name: "pink", label: "Rosa" },
-        ],
-        moreColors: 3,
-      },
-      {
-        id: "oculos-1",
-        name: "Óculos Dior Signature",
-        price: "R$ 6.600,00",
-        images: [
-          "./images/oculos.webp",
-          "./images/oculos2.webp",
-          "./images/oculos3.webp",
-          "./images/oculos4.webp",
-        ],
-        colors: [
-          { name: "black", label: "Preto" },
-          { name: "brown", label: "Marrom" },
-        ],
-      },
-
-      // ========== LINHA 2 ==========
-      {
-        id: "blazer-2",
-        name: "Blazer Bar 30 Montaigne",
-        price: "R$ 33.000,00",
-        images: [
-          "./images/blaze1.webp",
-          "./images/blaze2.webp",
-          "./images/blaze4.webp",
-          "./images/blaze3.webp",
-        ],
-        colors: [
-          { name: "navy", label: "Azul Marinho" },
-          { name: "white", label: "Branco" },
-        ],
-      },
-      {
-        id: "sapato-2",
-        name: "Scarpin slingback J'Adior",
-        price: "R$ 8.300,00",
-        images: [
-          "./images/sapato1.webp",
-          "./images/sapato2.webp",
-          "./images/sapato3.webp",
-          "./images/sapato4.webp",
-        ],
-        colors: [
-          { name: "red", label: "Vermelho" },
-          { name: "black", label: "Preto" },
-        ],
-      },
-      {
-        id: "bolsa-2",
-        name: "Bolsa tote vertical Dior Toujours",
-        price: "R$ 24.000,00",
-        images: [
-          "./images/bolsa1.webp",
-          "./images/bolsa2.webp",
-          "./images/bolsa4.webp",
-        ],
-        colors: [
-          { name: "black", label: "Preto" },
-          { name: "beige", label: "Bege" },
-        ],
-      },
-      {
-        id: "oculos-2",
-        name: "Óculos Dior Signature",
-        price: "R$ 6.600,00",
-        images: [
-          "./images/oculos.webp",
-          "./images/oculos2.webp",
-          "./images/oculos3.webp",
-          "./images/oculos4.webp",
-        ],
-        colors: [{ name: "gold", label: "Dourado" }],
-      },
-
-      // ========== LINHA 3 ==========
-      {
-        id: "blazer-3",
-        name: "Blazer Bar 30 Montaigne",
-        price: "R$ 33.000,00",
-        images: [
-          "./images/blaze1.webp",
-          "./images/blaze2.webp",
-          "./images/blaze4.webp",
-          "./images/blaze3.webp",
-        ],
-        colors: [{ name: "cream", label: "Creme" }],
-      },
-      {
-        id: "sapato-3",
-        name: "Scarpin slingback J'Adior",
-        price: "R$ 8.300,00",
-        images: [
-          "./images/sapato1.webp",
-          "./images/sapato2.webp",
-          "./images/sapato3.webp",
-          "./images/sapato4.webp",
-        ],
-        colors: [
-          { name: "beige", label: "Bege" },
-          { name: "gold", label: "Dourado" },
-        ],
-      },
-      {
-        id: "bolsa-3",
-        name: "Bolsa tote vertical Dior Toujours",
-        price: "R$ 24.000,00",
-        images: [
-          "./images/bolsa1.webp",
-          "./images/bolsa2.webp",
-          "./images/bolsa4.webp",
-        ],
-        colors: [
-          { name: "green", label: "Verde" },
-          { name: "brown", label: "Marrom" },
-        ],
-        moreColors: 2,
-      },
-      {
-        id: "oculos-3",
-        name: "Óculos Dior Signature",
-        price: "R$ 6.600,00",
-        images: [
-          "./images/oculos.webp",
-          "./images/oculos2.webp",
-          "./images/oculos3.webp",
-          "./images/oculos4.webp",
-        ],
-        colors: [
-          { name: "silver", label: "Prata" },
-          { name: "black", label: "Preto" },
-        ],
-      },
-
-      // ========== LINHA 4 ==========
-      {
-        id: "blazer-4",
-        name: "Blazer Bar 30 Montaigne",
-        price: "R$ 33.000,00",
-        images: [
-          "./images/blaze1.webp",
-          "./images/blaze2.webp",
-          "./images/blaze4.webp",
-          "./images/blaze3.webp",
-        ],
-        colors: [
-          { name: "pink", label: "Rosa" },
-          { name: "white", label: "Branco" },
-        ],
-      },
-      {
-        id: "sapato-4",
-        name: "Scarpin slingback J'Adior",
-        price: "R$ 8.300,00",
-        images: [
-          "./images/sapato1.webp",
-          "./images/sapato2.webp",
-          "./images/sapato3.webp",
-          "./images/sapato4.webp",
-        ],
-        colors: [{ name: "navy", label: "Azul Marinho" }],
-      },
-      {
-        id: "bolsa-4",
-        name: "Bolsa tote vertical Dior Toujours",
-        price: "R$ 24.000,00",
-        images: [
-          "./images/bolsa1.webp",
-          "./images/bolsa2.webp",
-          "./images/bolsa4.webp",
-        ],
-        colors: [{ name: "red", label: "Vermelho" }],
-      },
-      {
-        id: "oculos-4",
-        name: "Óculos Dior Signature",
-        price: "R$ 6.600,00",
-        images: [
-          "./images/oculos.webp",
-          "./images/oculos2.webp",
-          "./images/oculos3.webp",
-          "./images/oculos4.webp",
-        ],
-        colors: [
-          { name: "blue", label: "Azul" },
-          { name: "cream", label: "Creme" },
-        ],
-      },
-
-      // ========== LINHA 5 ==========
-      {
-        id: "blazer-5",
-        name: "Blazer Bar 30 Montaigne",
-        price: "R$ 33.000,00",
-        images: [
-          "./images/blaze1.webp",
-          "./images/blaze2.webp",
-          "./images/blaze4.webp",
-          "./images/blaze3.webp",
-        ],
-        colors: [
-          { name: "brown", label: "Marrom" },
-          { name: "beige", label: "Bege" },
-        ],
-      },
-      {
-        id: "sapato-5",
-        name: "Scarpin slingback J'Adior",
-        price: "R$ 8.300,00",
-        images: [
-          "./images/sapato1.webp",
-          "./images/sapato2.webp",
-          "./images/sapato3.webp",
-          "./images/sapato4.webp",
-        ],
-        colors: [
-          { name: "silver", label: "Prata" },
-          { name: "black", label: "Preto" },
-        ],
-        moreColors: 4,
-      },
-      {
-        id: "bolsa-5",
-        name: "Bolsa tote vertical Dior Toujours",
-        price: "R$ 24.000,00",
-        images: [
-          "./images/bolsa1.webp",
-          "./images/bolsa2.webp",
-          "./images/bolsa4.webp",
-        ],
-        colors: [
-          { name: "gold", label: "Dourado" },
-          { name: "black", label: "Preto" },
-        ],
-      },
-      {
-        id: "oculos-5",
-        name: "Óculos Dior Signature",
-        price: "R$ 6.600,00",
-        images: [
-          "./images/oculos.webp",
-          "./images/oculos2.webp",
-          "./images/oculos3.webp",
-          "./images/oculos4.webp",
-        ],
-        colors: [{ name: "green", label: "Verde" }],
-      },
-    ];
-
+    // Usa os dados importados do arquivo /data/products.js
     // Gerar HTML a partir dos dados
     return products
       .map((product, index) => {

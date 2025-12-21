@@ -9,6 +9,7 @@ import "./styles/finalizar-compra.css";
 import "./styles/dior-verao.css";
 import "./styles/moda-acessorios.css";
 import "./styles/presente-para-ela.css";
+import "./styles/product-detail.css";
 import "./styles/register.css";
 import { router } from "./router/router.js";
 import "./pages/HomePage.js";
@@ -23,6 +24,7 @@ import "./pages/FinalizarCompraPage.js";
 import "./pages/DiorVeraoPage.js";
 import "./pages/ModaEAcessoriosPage.js";
 import "./pages/PresenteParaElaPage.js";
+import "./pages/ProductDetailPage.js";
 import "./components/ProfileMenu.js";
 import "./components/FragrancesModal.js";
 import "./components/AppNavigation.js";
@@ -46,6 +48,7 @@ router.register("/finalizar-compra", "finalizar-compra-page");
 router.register("/dior-verao", "dior-verao-page");
 router.register("/moda-acessorios", "moda-acessorios-page");
 router.register("/para-ela", "presente-para-ela-page");
+router.register("/produto/:id", "product-detail-page");
 
 // ============================================================================
 // BUTTON ANIMATION - Efeito Hover com Flair
