@@ -418,21 +418,24 @@ export class FooterSection extends HTMLElement {
 
   initMobileAccordion() {
     const listWrappers = this.querySelectorAll(".r-footer__list-wrapper");
-    
+
     listWrappers.forEach((wrapper) => {
       const title = wrapper.querySelector(".r-footer__list-title");
-      
+
       if (title) {
         title.addEventListener("click", () => {
           // Só funciona em mobile (menos de 768px)
           if (window.innerWidth <= 768) {
             // Fecha outros acordeões
             listWrappers.forEach((otherWrapper) => {
-              if (otherWrapper !== wrapper && otherWrapper.classList.contains("active")) {
+              if (
+                otherWrapper !== wrapper &&
+                otherWrapper.classList.contains("active")
+              ) {
                 otherWrapper.classList.remove("active");
               }
             });
-            
+
             // Toggle do atual
             wrapper.classList.toggle("active");
           }
