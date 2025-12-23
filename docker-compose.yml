@@ -3,7 +3,7 @@
 # Ambiente de desenvolvimento com PostgreSQL e Redis
 # =============================================================================
 
-version: '3.8'
+version: "3.8"
 
 services:
   # ===========================================================================
@@ -70,7 +70,7 @@ services:
     networks:
       - dior_network
     profiles:
-      - tools  # Só sobe se especificar --profile tools
+      - tools # Só sobe se especificar --profile tools
 
 # =============================================================================
 # VOLUMES - Persistência de dados
