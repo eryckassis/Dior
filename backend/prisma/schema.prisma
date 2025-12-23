@@ -6,20 +6,38 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-}model User {
-  id                String    @id @default(uuid())
-  email             String    @unique
-  password          String
-  name              String
-  isEmailVerified   Boolean   @default(false)
-  emailVerifyToken  String?
+}
+
+model User {
+  id                   String @id @default(uuid())
+  email                String @unique
+  password             String
+  name                 String
+
+  // verificação de e-mail
+
+  isEmailVerified  Boolean  @default(false)
+  emailVerifyToken      String?
+  emailVerifyTokenExpires   DateTime?
+
+  //reset de senha
+
   resetPasswordToken String?
   resetPasswordExpires DateTime?
-  failedLoginAttempts Int     @default(0)
+
+  // segurança do login
+
+  failedLoginAttempts Int @default(0)
   accountLockedUntil DateTime?
-  refreshToken      String?
-  createdAt         DateTime  @default(now())
-  updatedAt         DateTime  @updatedAt
+
+  // refresh token
+
+  refreshToken  String?
+
+  // Timestamps
+
+  createdAt  DateTime  @default(now())
+  updateAt DateTime @updatedAt
 
   @@map("users")
 }
