@@ -1,0 +1,89 @@
+# =============================================================================
+# DOCKER COMPOSE - DIOR E-COMMERCE
+# Ambiente de desenvolvimento com PostgreSQL e Redis
+# =============================================================================
+
+version: '3.8'
+
+services:
+  # ===========================================================================
+  # POSTGRESQL - Banco de dados principal
+  # ===========================================================================
+  postgres:
+    image: postgres:16-alpine
+    container_name: dior_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: dior_admin
+      POSTGRES_PASSWORD: dior_secret_2025
+      POSTGRES_DB: dior_db
+      # Configurações de performance
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    ports:
+      - "5432:5432"
+    volumes:
+      # Persistência dos dados (não perde dados ao reiniciar)
+      - postgres_data:/var/lib/postgresql/data
+      # Scripts de inicialização (opcional)
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dior_admin -d dior_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - dior_network
+
+  # ===========================================================================
+  # REDIS - Cache e sessões
+  # ===========================================================================
+  redis:
+    image: redis:7-alpine
+    container_name: dior_redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - dior_network
+
+  # ===========================================================================
+  # REDIS COMMANDER - Interface web para visualizar Redis (dev only)
+  # ===========================================================================
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: dior_redis_ui
+    restart: unless-stopped
+    environment:
+      REDIS_HOSTS: local:redis:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+    networks:
+      - dior_network
+    profiles:
+      - tools  # Só sobe se especificar --profile tools
+
+# =============================================================================
+# VOLUMES - Persistência de dados
+# =============================================================================
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+# =============================================================================
+# NETWORKS - Rede interna dos containers
+# =============================================================================
+networks:
+  dior_network:
+    driver: bridge

@@ -1,10 +1,4 @@
-// ============================================================================
-// DADOS CENTRALIZADOS DOS PRODUTOS
-// Este arquivo contém todos os produtos que podem ser exibidos no site
-// ============================================================================
-
 export const products = [
-  // ========== LINHA 1 ==========
   {
     id: "blazer-1",
     name: "Blazer Bar 30 Montaigne",
@@ -96,7 +90,6 @@ export const products = [
     care: "Guardar em estojo rígido",
   },
 
-  // ========== LINHA 2 ==========
   {
     id: "blazer-2",
     name: "Blazer Bar 30 Montaigne",
@@ -186,7 +179,6 @@ export const products = [
     care: "Guardar em estojo rígido",
   },
 
-  // ========== LINHA 3 ==========
   {
     id: "blazer-3",
     name: "Blazer Bar 30 Montaigne",
@@ -277,7 +269,6 @@ export const products = [
     care: "Guardar em estojo rígido",
   },
 
-  // ========== LINHA 4 ==========
   {
     id: "blazer-4",
     name: "Blazer Bar 30 Montaigne",
@@ -366,7 +357,6 @@ export const products = [
     care: "Guardar em estojo rígido",
   },
 
-  // ========== LINHA 5 ==========
   {
     id: "blazer-5",
     name: "Blazer Bar 30 Montaigne",

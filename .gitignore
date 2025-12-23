@@ -6,19 +6,28 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+
+# Environment (NUNCA commitar secrets!)
 .env
 .env.local
 .env.*.local
+.env.development
+.env.production
 
-
+# Dependencies
 node_modules
 dist
 dist-ssr
 *.local
 
+# Docker volumes (dados locais)
+docker/postgres/data/
+docker/redis/data/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
 .DS_Store
 *.suo
@@ -28,3 +37,6 @@ dist-ssr
 *.sw?
 *.mp4
 .vercel
+
+# Test coverage
+coverage/
