@@ -365,23 +365,20 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
           <section class="moda-hero-section">
             <div class="moda-hero-overlay"></div>
-            <video
+            <img
+              src="/images/menininha.png"
+              alt="O mundo encantado da Dior - Presentes para o fim de ano"
               class="moda-hero-video"
-              autoplay
-              muted
-              loop
-              playsinline
-            >
-              <source src="/videos/diorAcessories.webm" type="video/webm" />
-            </video>
+              loading="eager"
+            />
             
             <div class="moda-hero-content">
-              <p class="moda-hero-label">Ideias de presentes para o fim de ano</p>
-              <h1 class="moda-hero-title">O mundo encantado da Dior</h1>
+              <p class="moda-hero-label">Coleção feminina Primavera-Verão 2026</p>
+              <h1 class="moda-hero-title">Tradição revisada</h1>
               <p class="moda-hero-subtitle">
                 Descubra a seleção de presentes da Maison: um convite para celebrar a arte de presentear, desde já, no espírito das festas de fim de ano
               </p>
-              <a href="#" class="moda-discover-button">Descobrir</a>
+              <a href="#" class="moda-discover-button">Descubra a  coleção</a>
             </div>
           </section>
 
@@ -392,7 +389,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
               <section class="moda-gift-cards-section">
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="/images/paraEla.jpg" alt="Presentes para ela" class="moda-card-image" />
+                    <img src="/images/paraEla.avif" alt="Presentes para ela" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -403,7 +400,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="/images/bolsinhas.avif" alt="Bolsas femininas" class="moda-card-image" />
+                    <img src="/images/bolsa.avif" alt="Bolsas femininas" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -414,7 +411,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="/images/paraEle.jpg" alt="Presentes para homem" class="moda-card-image" />
+                    <img src="/images/paraEle.avif" alt="Presentes para homem" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
