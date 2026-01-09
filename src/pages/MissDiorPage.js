@@ -559,9 +559,9 @@ Christian Dior, 1947
         <section class="miss-dior-product-detail">
           <div class="container">
             <div class="miss-dior-product-info">
-              <div class="product-detail-image">
+              <a href="/compras-miss-dior-parfum" class="product-detail-image" data-route="/compras-miss-dior-parfum">
                 <img src="/images/missDiorle.webp" alt="Miss Dior Parfum" />
-              </div>
+              </a>
               <div class="product-detail-content">
                 <h3 class="product-name">Miss Dior Parfum</h3>
                 <p class="product-description">Perfume - notas florais, frutadas e amadeiradas intensas</p>

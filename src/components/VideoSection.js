@@ -22,6 +22,7 @@
             muted
             loop
             playsinline
+            preload="auto"
           ></video>
         </figure>
       </article>

@@ -28,6 +28,7 @@ export class HeroSection extends HTMLElement {
             muted
             loop
             playsinline
+            preload="auto"
           ></video>
           <div class="video-overlay-content">
             <p class="video-overlay-label">${label}</p>
