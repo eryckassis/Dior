@@ -6,11 +6,200 @@
 
 Uma solução completa de e-commerce para produtos de luxo, desenvolvida com tecnologias modernas e foco em experiência do usuário premium.
 
-[Demonstração ao Vivo](https://dior-ne1az66yd-eryck-assis-projects.vercel.app/) • [Documentação da API](#documentação-da-api) • [Guia de Instalação](#instalação)
+[Demonstração ao Vivo](https://dior-ne1az66yd-eryck-assis-projects. vercel.app/) • [Documentação da API](#documentação-da-api) • [Guia de Instalação](#instalação)
 
 ---
 
 </div>
+
+## Galeria do Projeto
+
+<div align="center">
+
+### Interface Principal
+
+<table>
+  <tr>
+    <td width="100%" align="center">
+      <img src="https://github.com/user-attachments/assets/feafdab2-ae5e-49a4-9dd9-f79c02d6d160" alt="Homepage Dior Boutique" width="100%" />
+      <br>
+      <sub><b>Homepage</b> - Design elegante com animações GSAP e smooth scroll</sub>
+    </td>
+  </tr>
+</table>
+
+### Catálogo e Produtos
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/ec6f60bc-594e-4ee5-9647-a19068e2f4de" alt="Catálogo de Produtos" width="100%" />
+      <br>
+      <sub><b>Home page para Moda e acessório</b> - responsivo com filtros avançados</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/f6ddbd0b-7c0c-40da-a6a3-d0f07d7f9a9a" alt="Página de Produto" width="100%" />
+      <br>
+      <sub><b>Detalhes do Produto</b> - Informações completas e imagens de alta qualidade</sub>
+    </td>
+  </tr>
+</table>
+
+### Experiência de Compra
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/f27036d1-6f94-48af-a24c-2ee4373d1a0a" alt="Carrinho de Compras" width="100%" />
+      <br>
+      <sub><b></b></sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/2e34df84-19f0-4444-b3d5-1f981824134d" alt="Sistema de Autenticação" width="100%" />
+      <br>
+      <sub><b></b></sub>
+    </td>
+  </tr>
+</table>
+
+### Experiência de produto
+
+
+
+<table>
+  <tr>
+    <td width="50%" align="center"> 
+      <img src="https://github.com/user-attachments/assets/32e5bc2e-769a-46ba-aeba-aa3282d68714" alt="Carrinho de Compras" width="100%" />
+      <br>
+      <sub><b>Visualização de produto</b> - Interface intuitiva com animação drag "arrastar imagem"</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/edf40442-ef50-432e-89e5-a27f01a0830f" alt="Sistema de Autenticação" width="100%" />
+      <br>
+      <sub><b>Foco em qualidade</b> - Interfaces intuitivas e uso facilitado</sub>
+    </td>
+  </tr>
+</table>
+
+### Experiência de Compra
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/5a5f5444-6cec-4618-b120-9fac4e979bdd" alt="Carrinho de Compras" width="100%" />
+      <br>
+      <sub><b></b></sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/e256735b-5380-42f3-8939-956a9a949ab5" alt="Sistema de Autenticação" width="100%" />
+      <br>
+      <sub><b></b></sub>
+    </td>
+  </tr>
+</table>
+
+### Interface Principal Cosméticos
+
+<table>
+  <tr>
+    <td width="100%" align="center">
+      <img src="https://github.com/user-attachments/assets/c99ba750-3a25-4b6a-909d-db5292bef4f9" alt="Homepage Dior Boutique" width="100%" />
+      <br>
+      <sub><b>Homepage</b> - Design elegante com animações GSAP e smooth scroll</sub>
+    </td>
+  </tr>
+</table>
+
+### Miss Dior Parfum
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/4be32922-bcea-4021-852b-69380e4574c5" alt="Carrinho de Compras" width="100%" />
+      <br>
+      <sub><b></b></sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/fd98870b-ece5-4c68-918c-4791a172083a" alt="Sistema de Autenticação" width="100%" />
+      <br>
+      <sub><b></b></sub>
+    </td>
+  </tr>
+</table>
+
+###  Dior Holiday
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/8d583ad3-a202-4ecd-9d3f-fb0ae8f751f6" alt="Carrinho de Compras" width="100%" />
+      <br>
+      <sub><b></b></sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/4ed00355-cbc9-4de6-a5f3-c198e0574eff" alt="Sistema de Autenticação" width="100%" />
+      <br>
+      <sub><b></b></sub>
+    </td>
+  </tr>
+</table>
+
+### Dior Verão
+
+<table>
+  <tr>
+    <td width="100%" align="center">
+      <img src="https://github.com/user-attachments/assets/9a54c2ef-4f1f-459c-baca-8f623607ad78" alt="Homepage Dior Boutique" width="100%" />
+      <br>
+      <sub><b>Homepage</b> - Design elegante com animações GSAP e smooth scroll</sub>
+    </td>
+  </tr>
+</table>
+
+###  Dior fragancias de verao
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/97144316-696a-49c3-a22b-052cc321c446" alt="Carrinho de Compras" width="100%" />
+      <br>
+      <sub><b></b></sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/c092b6fa-a475-4158-9c4d-b496dac1001d" alt="Sistema de Autenticação" width="100%" />
+      <br>
+      <sub><b></b></sub>
+    </td>
+  </tr>
+</table>
+
+
+### Características Visuais
+
+
+
+
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <h3> Design </h3>
+      <p>Interface elegante inspirada em marcas de luxo</p>
+    </td>
+    <td align="center" width="33%">
+      <h3> Animações Fluidas</h3>
+      <p>Transições suaves com GSAP e Lenis</p>
+    </td>
+    <td align="center" width="33%">
+      <h3> 100% Responsivo</h3>
+      <p>Adaptado para todos os dispositivos</p>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+---
 
 ## Índice
 
@@ -32,12 +221,12 @@ Uma solução completa de e-commerce para produtos de luxo, desenvolvida com tec
 
 ## Visão Geral
 
-O Dior Luxury Boutique SaaS é uma plataforma de e-commerce full stack especializada em produtos de luxo, oferecendo uma experiência de compra imersiva e segura. O sistema integra frontend moderno com animações fluidas, backend robusto com autenticação JWT, e banco de dados PostgreSQL para garantir escalabilidade e confiabilidade.
+O Dior Luxury Boutique SaaS é uma plataforma de e-commerce full stack especializada em produtos de luxo, oferecendo uma experiência de compra imersiva e segura.  O sistema integra frontend moderno com animações fluidas, backend robusto com autenticação JWT, e banco de dados PostgreSQL para garantir escalabilidade e confiabilidade. 
 
 ### Status do Projeto
 
 ```
-Frontend:   ████████████████░░░░  80% Completo
+Frontend:    ████████████████░░░░  80% Completo
 Backend:   ███████████████████░  95% Completo
 Testes:    ██████████░░░░░░░░░░  50% Completo
 Deploy:    ████████████████████  100% Ativo
@@ -64,8 +253,8 @@ Deploy:    ████████████████████  100% At
 
 | Tecnologia       | Versão | Finalidade                      |
 | ---------------- | ------ | ------------------------------- |
-| **Node.js**      | 18+    | Runtime JavaScript              |
-| **Express. js**  | 4.22.1 | Framework web RESTful           |
+| **Node. js**      | 18+    | Runtime JavaScript              |
+| **Express. js**   | 4.22.1 | Framework web RESTful           |
 | **Prisma ORM**   | 5.22.0 | Gerenciamento de banco de dados |
 | **PostgreSQL**   | 14+    | Banco de dados relacional       |
 | **Redis**        | 7+     | Cache e sessões                 |
@@ -76,7 +265,7 @@ Deploy:    ████████████████████  100% At
 
 | Tecnologia             | Finalidade                      |
 | ---------------------- | ------------------------------- |
-| **Helmet. js**         | Headers de segurança HTTP       |
+| **Helmet.js**          | Headers de segurança HTTP       |
 | **CORS**               | Controle de acesso cross-origin |
 | **Joi**                | Validação de schemas e inputs   |
 | **express-rate-limit** | Proteção contra ataques DDoS    |
@@ -105,7 +294,7 @@ Deploy:    ████████████████████  100% At
                            ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │                      BACKEND (Node.js)                          │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐         │
+│  ┌──────────────┐  ┌──────────────┐  ��──────────────┐         │
 │  │  Express.js  │  │    Helmet    │  │  Rate Limit  │         │
 │  │   Routing    │  │   Security   │  │  Protection  │         │
 │  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘         │
@@ -174,7 +363,7 @@ Deploy:    ████████████████████  100% At
 <summary><strong>Validação de Dados</strong></summary>
 
 - Validação de email com regex
-- Requisitos de senha forte:
+- Requisitos de senha forte: 
   - Mínimo 8 caracteres
   - 1 letra maiúscula
   - 1 letra minúscula
@@ -295,9 +484,9 @@ Deploy:    ████████████████████  100% At
 
 ### 1. Autenticação Insegura
 
-**Problema**: Sistemas tradicionais armazenam senhas em texto plano ou com hash fraco.
+**Problema**:  Sistemas tradicionais armazenam senhas em texto plano ou com hash fraco. 
 
-**Solução**:
+**Solução**: 
 
 - Bcrypt com 12 salt rounds
 - JWT com refresh tokens
@@ -323,7 +512,7 @@ const accessToken = jwt.sign({ userId }, JWT_SECRET, { expiresIn: "15m" });
 
 ### 3. Gerenciamento de Estado
 
-**Problema**: Estado global complexo e difícil de manter.
+**Problema**: Estado global complexo e difícil de manter. 
 
 **Solução**:
 
@@ -334,9 +523,9 @@ const accessToken = jwt.sign({ userId }, JWT_SECRET, { expiresIn: "15m" });
 
 ### 4. Segurança de API
 
-**Problema**: APIs expostas a ataques DDoS e injeção.
+**Problema**: APIs expostas a ataques DDoS e injeção. 
 
-**Solução**:
+**Solução**: 
 
 - Rate limiting por IP
 - Validação com Joi schemas
@@ -347,7 +536,7 @@ const accessToken = jwt.sign({ userId }, JWT_SECRET, { expiresIn: "15m" });
 
 **Problema**: Performance degradada com aumento de dados.
 
-**Solução**:
+**Solução**: 
 
 - Prisma ORM com queries otimizadas
 - Índices no banco de dados
@@ -386,7 +575,7 @@ Authorization: Bearer {access_token}
 {
   "name": "João Silva",
   "email": "joao@example.com",
-  "password": "Senha@123",
+  "password":  "Senha@123",
   "confirmPassword": "Senha@123"
 }
 ```
@@ -396,8 +585,8 @@ Authorization: Bearer {access_token}
 ```json
 {
   "success": true,
-  "message": "Usuário registrado com sucesso",
-  "data": {
+  "message":  "Usuário registrado com sucesso",
+  "data":  {
     "user": {
       "id": "uuid-here",
       "name": "João Silva",
@@ -412,8 +601,8 @@ Authorization: Bearer {access_token}
 
 **Validações:**
 
-- Nome: 3-100 caracteres
-- Email: formato válido e único
+- Nome:  3-100 caracteres
+- Email:  formato válido e único
 - Senha: mínimo 8 caracteres, 1 maiúscula, 1 minúscula, 1 número, 1 especial
 - Rate Limit: 3 registros/hora por IP
 
@@ -441,7 +630,7 @@ Authorization: Bearer {access_token}
     "user": {
       "id": "uuid-here",
       "name": "João Silva",
-      "email": "joao@example. com"
+      "email":  "joao@example.com"
     },
     "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
     "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -474,8 +663,8 @@ Authorization: Bearer {access_token}
 {
   "success": true,
   "data": {
-    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+    "accessToken":  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "refreshToken":  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
   }
 }
 ```
@@ -544,7 +733,7 @@ Authorization: Bearer {access_token}
       "productId": 1,
       "name": "Miss Dior Essence",
       "volume": "35ml",
-      "price": 799. 00,
+      "price": 799.0,
       "quantity": 1,
       "image": "/images/product. webp"
     }
@@ -567,7 +756,7 @@ Authorization: Bearer {access_token}
   "success": true,
   "message": "Pedido criado com sucesso",
   "data": {
-    "order": {
+    "order":  {
       "id": "uuid-here",
       "orderNumber": "DOR-2026-0001",
       "subtotal": 799.0,
@@ -636,7 +825,7 @@ Auth Login: 5 requisições por 15 minutos
 
 ### Schema do Banco de Dados (PostgreSQL)
 
-#### Tabela: Users
+#### Tabela:  Users
 
 ```sql
 CREATE TABLE users (
@@ -766,7 +955,7 @@ npm run dev
 
 ### Variáveis de Ambiente
 
-#### Backend (.env)
+#### Backend (. env)
 
 ```env
 # Aplicação
@@ -809,7 +998,7 @@ services:
 
   redis:
     image: redis:7-alpine
-    ports:
+    ports: 
       - "6379:6379"
 
   backend:
@@ -898,7 +1087,7 @@ services:
 
 ### Auditoria de Segurança
 
-O projeto passa por auditorias regulares. Consulte `AUDITORIA_TECNICA.md` para detalhes das vulnerabilidades corrigidas e melhorias implementadas.
+O projeto passa por auditorias regulares.  Consulte `AUDITORIA_TECNICA.md` para detalhes das vulnerabilidades corrigidas e melhorias implementadas.
 
 ### OWASP Top 10 Compliance
 
@@ -988,7 +1177,7 @@ Backend Response Time:
 Para testar a API, importe a collection do Postman incluída no projeto:
 
 ```
-backend/Dior_Authentication_API.postman_collection. json
+backend/Dior_Authentication_API.postman_collection.json
 ```
 
 Consulte `backend/POSTMAN_GUIDE.md` para instruções detalhadas.
@@ -997,7 +1186,7 @@ Consulte `backend/POSTMAN_GUIDE.md` para instruções detalhadas.
 
 ## Contribuindo
 
-Contribuições são bem-vindas. Por favor:
+Contribuições são bem-vindas.  Por favor: 
 
 1. Fork o projeto
 2. Crie uma branch para sua feature (`git checkout -b feature/MinhaFeature`)
