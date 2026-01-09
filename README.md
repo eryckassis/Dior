@@ -1,10 +1,9 @@
 <div align="center">
+<img width="500" height="500" alt="DiorWhite" src="https://github.com/user-attachments/assets/1ddb9c85-a8b4-4c38-99b7-8c9dd13ec84c" />
 
-# Dior Luxury Boutique SaaS
+### Plataforma de E-commerce de Luxo Full Stack Dior
 
-### Plataforma de E-commerce de Luxo Full Stack
-
-Uma solução completa de e-commerce para produtos de luxo, desenvolvida com tecnologias modernas e foco em experiência do usuário premium.
+Uma solução completa de e-commerce para produtos de luxo, desenvolvida com tecnologias modernas e foco em experiência do usuário.
 
  • [Documentação da API](#documentação-da-api) • [Guia de Instalação](#instalação)
 
