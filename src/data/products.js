@@ -472,7 +472,11 @@ export function getProductsByCategory(category) {
  * @param {boolean} mixedCategories - Se true, mescla categorias quando não houver produtos suficientes
  * @returns {Array} - Array de produtos relacionados embaralhados e únicos
  */
-export function getRelatedProducts(currentId, limit = 4, mixedCategories = true) {
+export function getRelatedProducts(
+  currentId,
+  limit = 4,
+  mixedCategories = true
+) {
   const currentProduct = getProductById(currentId);
   if (!currentProduct) return [];
 
@@ -489,7 +493,7 @@ export function getRelatedProducts(currentId, limit = 4, mixedCategories = true)
   // Remove duplicados por ID E nome (evita variações de cor do mesmo produto)
   const removeDuplicates = (array) => {
     const seen = new Map(); // Usa Map para rastrear nome + categoria
-    return array.filter(item => {
+    return array.filter((item) => {
       const key = `${item.name}-${item.category}`;
       if (seen.has(key)) {
         return false;

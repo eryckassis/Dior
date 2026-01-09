@@ -395,7 +395,9 @@ export class ProductDetailContent extends HTMLElement {
   initRelatedProductsDrag() {
     setTimeout(() => {
       if (!window.gsap || !window.Draggable) {
-        console.warn("GSAP ou Draggable não disponível para produtos relacionados");
+        console.warn(
+          "GSAP ou Draggable não disponível para produtos relacionados"
+        );
         return;
       }
 
@@ -414,7 +416,8 @@ export class ProductDetailContent extends HTMLElement {
         const firstCard = cards[0].getBoundingClientRect();
         const lastCard = cards[cards.length - 1].getBoundingClientRect();
         const contentWidth = lastCard.right - firstCard.left;
-        const padding = parseFloat(getComputedStyle(container).paddingLeft) || 0;
+        const padding =
+          parseFloat(getComputedStyle(container).paddingLeft) || 0;
         const totalWidth = contentWidth + padding;
         const maxDrag = Math.min(0, -(totalWidth - containerWidth + padding));
 
@@ -449,7 +452,7 @@ export class ProductDetailContent extends HTMLElement {
         onClick: function (e) {
           // Previne click durante drag
           if (this.isDragging) return;
-          
+
           const card = e.target.closest(".related-product-card");
           if (card) {
             e.preventDefault();
