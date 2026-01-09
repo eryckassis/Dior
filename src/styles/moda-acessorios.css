@@ -2,7 +2,7 @@
    MODA E ACESSÓRIOS PAGE - Estilos específicos
    ============================================================================ */
 
-
+/* Reset COMPLETO para página Moda e Acessórios */
 body:has(moda-acessorios-page) {
   margin: 0 !important;
   padding: 0 !important;

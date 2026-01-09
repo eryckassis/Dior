@@ -1,5 +1,5 @@
 import "./style.css";
-import "./styles/fragrances-submenu.css";
+import "./styles/app-navigation.css";
 import "./styles/fragrances-modal.css";
 import "./styles/miss-dior.css";
 import "./styles/compras-miss-dior.css";

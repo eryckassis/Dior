@@ -992,13 +992,13 @@ export class HomePage extends HTMLElement {
           loop
           playsinline
         >
-          <source src="/videos/aArteDePresentear.mp4" type="video/mp4" />
+          <source src="/videos/videoLips.mp4" type="video/mp4" />
         </video>
 
         <!-- Conteúdo de texto sobre o vídeo -->
         <div class="arte-video-content">
-          <h1 class="arte-video-title">A arte de presentear</h1>
-          <p class="arte-video-description">Descubra presentes exclusivos que celebram momentos especiais</p>
+          <h1 class="arte-video-title">Dior Forever para uma pele perfeita.</h1>
+          <p class="arte-video-description">Experimente online os produtos de maquiagem Dior para encontrar seu look ideal.   </p>
         </div>
 
         <!-- Video Controls - Liquid Glass -->
