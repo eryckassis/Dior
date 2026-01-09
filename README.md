@@ -6,7 +6,7 @@
 
 Uma solução completa de e-commerce para produtos de luxo, desenvolvida com tecnologias modernas e foco em experiência do usuário premium.
 
-[Demonstração ao Vivo](https://dior-ne1az66yd-eryck-assis-projects. vercel.app/) • [Documentação da API](#documentação-da-api) • [Guia de Instalação](#instalação)
+ • [Documentação da API](#documentação-da-api) • [Guia de Instalação](#instalação)
 
 ---
 
@@ -30,7 +30,7 @@ Uma solução completa de e-commerce para produtos de luxo, desenvolvida com tec
 </table>
 
 ### Catálogo e Produtos
-<img width="2528" height="984" alt="image" src="https://github.com/user-attachments/assets/af3ac1c9-f7dd-463c-9f66-cfd3bf36b481" />
+
 
 <table>
   <tr>
