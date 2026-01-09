@@ -29,6 +29,7 @@ export class ProductDetailContent extends HTMLElement {
     this.render();
     this.initGalleryDrag();
     this.initEventListeners();
+    this.initRelatedProductsDrag();
   }
 
   disconnectedCallback() {
@@ -36,6 +37,12 @@ export class ProductDetailContent extends HTMLElement {
     if (this.draggable) {
       this.draggable.kill();
       this.draggable = null;
+    }
+
+    // Cleanup do Draggable de produtos relacionados
+    if (this.relatedDraggable) {
+      this.relatedDraggable.kill();
+      this.relatedDraggable = null;
     }
 
     // Cleanup do ResizeObserver
@@ -318,15 +325,7 @@ export class ProductDetailContent extends HTMLElement {
       }
     );
 
-    // Produtos relacionados
-    this.querySelectorAll(".related-product-card").forEach((card) => {
-      card.addEventListener("click", () => {
-        const productId = card.getAttribute("data-product-id");
-        if (productId) {
-          router.navigate(`/produto/${productId}`);
-        }
-      });
-    });
+    // Event listeners dos produtos relacionados são tratados no drag
   }
 
   selectColor(index) {
@@ -393,9 +392,122 @@ export class ProductDetailContent extends HTMLElement {
     return labels[category] || "Produtos";
   }
 
+  initRelatedProductsDrag() {
+    setTimeout(() => {
+      if (!window.gsap || !window.Draggable) {
+        console.warn("GSAP ou Draggable não disponível para produtos relacionados");
+        return;
+      }
+
+      const container = this.querySelector(".related-drag-container");
+      const slider = this.querySelector(".related-products-grid");
+      const progressFill = this.querySelector(".related-drag-progress-fill");
+      const cards = this.querySelectorAll(".related-product-card");
+
+      if (!container || !slider || cards.length === 0) {
+        return;
+      }
+
+      // Função para calcular bounds
+      const calculateBounds = () => {
+        const containerWidth = container.offsetWidth;
+        const firstCard = cards[0].getBoundingClientRect();
+        const lastCard = cards[cards.length - 1].getBoundingClientRect();
+        const contentWidth = lastCard.right - firstCard.left;
+        const padding = parseFloat(getComputedStyle(container).paddingLeft) || 0;
+        const totalWidth = contentWidth + padding;
+        const maxDrag = Math.min(0, -(totalWidth - containerWidth + padding));
+
+        return { minX: maxDrag, maxX: 0 };
+      };
+
+      let bounds = calculateBounds();
+
+      // Atualizar progress bar
+      const updateProgress = (x) => {
+        if (!progressFill || bounds.minX >= 0) return;
+        const progress = Math.abs(x) / Math.abs(bounds.minX);
+        const clampedProgress = Math.min(Math.max(progress, 0), 1);
+        window.gsap.to(progressFill, {
+          scaleX: Math.max(clampedProgress, 0.15),
+          duration: 0.1,
+          ease: "none",
+        });
+      };
+
+      // Criar Draggable
+      this.relatedDraggable = window.Draggable.create(slider, {
+        type: "x",
+        bounds: bounds,
+        inertia: true,
+        edgeResistance: 0.65,
+        dragResistance: 0,
+        throwResistance: 2000,
+        cursor: "grab",
+        activeCursor: "grabbing",
+        allowNativeTouchScrolling: false,
+        onClick: function (e) {
+          // Previne click durante drag
+          if (this.isDragging) return;
+          
+          const card = e.target.closest(".related-product-card");
+          if (card) {
+            e.preventDefault();
+            e.stopPropagation();
+            const productId = card.getAttribute("data-product-id");
+            if (productId) {
+              // Scroll suave para o topo antes de navegar
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              setTimeout(() => {
+                router.navigate(`/produto/${productId}`);
+              }, 300);
+            }
+          }
+        },
+        onPress: function () {
+          window.gsap.killTweensOf(slider);
+          this.isDragging = false;
+        },
+        onDragStart: function () {
+          this.isDragging = true;
+        },
+        onDrag: function () {
+          updateProgress(this.x);
+        },
+        onThrowUpdate: function () {
+          updateProgress(this.x);
+        },
+        onDragEnd: function () {
+          // Reseta flag após um pequeno delay
+          setTimeout(() => {
+            this.isDragging = false;
+          }, 100);
+        },
+      })[0];
+
+      // Recalcular bounds on resize
+      window.addEventListener("resize", () => {
+        bounds = calculateBounds();
+        if (this.relatedDraggable) {
+          this.relatedDraggable.applyBounds(bounds);
+          const currentX = this.relatedDraggable.x;
+          if (currentX < bounds.minX) {
+            window.gsap.to(slider, { x: bounds.minX, duration: 0.3 });
+          }
+        }
+      });
+
+      // Initial progress
+      updateProgress(0);
+
+      console.log("✅ Drag de produtos relacionados inicializado");
+    }, 300);
+  }
+
   render() {
     const { product } = this;
-    const relatedProducts = getRelatedProducts(product.id, 4);
+    // Pega produtos relacionados misturando categorias quando necessário
+    const relatedProducts = getRelatedProducts(product.id, 8, true);
 
     this.innerHTML = `
       <div class="product-detail-container">
@@ -588,20 +700,31 @@ export class ProductDetailContent extends HTMLElement {
           ? `
         <section class="related-products-section">
           <h2 class="related-products-title">Você também pode gostar</h2>
-          <div class="related-products-grid">
-            ${relatedProducts
-              .map(
-                (p) => `
-              <div class="related-product-card" data-product-id="${p.id}">
-                <div class="related-product-image">
-                  <img src="${p.images[0]}" alt="${p.name}" />
+          
+          <!-- Drag Container -->
+          <div class="related-drag-container">
+            <div class="related-products-grid">
+              ${relatedProducts
+                .map(
+                  (p) => `
+                <div class="related-product-card" data-product-id="${p.id}">
+                  <div class="related-product-image">
+                    <img src="${p.images[0]}" alt="${p.name}" loading="lazy" />
+                  </div>
+                  <div class="related-product-info">
+                    <h3 class="related-product-name">${p.name}</h3>
+                    <p class="related-product-price">${p.price}</p>
+                  </div>
                 </div>
-                <h3 class="related-product-name">${p.name}</h3>
-                <p class="related-product-price">${p.price}</p>
-              </div>
-            `
-              )
-              .join("")}
+              `
+                )
+                .join("")}
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="related-drag-progress">
+            <div class="related-drag-progress-fill"></div>
           </div>
         </section>
       `

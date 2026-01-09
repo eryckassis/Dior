@@ -585,19 +585,34 @@
   letter-spacing: 0.5px;
 }
 
+/* Drag Container */
+.related-drag-container {
+  width: 100%;
+  overflow: visible;
+  cursor: grab;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 20px;
+}
+
+.related-drag-container:active {
+  cursor: grabbing;
+}
+
 .related-products-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: inline-flex;
   gap: 30px;
+  padding: 20px 0;
+  will-change: transform;
+  touch-action: pan-y;
 }
 
 .related-product-card {
+  position: relative;
+  flex-shrink: 0;
+  width: 300px;
   cursor: pointer;
   transition: transform 0.3s ease;
-}
-
-.related-product-card:hover {
-  transform: translateY(-5px);
 }
 
 .related-product-image {
@@ -606,6 +621,7 @@
   overflow: hidden;
   margin-bottom: 15px;
   background: #f8f8f8;
+  border-radius: 3px;
 }
 
 .related-product-image img {
@@ -615,19 +631,43 @@
   transition: transform 0.5s ease;
 }
 
-.related-product-card:hover .related-product-image img {
-  transform: scale(1.05);
+.related-product-info {
+  padding: 0 5px;
 }
 
 .related-product-name {
+  font-family: "Hellix", sans-serif;
   font-size: 14px;
+  font-weight: 400;
   color: #000;
   margin: 0 0 5px 0;
+  line-height: 1.4;
 }
 
 .related-product-price {
+  font-family: "Hellix", sans-serif;
   font-size: 13px;
+  font-weight: 300;
   color: #757575;
+  margin: 0;
+}
+
+/* Progress Bar */
+.related-drag-progress {
+  width: 200px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.1);
+  margin: 20px auto 0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.related-drag-progress-fill {
+  width: 100%;
+  height: 100%;
+  background: #1a1a1a;
+  transform-origin: left center;
+  transform: scaleX(0.15);
 }
 
 /* ============================================================================
@@ -665,9 +705,16 @@
     padding: 0;
   }
 
+  .related-drag-container {
+    padding: 0;
+  }
+
   .related-products-grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+  }
+
+  .related-product-card {
+    width: 260px;
   }
 
   .related-products-section {
@@ -678,6 +725,10 @@
   .related-products-title {
     font-size: 20px;
     margin-bottom: 30px;
+  }
+
+  .related-drag-progress {
+    width: 150px;
   }
 }
 
@@ -866,9 +917,16 @@
     margin-bottom: 20px;
   }
 
+  .related-drag-container {
+    padding: 0;
+  }
+
   .related-products-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 15px;
+  }
+
+  .related-product-card {
+    width: 220px;
   }
 
   .related-product-image {
@@ -882,6 +940,10 @@
 
   .related-product-price {
     font-size: 11px;
+  }
+
+  .related-drag-progress {
+    width: 120px;
   }
 }
 

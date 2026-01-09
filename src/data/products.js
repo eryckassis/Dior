@@ -92,22 +92,17 @@ export const products = [
 
   {
     id: "blazer-2",
-    name: "Blazer Bar 30 Montaigne",
-    price: "R$ 33.000,00",
+    name: "Camisa polo com mangas longas Dior marinière",
+    price: "R$ 16.000,00",
     description: "Lã e seda azul marinho com abotoamento simples",
     fullDescription:
       "Este blazer Bar 30 Montaigne é uma peça emblemática da coleção New Look, criada por Christian Dior em 1947. Confeccionado em mescla de lã e seda azul marinho, ele tem gola notched e bolsos que realçam discretamente a cintura.",
     reference: "841V01AT060_X0300",
     category: "blazer",
-    images: [
-      "/images/blaze1.webp",
-      "/images/blaze2.webp",
-      "/images/blaze4.webp",
-      "/images/blaze3.webp",
-    ],
+    images: ["/images/polo.avif", "/images/polo2.webp", "/images/polo3.webp"],
     colors: [
-      { name: "navy", label: "Azul Marinho", image: "/images/blaze1.webp" },
-      { name: "white", label: "Branco", image: "/images/blaze2.webp" },
+      { name: "navy", label: "Azul Marinho", image: "/images/polo.avif" },
+      { name: "white", label: "Branco", image: "/images/polo2.webp" },
     ],
     sizes: ["34", "36", "38", "40", "42", "44"],
     material: "70% Lã, 30% Seda",
@@ -471,18 +466,55 @@ export function getProductsByCategory(category) {
 }
 
 /**
- * Busca produtos relacionados (mesma categoria, excluindo o atual)
+ * Busca produtos relacionados com estratégia de máxima diversidade
  * @param {string} currentId - ID do produto atual
  * @param {number} limit - Limite de produtos a retornar
- * @returns {Array} - Array de produtos relacionados
+ * @param {boolean} mixedCategories - Se true, mescla categorias quando não houver produtos suficientes
+ * @returns {Array} - Array de produtos relacionados embaralhados e únicos
  */
-export function getRelatedProducts(currentId, limit = 4) {
+export function getRelatedProducts(currentId, limit = 4, mixedCategories = true) {
   const currentProduct = getProductById(currentId);
   if (!currentProduct) return [];
 
-  return products
-    .filter((p) => p.category === currentProduct.category && p.id !== currentId)
-    .slice(0, limit);
+  // Shuffle function usando Fisher-Yates
+  const shuffle = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
+  // Remove duplicados por ID E nome (evita variações de cor do mesmo produto)
+  const removeDuplicates = (array) => {
+    const seen = new Map(); // Usa Map para rastrear nome + categoria
+    return array.filter(item => {
+      const key = `${item.name}-${item.category}`;
+      if (seen.has(key)) {
+        return false;
+      }
+      seen.set(key, true);
+      return true;
+    });
+  };
+
+  // Filtra todos os produtos exceto o atual E variações dele
+  const allOtherProducts = products.filter(
+    (p) => p.id !== currentId && p.name !== currentProduct.name
+  );
+
+  // Se queremos mixed, embaralha tudo junto para máxima diversidade
+  if (mixedCategories) {
+    return removeDuplicates(shuffle(allOtherProducts)).slice(0, limit);
+  }
+
+  // Se não mixed, apenas mesma categoria (sem variações de cor)
+  const sameCategory = allOtherProducts.filter(
+    (p) => p.category === currentProduct.category
+  );
+
+  return removeDuplicates(shuffle(sameCategory)).slice(0, limit);
 }
 
 /**
