@@ -85,13 +85,13 @@ export class PresenteParaElaPage extends HTMLElement {
               loop
               playsinline
             >
-              <source src="/videos/diorAcessories.webm" type="video/webm" />
+              <source src="/videos/diorama.mp4" type="video/webm" />
             </video>
             
             <div class="presente-ela-hero-content">
-              <h1 class="presente-ela-hero-title">Presentes para ela</h1>
+              <h1 class="presente-ela-hero-title">Coleção Primavera-Verão 2026</h1>
               <p class="presente-ela-hero-subtitle">
-                Descubra a seleção exclusiva Dior de presentes sofisticados e elegantes
+                A coleção Primavera-Verão 2026 de Jonathan Anderson explora a tradição da Dior com empatia e criatividade. As peças do arquivo são reinterpretadas para o presente e os códigos da Maison são atualizados.
               </p>
             </div>
           </section>

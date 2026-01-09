@@ -422,7 +422,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="/images/sapatitos.avif" alt="Sapatos masculinos" class="moda-card-image" />
+                    <img src="/images/sapatero.webp" alt="Sapatos masculinos" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -433,7 +433,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="/images/joiass.avif" alt="Joias" class="moda-card-image" />
+                    <img src="/images/joias.avif" alt="Joias" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -455,7 +455,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="/images/brinco.avif" alt="Joalheria" class="moda-card-image" />
+                    <img src="/images/joalheria.avif" alt="Joalheria" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -466,7 +466,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="/images/tapatos.avif" alt="Sapatos Femininos" class="moda-card-image" />
+                    <img src="/images/sapatos.webp" alt="Sapatos Femininos" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
