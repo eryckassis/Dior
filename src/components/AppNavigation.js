@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // NAVIGATION WEB COMPONENT - Reutiliza a navegação existente
 // ============================================================================
 import { cartService } from "../services/CartService.js";
@@ -341,7 +341,7 @@ export class AppNavigation extends HTMLElement {
               data-route="/"
             >
               <img
-                src="./images/Design sem nome (6).svg"
+                src="/images/Design sem nome (6).svg"
                 class="logo-svg"
                 alt="The Conscious Creator Logo"
                 width="180"
@@ -438,15 +438,15 @@ export class AppNavigation extends HTMLElement {
               <h3 class="submenu-section-title">ICONICS</h3>
               <div class="fragrance-icons">
                 <a href="/miss-dior" class="fragrance-icon-item" data-route="/miss-dior">
-                  <img src="./images/missdiorpng.png" alt="Miss Dior" class="fragrance-icon-image" />
+                  <img src="/images/missdiorpng.png" alt="Miss Dior" class="fragrance-icon-image" />
                   <p class="fragrance-icon-name">Miss Dior</p>
                 </a>
                 <a href="/miss-dior-essence" class="fragrance-icon-item" data-route="/miss-dior-essence">
-                  <img src="./images/jadorepng.png" alt="J'adore" class="fragrance-icon-image" />
+                  <img src="/images/jadorepng.png" alt="J'adore" class="fragrance-icon-image" />
                   <p class="fragrance-icon-name">J'adore</p>
                 </a>
                 <div class="fragrance-icon-item">
-                  <img src="./images/poison.webp" alt="Poison" class="fragrance-icon-image" />
+                  <img src="/images/poison.webp" alt="Poison" class="fragrance-icon-image" />
                   <p class="fragrance-icon-name">Poison</p>
                 </div>
               </div>
@@ -490,7 +490,7 @@ export class AppNavigation extends HTMLElement {
           <div class="fragrances-video-panel">
             <div class="submenu-video-container">
               <video class="submenu-video" autoplay loop muted playsinline>
-                <source src="./videos/diorVideo.mp4" type="video/mp4">
+                <source src="/videos/diorVideo.mp4" type="video/mp4">
               </video>
             </div>
           </div>
@@ -498,7 +498,7 @@ export class AppNavigation extends HTMLElement {
           <!-- Right Panel -->
           <div class="fragrances-right-panel">
             <div class="submenu-featured">
-              <img src="./images/perfumeee.webp" alt="Dior Holiday" class="submenu-featured-image" />
+              <img src="/images/perfumeee.webp" alt="Dior Holiday" class="submenu-featured-image" />
               <div class="submenu-featured-content">
                 <p class="submenu-featured-title">Dior Holiday: o Circo dos Sonhos</p>
                 <a href="/dior-holiday" class="submenu-featured-link" data-route="/dior-holiday">Chegue mais perto</a>
@@ -506,7 +506,7 @@ export class AppNavigation extends HTMLElement {
             </div>
 
             <div class="submenu-featured submenu-featured-small">
-              <img src="./images/perfume22.webp" alt="Presentes" class="submenu-featured-image" />
+              <img src="/images/perfume22.webp" alt="Presentes" class="submenu-featured-image" />
               <div class="submenu-featured-content">
                 <p class="submenu-featured-title">O desfile de presentes encantados da Dior</p>
                 <a href="/arte-de-presentear" class="submenu-featured-link" data-route="/arte-de-presentear">Inspire-se</a>

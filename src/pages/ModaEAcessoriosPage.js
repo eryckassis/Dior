@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // MODA E ACESSÓRIOS PAGE - Página dedicada a Moda e Acessórios
 // ============================================================================
 
@@ -372,7 +372,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
               loop
               playsinline
             >
-              <source src="./videos/diorAcessories.webm" type="video/webm" />
+              <source src="/videos/diorAcessories.webm" type="video/webm" />
             </video>
             
             <div class="moda-hero-content">
@@ -392,7 +392,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
               <section class="moda-gift-cards-section">
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/paraEla.jpg" alt="Presentes para ela" class="moda-card-image" />
+                    <img src="/images/paraEla.jpg" alt="Presentes para ela" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -403,7 +403,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/bolsinhas.avif" alt="Bolsas femininas" class="moda-card-image" />
+                    <img src="/images/bolsinhas.avif" alt="Bolsas femininas" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -414,7 +414,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/paraEle.jpg" alt="Presentes para homem" class="moda-card-image" />
+                    <img src="/images/paraEle.jpg" alt="Presentes para homem" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -425,7 +425,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/sapatitos.avif" alt="Sapatos masculinos" class="moda-card-image" />
+                    <img src="/images/sapatitos.avif" alt="Sapatos masculinos" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -436,7 +436,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/joiass.avif" alt="Joias" class="moda-card-image" />
+                    <img src="/images/joiass.avif" alt="Joias" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -447,7 +447,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/relogio.avif" alt="Relojoaria" class="moda-card-image" />
+                    <img src="/images/relogio.avif" alt="Relojoaria" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -458,7 +458,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/brinco.avif" alt="Joalheria" class="moda-card-image" />
+                    <img src="/images/brinco.avif" alt="Joalheria" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">
@@ -469,7 +469,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
                 <div class="moda-gift-card">
                   <div class="moda-card-image-wrapper">
-                    <img src="./images/tapatos.avif" alt="Sapatos Femininos" class="moda-card-image" />
+                    <img src="/images/tapatos.avif" alt="Sapatos Femininos" class="moda-card-image" />
                     <div class="moda-card-overlay"></div>
                   </div>
                   <div class="moda-card-content">

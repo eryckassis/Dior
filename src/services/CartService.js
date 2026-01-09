@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // CART SERVICE - Gerenciamento centralizado do carrinho com LocalStorage
 // ============================================================================
 
@@ -145,7 +145,7 @@ class CartService {
           volume: "35 ml",
           price: 799.0,
           quantity: 1,
-          image: "./images/dioressence1.webp",
+          image: "/images/dioressence1.webp",
         },
         {
           id: 2,
@@ -153,7 +153,7 @@ class CartService {
           volume: "35 ml",
           price: 665.0,
           quantity: 1,
-          image: "./images/parfum1.webp",
+          image: "/images/parfum1.webp",
         },
       ];
       this.saveItems(defaultItems);

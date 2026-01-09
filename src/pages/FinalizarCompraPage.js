@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // FINALIZAR COMPRA PAGE - Página de checkout
 // ============================================================================
 
@@ -1120,7 +1120,7 @@ export class FinalizarCompraPage extends HTMLElement {
       const freeItemsHTML = `
         <div class="cart-table-row cart-free-item">
           <div class="cart-product-cell">
-            <img src="./images/edp.webp" alt="Amostra Miss Dior EDP" class="cart-product-image" />
+            <img src="/images/edp.webp" alt="Amostra Miss Dior EDP" class="cart-product-image" />
             <div class="cart-product-info">
               <h3 class="cart-product-name">Amostra Miss Dior EDP 1ml</h3>
             </div>
@@ -1132,7 +1132,7 @@ export class FinalizarCompraPage extends HTMLElement {
 
         <div class="cart-table-row cart-free-item">
           <div class="cart-product-cell">
-            <img src="./images/pouch.webp" alt="Holiday Empty Pouch" class="cart-product-image" />
+            <img src="/images/pouch.webp" alt="Holiday Empty Pouch" class="cart-product-image" />
             <div class="cart-product-info">
               <h3 class="cart-product-name">Holiday Empty Pouch</h3>
             </div>
@@ -1477,7 +1477,7 @@ export class FinalizarCompraPage extends HTMLElement {
                 <!-- Amostras Grátis -->
                 <div class="cart-table-row cart-free-item">
                   <div class="cart-product-cell">
-                    <img src="./images/edp.webp" alt="Amostra Miss Dior EDP" class="cart-product-image" />
+                    <img src="/images/edp.webp" alt="Amostra Miss Dior EDP" class="cart-product-image" />
                     <div class="cart-product-info">
                       <h3 class="cart-product-name">Amostra Miss Dior EDP 1ml</h3>
                     </div>
@@ -1489,7 +1489,7 @@ export class FinalizarCompraPage extends HTMLElement {
 
                 <div class="cart-table-row cart-free-item">
                   <div class="cart-product-cell">
-                    <img src="./images/pouch.webp" alt="Holiday Empty Pouch" class="cart-product-image" />
+                    <img src="/images/pouch.webp" alt="Holiday Empty Pouch" class="cart-product-image" />
                     <div class="cart-product-info">
                       <h3 class="cart-product-name">Holiday Empty Pouch</h3>
                     </div>

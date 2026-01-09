@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // COMPRAS MISS DIOR PARFUM PAGE - Página de produto Miss Dior Parfum
 // ============================================================================
 
@@ -24,15 +24,15 @@ export class ComprasMissDiorParfumPage extends HTMLElement {
       // Product data for each size
       const productData = {
         "35ml": {
-          image: "./images/35mlmiss.webp",
+          image: "/images/35mlmiss.webp",
           price: "R$ 465,00",
         },
         "50ml": {
-          image: "./images/50mlmiss.webp",
+          image: "/images/50mlmiss.webp",
           price: "R$ 665,00",
         },
         "80ml": {
-          image: "./images/80mlmiss.webp",
+          image: "/images/80mlmiss.webp",
           price: "R$ 865,00",
         },
       };
@@ -238,7 +238,7 @@ export class ComprasMissDiorParfumPage extends HTMLElement {
             <div class="product-detail-grid">
               <!-- Product Image -->
               <div class="product-image-wrapper">
-                <img src="./images/35mlmiss.webp" alt="Miss Dior Parfum" class="product-main-image" />
+                <img src="/images/35mlmiss.webp" alt="Miss Dior Parfum" class="product-main-image" />
               </div>
 
               <!-- Product Info -->
@@ -337,7 +337,7 @@ export class ComprasMissDiorParfumPage extends HTMLElement {
               loop
               playsinline
             >
-              <source src="./videos/love.mp4" type="video/mp4" />
+              <source src="/videos/love.mp4" type="video/mp4" />
             </video>
           </section>
 
@@ -353,7 +353,7 @@ export class ComprasMissDiorParfumPage extends HTMLElement {
           <section class="image-reveal-full-section">
             <div class="image-reveal-wrapper-full">
               <div class="reveal-overlay-full"></div>
-              <img src="./images/compras.webp" alt="Miss Dior" class="reveal-image-full" />
+              <img src="/images/compras.webp" alt="Miss Dior" class="reveal-image-full" />
             </div>
           </section>
 

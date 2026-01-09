@@ -1,4 +1,4 @@
-import "../components/AppNavigation.js";
+﻿import "../components/AppNavigation.js";
 import "../components/FooterSection.js";
 import "../styles/login.css";
 import { authService } from "../services/AuthService.js";
@@ -343,7 +343,7 @@ export class LoginPage extends HTMLElement {
             <div class="switch" id="switch-cnt">
               <div class="switch__video">
                 <video autoplay muted loop playsinline>
-                  <source src="./videos/get.mp4" type="video/mp4">
+                  <source src="/videos/get.mp4" type="video/mp4">
                 </video>
               </div>
 

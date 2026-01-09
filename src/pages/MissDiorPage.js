@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // MISS DIOR PAGE - Página dedicada à fragrância Miss Dior
 // ============================================================================
 
@@ -344,28 +344,28 @@ export class MissDiorPage extends HTMLElement {
           name: "Miss Dior Parfum",
           volume: "35 ml",
           price: 665,
-          image: "./images/missDiorle.webp",
+          image: "/images/missDiorle.webp",
         },
         {
           id: "miss-dior-1",
           name: "Miss Dior Parfum",
           volume: "35 ml",
           price: 665,
-          image: "./images/parfum1.webp",
+          image: "/images/parfum1.webp",
         },
         {
           id: "miss-dior-2",
           name: "Miss Dior",
           volume: "50 ml",
           price: 615,
-          image: "./images/parfum2.webp",
+          image: "/images/parfum2.webp",
         },
         {
           id: "miss-dior-3",
           name: "Miss Dior Blooming Bouquet",
           volume: "50 ml",
           price: 555,
-          image: "./images/parfum3.webp",
+          image: "/images/parfum3.webp",
         },
       ];
 
@@ -452,7 +452,7 @@ export class MissDiorPage extends HTMLElement {
               loop
               playsinline
             >
-              <source src="./videos/missdiorvideo.mp4" type="video/mp4" />
+              <source src="/videos/missdiorvideo.mp4" type="video/mp4" />
             </video>
 
             <!-- Conteúdo de texto sobre o vídeo -->
@@ -551,7 +551,7 @@ Christian Dior, 1947
         <section class="miss-dior-full-image">
           <div class="miss-dior-image-reveal">
             <div class="reveal-overlay"></div>
-            <img src="./images/missdiorimage1.webp" alt="Miss Dior Perfume" class="reveal-image" />
+            <img src="/images/missdiorimage1.webp" alt="Miss Dior Perfume" class="reveal-image" />
           </div>
         </section>
 
@@ -560,7 +560,7 @@ Christian Dior, 1947
           <div class="container">
             <div class="miss-dior-product-info">
               <div class="product-detail-image">
-                <img src="./images/missDiorle.webp" alt="Miss Dior Parfum" />
+                <img src="/images/missDiorle.webp" alt="Miss Dior Parfum" />
               </div>
               <div class="product-detail-content">
                 <h3 class="product-name">Miss Dior Parfum</h3>
@@ -598,7 +598,7 @@ Christian Dior, 1947
               loop
               playsinline
             >
-              <source src="./videos/midior.mp4" type="video/mp4" />
+              <source src="/videos/midior.mp4" type="video/mp4" />
             </video>
 
             <!-- Conteúdo de texto sobre o vídeo -->
@@ -624,14 +624,14 @@ Christian Dior, 1947
                 <div class="double-image-item">
                   <div class="miss-dior-image-reveal-double">
                     <div class="reveal-overlay"></div>
-                    <img src="./images/missdiorflow.webp" alt="Miss Dior Flores" class="reveal-image" />
+                    <img src="/images/missdiorflow.webp" alt="Miss Dior Flores" class="reveal-image" />
                   </div>
                 </div>
                 
                 <div class="double-image-item">
                   <div class="miss-dior-image-reveal-double">
                     <div class="reveal-overlay"></div>
-                    <img src="./images/missdiorflow2.webp" alt="Miss Dior Parfum Card" class="reveal-image" />
+                    <img src="/images/missdiorflow2.webp" alt="Miss Dior Parfum Card" class="reveal-image" />
                   </div>
                 </div>
               </div>
@@ -650,7 +650,7 @@ Christian Dior, 1947
             <div class="reinventado-grid">
               <div class="reinventado-card">
                 <div class="reinventado-image">
-                  <img src="./images/1947.webp" alt="A noite de 1947" />
+                  <img src="/images/1947.webp" alt="A noite de 1947" />
                   <div class="reinventado-logo"><br></div>
                 </div>
                 <h3 class="reinventado-card-title">A noite de 1947</h3>
@@ -661,7 +661,7 @@ Christian Dior, 1947
 
               <div class="reinventado-card">
                 <div class="reinventado-image">
-                  <img src="./images/jasmin.webp" alt="Jasmim Estrela" />
+                  <img src="/images/jasmin.webp" alt="Jasmim Estrela" />
                   <div class="reinventado-logo"><br></div>
                 </div>
                 <h3 class="reinventado-card-title">Jasmim Estrela</h3>
@@ -672,7 +672,7 @@ Christian Dior, 1947
 
               <div class="reinventado-card">
                 <div class="reinventado-image">
-                  <img src="./images/juventude.webp" alt="Um sopro de juventude" />
+                  <img src="/images/juventude.webp" alt="Um sopro de juventude" />
                   <div class="reinventado-logo"><br></div>
                 </div>
                 <h3 class="reinventado-card-title">Um sopro de juventude</h3>
@@ -692,7 +692,7 @@ Christian Dior, 1947
               <div class="frasco-couture-image-wrapper">
                 <div class="miss-dior-image-reveal-frasco">
                   <div class="reveal-overlay"></div>
-                  <img src="./images/compredior.webp" alt="Miss Dior Parfum" class="reveal-image" />
+                  <img src="/images/compredior.webp" alt="Miss Dior Parfum" class="reveal-image" />
                 </div>
               </div>
               <div class="frasco-couture-content">
@@ -709,7 +709,7 @@ Christian Dior, 1947
         <!-- Bouquets Full Image Section -->
         <section class="miss-dior-bouquets-full">
           <div class="bouquets-full-image-wrapper">
-            <img src="./images/imagereveal.webp" alt="Miss Dior Bouquets" class="bouquets-full-image" />
+            <img src="/images/imagereveal.webp" alt="Miss Dior Bouquets" class="bouquets-full-image" />
           </div>
           <div class="container">
             <p class="bouquets-full-text">Descubra os Bouquets das fragrâncias Miss Dior</p>
@@ -723,7 +723,7 @@ Christian Dior, 1947
               <!-- Product 1 -->
               <div class="product-grid-item">
                 <div class="product-grid-image">
-                  <img src="./images/parfum1.webp" alt="Miss Dior Parfum" />
+                  <img src="/images/parfum1.webp" alt="Miss Dior Parfum" />
                 </div>
                 <div class="product-info">
                   <h3 class="product-name">Miss Dior Parfum</h3>
@@ -753,7 +753,7 @@ Christian Dior, 1947
               <!-- Product 2 -->
               <div class="product-grid-item">
                 <div class="product-grid-image">
-                  <img src="./images/parfum2.webp" alt="Miss Dior" />
+                  <img src="/images/parfum2.webp" alt="Miss Dior" />
                 </div>
                 <div class="product-info">
                   <h3 class="product-name">Miss Dior</h3>
@@ -783,7 +783,7 @@ Christian Dior, 1947
               <!-- Product 3 -->
               <div class="product-grid-item">
                 <div class="product-grid-image">
-                  <img src="./images/parfum3.webp" alt="Miss Dior Blooming Bouquet" />
+                  <img src="/images/parfum3.webp" alt="Miss Dior Blooming Bouquet" />
                 </div>
                 <div class="product-info">
                   <h3 class="product-name">Miss Dior Blooming Bouquet</h3>

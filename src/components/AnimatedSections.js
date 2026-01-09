@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // ANIMATED SECTIONS WEB COMPONENT - Seções com navegação por scroll
 // ============================================================================
 
@@ -26,7 +26,7 @@ export class AnimatedSections extends HTMLElement {
                   loop
                   playsinline
                 >
-                  <source src="./videos/Holiday-Dior.mp4" type="video/mp4" />
+                  <source src="/videos/Holiday-Dior.mp4" type="video/mp4" />
                 </video>
                 <h2 class="section-heading"></h2>
 

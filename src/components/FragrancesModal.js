@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // FRAGRANCES MODAL - Modal de navegação de fragrâncias
 // ============================================================================
 
@@ -645,15 +645,15 @@ export class FragrancesModal extends HTMLElement {
                 <h3 class="feminine-section-title">ICONICS</h3>
                 <div class="feminine-icons-grid">
                   <div class="feminine-icon-item">
-                    <img src="./images/dioressence1.webp" alt="Miss Dior" class="feminine-icon-image">
+                    <img src="/images/dioressence1.webp" alt="Miss Dior" class="feminine-icon-image">
                     <p class="feminine-icon-label">Miss Dior</p>
                   </div>
                   <div class="feminine-icon-item">
-                    <img src="./images/dioressence2.webp" alt="J'adore" class="feminine-icon-image">
+                    <img src="/images/dioressence2.webp" alt="J'adore" class="feminine-icon-image">
                     <p class="feminine-icon-label">J'adore</p>
                   </div>
                   <div class="feminine-icon-item">
-                    <img src="./images/dioressence3.webp" alt="Poison" class="feminine-icon-image">
+                    <img src="/images/dioressence3.webp" alt="Poison" class="feminine-icon-image">
                     <p class="feminine-icon-label">Poison</p>
                   </div>
                 </div>
@@ -710,14 +710,14 @@ export class FragrancesModal extends HTMLElement {
               <!-- Featured Images -->
               <div class="feminine-featured-section">
                 <div class="feminine-featured-card">
-                  <img src="./images/produto3d.jpg" alt="Dior Holiday" class="feminine-featured-image">
+                  <img src="/images/produto3d.jpg" alt="Dior Holiday" class="feminine-featured-image">
                   <div class="feminine-featured-content">
                     <h4 class="feminine-featured-title">Dior Holiday: o Circo dos Sonhos</h4>
                     <a href="/dior-holiday" class="feminine-featured-link" data-route="/dior-holiday">Cheque mais perto</a>
                   </div>
                 </div>
                 <div class="feminine-featured-card">
-                  <img src="./images/produto3d2.jpg" alt="Presentes Dior" class="feminine-featured-image">
+                  <img src="/images/produto3d2.jpg" alt="Presentes Dior" class="feminine-featured-image">
                   <div class="feminine-featured-content">
                     <h4 class="feminine-featured-title">O desfile de presentes encantados da Dior</h4>
                     <a href="#" class="feminine-featured-link">Inspire-se</a>

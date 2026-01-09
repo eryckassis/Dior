@@ -1,4 +1,4 @@
-import "../components/AppNavigation.js";
+﻿import "../components/AppNavigation.js";
 import "../components/FooterSection.js";
 import "../styles/register.css";
 import { authService } from "../services/AuthService.js";
@@ -314,7 +314,7 @@ export class RegisterPage extends HTMLElement {
             <div class="switch">
               <div class="switch__video">
                 <video autoplay muted loop playsinline>
-                  <source src="./videos/get.mp4" type="video/mp4">
+                  <source src="/videos/get.mp4" type="video/mp4">
                 </video>
               </div>
 

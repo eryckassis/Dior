@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // HORIZONTAL SCROLL SECTION WEB COMPONENT - Scroll horizontal com painéis
 // ============================================================================
 import { cartService } from "../services/CartService.js";
@@ -31,7 +31,7 @@ export class HorizontalScrollSection extends HTMLElement {
             <div class="panel-wrapper">
               <div class="panel-content-grid">
                 <div class="panel-image-col">
-                  <img src="./images/image.png" alt="Dior Holiday Panel 1">
+                  <img src="/images/image.png" alt="Dior Holiday Panel 1">
                 </div>
                 <div class="panel-text-col">
                  <h2 class="panel-first-title">Bem vindo ao circo dos sonhos Dior</h2>
@@ -57,7 +57,7 @@ export class HorizontalScrollSection extends HTMLElement {
                   <div class="splash-option-darkening"></div>
                   <div class="splash-option-overlay"></div>
                   <video
-                    src="./videos/diorVideo.mp4"
+                    src="/videos/diorVideo.mp4"
                     class="splash-option-bg"
                     autoplay
                     muted
@@ -117,7 +117,7 @@ export class HorizontalScrollSection extends HTMLElement {
             <div class="panel-wrapper">
               <div class="panel-content-grid">
                 <div class="panel-image-col">
-                  <img src="./images/Image 2 Dior.jpg" alt="Dior Holiday Panel 3">
+                  <img src="/images/Image 2 Dior.jpg" alt="Dior Holiday Panel 3">
                 </div>
                 <div class="panel-text-col">
                   <h2 class="panel-title">Presentes Exclusivos</h2>
@@ -162,7 +162,7 @@ export class HorizontalScrollSection extends HTMLElement {
           <div class="presentes-grid">
             <div class="presente-item">
               <div class="presente-image-wrapper">
-                <img src="./images/firtsProduct.webp" alt="Le Cirque des Rêves Dior - edição limitada">
+                <img src="/images/firtsProduct.webp" alt="Le Cirque des Rêves Dior - edição limitada">
               </div>
               <div class="presente-info">
                 <h3 class="presente-name">Le Cirque des Rêves Dior</h3>
@@ -191,7 +191,7 @@ export class HorizontalScrollSection extends HTMLElement {
             
             <div class="presente-item">
               <div class="presente-image-wrapper">
-                <img src="./images/secondProduct.webp" alt="Coffret de Enfeites Perfumados">
+                <img src="/images/secondProduct.webp" alt="Coffret de Enfeites Perfumados">
               </div>
               <div class="presente-info">
                 <h3 class="presente-name">Coffret de Enfeites Perfumados</h3>
@@ -220,7 +220,7 @@ export class HorizontalScrollSection extends HTMLElement {
             
             <div class="presente-item">
               <div class="presente-image-wrapper">
-                <img src="./images/thirtyproduct.webp" alt="Dior Palette Couture - edição limitada">
+                <img src="/images/thirtyproduct.webp" alt="Dior Palette Couture - edição limitada">
               </div>
               <div class="presente-info">
                 <h3 class="presente-name">Dior Palette Couture</h3>
@@ -254,7 +254,7 @@ export class HorizontalScrollSection extends HTMLElement {
       <section class="tema-pietro-section tema-pietro-section--first">
         <!-- Imagem de fundo que ocupa toda a seção -->
         <div class="tema-pietro-background">
-          <img src="./images/diorpage.png" alt="Tema Pietro Ruffo">
+          <img src="/images/diorpage.png" alt="Tema Pietro Ruffo">
         </div>
         
         <!-- Conteúdo de texto sobreposto na imagem -->
@@ -274,7 +274,7 @@ export class HorizontalScrollSection extends HTMLElement {
       <section class="tema-pietro-section tema-pietro-section--second">
         <!-- Imagem de fundo que ocupa toda a seção -->
         <div class="tema-pietro-background">
-          <img src="./images/jadore.png" alt="Tema Pietro Ruffo">
+          <img src="/images/jadore.png" alt="Tema Pietro Ruffo">
         </div>
         
         <!-- Conteúdo de texto sobreposto na imagem -->
@@ -294,7 +294,7 @@ export class HorizontalScrollSection extends HTMLElement {
       <section class="tema-pietro-section tema-pietro-section--second">
         <!-- Imagem de fundo que ocupa toda a seção -->
         <div class="tema-pietro-background">
-          <img src="./images/sauvage.png" alt="Tema Pietro Ruffo">
+          <img src="/images/sauvage.png" alt="Tema Pietro Ruffo">
         </div>
         
         <!-- Conteúdo de texto sobreposto na imagem -->
@@ -323,7 +323,7 @@ export class HorizontalScrollSection extends HTMLElement {
         <div class="parallax-panel parallax-panel--1">
           <div class="parallax-column">
             <div class="parallax-image-wrap">
-              <img class="parallax-img" src="./images/produto3d.jpg" alt="Dior Collection 1" />
+              <img class="parallax-img" src="/images/produto3d.jpg" alt="Dior Collection 1" />
             </div>
             <p class="parallax-product-name">Coffret Miss Dior Eau de Parfum</p>
             <p class="parallax-product-description">Eau de Parfum - edição limitada</p>
@@ -352,7 +352,7 @@ export class HorizontalScrollSection extends HTMLElement {
         <div class="parallax-panel parallax-panel--2">
           <div class="parallax-column">
             <div class="parallax-image-wrap">
-              <img class="parallax-img" src="./images/produto3d2.jpg" alt="Dior Collection 2" />
+              <img class="parallax-img" src="/images/produto3d2.jpg" alt="Dior Collection 2" />
             </div>
             <p class="parallax-product-name">J'adore Eau de Parfum Coffret</p>
             <p class="parallax-product-description">Coffret com fragrância floral - edição limitada</p>
@@ -381,7 +381,7 @@ export class HorizontalScrollSection extends HTMLElement {
         <div class="parallax-panel parallax-panel--3">
           <div class="parallax-column">
             <div class="parallax-image-wrap">
-              <img class="parallax-img" src="./images/produto3d3.jpg" alt="Dior Collection 3" />
+              <img class="parallax-img" src="/images/produto3d3.jpg" alt="Dior Collection 3" />
             </div>
             <p class="parallax-product-name">Diorshow Volume & Definition</p>
             <p class="parallax-product-description">Máscara de cílios - edição limitada</p>
@@ -416,7 +416,7 @@ export class HorizontalScrollSection extends HTMLElement {
         <div class="parallax-panel parallax-panel--1">
           <div class="parallax-column">
             <div class="parallax-image-wrap">
-              <img class="parallax-img" src="./images/cofre.jpg" alt="Dior Collection 1" />
+              <img class="parallax-img" src="/images/cofre.jpg" alt="Dior Collection 1" />
             </div>
             <p class="parallax-product-name">Coffret Capture Duo</p>
             <p class="parallax-product-description">Cuidado anti-idade - edição limitada</p>
@@ -445,7 +445,7 @@ export class HorizontalScrollSection extends HTMLElement {
         <div class="parallax-panel parallax-panel--2">
           <div class="parallax-column">
             <div class="parallax-image-wrap">
-              <img class="parallax-img" src="./images/diorhomme.jpg" alt="Dior Collection 2" />
+              <img class="parallax-img" src="/images/diorhomme.jpg" alt="Dior Collection 2" />
             </div>
             <p class="parallax-product-name">Coffret Dior Homme</p>
             <p class="parallax-product-description">A eau de toilette Dior Homme e o seu travel spray em um único coffret presente de edição limitada</p>
@@ -474,7 +474,7 @@ export class HorizontalScrollSection extends HTMLElement {
         <div class="parallax-panel parallax-panel--3">
           <div class="parallax-column">
             <div class="parallax-image-wrap">
-              <img class="parallax-img" src="./images/diormaster.jpg" alt="Dior Collection 3" />
+              <img class="parallax-img" src="/images/diormaster.jpg" alt="Dior Collection 3" />
             </div>
             <p class="parallax-product-name">O Ritual de Brilho Natural</p>
             <p class="parallax-product-description">Kit de maquiagem - edição limitada</p>
@@ -769,42 +769,42 @@ export class HorizontalScrollSection extends HTMLElement {
           name: "Coffret Miss Dior Eau de Parfum - edição limitada",
           volume: "Kit",
           price: 1235,
-          image: "./images/produto3d.jpg",
+          image: "/images/produto3d.jpg",
         },
         {
           id: "holiday-2",
           name: "J'adore Eau de Parfum Coffret - Edição Limitada",
           volume: "Kit",
           price: 965,
-          image: "./images/produto3d2.jpg",
+          image: "/images/produto3d2.jpg",
         },
         {
           id: "holiday-3",
           name: "Diorshow Volume & Definition - edição limitada",
           volume: "Kit",
           price: 530,
-          image: "./images/produto3d3.jpg",
+          image: "/images/produto3d3.jpg",
         },
         {
           id: "holiday-4",
           name: "Coffret Capture Duo",
           volume: "Kit",
           price: 1235,
-          image: "./images/cofre.jpg",
+          image: "/images/cofre.jpg",
         },
         {
           id: "holiday-5",
           name: "Coffret Dior Homme - Edição Limitada",
           volume: "Kit",
           price: 965,
-          image: "./images/diorhomme.jpg",
+          image: "/images/diorhomme.jpg",
         },
         {
           id: "holiday-6",
           name: "O Ritual de Brilho Natural - Edição Limitada",
           volume: "Kit",
           price: 530,
-          image: "./images/diormaster.jpg",
+          image: "/images/diormaster.jpg",
         },
       ];
 
@@ -843,21 +843,21 @@ export class HorizontalScrollSection extends HTMLElement {
           name: "Le Cirque des Rêves Dior",
           volume: "Kit",
           price: 6450,
-          image: "./images/firtsProduct.webp",
+          image: "/images/firtsProduct.webp",
         },
         {
           id: "presente-2",
           name: "Coffret de Enfeites Perfumados",
           volume: "Kit",
           price: 3780,
-          image: "./images/secondProduct.webp",
+          image: "/images/secondProduct.webp",
         },
         {
           id: "presente-3",
           name: "Dior Palette Couture",
           volume: "Kit",
           price: 990,
-          image: "./images/thirtyproduct.webp",
+          image: "/images/thirtyproduct.webp",
         },
       ];
 

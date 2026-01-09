@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // ARTE DE PRESENTEAR PAGE - Página usando Web Components
 // ============================================================================
 
@@ -36,7 +36,7 @@ export class ArteDePresentearPage extends HTMLElement {
               loop
               playsinline
             >
-              <source src="./videos/aArteDePresentear.mp4" type="video/mp4" />
+              <source src="/videos/aArteDePresentear.mp4" type="video/mp4" />
             </video>
 
             <!-- Conteúdo de texto sobre o vídeo -->
@@ -140,7 +140,7 @@ export class ArteDePresentearPage extends HTMLElement {
                   loop
                   playsinline
                 >
-                  <source src="./videos/diorvideopresente.mp4" type="video/mp4" />
+                  <source src="/videos/diorvideopresente.mp4" type="video/mp4" />
                 </video>
 
                 <!-- Video Controls para o vídeo do presente -->
@@ -219,7 +219,7 @@ export class ArteDePresentearPage extends HTMLElement {
             </div>
 
             <div class="presente-item-second">
-              <img class="presente-image-second" src="./images/thirtyproduct.webp" alt="Dior Palette Couture - edição limitada">
+              <img class="presente-image-second" src="/images/thirtyproduct.webp" alt="Dior Palette Couture - edição limitada">
               <p class="presente-price-second">Um novo tema exclusivo de alta costura</p>
               <p class="presente-caption-second">Presente maravilhosamente embrulhados</p>
             </div>
@@ -238,7 +238,7 @@ export class ArteDePresentearPage extends HTMLElement {
 
           <div class="presentes-grid-second">
             <div class="presente-item-second">
-              <img class="presente-image-second" src="./images/gravacao.webp" alt="Gravação Personalizada">
+              <img class="presente-image-second" src="/images/gravacao.webp" alt="Gravação Personalizada">
               <p class="presente-price-second">Gravação Personalizada</p>
               <a href="#" class="presente-button-second" data-block="button">
                 <span class="button__label">Descubra</span>
@@ -247,7 +247,7 @@ export class ArteDePresentearPage extends HTMLElement {
             </div>
 
             <div class="presente-item-second">
-              <img class="presente-image-second" src="./images/gravacao2.webp" alt="Saudação Personalizada">
+              <img class="presente-image-second" src="/images/gravacao2.webp" alt="Saudação Personalizada">
               <p class="presente-price-second">Saudação personalizada</p>
               <a href="#" class="presente-button-second" data-block="button">
                 <span class="button__label">Descubra</span>
@@ -275,7 +275,7 @@ export class ArteDePresentearPage extends HTMLElement {
               loop
               playsinline
             >
-              <source src="./videos/footervideo.mp4" type="video/mp4" />
+              <source src="/videos/footervideo.mp4" type="video/mp4" />
             </video>
 
             <!-- Conteúdo de texto sobre o vídeo -->

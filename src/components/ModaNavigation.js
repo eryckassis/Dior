@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // MODA NAVIGATION COMPONENT - Menu exclusivo para página Moda & Acessórios
 // ============================================================================
 
@@ -234,7 +234,7 @@ export class ModaNavigation extends HTMLElement {
         <div class="moda-nav-logo">
           <a href="/" class="moda-logo-link" data-route="/">
             <img
-              src="./images/Design sem nome (6).svg"
+              src="/images/Design sem nome (6).svg"
               alt="Dior Logo"
               width="140"
               height="32"

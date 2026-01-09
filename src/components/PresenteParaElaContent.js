@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // PRESENTE PARA ELA CONTENT - Componente de conteúdo da página
 // ============================================================================
 
@@ -484,7 +484,7 @@ export class PresenteParaElaContent extends HTMLElement {
             <div class="drag-cards-track">
               <div class="drag-card">
                 <div class="drag-card-image-wrapper">
-                  <img src="./images/bolsa.jpg" alt="Bolsas" class="drag-card-image" />
+                  <img src="/images/bolsa.jpg" alt="Bolsas" class="drag-card-image" />
                   <div class="drag-card-overlay"></div>
                 </div>
                 <h3 class="drag-card-title">Bolsas</h3>
@@ -492,7 +492,7 @@ export class PresenteParaElaContent extends HTMLElement {
 
               <div class="drag-card">
                 <div class="drag-card-image-wrapper">
-                  <img src="./images/joias.jpg" alt="Joias" class="drag-card-image" />
+                  <img src="/images/joias.jpg" alt="Joias" class="drag-card-image" />
                   <div class="drag-card-overlay"></div>
                 </div>
                 <h3 class="drag-card-title">Joias</h3>
@@ -500,7 +500,7 @@ export class PresenteParaElaContent extends HTMLElement {
 
               <div class="drag-card">
                 <div class="drag-card-image-wrapper">
-                  <img src="./images/couro.jpg" alt="Pequenos artigos de couro" class="drag-card-image" />
+                  <img src="/images/couro.jpg" alt="Pequenos artigos de couro" class="drag-card-image" />
                   <div class="drag-card-overlay"></div>
                 </div>
                 <h3 class="drag-card-title">Pequenos artigos de couro</h3>
@@ -508,14 +508,14 @@ export class PresenteParaElaContent extends HTMLElement {
 
               <div class="drag-card">
                 <div class="drag-card-image-wrapper">
-                  <img src="./images/acessorio.jpg" alt="Acessórios" class="drag-card-image" />
+                  <img src="/images/acessorio.jpg" alt="Acessórios" class="drag-card-image" />
                   <div class="drag-card-overlay"></div>
                 </div>
                 <h3 class="drag-card-title">Acessórios</h3>
               </div>
               <div class="drag-card">
                 <div class="drag-card-image-wrapper">
-                  <img src="./images/sapatos.jpg" alt="Sapatos" class="drag-card-image" />
+                  <img src="/images/sapatos.jpg" alt="Sapatos" class="drag-card-image" />
                   <div class="drag-card-overlay"></div>
                 </div>
                 <h3 class="drag-card-title">Sapatos</h3>
@@ -523,7 +523,7 @@ export class PresenteParaElaContent extends HTMLElement {
 
               <div class="drag-card">
                 <div class="drag-card-image-wrapper">
-                  <img src="./images/especiais.jpg" alt="Presentes especiais" class="drag-card-image" />
+                  <img src="/images/especiais.jpg" alt="Presentes especiais" class="drag-card-image" />
                   <div class="drag-card-overlay"></div>
                 </div>
                 <h3 class="drag-card-title">Presentes especiais</h3>

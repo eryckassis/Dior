@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // HOME PAGE - Página inicial usando Web Components
 // ============================================================================
 
@@ -694,28 +694,28 @@ export class HomePage extends HTMLElement {
         name: "J'adore",
         volume: "50 ml",
         price: 615.0,
-        image: "./images/paraela1.webp",
+        image: "/images/paraela1.webp",
       },
       5: {
         id: 5,
         name: "Rose Star",
         volume: "100 ml",
         price: 1625.0,
-        image: "./images/paraela2.webp",
+        image: "/images/paraela2.webp",
       },
       6: {
         id: 6,
         name: "Miss Dior Essence",
         volume: "35 ml",
         price: 799.0,
-        image: "./images/paraela3.webp",
+        image: "/images/paraela3.webp",
       },
       7: {
         id: 7,
         name: "Rouge Dior Sequin Liquid Duo - edição limitada",
         volume: "Duo",
         price: 355.0,
-        image: "./images/paraela4.webp",
+        image: "/images/paraela4.webp",
       },
       // Para Ele
       8: {
@@ -723,28 +723,28 @@ export class HomePage extends HTMLElement {
         name: "Sauvage Eau de Toilette",
         volume: "100 ml",
         price: 589.0,
-        image: "./images/paraele1.webp",
+        image: "/images/paraele1.webp",
       },
       9: {
         id: 9,
         name: "Dior Homme Intense",
         volume: "100 ml",
         price: 725.0,
-        image: "./images/paraele2.webp",
+        image: "/images/paraele2.webp",
       },
       10: {
         id: 10,
         name: "Fahrenheit",
         volume: "100 ml",
         price: 655.0,
-        image: "./images/paraele3.webp",
+        image: "/images/paraele3.webp",
       },
       11: {
         id: 11,
         name: "Dior Homme Sport",
         volume: "100 ml",
         price: 599.0,
-        image: "./images/paraele4.webp",
+        image: "/images/paraele4.webp",
       },
       // Para Casa
       12: {
@@ -752,28 +752,28 @@ export class HomePage extends HTMLElement {
         name: "Vela Perfumada Miss Dior",
         volume: "250g",
         price: 425.0,
-        image: "./images/paracasa.webp",
+        image: "/images/paracasa.webp",
       },
       13: {
         id: 13,
         name: "Difusor de Ambiente",
         volume: "200 ml",
         price: 520.0,
-        image: "./images/paracasa2.webp",
+        image: "/images/paracasa2.webp",
       },
       14: {
         id: 14,
         name: "Home Spray Gris Dior",
         volume: "125 ml",
         price: 380.0,
-        image: "./images/diorhomme.jpg",
+        image: "/images/diorhomme.jpg",
       },
       15: {
         id: 15,
         name: "Porta-velas Dior",
         volume: "Unidade",
         price: 295.0,
-        image: "./images/diormaster.jpg",
+        image: "/images/diormaster.jpg",
       },
     };
 
@@ -817,21 +817,21 @@ export class HomePage extends HTMLElement {
         name: "Coffret Capture Duo",
         volume: "Kit completo",
         price: 1235.0,
-        image: "./images/cofre.jpg",
+        image: "/images/cofre.jpg",
       },
       2: {
         id: 2,
         name: "Coffret Dior Homme - Edição Limitada",
         volume: "100 ml + Travel Spray",
         price: 965.0,
-        image: "./images/diorhomme.jpg",
+        image: "/images/diorhomme.jpg",
       },
       3: {
         id: 3,
         name: "O Ritual de Brilho Natural - Edição Limitada",
         volume: "Kit completo",
         price: 530.0,
-        image: "./images/diormaster.jpg",
+        image: "/images/diormaster.jpg",
       },
     };
 
@@ -961,7 +961,7 @@ export class HomePage extends HTMLElement {
           <div class="grid-container">
             <!-- Hero Section with Video -->
             <hero-section
-              video="./videos/VideoSection1.mp4"
+              video="/videos/VideoSection1.mp4"
               label="Dior Holiday"
               title="Bem-vindo ao Circo dos Sonhos Dior"
               button-text="Chegue mais perto"
@@ -975,7 +975,7 @@ export class HomePage extends HTMLElement {
 
             <!-- Second Video Section -->
             <video-section
-              video="./videos/videosection1.2.mp4"
+              video="/videos/videosection1.2.mp4"
               section-id="depth-meaning"
             ></video-section>
           </div>
@@ -992,7 +992,7 @@ export class HomePage extends HTMLElement {
           loop
           playsinline
         >
-          <source src="./videos/aArteDePresentear.mp4" type="video/mp4" />
+          <source src="/videos/aArteDePresentear.mp4" type="video/mp4" />
         </video>
 
         <!-- Conteúdo de texto sobre o vídeo -->
@@ -1081,7 +1081,7 @@ export class HomePage extends HTMLElement {
           <div class="essence-product-card">
             <div class="essence-product-image-wrapper">
               <div class="essence-image-reveal-overlay"></div>
-              <img src="./images/cofre.jpg" alt="Coffret Capture Duo" class="essence-product-image" />
+              <img src="/images/cofre.jpg" alt="Coffret Capture Duo" class="essence-product-image" />
             </div>
             <div class="essence-product-info">
               <h3 class="essence-product-name">Coffret Capture Duo</h3>
@@ -1112,7 +1112,7 @@ export class HomePage extends HTMLElement {
           <div class="essence-product-card">
             <div class="essence-product-image-wrapper">
               <div class="essence-image-reveal-overlay"></div>
-              <img src="./images/diorhomme.jpg" alt="Coffret Dior Homme" class="essence-product-image" />
+              <img src="/images/diorhomme.jpg" alt="Coffret Dior Homme" class="essence-product-image" />
             </div>
             <div class="essence-product-info">
               <h3 class="essence-product-name">Coffret Dior Homme - Edição Limitada</h3>
@@ -1143,7 +1143,7 @@ export class HomePage extends HTMLElement {
           <div class="essence-product-card">
             <div class="essence-product-image-wrapper">
               <div class="essence-image-reveal-overlay"></div>
-              <img src="./images/diormaster.jpg" alt="O Ritual de Brilho Natural" class="essence-product-image" />
+              <img src="/images/diormaster.jpg" alt="O Ritual de Brilho Natural" class="essence-product-image" />
             </div>
             <div class="essence-product-info">
               <h3 class="essence-product-name">O Ritual de Brilho Natural - Edição Limitada</h3>
@@ -1197,7 +1197,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/paraela1.webp" alt="J'adore" class="category-image" />
+                    <img src="/images/paraela1.webp" alt="J'adore" class="category-image" />
                   </div>
                   <div class="category-product-info">
                     <p class="category-product-name">J'adore</p>
@@ -1227,7 +1227,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/paraela2.webp" alt="Rose Star" class="category-image" />
+                    <img src="/images/paraela2.webp" alt="Rose Star" class="category-image" />
                   </div>
                   <div class="category-product-info">
                     <p class="category-product-name">Rose Star</p>
@@ -1257,7 +1257,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/paraela3.webp" alt="Miss Dior Essence" class="category-image" />
+                    <img src="/images/paraela3.webp" alt="Miss Dior Essence" class="category-image" />
                   </div>
                   <div class="category-product-info">
                     <p class="category-product-name">Miss Dior Essence</p>
@@ -1287,7 +1287,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/paraela4.webp" alt="Rouge Dior Sequin Liquid Duo" class="category-image" />
+                    <img src="/images/paraela4.webp" alt="Rouge Dior Sequin Liquid Duo" class="category-image" />
                   </div>
                   <div class="category-product-info">
                     <p class="category-product-name">Rouge Dior Sequin Liquid Duo - edição limitada</p>
@@ -1322,7 +1322,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/paraele1.webp" alt="Sauvage Eau de Toilette" class="category-image" />
+                    <img src="/images/paraele1.webp" alt="Sauvage Eau de Toilette" class="category-image" />
                   </div>
                   <div class="category-product-info">
                     <p class="category-product-name">Sauvage Eau de Toilette</p>
@@ -1352,7 +1352,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/paraele2.webp" alt="Dior Homme Intense" class="category-image" />
+                    <img src="/images/paraele2.webp" alt="Dior Homme Intense" class="category-image" />
                   </div>
                   <div class="category-product-info">
                     <p class="category-product-name">Dior Homme Intense</p>
@@ -1382,7 +1382,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/paraele3.webp" alt="Fahrenheit" class="category-image" />
+                    <img src="/images/paraele3.webp" alt="Fahrenheit" class="category-image" />
                   </div>
                   <div class="category-product-info">
                     <p class="category-product-name">Fahrenheit</p>
@@ -1412,7 +1412,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/paraele4.webp" alt="Dior Homme Sport" class="category-image" />
+                    <img src="/images/paraele4.webp" alt="Dior Homme Sport" class="category-image" />
                   </div>
                   <div class="category-product-info">
                     <p class="category-product-name">Dior Homme Sport</p>
@@ -1447,7 +1447,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/paracasa.webp" alt="Vela Perfumada Miss Dior" class="category-image" />
+                    <img src="/images/paracasa.webp" alt="Vela Perfumada Miss Dior" class="category-image" />
                   </div>
                   <div class="category-product-info">
                     <p class="category-product-name">Vela Perfumada Miss Dior</p>
@@ -1477,7 +1477,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/paracasa2.webp" alt="Difusor de Ambiente" class="category-image" />
+                    <img src="/images/paracasa2.webp" alt="Difusor de Ambiente" class="category-image" />
                   </div>
                   <div class="category-product-info">
                     <p class="category-product-name">Difusor de Ambiente</p>
@@ -1507,7 +1507,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/diorhomme.jpg" alt="Home Spray Gris Dior" class="category-image" />
+                    <img src="/images/diorhomme.jpg" alt="Home Spray Gris Dior" class="category-image" />
                   </div>
                   <div class="category-product-info">
                     <p class="category-product-name">Home Spray Gris Dior</p>
@@ -1537,7 +1537,7 @@ export class HomePage extends HTMLElement {
                 <div class="category-item">
                   <div class="category-image-wrap">
                     <div class="image-reveal-overlay"></div>
-                    <img src="./images/diormaster.jpg" alt="Porta-velas Dior" class="category-image" />
+                    <img src="/images/diormaster.jpg" alt="Porta-velas Dior" class="category-image" />
                   </div>
                   <div class="category-product-info">
                     <p class="category-product-name">Porta-velas Dior</p>
@@ -1571,7 +1571,7 @@ export class HomePage extends HTMLElement {
 
       <!-- Keyhole Reveal Section -->
       <keyhole-section
-        image="./images/Image 2 Dior.jpg"
+        image="/images/Image 2 Dior.jpg"
         subtitle="Dior Backstage Glow Maximizer Palette"
         title="Uma nova visão da icônica paleta de iluminadores"
         button-text="Descubra"
@@ -1593,7 +1593,7 @@ export class HomePage extends HTMLElement {
             <div class="services-image-item services-image-large">
               <div class="services-image-wrap">
                 <div class="services-reveal-overlay"></div>
-                <img src="./images/cofre.jpg" alt="A Arte de Presentear" class="services-image" />
+                <img src="/images/cofre.jpg" alt="A Arte de Presentear" class="services-image" />
               </div>
               <div class="services-image-info">
                 <p class="services-image-title">A Arte de Presentear</p>
@@ -1604,7 +1604,7 @@ export class HomePage extends HTMLElement {
             <div class="services-image-item services-image-small">
               <div class="services-image-wrap">
                 <div class="services-reveal-overlay"></div>
-                <img src="./images/diorhomme.jpg" alt="O Atelier de Personalização" class="services-image" />
+                <img src="/images/diorhomme.jpg" alt="O Atelier de Personalização" class="services-image" />
               </div>
               <div class="services-image-info">
                 <p class="services-image-title">O Atelier de Personalização</p>

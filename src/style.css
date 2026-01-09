@@ -1,4 +1,4 @@
-/* Import fonts */
+﻿/* Import fonts */
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=IBM+Plex+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
@@ -1321,7 +1321,7 @@ p {
       rgba(0, 0, 0, 0.6) 0%,
       rgba(0, 0, 0, 0.3) 100%
     ),
-    url("./images/ImageSectionView.png");
+    url("/images/ImageSectionView.png");
 }
 
 /* Keyhole content dentro da segunda seção - INDEPENDENTE */

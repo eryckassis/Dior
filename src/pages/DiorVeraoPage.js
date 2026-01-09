@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // DIOR VERÃO PAGE - Página Descubra
 // ============================================================================
 
@@ -273,21 +273,21 @@ export class DiorVeraoPage extends HTMLElement {
           name: "Miss Dior Leite Corporal com Cera de Rosa",
           volume: "200ml",
           price: 439,
-          image: "./images/missleite.webp",
+          image: "/images/missleite.webp",
         },
         {
           id: "verao-oleo-esfoliante",
           name: "Miss Dior Óleo Corporal Esfoliante com Extrato de Rosa",
           volume: "200ml",
           price: 449,
-          image: "./images/missOelo.webp",
+          image: "/images/missOelo.webp",
         },
         {
           id: "verao-gel-banho",
           name: "Miss Dior Gel de Banho com Água de Rosa",
           volume: "250ml",
           price: 479,
-          image: "./images/missgel.webp",
+          image: "/images/missgel.webp",
         },
       ];
 
@@ -319,21 +319,21 @@ export class DiorVeraoPage extends HTMLElement {
           name: "J'adore Parfum d'Eau",
           volume: "50ml",
           price: 615,
-          image: "./images/jadoreVerao1.webp",
+          image: "/images/jadoreVerao1.webp",
         },
         {
           id: "jadore-eau-parfum",
           name: "J'adore Eau de Parfum",
           volume: "50ml",
           price: 699,
-          image: "./images/jadoreVerao1.webp",
+          image: "/images/jadoreVerao1.webp",
         },
         {
           id: "jadore-absolu",
           name: "J'adore Absolu",
           volume: "50ml",
           price: 749,
-          image: "./images/jadoreVerao1.webp",
+          image: "/images/jadoreVerao1.webp",
         },
       ];
 
@@ -365,14 +365,14 @@ export class DiorVeraoPage extends HTMLElement {
           name: "Sauvage",
           volume: "100ml",
           price: 660,
-          image: "./images/diorsauvage.webp",
+          image: "/images/diorsauvage.webp",
         },
         {
           id: "dior-homme-edt",
           name: "Dior Homme",
           volume: "100ml",
           price: 695,
-          image: "./images/diorhommem.webp",
+          image: "/images/diorhommem.webp",
         },
       ];
 
@@ -639,7 +639,7 @@ export class DiorVeraoPage extends HTMLElement {
               loop
               playsinline
             >
-              <source src="./videos/diorVerao.mp4" type="video/mp4" />
+              <source src="/videos/diorVerao.mp4" type="video/mp4" />
             </video>
 
             <!-- Conteúdo de texto sobre o vídeo -->
@@ -735,7 +735,7 @@ export class DiorVeraoPage extends HTMLElement {
      <section class="miss-dior-full-image section-spacing">
           <div class="miss-dior-image-reveal">
             <div class="reveal-overlay"></div>
-            <img src="./images/diorverao.jpg" alt="Miss Dior Perfume" class="reveal-image" />
+            <img src="/images/diorverao.jpg" alt="Miss Dior Perfume" class="reveal-image" />
           </div>
         </section>
 
@@ -755,7 +755,7 @@ export class DiorVeraoPage extends HTMLElement {
               loop
               playsinline
             >
-              <source src="./videos/diorVerao2.mp4" type="video/mp4" />
+              <source src="/videos/diorVerao2.mp4" type="video/mp4" />
             </video>
 
             <!-- Conteúdo de texto sobre o vídeo -->
@@ -772,7 +772,7 @@ export class DiorVeraoPage extends HTMLElement {
           <section class="miss-dior-full-image section-spacing">
           <div class="miss-dior-image-reveal reveal-second">
             <div class="reveal-overlay"></div>
-            <img src="./images/diorverao2.webp" alt="Miss Dior Perfume" class="reveal-image" />
+            <img src="/images/diorverao2.webp" alt="Miss Dior Perfume" class="reveal-image" />
           </div>
         </section>
 
@@ -784,7 +784,7 @@ export class DiorVeraoPage extends HTMLElement {
             <div class="essence-product-card">
               <div class="essence-product-image-wrapper">
                 <div class="essence-image-reveal-overlay"></div>
-                <img src="./images/missleite.webp" alt="Miss Dior Leite Corporal" class="essence-product-image" />
+                <img src="/images/missleite.webp" alt="Miss Dior Leite Corporal" class="essence-product-image" />
               </div>
               <div class="essence-product-info">
                 <h3 class="essence-product-name">Miss Dior Leite Corporal com Cera de Rosa</h3>
@@ -815,7 +815,7 @@ export class DiorVeraoPage extends HTMLElement {
             <div class="essence-product-card">
               <div class="essence-product-image-wrapper">
                 <div class="essence-image-reveal-overlay"></div>
-                <img src="./images/missOelo.webp" alt="Miss Dior Óleo Corporal" class="essence-product-image" />
+                <img src="/images/missOelo.webp" alt="Miss Dior Óleo Corporal" class="essence-product-image" />
               </div>
               <div class="essence-product-info">
                 <h3 class="essence-product-name">Miss Dior Óleo Corporal Esfoliante com Extrato de Rosa</h3>
@@ -848,7 +848,7 @@ export class DiorVeraoPage extends HTMLElement {
             <div class="essence-product-card">
               <div class="essence-product-image-wrapper">
                 <div class="essence-image-reveal-overlay"></div>
-                <img src="./images/missgel.webp" alt="Miss Dior Gel de Banho" class="essence-product-image" />
+                <img src="/images/missgel.webp" alt="Miss Dior Gel de Banho" class="essence-product-image" />
               </div>
               <div class="essence-product-info">
                 <h3 class="essence-product-name">Miss Dior Gel de Banho com Água de Rosa</h3>
@@ -889,7 +889,7 @@ export class DiorVeraoPage extends HTMLElement {
         <section class="miss-dior-full-image section-spacing">
           <div class="miss-dior-image-reveal reveal-third">
             <div class="reveal-overlay"></div>
-            <img src="./images/jadoreVerao.webp" alt="Dior Verão Collection" class="reveal-image" />
+            <img src="/images/jadoreVerao.webp" alt="Dior Verão Collection" class="reveal-image" />
           </div>
         </section>
 
@@ -901,7 +901,7 @@ export class DiorVeraoPage extends HTMLElement {
             <div class="essence-product-card">
               <div class="essence-product-image-wrapper">
                 <div class="essence-image-reveal-overlay"></div>
-                <img src="./images/jadoreVerao1.webp" alt="J'adore Parfum d'Eau" class="essence-product-image" />
+                <img src="/images/jadoreVerao1.webp" alt="J'adore Parfum d'Eau" class="essence-product-image" />
               </div>
               <div class="essence-product-info">
                 <h3 class="essence-product-name">J'adore Parfum d'Eau</h3>
@@ -932,7 +932,7 @@ export class DiorVeraoPage extends HTMLElement {
             <div class="essence-product-card">
               <div class="essence-product-image-wrapper">
                 <div class="essence-image-reveal-overlay"></div>
-                <img src="./images/jadoreVerao1.webp" alt="J'adore Eau de Parfum" class="essence-product-image" />
+                <img src="/images/jadoreVerao1.webp" alt="J'adore Eau de Parfum" class="essence-product-image" />
               </div>
               <div class="essence-product-info">
                 <h3 class="essence-product-name">J'adore Eau de Parfum</h3>
@@ -963,7 +963,7 @@ export class DiorVeraoPage extends HTMLElement {
             <div class="essence-product-card">
               <div class="essence-product-image-wrapper">
                 <div class="essence-image-reveal-overlay"></div>
-                <img src="./images/jadoreVerao1.webp" alt="J'adore Absolu" class="essence-product-image" />
+                <img src="/images/jadoreVerao1.webp" alt="J'adore Absolu" class="essence-product-image" />
               </div>
               <div class="essence-product-info">
                 <h3 class="essence-product-name">J'adore Absolu</h3>
@@ -1013,7 +1013,7 @@ export class DiorVeraoPage extends HTMLElement {
             <div class="essence-product-card">
               <div class="essence-product-image-wrapper">
                 <div class="essence-image-reveal-overlay"></div>
-                <img src="./images/diorsauvage.webp" alt="Sauvage" class="essence-product-image" />
+                <img src="/images/diorsauvage.webp" alt="Sauvage" class="essence-product-image" />
               </div>
               <div class="essence-product-info">
                 <h3 class="essence-product-name">Sauvage</h3>
@@ -1044,7 +1044,7 @@ export class DiorVeraoPage extends HTMLElement {
             <div class="essence-product-card">
               <div class="essence-product-image-wrapper">
                 <div class="essence-image-reveal-overlay"></div>
-                <img src="./images/diorhommem.webp" alt="Dior Homme" class="essence-product-image" />
+                <img src="/images/diorhommem.webp" alt="Dior Homme" class="essence-product-image" />
               </div>
               <div class="essence-product-info">
                 <h3 class="essence-product-name">Dior Homme</h3>
@@ -1083,7 +1083,7 @@ export class DiorVeraoPage extends HTMLElement {
               <!-- Card 1 - La Collection Privée -->
               <div class="verao-dior-card">
                 <div class="verao-dior-image">
-                  <img src="./images/prive.webp" alt="La Collection Privée" />
+                  <img src="/images/prive.webp" alt="La Collection Privée" />
                 </div>
                 <div class="verao-dior-info">
                   <h3 class="verao-dior-card-title">La Collection Privée</h3>
@@ -1094,7 +1094,7 @@ export class DiorVeraoPage extends HTMLElement {
               <!-- Card 2 - Uma Evasão Solar -->
               <div class="verao-dior-card">
                 <div class="verao-dior-image">
-                  <img src="./images/evasao.webp" alt="Uma Evasão Solar" />
+                  <img src="/images/evasao.webp" alt="Uma Evasão Solar" />
                 </div>
                 <div class="verao-dior-info">
                   <h3 class="verao-dior-card-title">Uma Evasão Solar</h3>
@@ -1105,7 +1105,7 @@ export class DiorVeraoPage extends HTMLElement {
               <!-- Card 3 - Maquiagem -->
               <div class="verao-dior-card">
                 <div class="verao-dior-image">
-                  <img src="./images/maquiagem.webp" alt="Maquiagem" />
+                  <img src="/images/maquiagem.webp" alt="Maquiagem" />
                 </div>
                 <div class="verao-dior-info">
                   <h3 class="verao-dior-card-title">Maquiagem</h3>

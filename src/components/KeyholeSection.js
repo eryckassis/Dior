@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // KEYHOLE SECTION WEB COMPONENT - Seção com efeito keyhole
 // ============================================================================
 
@@ -8,7 +8,7 @@ export class KeyholeSection extends HTMLElement {
   }
 
   connectedCallback() {
-    const image = this.getAttribute("image") || "./images/Image 2 Dior.jpg";
+    const image = this.getAttribute("image") || "/images/Image 2 Dior.jpg";
     const subtitle =
       this.getAttribute("subtitle") || "Dior Backstage Glow Maximizer Palette";
     const title =

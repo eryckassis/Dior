@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // PRESENTE PARA ELA PAGE - Página dedicada a presentes femininos
 // ============================================================================
 
@@ -85,7 +85,7 @@ export class PresenteParaElaPage extends HTMLElement {
               loop
               playsinline
             >
-              <source src="./videos/diorAcessories.webm" type="video/webm" />
+              <source src="/videos/diorAcessories.webm" type="video/webm" />
             </video>
             
             <div class="presente-ela-hero-content">

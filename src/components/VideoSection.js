@@ -1,11 +1,11 @@
-export class VideoSection extends HTMLElement {
+﻿export class VideoSection extends HTMLElement {
   constructor() {
     super();
   }
 
   connectedCallback() {
     const videoSrc =
-      this.getAttribute("video") || "./videos/videosection1.2.mp4";
+      this.getAttribute("video") || "/videos/videosection1.2.mp4";
     const id = this.getAttribute("section-id") || "depth-meaning";
 
     this.render(videoSrc, id);
