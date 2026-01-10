@@ -6,6 +6,7 @@ import "../components/ModaNavigation.js";
 import "../components/FooterSection.js";
 import "../components/ModaAcessoriosContent.js";
 import "../styles/moda-acessorios.css";
+import "../styles/miss-dior.css";
 
 export class ModaEAcessoriosPage extends HTMLElement {
   constructor() {
@@ -19,6 +20,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
     this.initCardAnimations();
     this.initCardButtons();
     this.initDragCards();
+    this.initVideoControls();
   }
 
   disconnectedCallback() {
@@ -240,6 +242,69 @@ export class ModaEAcessoriosPage extends HTMLElement {
             ease: "power2.inOut",
           });
         });
+      });
+    });
+  }
+
+  initVideoControls() {
+    const video = this.querySelector("#miss-dior-section-video");
+    const playPauseBtn = this.querySelector("#miss-dior-play-pause-btn");
+    const muteBtn = this.querySelector("#miss-dior-mute-unmute-btn");
+
+    if (!video || !playPauseBtn || !muteBtn) return;
+
+    const iconPlay = playPauseBtn.querySelector(".icon-play");
+    const iconPause = playPauseBtn.querySelector(".icon-pause");
+    const iconMute = muteBtn.querySelector(".icon-mute");
+    const iconUnmute = muteBtn.querySelector(".icon-unmute");
+
+    // Play/Pause handler
+    playPauseBtn.addEventListener("click", () => {
+      if (video.paused) {
+        video.play();
+        iconPlay.style.display = "none";
+        iconPause.style.display = "block";
+      } else {
+        video.pause();
+        iconPlay.style.display = "block";
+        iconPause.style.display = "none";
+      }
+    });
+
+    // Mute/Unmute handler
+    muteBtn.addEventListener("click", () => {
+      video.muted = !video.muted;
+      if (video.muted) {
+        iconMute.style.display = "block";
+        iconUnmute.style.display = "none";
+      } else {
+        iconMute.style.display = "none";
+        iconUnmute.style.display = "block";
+      }
+    });
+
+    // Liquid glass button effect (opcional)
+    [playPauseBtn, muteBtn].forEach((button) => {
+      button.addEventListener("mouseenter", (e) => {
+        const flair = button.querySelector(".button__flair");
+        if (flair && window.gsap) {
+          window.gsap.to(flair, {
+            scale: 1,
+            duration: 0.6,
+            ease: "power2.out",
+          });
+        }
+      });
+
+      button.addEventListener("mouseleave", () => {
+        const flair = button.querySelector(".button__flair");
+        if (flair && window.gsap) {
+          window.gsap.to(flair, {
+            scale: 0,
+            duration: 0.4,
+            ease: "power2.in",
+          });
+        }
       });
     });
   }
@@ -476,12 +541,103 @@ export class ModaEAcessoriosPage extends HTMLElement {
                 </div>
               </section>
             </div>
+           
 
             <!-- Progress Bar -->
             <div class="moda-drag-progress">
               <div class="moda-drag-progress-fill"></div>
             </div>
           </div>
+
+           <section class="miss-dior-video-section">
+            <video
+              class="miss-dior-video-bg"
+              id="miss-dior-section-video"
+              autoplay
+              muted
+              loop
+              playsinline
+            >
+              <source src="/videos/lady.mp4" type="video/mp4" />
+            </video>
+
+            <!-- Conteúdo de texto sobre o vídeo -->
+            <div class="miss-dior-video-content">
+              <h1 class="miss-dior-video-title"></h1>
+              <p class="miss-dior-video-description"></p>
+            </div>
+
+            <!-- Video Controls - Liquid Glass -->
+            <div class="video-controls">
+              <button
+                class="glass-button"
+                id="miss-dior-play-pause-btn"
+                aria-label="Play/Pause"
+                data-block="button"
+              >
+                <span class="button__flair"></span>
+                <svg
+                  class="icon-play"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <svg
+                  class="icon-pause"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  style="display: none"
+                >
+                  <rect x="6" y="4" width="4" height="16"></rect>
+                  <rect x="14" y="4" width="4" height="16"></rect>
+                </svg>
+              </button>
+
+              <button
+                class="glass-button"
+                id="miss-dior-mute-unmute-btn"
+                aria-label="Mute/Unmute"
+                data-block="button"
+              >
+                <span class="button__flair"></span>
+                <svg
+                  class="icon-mute"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <line x1="23" y1="9" x2="17" y2="15"></line>
+                  <line x1="17" y1="9" x2="23" y2="15"></line>
+                </svg>
+                <svg
+                  class="icon-unmute"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  style="display: none"
+                >
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+              </button>
+            </div>
+          </section>
 
         <!-- Footer -->
         <footer-section></footer-section>
