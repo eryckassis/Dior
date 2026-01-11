@@ -786,3 +786,82 @@ moda-acessorios-page main {
     width: 120px;
   }
 }
+
+
+
+/* ============================================================================
+   SEÇÃO DESCUBRA A CAMPANHA
+   ============================================================================ */
+
+.moda-campaign-section {
+  background: #fff;
+  padding: 8rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+.moda-campaign-content {
+  max-width: 900px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.moda-campaign-title {
+  font-family: "MinhaFonte", sans-serif;
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: 2px;
+  line-height: 1.1;
+  color: #1a1a1a;
+}
+
+.moda-campaign-description {
+  font-family: "Hellix", sans-serif;
+  font-size: clamp(16px, 1.8vw, 22px);
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.6;
+  max-width: 85%;
+  color: #333;
+}
+
+/* Botão descubra na seção de campanha - reutiliza .moda-discover-button mas com cor preta */
+.moda-campaign-section .moda-discover-button {
+  color: #1a1a1a;
+}
+
+.moda-campaign-section .moda-discover-button::after {
+  background-color: #1a1a1a;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .moda-campaign-section {
+    padding: 5rem 1.5rem;
+  }
+
+  .moda-campaign-title {
+    font-size: clamp(32px, 5vw, 60px);
+  }
+
+  .moda-campaign-description {
+    font-size: clamp(14px, 1.6vw, 18px);
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .moda-campaign-section {
+    padding: 3rem 1rem;
+  }
+
+  .moda-campaign-title {
+    font-size: clamp(28px, 4vw, 50px);
+  }
+}

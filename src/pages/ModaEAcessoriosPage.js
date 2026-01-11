@@ -103,14 +103,11 @@ export class ModaEAcessoriosPage extends HTMLElement {
     requestAnimationFrame(() => {
       if (!window.gsap) return;
 
-      const button = this.querySelector(".moda-discover-button");
+      const buttons = this.querySelectorAll(".moda-discover-button");
 
-      if (button) {
-        console.log("✅ Botão encontrado:", button);
-
+      buttons.forEach((button) => {
         // Mouseenter - linha diminui para 0
         button.addEventListener("mouseenter", () => {
-          console.log("Mouse entrou no botão");
           window.gsap.to(button, {
             "--underline-width": "0%",
             duration: 0.35,
@@ -120,16 +117,13 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
         // Mouseleave - linha volta a 100%
         button.addEventListener("mouseleave", () => {
-          console.log("Mouse saiu do botão");
           window.gsap.to(button, {
             "--underline-width": "100%",
             duration: 0.35,
             ease: "power2.inOut",
           });
         });
-      } else {
-        console.error("❌ Botão NÃO encontrado!");
-      }
+      });
     });
   }
 
@@ -547,7 +541,8 @@ export class ModaEAcessoriosPage extends HTMLElement {
             <div class="moda-drag-progress">
               <div class="moda-drag-progress-fill"></div>
             </div>
-          </div>
+          </div> 
+          
 
            <section class="miss-dior-video-section">
             <video
@@ -563,8 +558,6 @@ export class ModaEAcessoriosPage extends HTMLElement {
 
             <!-- Conteúdo de texto sobre o vídeo -->
             <div class="miss-dior-video-content">
-              <h1 class="miss-dior-video-title"></h1>
-              <p class="miss-dior-video-description"></p>
             </div>
 
             <!-- Video Controls - Liquid Glass -->
@@ -638,6 +631,31 @@ export class ModaEAcessoriosPage extends HTMLElement {
               </button>
             </div>
           </section>
+
+          <!-- Seção Descubra a Campanha -->
+          <section class="moda-campaign-section">
+            <div class="moda-campaign-content">
+              <h2 class="moda-campaign-title">Descubra</h2>
+              <p class="moda-campaign-description">
+                As fotografias de David Sims, tanto em cores quanto em preto e branco, são como esboços visuais, transmitindo informações de forma concisa e significativa através da linguagem corporal, roupas e ambiente
+              </p>
+              <a href="#campanha" class="moda-discover-button">Descubra a campanha</a>
+            </div>
+          </section>
+
+           <section class="miss-dior-video-section">
+            <video
+              class="miss-dior-video-bg"
+              id="miss-dior-section-video"
+              autoplay
+              muted
+              loop
+              playsinline
+            >
+              <source src="/videos/bolsinhas.mp4" type="video/mp4" />
+            </video>
+            </section>
+
 
         <!-- Footer -->
         <footer-section></footer-section>
