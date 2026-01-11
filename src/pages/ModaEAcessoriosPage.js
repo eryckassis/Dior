@@ -103,7 +103,7 @@ export class ModaEAcessoriosPage extends HTMLElement {
     requestAnimationFrame(() => {
       if (!window.gsap) return;
 
-      const buttons = this.querySelectorAll(".moda-discover-button");
+      const buttons = this.querySelectorAll(".moda-discover-button, .moda-discover-button-second");
 
       buttons.forEach((button) => {
         // Mouseenter - linha diminui para 0
@@ -216,7 +216,10 @@ export class ModaEAcessoriosPage extends HTMLElement {
     requestAnimationFrame(() => {
       if (!window.gsap) return;
 
-      const buttons = this.querySelectorAll(".moda-card-button");
+      const buttons = this.querySelectorAll(
+        ".moda-card-button",
+        "moda-card-button-second"
+      );
 
       buttons.forEach((button) => {
         // Mouseenter - linha diminui para 0
@@ -653,7 +656,15 @@ export class ModaEAcessoriosPage extends HTMLElement {
               playsinline
             >
               <source src="/videos/bolsinhas.mp4" type="video/mp4" />
+              
             </video>
+            <div class="moda-hero-content-second">
+              <p class="moda-hero-label-second">Savoir-faire</p>
+              <h1 class="moda-hero-title-second">A bolsa Dior Bow</h1>
+              
+              <a href="#" class="moda-discover-button-second">Descubra  mais</a>
+            </div>
+            
             </section>
 
 
