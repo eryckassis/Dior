@@ -789,9 +789,7 @@ moda-acessorios-page main {
 
 
 
-/* ============================================================================
-   SEÇÃO DESCUBRA A CAMPANHA
-   ============================================================================ */
+
 
 .moda-campaign-section {
   background: #fff;
@@ -831,7 +829,7 @@ moda-acessorios-page main {
   color: #333;
 }
 
-/* Botão descubra na seção de campanha - reutiliza .moda-discover-button mas com cor preta */
+
 .moda-campaign-section .moda-discover-button {
   color: #1a1a1a;
 }
@@ -840,7 +838,7 @@ moda-acessorios-page main {
   background-color: #1a1a1a;
 }
 
-/* Responsivo */
+
 @media (max-width: 768px) {
   .moda-campaign-section {
     padding: 5rem 1.5rem;
