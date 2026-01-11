@@ -663,7 +663,7 @@ moda-acessorios-page main {
   transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Placeholder Content Styles */
+
 .moda-placeholder-section {
   max-width: 1400px;
   margin: 0 auto;
@@ -691,7 +691,7 @@ moda-acessorios-page main {
   color: #555;
 }
 
-/* Responsive */
+
 @media (max-width: 1024px) {
   .moda-drag-container {
     padding: 0 2rem;
