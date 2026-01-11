@@ -103,7 +103,9 @@ export class ModaEAcessoriosPage extends HTMLElement {
     requestAnimationFrame(() => {
       if (!window.gsap) return;
 
-      const buttons = this.querySelectorAll(".moda-discover-button, .moda-discover-button-second");
+      const buttons = this.querySelectorAll(
+        ".moda-discover-button, .moda-discover-button-second"
+      );
 
       buttons.forEach((button) => {
         // Mouseenter - linha diminui para 0
